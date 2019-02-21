@@ -125,42 +125,25 @@ public class PlayerImportDialog extends JDialog implements
 	}
 
 	private void importPlayer() {
-		System.out.println("Index: " + index);
 		int ia = Player.startAdr + (index * 124);
 		if (index >= Player.firstEdit) {
 			ia = Player.startAdrE + ((index - Player.firstEdit) * 124);
 		}
-		System.out.println("IA: " + ia);
 		int ra = Player.startAdr + (replacement * 124);
 		if (replacement >= Player.firstEdit) {
 			ra = Player.startAdrE
 					+ ((replacement - Player.firstEdit) * 124);
 		}
 		if (allButton.isSelected()) {
-			System.out.println("Convert ALL");
-			System.out.println("ra: " + ra);
-
-			int count = 0;
-
-			byte[] exportData = new byte[124];
-
-			while(count < 124){
-				exportData[count] = of2.data[ra + count];
-				System.out.println("OF2 Player " + count + ": " + of2.data[ra + count]);
-				System.out.println(of2.data[ra + count] + ",");
-				count++;
-			}
-
+			System.arraycopy(of2.data, ra, of.data, ia, 124);
 			Stats.setValue(of, index, Stats.nameEdited, 1);
 			Stats.setValue(of, index, Stats.callEdited, 1);
 			Stats.setValue(of, index, Stats.shirtEdited, 1);
 			Stats.setValue(of, index, Stats.abilityEdited, 1);
 			if (!of.isWE() && of2.isWE()) {
-				System.out.println("Convert.WE2007_PES6");
 				Convert.player(of, index, Convert.WE2007_PES6);
 			}
 			if (of.isWE() && !of2.isWE()) {
-				System.out.println("Convert.PES6_WE2007");
 				Convert.player(of, index, Convert.PES6_WE2007);
 			}
 		} else if (statsButton.isSelected()){
