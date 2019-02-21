@@ -14,6 +14,12 @@ public class CSVMaker {
 
 	private OptionFile of;
 	private final CSVAttributes csvAttributes = new CSVAttributes();
+	private final int[] wristbandVals = csvAttributes.getWristbandVals();
+	private final Map<Integer, String> wristbandOptsByValue = csvAttributes.getWristbandOptsByValue();
+	private final Map<Integer, String> physicalOptsByValue = csvAttributes.getPhysicalOptsByValue();
+	private final Map<Integer, String> physicalLinkedOptsByValue = csvAttributes.getPhysicalLinkedOptsByValue();
+	private final int bytesFactor = csvAttributes.getBytesFactor();
+	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
 
 	public boolean makeFile(ProgressUI ui, OptionFile opf, File dest, boolean headings,
@@ -104,7 +110,11 @@ public class CSVMaker {
 				"PENALTY STOPPER", "1-ON-1 STOPPER", "LONG THROW",
 				"INJURY TOLERANCE", "DRIBBLE STYLE", "FREE KICK STYLE",
 				"PK STYLE", "DROP KICK STYLE", "AGE", "WEIGHT", "NATIONALITY",
-				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", "WRISTBAND", "WRISTBAND COLOR",
+				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", 
+				"HEAD WIDTH", "NECK LENGTH", "NECK WIDTH",
+				"SHOULDER HEIGHT", "SHOULDER WIDTH", "CHEST MEASUREMENT",
+				"WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE", "LEG CIRCUMFERENCE",
+				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
 				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM",
 				"CLUB NUMBER" };
 		out.writeBytes("ID");
@@ -221,9 +231,7 @@ public class CSVMaker {
 
 	private void writePlayer(RandomAccessFile out, int player)
 			throws IOException {
-		int[] wristbandVals = csvAttributes.getWristbandVals();
-		Map<Integer, String> wristbandOptsByValue = csvAttributes.getWristbandOptsByValue();
-		
+
 		out.writeBytes(Integer.toString(player));
 		out.write(separator);
 		writeName(player);
@@ -294,7 +302,6 @@ public class CSVMaker {
 		out.writeBytes(Integer.toString((Stats.getValue(of, player, Stats.face) + 1)));
 		out.write(separator);
 
-		//PeterC10 MOD: Write wristband details to CSV
 		int ia = Player.startAdr + (player * 124);
 		if (player >= Player.firstEdit) {
 			ia = Player.startAdrE + ((player - Player.firstEdit) * 124);
@@ -302,6 +309,75 @@ public class CSVMaker {
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
 
+		//PeterC10 MOD: Write head and physical attributes to CSV
+		int headWidthNeckWidthVal = playerData[91];
+		String[] headWidthNeckWidthAttributes = physicalLinkedOptsByValue.get(headWidthNeckWidthVal).split("/");
+		String headWidthAttribute = headWidthNeckWidthAttributes[0];
+		String neckWidthAttribute = headWidthNeckWidthAttributes[1];
+
+		int neckLengthChestMeasurementVal = playerData[105];
+		String[] neckLengthChestMeasurementAttributes = physicalLinkedOptsByValue.get(neckLengthChestMeasurementVal).split("/");
+		String neckLengthAttribute = neckLengthChestMeasurementAttributes[0];
+		String chestMeasurementAttribute = neckLengthChestMeasurementAttributes[1];
+
+		int armCircumferenceWaistCircumferenceVal = playerData[106];
+		String[] armCircumferenceWaistCircumferenceAttributes = physicalLinkedOptsByValue.get(armCircumferenceWaistCircumferenceVal).split("/");
+		String armCircumferenceAttribute = armCircumferenceWaistCircumferenceAttributes[0];
+		String waistCircumferenceAttribute = armCircumferenceWaistCircumferenceAttributes[1];
+
+		int legCircumferenceCalfCircumferenceVal = playerData[107];
+		String[] legCircumferenceCalfCircumferenceAttributes = physicalLinkedOptsByValue.get(legCircumferenceCalfCircumferenceVal).split("/");
+		String legCircumferenceAttribute = legCircumferenceCalfCircumferenceAttributes[0];
+		String calfCircumferenceAttribute = legCircumferenceCalfCircumferenceAttributes[1];
+
+		int legLengthShoulderHeightVal = playerData[108];
+		String[] legLengthShoulderHeightAttributes = physicalLinkedOptsByValue.get(legLengthShoulderHeightVal).split("/");
+		String legLengthAttribute = legLengthShoulderHeightAttributes[0];
+		String ShoulderHeightAttribute = legLengthShoulderHeightAttributes[1];
+
+		int shoulderWidthVal = playerData[109];
+
+		if(shoulderWidthVal > singlePhysicalOptsSettingMaxValue){
+			int factor = (int)Math.floor(shoulderWidthVal / bytesFactor);
+			shoulderWidthVal = shoulderWidthVal - (factor * bytesFactor);
+		}
+
+		String shoulderWidthAttribute = physicalOptsByValue.get(shoulderWidthVal);
+		
+		out.writeBytes(headWidthAttribute);
+		out.write(separator);
+
+		out.writeBytes(neckLengthAttribute);
+		out.write(separator);
+
+		out.writeBytes(neckWidthAttribute);
+		out.write(separator);
+
+		out.writeBytes(ShoulderHeightAttribute);
+		out.write(separator);
+
+		out.writeBytes(shoulderWidthAttribute);
+		out.write(separator);
+
+		out.writeBytes(chestMeasurementAttribute);
+		out.write(separator);
+
+		out.writeBytes(waistCircumferenceAttribute);
+		out.write(separator);
+
+		out.writeBytes(armCircumferenceAttribute);
+		out.write(separator);
+
+		out.writeBytes(legCircumferenceAttribute);
+		out.write(separator);
+
+		out.writeBytes(calfCircumferenceAttribute);
+		out.write(separator);
+
+		out.writeBytes(legLengthAttribute);
+		out.write(separator);
+
+		//PeterC10 MOD: Write wristband details to CSV
 		int wristbandVal = playerData[98];
 		boolean wristbandValFound = false;
 

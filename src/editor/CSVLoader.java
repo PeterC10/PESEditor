@@ -168,7 +168,12 @@ public class CSVLoader {
 
 	private OptionFile of;
 	private byte[] orgData;
+
 	private final CSVAttributes csvAttributes = new CSVAttributes();
+	private final Map<String, Integer> physicalOptsByLabel = csvAttributes.getPhysicalOptsByLabel();
+	private final Map<String, Integer> physicalLinkedOptsByLabel = csvAttributes.getPhysicalLinkedOptsByLabel();
+	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
+	private final Map<String, Integer> wristbandOptsByLabel = csvAttributes.getWristbandOptsByLabel();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -191,7 +196,7 @@ public class CSVLoader {
 		cNatMap.put(63, 45);
 	}
 
-	public boolean loadFile(ProgressUI ui, OptionFile opf, File src, boolean extra, boolean create, boolean updateClubTeams, boolean updateNationalTeams, boolean updateClassicTeams, List<String> changes) {
+	public boolean loadFile(ProgressUI ui, OptionFile opf, File src, boolean updateClubTeams, boolean updateNationalTeams, boolean updateClassicTeams, List<String> changes) {
 		of = opf;
 		orgData = new byte[of.data.length];
 		System.arraycopy(of.data, 0, orgData, 0, of.data.length);
@@ -200,55 +205,22 @@ public class CSVLoader {
 
 		boolean done = false;
 
-		boolean idSet = false;
-
 		try {
 			in = new RandomAccessFile(src, "r");
 			team = Clubs.getNames(of);
 			// skip headings, if present
 			String first = in.readLine();
 
-			if(first.startsWith("ID,")){
-				idSet = true;
-			}
-
-			if (first != null && (!first.startsWith("NAME,") && !first.startsWith("ID,"))) {
-				in.seek(0);
-			}
 
 			int num = Player.firstUnused;
-			if (extra) num = Player.total;
-			if (create) num += 200;
 			ui.resetParameters(0, num, "Loading players...");
 
-			//PeterC10 MOD: If ID is present in the CSV then use that value to update the relevant player in the OF
-
-			if (!idSet){
-				for (int player = 1; player < Player.firstUnused; player++) {
-					readPlayer(in, player);
-					ui.updateProgress(player);
-				}
-				if (extra) {
-					for (int player = Player.firstUnused; player < Player.total; player++) {
-						readPlayer(in, player);
-						ui.updateProgress(player);
-					}
-				}
-				if (create) {
-					for (int player = Player.firstEdit; player < 32952; player++) {
-						readPlayer(in, player);
-						ui.updateProgress(player);
-					}
-				}
-			}
-			else {
-				int playerImportCounter = 1;
-				String csvLine;
-				while((csvLine = in.readLine()) != null){
-					readPlayerFromLine(csvLine);
-					ui.updateProgress(playerImportCounter);
-					playerImportCounter++;
-				}				
+			int playerImportCounter = 1;
+			String csvLine;
+			while((csvLine = in.readLine()) != null){
+				readPlayerFromLine(csvLine);
+				ui.updateProgress(playerImportCounter);
+				playerImportCounter++;
 			}
 			
 			//PeterC10 MOD: Only update squads of club teams if set
@@ -506,89 +478,6 @@ public class CSVLoader {
 		}
 	}
 
-	private void readPlayer(RandomAccessFile in, int player)
-			throws IOException {
-		final String line = in.readLine();
-		if (line == null) {
-			return;
-		}
-		tokens = line.split(",",-1);
-		tokenCount = 0;
-
-		readName(player);
-		readShirtName(player);
-
-		for (int i = 0; i < Stats.roles.length; i++) {
-			if (i != 1) {
-				Stats.setValue(of, player, Stats.roles[i], this.nextToken());
-			}
-		}
-
-		Stats.setValue(of, player, Stats.regPos, this.nextToken());
-		Stats.setValue(of, player, Stats.height, this.nextToken());
-		Stats.setValue(of, player, Stats.foot, this.nextToken());
-
-		Stats.setValue(of, player, Stats.favSide, this.nextToken());
-
-		Stats.setValue(of, player, Stats.wfa, this.nextToken());
-		Stats.setValue(of, player, Stats.wff, this.nextToken());
-		
-		for (int i = 0; i < Stats.ability99.length; i++) {
-			Stats.setValue(of, player, Stats.ability99[i], this.nextToken());
-		}
-		
-		Stats.setValue(of, player, Stats.consistency, this.nextToken());
-		Stats.setValue(of, player, Stats.condition, this.nextToken());
-		
-		for (int i = 0; i < Stats.abilitySpecial.length; i++) {
-			Stats.setValue(of, player, Stats.abilitySpecial[i], this.nextToken());
-		}
-		
-		Stats.setValue(of, player, Stats.injury, this.nextToken());
-		Stats.setValue(of, player, Stats.dribSty, this.nextToken());
-		Stats.setValue(of, player, Stats.freekick, this.nextToken());
-		Stats.setValue(of, player, Stats.pkStyle, this.nextToken());
-		Stats.setValue(of, player, Stats.dkSty, this.nextToken());
-		Stats.setValue(of, player, Stats.age, this.nextToken());
-		Stats.setValue(of, player, Stats.weight, this.nextToken());
-		Stats.setValue(of, player, Stats.nationality, this.nextToken());
-
-		//PeterC10 MOD: Read skin color, take away 1 and apply to the imported player
-		int skinColor = Integer.parseInt(this.nextToken()) - 1;
-		//System.out.println("Skin Color: " + skinColor);
-		Stats.setValue(of, player, Stats.skin, Integer.toString(skinColor));
-
-		//PeterC10 MOD: Apply wristband type and color to player data
-
-		int ia = Player.startAdr + (player * 124);
-		if (player >= Player.firstEdit) {
-			ia = Player.startAdrE + ((player - Player.firstEdit) * 124);
-		}
-
-		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
-
-		String wristBandType = this.nextToken();
-		String wristBandColor = this.nextToken();
-		String wristBandKey = wristBandType + "-" + wristBandColor;
-
-		String[] wristbandLabels = csvAttributes.getWristbandLabels();
-		Map<String, Integer> wristbandOptsByLabel = csvAttributes.getWristbandOptsByLabel();
-
-		int wristbandVal = 0;
-
-		if (Arrays.asList(wristbandLabels).contains(wristBandKey)){
-			wristbandVal = wristbandOptsByLabel.get(wristBandKey);
-		}
-
-		playerData[98] = (byte)wristbandVal;
-
-		System.arraycopy(playerData, 0, of.data, ia, 124);
-
-		readInterStatus(player);
-		readClassicStatus(player);
-		readTeam(player);
-	}
-
 	private void readPlayerFromLine(String line)
 			throws IOException {
 		tokens = line.split(",",-1);
@@ -647,9 +536,6 @@ public class CSVLoader {
 		int faceNumber = Integer.parseInt(this.nextToken()) - 1;
 		Stats.setValue(of, player, Stats.face, Integer.toString(faceNumber));
 
-
-		//PeterC10 MOD: Apply wristband type and color to player data
-
 		int ia = Player.startAdr + (player * 124);
 		if (player >= Player.firstEdit) {
 			ia = Player.startAdrE + ((player - Player.firstEdit) * 124);
@@ -657,67 +543,49 @@ public class CSVLoader {
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
 
+		//PeterC10 MOD: Read and apply head and physical attributes
+
+		String headWidthLabel = this.nextToken();
+		String neckLengthLabel = this.nextToken();
+		String neckWidthLabel = this.nextToken();
+		String shoulderHeightLabel = this.nextToken();
+		String shoulderWidthLabel = this.nextToken();
+		String chestMeasurementLabel = this.nextToken();
+		String waistCircumferenceLabel = this.nextToken();
+		String armCircumferenceLabel = this.nextToken();
+		String legCircumferenceLabel = this.nextToken();
+		String calfCircumferenceLabel = this.nextToken();
+		String legLengthLabel = this.nextToken();
+
+		String headWidthNeckWidthLabel = headWidthLabel + "/" + neckWidthLabel;
+		String neckLengthChestMeasurementLabel = neckLengthLabel + "/" + chestMeasurementLabel;
+		String armCircumferenceWaistCircumferenceLabel = armCircumferenceLabel + "/" + waistCircumferenceLabel;
+		String legCircumferenceCalfCircumferenceLabel = legCircumferenceLabel + "/" + calfCircumferenceLabel;
+		String legLengthShoulderHeightLabel = legLengthLabel + "/" + shoulderHeightLabel;
+
+		int headWidthNeckWidthVal = physicalLinkedOptsByLabel.get(headWidthNeckWidthLabel);
+		playerData[91] = (byte)headWidthNeckWidthVal;
+
+		int neckLengthChestMeasurementVal = physicalLinkedOptsByLabel.get(neckLengthChestMeasurementLabel);
+		playerData[105] = (byte)neckLengthChestMeasurementVal;
+
+		int armCircumferenceWaistCircumferenceVal = physicalLinkedOptsByLabel.get(armCircumferenceWaistCircumferenceLabel);
+		playerData[106] = (byte)armCircumferenceWaistCircumferenceVal;
+
+		int legCircumferenceCalfCircumferenceVal = physicalLinkedOptsByLabel.get(legCircumferenceCalfCircumferenceLabel);
+		playerData[107] = (byte)legCircumferenceCalfCircumferenceVal;
+
+		int legLengthShoulderHeightVal = physicalLinkedOptsByLabel.get(legLengthShoulderHeightLabel);
+		playerData[108] = (byte)legLengthShoulderHeightVal;
+
+		int shoulderWidthVal = physicalOptsByLabel.get(shoulderWidthLabel);
+		playerData[109] = (byte)shoulderWidthVal;
+
+		//PeterC10 MOD: Apply wristband type and color to player data
+
 		String wristBandType = this.nextToken();
 		String wristBandColor = this.nextToken();
 		String wristBandKey = wristBandType + "-" + wristBandColor;
-
-		String[] wristbandLabels = {"N-None","L-White","R-White","B-White","L-Black","R-Black","B-Black","L-Red","R-Red","B-Red","L-Blue","R-Blue","B-Blue","L-Yellow","R-Yellow","B-Yellow","L-Green","R-Green","B-Green","L-Purple","R-Purple","B-Purple","L-Cyan","R-Cyan","B-Cyan"};
-
-		Map<String, Integer> wristbandOptsByLabel = new HashMap<String, Integer>() {{
-			put("N-None", 0);
-			put("L-White", 8);
-			put("R-White", 16);
-			put("B-White", 24);
-			put("L-Black", 40);
-			put("R-Black", 48);
-			put("B-Black", 56);
-			put("L-Red", 72);
-			put("R-Red", 80);
-			put("B-Red", 88);
-			put("L-Blue", 104);
-			put("R-Blue", 112);
-			put("B-Blue", 120);
-			put("L-Yellow", -120);
-			put("R-Yellow", -112);
-			put("B-Yellow", -104);
-			put("L-Green", -88);
-			put("R-Green", -80);
-			put("B-Green", -72);
-			put("L-Purple", -56);
-			put("R-Purple", -48);
-			put("B-Purple", -40);
-			put("L-Cyan", -24);
-			put("R-Cyan", -16);
-			put("B-Cyan", -8);
-		}};
-
-		Map<Integer, String> wristbandOptsByValue = new HashMap<Integer, String>() {{
-			put(0, "N-None");
-			put(8, "L-White");
-			put(16, "R-White");
-			put(24, "B-White");
-			put(40, "L-Black");
-			put(48, "R-Black");
-			put(56, "B-Black");
-			put(72, "L-Red");
-			put(80, "R-Red");
-			put(88, "B-Red");
-			put(104, "L-Blue");
-			put(112, "R-Blue");
-			put(120, "B-Blue");
-			put(-120, "L-Yellow");
-			put(-112, "R-Yellow");
-			put(-104, "B-Yellow");
-			put(-88, "L-Green");
-			put(-80, "R-Green");
-			put(-72, "B-Green");
-			put(-56, "L-Purple");
-			put(-48, "R-Purple");
-			put(-40, "B-Purple");
-			put(-24, "L-Cyan");
-			put(-16, "R-Cyan");
-			put(-8, "B-Cyan");
-		}};
 
 		int wristbandVal = 0;
 

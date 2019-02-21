@@ -431,8 +431,6 @@ public class Editor extends JFrame {
 					int returnVal = csvImportChooser.showOpenDialog(getContentPane());
 					if (returnVal == JFileChooser.APPROVE_OPTION) {
 						File src = csvImportChooser.getSelectedFile();
-						final boolean extra = csvImportSwitch.extra.isSelected();
-						final boolean create = csvImportSwitch.create.isSelected();
 						final boolean updateClubTeams = csvImportSwitch.updateClubTeams.isSelected();
 						final boolean updateNationalTeams = csvImportSwitch.updateNationalTeams.isSelected();
 						final boolean updateClassicTeams = csvImportSwitch.updateClassicTeams.isSelected();
@@ -450,7 +448,7 @@ public class Editor extends JFrame {
 								final ProgressUI ui = new ProgressUI("CSV Import");
 								ui.doTask(new ProgressTask() {
 									public void doIt() {
-										if (csvLoader.loadFile(ui, of, f, extra, create, updateClubTeams, updateNationalTeams, updateClassicTeams, changes)) {
+										if (csvLoader.loadFile(ui, of, f, updateClubTeams, updateNationalTeams, updateClassicTeams, changes)) {
 											tranPanel.refresh();
 											csvLoadOkMsg(f, changes);
 										} else {

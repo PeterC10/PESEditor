@@ -18,14 +18,10 @@ public class CSVImportSwitch extends JPanel {
 
 	public CSVImportSwitch() {
 		super(new GridLayout(0, 1));
-		extra = new JCheckBox("Extra Players");
-		create = new JCheckBox("Created Players");
 		updateClubTeams = new JCheckBox("Update Club Squads");
 		updateNationalTeams = new JCheckBox("Update National Squads");
 		updateClassicTeams = new JCheckBox("Update Classic Squads");
 		// head.setToolTipText("
-		add(extra);
-		add(create);
 		add(updateClubTeams);
 		add(updateNationalTeams);
 		add(updateClassicTeams);
