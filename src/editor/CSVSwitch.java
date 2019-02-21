@@ -20,6 +20,9 @@ public class CSVSwitch extends JPanel {
 		create = new JCheckBox("Created Players");
 		// head.setToolTipText("
 		// add(head);
+		// PeterC10 MOD: Check options by default
+		extra.setSelected(true);
+		create.setSelected(true);
 		add(extra);
 		add(create);
 	}
