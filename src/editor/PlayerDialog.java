@@ -163,13 +163,8 @@ public class PlayerDialog extends JDialog {// implements ListSelectionListener,
 		Stats.setValue(of, index, Stats.height, genPanel.heightField.getText());
 
 		int item = genPanel.footBox.getSelectedIndex();
-		System.out.println("Item: " + item);
 		int foot = item / 3;
 		int side = item - (foot * 3);
-		System.out.println("OF: "+ of);
-		System.out.println("Index: "+ index);
-		System.out.println("Foot: " + foot);
-		System.out.println("Side: " + side);
 		Stats.setValue(of, index, Stats.foot, foot);
 		Stats.setValue(of, index, Stats.favSide, side);
 		Stats.setValue(of, index, Stats.wfa, (String) (genPanel.wfaBox.getSelectedItem()));
