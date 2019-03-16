@@ -8,6 +8,28 @@ class CSVAttributes {
     private final int singlePhysicalOptsSettingMinValue = 0;
     private final int singlePhysicalOptsSettingMaxValue = 14;
 
+    private final Map<String, Integer> footFavSideOptsByLabelFootVal = new HashMap<String, Integer>() {
+        {
+            put("R/R", 0);
+            put("R/L", 0);
+            put("R/B", 0);
+            put("L/L", 1);
+            put("L/R", 1);
+            put("L/B", 1);
+        }
+    };
+
+    private final Map<String, Integer> footFavSideOptsByLabelFavSideVal = new HashMap<String, Integer>() {
+        {
+            put("R/R", 0);
+            put("R/L", 1);
+            put("R/B", 2);
+            put("L/L", 0);
+            put("L/R", 1);
+            put("L/B", 2);
+        }
+    };
+
     private final Map<String, Integer> physicalOptsByLabel = new HashMap<String, Integer>() {
         {
             put("-7", 0);
@@ -624,6 +646,20 @@ class CSVAttributes {
      */
     public int[] getWristbandVals() {
         return wristbandVals;
+    }
+
+    /**
+     * @return the footFavSideOptsByLabelFavSideVal
+     */
+    public Map<String, Integer> getFootFavSideOptsByLabelFavSideVal() {
+        return footFavSideOptsByLabelFavSideVal;
+    }
+
+    /**
+     * @return the footFavSideOptsByLabelFootVal
+     */
+    public Map<String, Integer> getFootFavSideOptsByLabelFootVal() {
+        return footFavSideOptsByLabelFootVal;
     }
 
     /**

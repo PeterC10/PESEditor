@@ -170,6 +170,8 @@ public class CSVLoader {
 	private byte[] orgData;
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
+	private final Map<String, Integer> footOptsByLabel = csvAttributes.getFootFavSideOptsByLabelFootVal();
+	private final Map<String, Integer> favSideOptsByLabel = csvAttributes.getFootFavSideOptsByLabelFavSideVal();
 	private final Map<String, Integer> physicalOptsByLabel = csvAttributes.getPhysicalOptsByLabel();
 	private final Map<String, Integer> physicalLinkedOptsByLabel = csvAttributes.getPhysicalLinkedOptsByLabel();
 	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
@@ -496,9 +498,16 @@ public class CSVLoader {
 
 		Stats.setValue(of, player, Stats.regPos, this.nextToken());
 		Stats.setValue(of, player, Stats.height, this.nextToken());
-		Stats.setValue(of, player, Stats.foot, this.nextToken());
 
-		Stats.setValue(of, player, Stats.favSide, this.nextToken());
+		String foot = this.nextToken();
+		String favSide = this.nextToken();
+		String footFavSideLabel = foot + "/" + favSide;
+
+		int footVal = footOptsByLabel.get(footFavSideLabel);
+		int favSideVal = favSideOptsByLabel.get(footFavSideLabel);
+
+		Stats.setValue(of, player, Stats.foot, footVal);
+		Stats.setValue(of, player, Stats.favSide, favSideVal);
 
 		Stats.setValue(of, player, Stats.wfa, this.nextToken());
 		Stats.setValue(of, player, Stats.wff, this.nextToken());
