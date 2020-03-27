@@ -31,9 +31,9 @@ public class CSVMaker {
 		try {
 			FileOutputStream fs = new FileOutputStream(dest);
 			OutputStreamWriter ow = new OutputStreamWriter(fs, "UTF8");
+			ow.write('\uFEFF');
 			BufferedWriter out = new BufferedWriter(ow);
 
-			// out = new RandomAccessFile(dest, "rw");
 			team = Clubs.getNames(of);
 
 			int num = Player.firstUnused;
@@ -68,8 +68,6 @@ public class CSVMaker {
 			done = true;
 		} catch (Exception e) {
 			done = false;
-
-			System.out.println("EXPORT PROBLEM!");
 			e.printStackTrace();
 		} finally {
 			ui.done();

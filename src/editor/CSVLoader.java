@@ -171,6 +171,7 @@ public class CSVLoader {
 	private static String attValueNotFound = "ATTRIBUTE_VALUE_NOT_FOUND";
 
 	private static String attId = "ID";
+	private static String attIdUTF8 = "\uFEFFID";
 	private static String attName = "NAME";
 	private static String attShirtName = "SHIRT NAME";
 	private static String attAge = "AGE";
@@ -425,7 +426,7 @@ public class CSVLoader {
 		boolean done = false;
 
 		try {
-			FileReader  fr = new FileReader(src);
+			FileReader fr = new FileReader(src);
 			BufferedReader in = new BufferedReader(fr);
 			//in = new RandomAccessFile(src, "r");
 			team = Clubs.getNames(of);
@@ -438,6 +439,10 @@ public class CSVLoader {
 			int attributeCount = 0;
 
 			for (String header : headersArray) {
+				if (attributeCount == 0 && (header != CSVLoader.attId || header != CSVLoader.attIdUTF8)) {
+					throw new Exception("First heading must be ID.");
+				}
+
 				String formattedHeader = header.toUpperCase();
 				attributePositions.put(formattedHeader, attributeCount);
 				attributeCount++;
@@ -568,9 +573,6 @@ public class CSVLoader {
 			// restore original data, when import fails
 			System.arraycopy(orgData, 0, of.data, 0, orgData.length);
 			done = false;
-
-			System.out.println("IMPORT PROBLEM!");
-			System.out.println(e);
 			e.printStackTrace();
 		} finally {
 			ui.done();
@@ -706,7 +708,19 @@ public class CSVLoader {
 		tokens = line.split(",",-1);
 		tokenCount = 0;
 
-		int playerId = Integer.parseInt(this.getAttributeValue(tokens, attributePositions, CSVLoader.attId));
+		int playerId = 0;
+
+		try {
+			playerId = Integer.parseInt(this.getAttributeValue(tokens, attributePositions, CSVLoader.attId));
+		}
+		catch(Exception e) {
+			playerId = Integer.parseInt(this.getAttributeValue(tokens, attributePositions, CSVLoader.attIdUTF8));
+		}
+
+		if (playerId == 0) {
+			throw new IOException("Player ID not specified.");
+		}
+
 
 		String name = this.getAttributeValue(tokens, attributePositions, CSVLoader.attName);
 		readName(playerId, name);
