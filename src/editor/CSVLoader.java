@@ -439,7 +439,7 @@ public class CSVLoader {
 			int attributeCount = 0;
 
 			for (String header : headersArray) {
-				if (attributeCount == 0 && (header != CSVLoader.attId || header != CSVLoader.attIdUTF8)) {
+				if (attributeCount == 0 && (!header.equals(CSVLoader.attId) && !header.equals(CSVLoader.attIdUTF8))) {
 					throw new Exception("First heading must be ID.");
 				}
 
