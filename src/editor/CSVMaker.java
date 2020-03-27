@@ -1,16 +1,16 @@
 package editor;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.OutputStreamWriter;
 import java.util.*;
 
 public class CSVMaker {
-	private RandomAccessFile out;
-
 	private static String[] team;
 
-	private static int separator = 44;
+	private static char separator = ',';
 
 	private OptionFile of;
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -29,7 +29,11 @@ public class CSVMaker {
 		boolean done = false;
 
 		try {
-			out = new RandomAccessFile(dest, "rw");
+			FileOutputStream fs = new FileOutputStream(dest);
+			OutputStreamWriter ow = new OutputStreamWriter(fs, "UTF8");
+			BufferedWriter out = new BufferedWriter(ow);
+
+			// out = new RandomAccessFile(dest, "rw");
 			team = Clubs.getNames(of);
 
 			int num = Player.firstUnused;
@@ -38,23 +42,25 @@ public class CSVMaker {
 			ui.resetParameters(0, num, "Saving players...");
 
 			if (headings) {
-				writeHeadings();
+				writeHeadings(out);
 				out.write(13);
+				out.flush();
 				out.write(10);
+				out.flush();
 			}
 			for (int player = 1; player < Player.firstUnused; player++) {
-				writePlayer(out, player);
+				writePlayer(player, out);
 				ui.updateProgress(player);
 			}
 			if (extra) {
 				for (int player = Player.firstUnused; player < Player.total; player++) {
-					writePlayer(out, player);
+					writePlayer(player, out);
 					ui.updateProgress(player);
 				}
 			}
 			if (create) {
 				for (int player = Player.firstEdit; player < 32952; player++) {
-					writePlayer(out, player);
+					writePlayer(player, out);
 					ui.updateProgress(player);
 				}
 			}
@@ -71,10 +77,11 @@ public class CSVMaker {
 		return done;
 	}
 
-	private void writeName(int player) throws IOException {
+	private void writeName(int player, BufferedWriter out) throws IOException {
 		Player p = new Player(of, player, 0);
 		String name = p.name.replaceAll(",", "");
-		out.writeBytes(name);
+		out.write(name);
+		out.flush();
 	}
 
 	private String getName(int player) {
@@ -83,19 +90,18 @@ public class CSVMaker {
 		return name;
 	}
 
-	private void writeShirtName(int player) throws IOException {
+	private void writeShirtName(int player, BufferedWriter out) throws IOException {
 		Player p = new Player(of, player, 0);
 		String name = p.getShirtName();
-		out.writeBytes(name);
+		out.write(name);
+		out.flush();
 	}
 
-	private void writeHeadings() throws IOException {
-		//PeterC10 MOD: Add additional headings
-		String[] head = {"NAME", "SHIRT_NAME", "GK  0", "CWP  2", "CBT  3", "SB  4", 
-				"DMF  5", "WB  6", "CMF  7", "SMF  8", "AMF  9", "WF 10", "SS  11",
-				"CF  12", "REGISTERED POSITION", "HEIGHT", "STRONG FOOT",
-				"FAVOURED SIDE", "WEAK FOOT ACCURACY", "WEAK FOOT FREQUENCY",
-				"ATTACK", "DEFENSE", "BALANCE", "STAMINA", "TOP SPEED",
+	private void writeHeadings(BufferedWriter out) throws IOException {
+		String[] head = {"NAME", "SHIRT NAME", "GK", "SW", "CB", "SB", 
+				"DM", "WB", "CM", "SM", "AM", "WF", "SS", "CF", "REGISTERED POSITION",
+				"HEIGHT", "WEIGHT", "STRONG FOOT", "FAVOURED SIDE", "WEAK FOOT ACCURACY",
+				"WEAK FOOT FREQUENCY", "ATTACK", "DEFENSE", "BALANCE", "STAMINA", "TOP SPEED",
 				"ACCELERATION", "RESPONSE", "AGILITY", "DRIBBLE ACCURACY",
 				"DRIBBLE SPEED", "SHORT PASS ACCURACY", "SHORT PASS SPEED",
 				"LONG PASS ACCURACY", "LONG PASS SPEED", "SHOT ACCURACY",
@@ -109,7 +115,7 @@ public class CSVMaker {
 				"MARKING", "SLIDING", "COVERING", "D-LINE CONTROL",
 				"PENALTY STOPPER", "1-ON-1 STOPPER", "LONG THROW",
 				"INJURY TOLERANCE", "DRIBBLE STYLE", "FREE KICK STYLE",
-				"PK STYLE", "DROP KICK STYLE", "AGE", "WEIGHT", "NATIONALITY",
+				"PK STYLE", "DROP KICK STYLE", "AGE", "NATIONALITY",
 				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", 
 				"HEAD WIDTH", "NECK LENGTH", "NECK WIDTH",
 				"SHOULDER HEIGHT", "SHOULDER WIDTH", "CHEST MEASUREMENT",
@@ -117,14 +123,17 @@ public class CSVMaker {
 				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
 				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM",
 				"CLUB NUMBER" };
-		out.writeBytes("ID");
+		out.write("ID");
+		out.flush();
 		for (int h = 0; h < head.length; h++) {
 			out.write(separator);
-			out.writeBytes(head[h]);
+			out.flush();
+			out.write(head[h]);
+			out.flush();
 		}
 	}
 
-	private void writeInterStatus(int player) throws IOException {
+	private void writeInterStatus(int player, BufferedWriter out) throws IOException {
 		String intPlayNo = "0";
 		int nat = Stats.getValue(of, player, Stats.nationality);
 		int num;
@@ -140,10 +149,11 @@ public class CSVMaker {
 				}
 			}
 		}
-		out.writeBytes(intPlayNo);
+		out.write(intPlayNo);
+		out.flush();
 	}
 
-	private void writeClassicStatus(int player) throws IOException {
+	private void writeClassicStatus(int player, BufferedWriter out) throws IOException {
 		String intPlayNo = "0";
 		int nat = Stats.getValue(of, player, Stats.nationality);
 		int num;
@@ -182,22 +192,11 @@ public class CSVMaker {
 				}
 			}
 		}
-		out.writeBytes(intPlayNo);
+		out.write(intPlayNo);
+		out.flush();
 	}
 
-	/*
-	 * private void writeClub(int player) throws IOException { int inAclub = 0;
-	 * for (int t = 0; t < 138; t++) { for (int ip = 0; ip < 40; ip++) { if (
-	 * of.data[437602+(80*t) + (ip*2)+of.offSet]*256 +
-	 * of.ofileData[437601+(80*t) + (ip*2)+of.offSet] == player + 1) {
-	 * out.writeBytes(rClubTeams[t]); out.write(separator); Integer t6 = new
-	 * Integer(of.ofileData[430870+(40*t)+ip+of.offSet]+1); String clubPlayNo =
-	 * t6.toString(); out.writeBytes(clubPlayNo); inAclub = 1; } } } if
-	 * (inAclub==0) { out.writeBytes(statInfo.skillposMod[0]);
-	 * out.write(separator); out.writeBytes(statInfo.skillposMod[0]); } }
-	 */
-
-	private void writeTeam(int player) throws IOException {
+	private void writeTeam(int player, BufferedWriter out) throws IOException {
 		String intPlayNo = "0";
 		String club = "";
 		int num;
@@ -218,9 +217,12 @@ public class CSVMaker {
 				}
 			}
 		}
-		out.writeBytes(club);
+		out.write(club);
+		out.flush();
 		out.write(separator);
-		out.writeBytes(intPlayNo);
+		out.flush();
+		out.write(intPlayNo);
+		out.flush();
 	}
 
 	/*
@@ -229,78 +231,124 @@ public class CSVMaker {
 	 * exists = true; } return exists; }
 	 */
 
-	private void writePlayer(RandomAccessFile out, int player)
+	private void writePlayer(int player, BufferedWriter out)
 			throws IOException {
 
-		out.writeBytes(Integer.toString(player));
+		out.write(Integer.toString(player));
+		out.flush();
 		out.write(separator);
-		writeName(player);
+		out.flush();
+		writeName(player, out);
 		out.write(separator);
-		writeShirtName(player);
+		out.flush();
+		writeShirtName(player, out);
 		out.write(separator);
+		out.flush();
 
 		for (int i = 0; i < Stats.roles.length; i++) {
 			if (i != 1) {
-				out. writeBytes(Stats.getString(of, player, Stats.roles[i]));
+				out.write(Stats.getString(of, player, Stats.roles[i]));
+				out.flush();
 				out.write(separator);
+				out.flush();
 			}
 		}
 
-		out.writeBytes(Stats.getString(of, player, Stats.regPos));
+		out.write(Stats.getString(of, player, Stats.regPos));
+		out.flush();
 		out.write(separator);
+		out.flush();
 		
-		out.writeBytes(Stats.getString(of, player, Stats.height));
+		out.write(Stats.getString(of, player, Stats.height));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.foot));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.weight));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(getSide(player));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.foot));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.wfa));
+		out.flush();
+		out.write(getSide(player));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.wff));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.wfa));
+		out.flush();
 		out.write(separator);
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.wff));
+		out.flush();
+		out.write(separator);
+		out.flush();
 		
 		for (int i = 0; i < Stats.ability99.length; i++) {
-			out. writeBytes(Stats.getString(of, player, Stats.ability99[i]));
+			out.write(Stats.getString(of, player, Stats.ability99[i]));
+			out.flush();
 			out.write(separator);
+			out.flush();
 		}
 		
-		out.writeBytes(Stats.getString(of, player, Stats.consistency));
+		out.write(Stats.getString(of, player, Stats.consistency));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.condition));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.condition));
+		out.flush();
 		out.write(separator);
+		out.flush();
 		
 		for (int i = 0; i < Stats.abilitySpecial.length; i++) {
-			out. writeBytes(Stats.getString(of, player, Stats.abilitySpecial[i]));
+			out.write(Stats.getString(of, player, Stats.abilitySpecial[i]));
+			out.flush();
 			out.write(separator);
+			out.flush();
 		}
 		
-		out.writeBytes(Stats.getString(of, player, Stats.injury));
+		out.write(Stats.getString(of, player, Stats.injury));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.dribSty));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.dribSty));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.freekick));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.freekick));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.pkStyle));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.pkStyle));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.dkSty));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.dkSty));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.age));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.age));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.weight));
+		out.flush();
+		out.write(Stats.getString(of, player, Stats.nationality));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Stats.getString(of, player, Stats.nationality));
-		out.write(separator);
+		out.flush();
 
-		//PeterC10 MOD: Write player skin color to CSV
-		out.writeBytes(Integer.toString((Stats.getValue(of, player, Stats.skin) + 1)));
+		out.write(Integer.toString((Stats.getValue(of, player, Stats.skin) + 1)));
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		//PeterC10 MOD: Write player face type and preset face number to CSV
-		out.writeBytes(Integer.toString(Stats.getValue(of, player, Stats.faceType)));
+		out.write(Integer.toString(Stats.getValue(of, player, Stats.faceType)));
+		out.flush();
 		out.write(separator);
-		out.writeBytes(Integer.toString((Stats.getValue(of, player, Stats.face) + 1)));
+		out.flush();
+		out.write(Integer.toString((Stats.getValue(of, player, Stats.face) + 1)));
+		out.flush();
 		out.write(separator);
+		out.flush();
 
 		int ia = Player.startAdr + (player * 124);
 		if (player >= Player.firstEdit) {
@@ -309,7 +357,6 @@ public class CSVMaker {
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
 
-		//PeterC10 MOD: Write head and physical attributes to CSV
 		int headWidthNeckWidthVal = playerData[91];
 		String[] headWidthNeckWidthAttributes = physicalLinkedOptsByValue.get(headWidthNeckWidthVal).split("/");
 		String headWidthAttribute = headWidthNeckWidthAttributes[0];
@@ -344,40 +391,61 @@ public class CSVMaker {
 
 		String shoulderWidthAttribute = physicalOptsByValue.get(shoulderWidthVal);
 		
-		out.writeBytes(headWidthAttribute);
+		out.write(headWidthAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(neckLengthAttribute);
+		out.write(neckLengthAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(neckWidthAttribute);
+		out.write(neckWidthAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(ShoulderHeightAttribute);
+		out.write(ShoulderHeightAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(shoulderWidthAttribute);
+		out.write(shoulderWidthAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(chestMeasurementAttribute);
+		out.write(chestMeasurementAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(waistCircumferenceAttribute);
+		out.write(waistCircumferenceAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(armCircumferenceAttribute);
+		out.write(armCircumferenceAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(legCircumferenceAttribute);
+		out.write(legCircumferenceAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(calfCircumferenceAttribute);
+		out.write(calfCircumferenceAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		out.writeBytes(legLengthAttribute);
+		out.write(legLengthAttribute);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		//PeterC10 MOD: Write wristband details to CSV
 		int wristbandVal = playerData[98];
 		boolean wristbandValFound = false;
 
@@ -397,19 +465,27 @@ public class CSVMaker {
 		String wristbandType = wristbandTypeColor[0];
 		String wristbandColor = wristbandTypeColor[1];
 		
-		out.writeBytes(wristbandType);
+		out.write(wristbandType);
+		out.flush();
 		out.write(separator);
-		out.writeBytes(wristbandColor);
+		out.flush();
+		out.write(wristbandColor);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
-		writeInterStatus(player);
+		writeInterStatus(player, out);
 		out.write(separator);
-		writeClassicStatus(player);
+		out.flush();
+		writeClassicStatus(player, out);
 		out.write(separator);
-		writeTeam(player);
+		out.flush();
+		writeTeam(player, out);
 
 		out.write(13);
+		out.flush();
 		out.write(10);
+		out.flush();
 	}
 
 	private String getSide(int p) {
