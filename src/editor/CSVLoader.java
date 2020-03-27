@@ -240,7 +240,7 @@ public class CSVLoader {
 	private static String attCondition = "CONDITION";
 
 	private static String attDribbling = "DRIBBLING";
-	private static String attTacticalDribble = "TACTIAL DRIBBLE";
+	private static String attTacticalDribble = "TACTICAL DRIBBLE";
 	private static String attPositioning = "POSITIONING";
 	private static String attReaction = "REACTION";
 	private static String attPlaymaking = "PLAYMAKING";
