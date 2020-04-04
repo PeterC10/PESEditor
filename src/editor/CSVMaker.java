@@ -18,6 +18,7 @@ public class CSVMaker {
 	private final Map<Integer, String> wristbandOptsByValue = csvAttributes.getWristbandOptsByValue();
 	private final Map<Integer, String> physicalOptsByValue = csvAttributes.getPhysicalOptsByValue();
 	private final Map<Integer, String> physicalLinkedOptsByValue = csvAttributes.getPhysicalLinkedOptsByValue();
+	private final Map<Integer, String> headHeightOptsByValue = csvAttributes.getHeadHeightOptsByValue();
 	private final int bytesFactor = csvAttributes.getBytesFactor();
 	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
@@ -115,7 +116,7 @@ public class CSVMaker {
 				"INJURY TOLERANCE", "DRIBBLE STYLE", "FREE KICK STYLE",
 				"PK STYLE", "DROP KICK STYLE", "AGE", "NATIONALITY",
 				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", 
-				"HEAD WIDTH", "NECK LENGTH", "NECK WIDTH",
+				"HEAD HEIGHT", "HEAD WIDTH", "NECK LENGTH", "NECK WIDTH",
 				"SHOULDER HEIGHT", "SHOULDER WIDTH", "CHEST MEASUREMENT",
 				"WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE", "LEG CIRCUMFERENCE",
 				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
@@ -355,6 +356,9 @@ public class CSVMaker {
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
 
+		int headHeightVal = playerData[90];
+		String headHeightAttribute = headHeightOptsByValue.get(headHeightVal);
+
 		int headWidthNeckWidthVal = playerData[91];
 		String[] headWidthNeckWidthAttributes = physicalLinkedOptsByValue.get(headWidthNeckWidthVal).split("/");
 		String headWidthAttribute = headWidthNeckWidthAttributes[0];
@@ -388,6 +392,11 @@ public class CSVMaker {
 		}
 
 		String shoulderWidthAttribute = physicalOptsByValue.get(shoulderWidthVal);
+
+		out.write(headHeightAttribute);
+		out.flush();
+		out.write(separator);
+		out.flush();
 		
 		out.write(headWidthAttribute);
 		out.flush();

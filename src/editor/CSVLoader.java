@@ -267,6 +267,7 @@ public class CSVLoader {
 	private static String attFaceType = "FACE TYPE";
 	
 	private static String attPresetFaceNumber = "PRESET FACE NUMBER";
+	private static String attHeadHeight = "HEAD HEIGHT";
 	private static String attHeadWidth = "HEAD WIDTH";
 	private static String attNeckLength = "NECK LENGTH";
 	private static String attNeckWidth = "NECK WIDTH";
@@ -369,6 +370,7 @@ public class CSVLoader {
 		attSkinColor,
 		attFaceType,
 		attPresetFaceNumber,
+		attHeadHeight,
 		attHeadWidth,
 		attNeckLength,
 		attNeckWidth,
@@ -389,6 +391,7 @@ public class CSVLoader {
 	private final Map<String, Integer> favSideOptsByLabel = csvAttributes.getFootFavSideOptsByLabelFavSideVal();
 	private final Map<String, Integer> physicalOptsByLabel = csvAttributes.getPhysicalOptsByLabel();
 	private final Map<String, Integer> physicalLinkedOptsByLabel = csvAttributes.getPhysicalLinkedOptsByLabel();
+	private final Map<String, Integer> headHeightOptsByLabel = csvAttributes.getHeadHeightOptsByLabel();
 	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
 	private final Map<String, Integer> wristbandOptsByLabel = csvAttributes.getWristbandOptsByLabel();
 
@@ -1212,6 +1215,7 @@ public class CSVLoader {
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
 
+		String headHeightLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHeadHeight);
 		String headWidthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHeadWidth);
 		String neckLengthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNeckLength);
 		String neckWidthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNeckWidth);
@@ -1229,6 +1233,9 @@ public class CSVLoader {
 		String armCircumferenceWaistCircumferenceLabel = armCircumferenceLabel + "/" + waistCircumferenceLabel;
 		String legCircumferenceCalfCircumferenceLabel = legCircumferenceLabel + "/" + calfCircumferenceLabel;
 		String legLengthShoulderHeightLabel = legLengthLabel + "/" + shoulderHeightLabel;
+
+		int headHeightVal = headHeightOptsByLabel.get(headHeightLabel);
+		playerData[90] = (byte)headHeightVal;
 
 		int headWidthNeckWidthVal = physicalLinkedOptsByLabel.get(headWidthNeckWidthLabel);
 		playerData[91] = (byte)headWidthNeckWidthVal;
