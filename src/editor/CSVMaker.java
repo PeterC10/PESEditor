@@ -19,6 +19,7 @@ public class CSVMaker {
 	private final Map<Integer, String> physicalOptsByValue = csvAttributes.getPhysicalOptsByValue();
 	private final Map<Integer, String> physicalLinkedOptsByValue = csvAttributes.getPhysicalLinkedOptsByValue();
 	private final Map<Integer, String> headHeightOptsByValue = csvAttributes.getHeadHeightOptsByValue();
+	private final Map<String, String> hairTypesByKey = csvAttributes.getHairTypesByKey();
 	private final int bytesFactor = csvAttributes.getBytesFactor();
 	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
@@ -96,6 +97,11 @@ public class CSVMaker {
 		out.flush();
 	}
 
+	private String[] getHairTypeLabelByKey(String key) {
+		String labelKey = hairTypesByKey.get(key);
+		return labelKey.split("/");
+	}
+
 	private void writeHeadings(BufferedWriter out) throws IOException {
 		String[] head = {"NAME", "SHIRT NAME", "GK", "SW", "CB", "SB", 
 				"DM", "WB", "CM", "SM", "AM", "WF", "SS", "CF", "REGISTERED POSITION",
@@ -120,8 +126,9 @@ public class CSVMaker {
 				"SHOULDER HEIGHT", "SHOULDER WIDTH", "CHEST MEASUREMENT",
 				"WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE", "LEG CIRCUMFERENCE",
 				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
-				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM",
-				"CLUB NUMBER" };
+				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM", "CLUB NUMBER",
+				"HAIR TYPE", "HAIR SHAPE", "HAIR FRONT", "HAIR VOLUME", "HAIR DARKNESS",
+				"BANDANA TYPE" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -384,6 +391,40 @@ public class CSVMaker {
 		String legLengthAttribute = legLengthShoulderHeightAttributes[0];
 		String ShoulderHeightAttribute = legLengthShoulderHeightAttributes[1];
 
+		int hairTypeVal1 = playerData[92];
+		int hairTypeVal2 = playerData[93];
+
+		int hairTypeVal2Modulus = -1;
+
+		if(hairTypeVal2 >= 0){
+			hairTypeVal2Modulus = hairTypeVal2 % 8;
+		}
+		else {
+			int hairTypeVal2Positive = -hairTypeVal2;
+
+			int negativeValModulus = hairTypeVal2Positive % 8;
+
+			switch(negativeValModulus){
+				case 0:
+					hairTypeVal2Modulus = 0;
+				case 3:
+					hairTypeVal2Modulus = 5;
+				case 4:
+					hairTypeVal2Modulus = 4;
+				case 5:
+					hairTypeVal2Modulus = 3;
+				case 6:
+					hairTypeVal2Modulus = 2;
+				case 7:
+					hairTypeVal2Modulus = 1;
+			}
+		}
+
+		
+
+		String hairTypeKey = hairTypeVal1 + "/" + hairTypeVal2Modulus;
+
+		// 109 also potentially linked to bandana colour!!
 		int shoulderWidthVal = playerData[109];
 
 		if(shoulderWidthVal > singlePhysicalOptsSettingMaxValue){
@@ -488,6 +529,28 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 		writeTeam(player, out);
+		out.write(separator);		
+
+		String[] hairTypeLabels = getHairTypeLabelByKey(hairTypeKey);
+
+		String hairType = hairTypeLabels[0];
+		String hairShape = hairTypeLabels[1];
+		String hairFront = hairTypeLabels[2];
+		String hairVolume = hairTypeLabels[3];
+		String hairDarkness = hairTypeLabels[4];
+		String bandanaType = hairTypeLabels[5];
+
+		out.write(hairType);
+		out.write(separator);
+		out.write(hairShape);
+		out.write(separator);
+		out.write(hairFront);
+		out.write(separator);
+		out.write(hairVolume);
+		out.write(separator);
+		out.write(hairDarkness);
+		out.write(separator);
+		out.write(bandanaType);
 
 		out.write(13);
 		out.flush();
