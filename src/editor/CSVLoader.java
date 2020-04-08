@@ -282,6 +282,12 @@ public class CSVLoader {
 	private static String attWristband = "WRISTBAND";
 	private static String attWristbandColor = "WRISTBAND COLOR";
 
+	private static String attHairType = "HAIR TYPE";
+	private static String attHairShape = "HAIR SHAPE";
+	private static String attHairFront = "HAIR FRONT";
+	private static String attHairVolume = "HAIR VOLUME";
+	private static String attHairDarkness = "HAIR DARKNESS";
+	private static String attBandanaType = "BANDANA TYPE";
 	private static String[] supportedHeaders = {
 		attId,
 		attName,
@@ -384,6 +390,12 @@ public class CSVLoader {
 		attLegLength,
 		attWristband,
 		attWristbandColor,
+		attHairType,
+		attHairShape,
+		attHairFront,
+		attHairVolume,
+		attHairDarkness,
+		attBandanaType,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -394,6 +406,7 @@ public class CSVLoader {
 	private final Map<String, Integer> headHeightOptsByLabel = csvAttributes.getHeadHeightOptsByLabel();
 	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
 	private final Map<String, Integer> wristbandOptsByLabel = csvAttributes.getWristbandOptsByLabel();
+	private final Map<String, String> hairTypesByLabel = csvAttributes.getHairTypesByLabel();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -1268,6 +1281,27 @@ public class CSVLoader {
 
 		playerData[98] = (byte)wristbandVal;
 
+		String hairTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairType);
+		String hairShapeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairShape);
+		String hairFrontLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairFront);
+		String hairVolumeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairVolume);
+		String hairDarknessLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairDarkness);
+		String bandanaTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBandanaType);
+
+		if (hairTypeLabel != CSVLoader.attValueNotFound && hairShapeLabel != CSVLoader.attValueNotFound
+				&& hairFrontLabel != CSVLoader.attValueNotFound && hairVolumeLabel != CSVLoader.attValueNotFound
+				&& hairDarknessLabel != CSVLoader.attValueNotFound && bandanaTypeLabel != CSVLoader.attValueNotFound) {
+			String fullHairLabel = hairTypeLabel + "/" + hairShapeLabel + "/" + hairFrontLabel + "/" + hairVolumeLabel
+					+ "/" + hairDarknessLabel + "/" + bandanaTypeLabel;
+			String fullHairCode = hairTypesByLabel.get(fullHairLabel);
+
+			String[] fullHairCodeArray = fullHairCode.split("/");
+			int hairCode = Integer.parseInt(fullHairCodeArray[0]);
+			int baseHairCode = Integer.parseInt(fullHairCodeArray[1]);
+
+			playerData[92] = (byte)hairCode;
+			playerData[93] = (byte)baseHairCode;
+		}
 		System.arraycopy(playerData, 0, of.data, ia, 124);
 
 		String internationalNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attInternationalNumber);
