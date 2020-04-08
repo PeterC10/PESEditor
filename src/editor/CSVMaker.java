@@ -103,7 +103,7 @@ public class CSVMaker {
 	}
 
 	private String[] getHairTypeLabelByKey(String key) {
-		String labelKey = hairTypesByKey.get(key);
+		String labelKey = hairTypesByKey.getOrDefault(key, "Bald/1/NA/NA/NA/NA");
 		return labelKey.split("/");
 	}
 
