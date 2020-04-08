@@ -1167,20 +1167,17 @@ public class CSVLoader {
 
 		String age = this.getAttributeValue(tokens, attributePositions, CSVLoader.attAge);
 		if (age != CSVLoader.attValueNotFound){
-			int ageVal = Integer.parseInt(age);
-			Stats.setValue(of, playerId, Stats.age, ageVal);
+			Stats.setValue(of, playerId, Stats.age, age);
 		}
 
 		String height = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHeight);
 		if (height != CSVLoader.attValueNotFound){
-			int heightVal = Integer.parseInt(height);
-			Stats.setValue(of, playerId, Stats.height, heightVal);
+			Stats.setValue(of, playerId, Stats.height, height);
 		}
 
 		String weight = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWeight);
 		if (weight != CSVLoader.attValueNotFound){
-			int weightVal = Integer.parseInt(weight);
-			Stats.setValue(of, playerId, Stats.weight, weightVal);
+			Stats.setValue(of, playerId, Stats.weight, weight);
 		}
 
 		String injuryTolerance = this.getAttributeValue(tokens, attributePositions, CSVLoader.attInjuryTolerance);
