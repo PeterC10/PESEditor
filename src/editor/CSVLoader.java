@@ -288,6 +288,12 @@ public class CSVLoader {
 	private static String attHairVolume = "HAIR VOLUME";
 	private static String attHairDarkness = "HAIR DARKNESS";
 	private static String attBandanaType = "BANDANA TYPE";
+
+	private static String attCap = "CAP";
+	private static String attCapType = "CAP TYPE";
+	private static String attGlassesType = "GLASSES TYPE";
+	private static String attNecklaceType = "NECKLACE TYPE";
+
 	private static String[] supportedHeaders = {
 		attId,
 		attName,
@@ -396,6 +402,10 @@ public class CSVLoader {
 		attHairVolume,
 		attHairDarkness,
 		attBandanaType,
+		attCap,
+		attCapType,
+		attGlassesType,
+		attNecklaceType,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -407,6 +417,9 @@ public class CSVLoader {
 	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
 	private final Map<String, Integer> wristbandOptsByLabel = csvAttributes.getWristbandOptsByLabel();
 	private final Map<String, String> hairTypesByLabel = csvAttributes.getHairTypesByLabel();
+	private final Map<String, Integer> capOptsByLabel = csvAttributes.getCapOptsByLabel();
+	private final Map<String, Integer> capTypeOptsByLabel = csvAttributes.getCapTypeOptsByLabel();
+	private final Map<String, Integer> glassesNecklaceOptsByLabel = csvAttributes.getGlassesNecklaceOptsByLabel();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -1302,6 +1315,30 @@ public class CSVLoader {
 			playerData[92] = (byte)hairCode;
 			playerData[93] = (byte)baseHairCode;
 		}
+
+		String capLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCap);
+
+		if (capLabel != CSVLoader.attValueNotFound) {
+			int capVal = capOptsByLabel.getOrDefault(capLabel, 0);
+			playerData[95] = (byte)capVal;
+		}
+
+		String capTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCapType);
+
+		if (capTypeLabel != CSVLoader.attValueNotFound) {
+			int capTypeVal = capTypeOptsByLabel.get(capTypeLabel);
+			playerData[110] = (byte)capTypeVal;
+		}
+
+		String glassesTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGlassesType);
+		String necklaceTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNecklaceType);
+
+		if (glassesTypeLabel != CSVLoader.attValueNotFound && necklaceTypeLabel != CSVLoader.attValueNotFound) {
+			String glassesNecklaceTypeKey = glassesTypeLabel + "/" + necklaceTypeLabel;
+			int glassesNecklaceTypeVal = glassesNecklaceOptsByLabel.get(glassesNecklaceTypeKey);
+			playerData[97] = (byte)glassesNecklaceTypeVal;
+		}
+
 		System.arraycopy(playerData, 0, of.data, ia, 124);
 
 		String internationalNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attInternationalNumber);
