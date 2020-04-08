@@ -1048,6 +1048,76 @@ class CSVAttributes {
         }
     };
 
+    private final Map<String, Integer> capOptsByLabel = new HashMap<String, Integer>() {
+        {
+            put("Y", -128);
+        }
+    };
+
+    private final Map<Integer, String> capOptsByValue = new HashMap<Integer, String>() {
+        {
+            put(-128, "Y");
+        }
+    };
+
+    private final String capOptsDefaultValue = "N";
+
+    private final Map<String, Integer> capTypeOptsByLabel = new HashMap<String, Integer>() {
+        {
+            put("1", 0);
+            put("2", 8);
+            put("3", 16);
+            put("4", 24);
+            put("5", 32);
+            put("6", 40);
+            put("7", 48);
+            put("8", 56);
+        }
+    };
+
+    private final Map<Integer, String> capTypeOptsByValue = new HashMap<Integer, String>() {
+        {
+            put(0, "1");
+            put(8, "2");
+            put(16, "3");
+            put(24, "4");
+            put(32, "5");
+            put(40, "6");
+            put(48, "7");
+            put(56, "8");
+        }
+    };
+
+    private final String capTypeOptsDefaultValue = "1";
+
+    private final Map<String, Integer> glassesNecklaceOptsByLabel = new HashMap<String, Integer>() {
+        {
+            put("N/N", 0);
+            put("1/N", 1);
+            put("2/N", 2);
+            put("N/1", 4);
+            put("1/1", 5);
+            put("2/1", 6);
+            put("N/2", 8);
+            put("1/2", 9);
+            put("2/2", 10);
+        }
+    };
+
+    private final Map<Integer, String> glassesNecklaceOptsByValue = new HashMap<Integer, String>() {
+        {
+            put(0, "N/N");
+            put(1, "1/N");
+            put(2, "2/N");
+            put(4, "N/1");
+            put(5, "1/1");
+            put(6, "2/1");
+            put(8, "N/2");
+            put(9, "1/2");
+            put(10, "2/2");
+        }
+    };
+
     private final int[] wristbandVals = { 0, 8, 16, 24, 40, 48, 56, 72, 80, 88, 104, 112, 120, -120, -112, -104, -88,
             -80, -72, -56, -48, -40, -24, -16, -8 };
 
@@ -4144,6 +4214,38 @@ class CSVAttributes {
      */
     public int[] getWristbandVals() {
         return wristbandVals;
+    }
+
+    public String getCapTypeOptsDefaultValue() {
+        return capTypeOptsDefaultValue;
+    }
+
+    public Map<Integer, String> getGlassesNecklaceOptsByValue() {
+        return glassesNecklaceOptsByValue;
+    }
+
+    public Map<String, Integer> getGlassesNecklaceOptsByLabel() {
+        return glassesNecklaceOptsByLabel;
+    }
+
+    public Map<Integer, String> getCapTypeOptsByValue() {
+        return capTypeOptsByValue;
+    }
+
+    public Map<String, Integer> getCapTypeOptsByLabel() {
+        return capTypeOptsByLabel;
+    }
+
+    public String getCapOptsDefaultValue() {
+        return capOptsDefaultValue;
+    }
+
+    public Map<Integer, String> getCapOptsByValue() {
+        return capOptsByValue;
+    }
+
+    public Map<String, Integer> getCapOptsByLabel() {
+        return capOptsByLabel;
     }
 
     public Map<String, String> getHairTypesByKey() {

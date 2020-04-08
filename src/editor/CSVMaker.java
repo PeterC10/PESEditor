@@ -20,6 +20,11 @@ public class CSVMaker {
 	private final Map<Integer, String> physicalLinkedOptsByValue = csvAttributes.getPhysicalLinkedOptsByValue();
 	private final Map<Integer, String> headHeightOptsByValue = csvAttributes.getHeadHeightOptsByValue();
 	private final Map<String, String> hairTypesByKey = csvAttributes.getHairTypesByKey();
+	private final Map<Integer, String> capOptsByValue = csvAttributes.getCapOptsByValue();
+	private final String capOptsDefaultValue = csvAttributes.getCapOptsDefaultValue();
+	private final Map<Integer, String> capTypeOptsByValue = csvAttributes.getCapTypeOptsByValue();
+	private final String capTypeOptsDefaultValue = csvAttributes.getCapTypeOptsDefaultValue();
+	private final Map<Integer, String> glassesNecklaceOptsByValue = csvAttributes.getGlassesNecklaceOptsByValue();
 	private final int bytesFactor = csvAttributes.getBytesFactor();
 	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
@@ -128,7 +133,7 @@ public class CSVMaker {
 				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
 				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM", "CLUB NUMBER",
 				"HAIR TYPE", "HAIR SHAPE", "HAIR FRONT", "HAIR VOLUME", "HAIR DARKNESS",
-				"BANDANA TYPE" };
+				"BANDANA TYPE", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -424,6 +429,12 @@ public class CSVMaker {
 
 		String hairTypeKey = hairTypeVal1 + "/" + hairTypeVal2Modulus;
 
+		int capVal = playerData[95];
+		int capTypeVal = playerData[110];
+
+		int glassesNecklaceVal = playerData[97];
+		glassesNecklaceVal = glassesNecklaceVal % 8;
+
 		// 109 also potentially linked to bandana colour!!
 		int shoulderWidthVal = playerData[109];
 
@@ -551,6 +562,24 @@ public class CSVMaker {
 		out.write(hairDarkness);
 		out.write(separator);
 		out.write(bandanaType);
+		out.write(separator);
+
+		String cap = capOptsByValue.getOrDefault(capVal, capOptsDefaultValue);
+		String capType = capTypeOptsByValue.getOrDefault(capTypeVal, capTypeOptsDefaultValue);
+
+		out.write(cap);
+		out.write(separator);
+		out.write(capType);
+
+		String glassesNecklace = glassesNecklaceOptsByValue.get(glassesNecklaceVal);
+		String[] glassesNecklaceVals = glassesNecklace.split("/");
+		String glassessVal = glassesNecklaceVals[0];
+		String necklaceVal = glassesNecklaceVals[1];
+
+		out.write(separator);
+		out.write(glassessVal);
+		out.write(separator);
+		out.write(necklaceVal);
 
 		out.write(13);
 		out.flush();
