@@ -4369,7 +4369,11 @@ class CSVAttributes {
             String facialHairLabel = facialHairCapLabels[0];
             String capLabel = facialHairCapLabels[1];
 
-            int facialHairNo = Integer.parseInt(facialHairLabel);
+            int facialHairNo = 0;
+
+            if (!facialHairLabel.equals("N")){
+                facialHairNo = Integer.parseInt(facialHairLabel);
+            }
 
             if (facialHairNo > 0 && facialHairNo <= 116){
                 if (capLabel.equals("Y")){
