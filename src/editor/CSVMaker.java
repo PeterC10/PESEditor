@@ -23,6 +23,7 @@ public class CSVMaker {
 	private final Map<Integer, String> capTypeOptsByValue = csvAttributes.getCapTypeOptsByValue();
 	private final String capTypeOptsDefaultValue = csvAttributes.getCapTypeOptsDefaultValue();
 	private final Map<Integer, String> glassesNecklaceOptsByValue = csvAttributes.getGlassesNecklaceOptsByValue();
+	private final Map<Integer, String> eyeColor2TypesByValue = csvAttributes.getEyeColor2TypesByValue();
 	private final int bytesFactor = csvAttributes.getBytesFactor();
 	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
@@ -131,7 +132,8 @@ public class CSVMaker {
 				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
 				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM", "CLUB NUMBER",
 				"HAIR TYPE", "HAIR SHAPE", "HAIR FRONT", "HAIR VOLUME", "HAIR DARKNESS",
-				"BANDANA TYPE", "FACIAL HAIR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE" };
+				"BANDANA TYPE", "FACIAL HAIR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
+				"EYE COLOR 2" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -427,6 +429,17 @@ public class CSVMaker {
 
 		String hairTypeKey = hairTypeVal1 + "/" + hairTypeVal2Modulus;
 
+		int eyeColor2Val = 0;
+
+		if (hairTypeVal2 >= 0) {
+			eyeColor2Val = hairTypeVal2 / 8;
+		}
+		else {
+			eyeColor2Val = (128 + hairTypeVal2) / 8;
+		}
+
+		String eyeColor2Label  = eyeColor2TypesByValue.getOrDefault(eyeColor2Val, "???");
+
 		int facialHairCapVal = playerData[95];
 
 		int capTypeVal = playerData[110];
@@ -587,6 +600,9 @@ public class CSVMaker {
 		out.write(glassessVal);
 		out.write(separator);
 		out.write(necklaceVal);
+
+		out.write(separator);
+		out.write(eyeColor2Label);
 
 		out.write(13);
 		out.flush();

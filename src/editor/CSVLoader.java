@@ -295,6 +295,8 @@ public class CSVLoader {
 	private static String attGlassesType = "GLASSES TYPE";
 	private static String attNecklaceType = "NECKLACE TYPE";
 
+	private static String attEyeColor2 = "EYE COLOR 2";
+
 	private static String[] supportedHeaders = {
 		attId,
 		attName,
@@ -408,6 +410,7 @@ public class CSVLoader {
 		attCapType,
 		attGlassesType,
 		attNecklaceType,
+		attEyeColor2,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -421,6 +424,7 @@ public class CSVLoader {
 	private final Map<String, String> hairTypesByLabel = csvAttributes.getHairTypesByLabel();
 	private final Map<String, Integer> capTypeOptsByLabel = csvAttributes.getCapTypeOptsByLabel();
 	private final Map<String, Integer> glassesNecklaceOptsByLabel = csvAttributes.getGlassesNecklaceOptsByLabel();
+	private final Map<String, Integer> eyeColor2TypesByLabel = csvAttributes.getEyeColor2TypesByLabel();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -1298,10 +1302,13 @@ public class CSVLoader {
 		String hairVolumeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairVolume);
 		String hairDarknessLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairDarkness);
 		String bandanaTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBandanaType);
+		String eyeColor2Label = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyeColor2);
 
 		if (hairTypeLabel != CSVLoader.attValueNotFound && hairShapeLabel != CSVLoader.attValueNotFound
 				&& hairFrontLabel != CSVLoader.attValueNotFound && hairVolumeLabel != CSVLoader.attValueNotFound
-				&& hairDarknessLabel != CSVLoader.attValueNotFound && bandanaTypeLabel != CSVLoader.attValueNotFound) {
+				&& hairDarknessLabel != CSVLoader.attValueNotFound && bandanaTypeLabel != CSVLoader.attValueNotFound
+				&& eyeColor2Label != CSVLoader.attValueNotFound) {
+
 			String fullHairLabel = hairTypeLabel + "/" + hairShapeLabel + "/" + hairFrontLabel + "/" + hairVolumeLabel
 					+ "/" + hairDarknessLabel + "/" + bandanaTypeLabel;
 			String fullHairCode = hairTypesByLabel.get(fullHairLabel);
@@ -1309,9 +1316,11 @@ public class CSVLoader {
 			String[] fullHairCodeArray = fullHairCode.split("/");
 			int hairCode = Integer.parseInt(fullHairCodeArray[0]);
 			int baseHairCode = Integer.parseInt(fullHairCodeArray[1]);
+			int multiplyFactor = eyeColor2TypesByLabel.get(eyeColor2Label);
+			int baseHairCodeMultiplied = baseHairCode + (8 * multiplyFactor);
 
 			playerData[92] = (byte)hairCode;
-			playerData[93] = (byte)baseHairCode;
+			playerData[93] = (byte)baseHairCodeMultiplied;
 		}
 
 		String facialHairLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHair);

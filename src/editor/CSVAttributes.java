@@ -1187,6 +1187,40 @@ class CSVAttributes {
         }
     };
 
+    private final Map<String, Integer> eyeColor2TypesByLabel = new HashMap<String, Integer>() {
+        {
+            put("Black 1", 0);
+            put("Black 2", 1);
+            put("Dark Grey 1", 2);
+            put("Dark Grey 2", 3);
+            put("Brown 1", 4);
+            put("Brown 2", 5);
+            put("Light Blue 1", 6);
+            put("Light Blue 2", 7);
+            put("Blue 1", 8);
+            put("Blue 2", 9);
+            put("Green 1", 10);
+            put("Green 2", 11);
+        }
+    };
+
+    private final Map<Integer, String> eyeColor2TypesByValue = new HashMap<Integer, String>() {
+        {
+            put(0, "Black 1");
+            put(1, "Black 2");
+            put(2, "Dark Grey 1");
+            put(3, "Dark Grey 2");
+            put(4, "Brown 1");
+            put(5, "Brown 2");
+            put(6, "Light Blue 1");
+            put(7, "Light Blue 2");
+            put(8, "Blue 1");
+            put(9, "Blue 2");
+            put(10, "Green 1");
+            put(11, "Green 2");
+        }
+    };
+
     private final Map<String, String> hairTypesByLabel = new HashMap<String, String>() {
         {
             put("Bald/1/NA/NA/NA/NA", "0/0");
@@ -4200,6 +4234,14 @@ class CSVAttributes {
      */
     public int[] getWristbandVals() {
         return wristbandVals;
+    }
+
+    public Map<Integer, String> getEyeColor2TypesByValue() {
+        return eyeColor2TypesByValue;
+    }
+
+    public Map<String, Integer> getEyeColor2TypesByLabel() {
+        return eyeColor2TypesByLabel;
     }
 
     public String getCapTypeOptsDefaultValue() {
