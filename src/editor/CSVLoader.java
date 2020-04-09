@@ -289,6 +289,7 @@ public class CSVLoader {
 	private static String attHairDarkness = "HAIR DARKNESS";
 	private static String attBandanaType = "BANDANA TYPE";
 
+	private static String attFacialHair = "FACIAL HAIR";
 	private static String attCap = "CAP";
 	private static String attCapType = "CAP TYPE";
 	private static String attGlassesType = "GLASSES TYPE";
@@ -402,6 +403,7 @@ public class CSVLoader {
 		attHairVolume,
 		attHairDarkness,
 		attBandanaType,
+		attFacialHair,
 		attCap,
 		attCapType,
 		attGlassesType,
@@ -417,7 +419,6 @@ public class CSVLoader {
 	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
 	private final Map<String, Integer> wristbandOptsByLabel = csvAttributes.getWristbandOptsByLabel();
 	private final Map<String, String> hairTypesByLabel = csvAttributes.getHairTypesByLabel();
-	private final Map<String, Integer> capOptsByLabel = csvAttributes.getCapOptsByLabel();
 	private final Map<String, Integer> capTypeOptsByLabel = csvAttributes.getCapTypeOptsByLabel();
 	private final Map<String, Integer> glassesNecklaceOptsByLabel = csvAttributes.getGlassesNecklaceOptsByLabel();
 
@@ -1313,11 +1314,13 @@ public class CSVLoader {
 			playerData[93] = (byte)baseHairCode;
 		}
 
+		String facialHairLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHair);
 		String capLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCap);
 
-		if (capLabel != CSVLoader.attValueNotFound) {
-			int capVal = capOptsByLabel.getOrDefault(capLabel, 0);
-			playerData[95] = (byte)capVal;
+		if (facialHairLabel != CSVLoader.attValueNotFound && capLabel != CSVLoader.attValueNotFound) {
+			String facialHairCapLabel = facialHairLabel + "/" + capLabel;
+			int facialHairCapVal = csvAttributes.getFacialHairCapValueNoStatic(facialHairCapLabel);
+			playerData[95] = (byte)facialHairCapVal;
 		}
 
 		String capTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCapType);

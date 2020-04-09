@@ -1048,20 +1048,6 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> capOptsByLabel = new HashMap<String, Integer>() {
-        {
-            put("Y", -128);
-        }
-    };
-
-    private final Map<Integer, String> capOptsByValue = new HashMap<Integer, String>() {
-        {
-            put(-128, "Y");
-        }
-    };
-
-    private final String capOptsDefaultValue = "N";
-
     private final Map<String, Integer> capTypeOptsByLabel = new HashMap<String, Integer>() {
         {
             put("1", 0);
@@ -4236,18 +4222,6 @@ class CSVAttributes {
         return capTypeOptsByLabel;
     }
 
-    public String getCapOptsDefaultValue() {
-        return capOptsDefaultValue;
-    }
-
-    public Map<Integer, String> getCapOptsByValue() {
-        return capOptsByValue;
-    }
-
-    public Map<String, Integer> getCapOptsByLabel() {
-        return capOptsByLabel;
-    }
-
     public Map<String, String> getHairTypesByKey() {
         return hairTypesByKey;
     }
@@ -4360,6 +4334,57 @@ class CSVAttributes {
      */
     public Map<String, Integer> getFaceTypesByLabel() {
         return faceTypesByLabel;
+    }
+
+    public static String getFacialHairCapLabel(int facialHairCapValue) {
+        int topByteValue = 128;
+        int facialHairCode = 0;
+        int highestNegativeValue = -12;
+        int highestPositiveValue = 116;
+        String facialHairCapLabel = "???";
+
+        if (facialHairCapValue == 0){
+            facialHairCapLabel = "N/N";
+        }
+        else if (facialHairCapValue == -128){
+            facialHairCapLabel = "N/Y";
+        }
+        else if (facialHairCapValue < 0 && facialHairCapValue <= highestNegativeValue){
+            facialHairCode = topByteValue + facialHairCapValue;
+            facialHairCapLabel = facialHairCode + "/Y";
+        }
+        else if (facialHairCapValue > 0 && facialHairCapValue <= highestPositiveValue){
+            facialHairCapLabel = facialHairCapValue + "/N";
+        }
+
+        return facialHairCapLabel;
+    }
+
+    public static int getFacialHairCapValue(String facialHairCapLabel) {
+        int facialHairCapValue = 0;
+        if (facialHairCapLabel != "N/N"){
+            int topByteValue = -128;
+
+            String[] facialHairCapLabels = facialHairCapLabel.split("/");
+            String facialHairLabel = facialHairCapLabels[0];
+            String capLabel = facialHairCapLabels[1];
+
+            int facialHairNo = Integer.parseInt(facialHairLabel);
+
+            if (facialHairNo > 0 && facialHairNo <= 116){
+                if (capLabel.equals("Y")){
+                    facialHairCapValue = facialHairNo + topByteValue;
+                }
+                else if (capLabel.equals("N")){
+                    facialHairCapValue = facialHairNo;
+                }
+            }
+        }
+        return facialHairCapValue;
+    }
+
+    public int getFacialHairCapValueNoStatic(String facialHairCapLabel) {
+        return CSVAttributes.getFacialHairCapValue(facialHairCapLabel);
     }
     
 }
