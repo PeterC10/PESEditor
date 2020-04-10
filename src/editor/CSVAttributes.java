@@ -4482,5 +4482,29 @@ class CSVAttributes {
     public int getHairPatternEyeColor1ValueNoStatic(String hairPatternEyeColor1Label) {
         return CSVAttributes.getHairPatternEyeColor1Value(hairPatternEyeColor1Label);
     }
+
+    public static String getFacialHairColorLabel(int facialHairColorValue) {
+        String facialHairColorLabel = "Same";
+        if (facialHairColorValue >= 0 && facialHairColorValue <= 61){
+            facialHairColorLabel = Integer.toString(facialHairColorValue + 1);
+        }
+        return facialHairColorLabel;
+    }
+
+    public static int getFacialHairColorValue(String facialHairColorLabel) {
+        int facialHairColorValue = 62;
+
+        if (!facialHairColorLabel.equals("Same")){
+            int facialHairColor = Integer.parseInt(facialHairColorLabel);
+            if (facialHairColor >= 1 && facialHairColor <= 62){
+                facialHairColorValue = facialHairColor - 1;
+            }
+        }
+        return facialHairColorValue;
+    }
+
+    public int getFacialHairColorValueNoStatic(String facialHairColorLabel) {
+        return CSVAttributes.getFacialHairColorValue(facialHairColorLabel);
+    }
     
 }

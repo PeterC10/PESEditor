@@ -291,6 +291,7 @@ public class CSVLoader {
 	private static String attFacialHair = "FACIAL HAIR";
 
 	private static String attHairColorPattern = "HAIR COLOR PATTERN";
+	private static String attFacialHairColor = "FACIAL HAIR COLOR";
 
 	private static String attCap = "CAP";
 	private static String attCapType = "CAP TYPE";
@@ -410,6 +411,7 @@ public class CSVLoader {
 		attBandanaType,
 		attFacialHair,
 		attHairColorPattern,
+		attFacialHairColor,
 		attCap,
 		attCapType,
 		attGlassesType,
@@ -1343,6 +1345,13 @@ public class CSVLoader {
 			String facialHairCapLabel = facialHairLabel + "/" + capLabel;
 			int facialHairCapVal = csvAttributes.getFacialHairCapValueNoStatic(facialHairCapLabel);
 			playerData[95] = (byte)facialHairCapVal;
+		}
+
+		String facialHairColorLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHairColor);
+
+		if (facialHairColorLabel != CSVLoader.attValueNotFound) {
+			int facialHairColorVal = csvAttributes.getFacialHairColorValueNoStatic(facialHairColorLabel);
+			playerData[96] = (byte)facialHairColorVal;
 		}
 
 		String capTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCapType);
