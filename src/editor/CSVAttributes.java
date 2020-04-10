@@ -4433,12 +4433,14 @@ class CSVAttributes {
         return CSVAttributes.getFacialHairCapValue(facialHairCapLabel);
     }
     
-    public static String getHairPatternEyeColor1Label(int hairPatternEyeColor1Value) {
+    public static String getHairColorTypeHairPatternEyeColor1Label(int hairPatternEyeColor1Value) {
         int byteCount = 63;
         int negativeByteDiff = 129;
 
         int hairPatternColor = 1;
         int eyeColor1 = 1;
+
+        String hairColorType = "Pattern";
 
         if (hairPatternEyeColor1Value >= 0 && hairPatternEyeColor1Value <= 61){
             hairPatternColor = hairPatternEyeColor1Value + 1;
@@ -4451,36 +4453,63 @@ class CSVAttributes {
             eyeColor1 = 3;
             hairPatternColor = hairPatternEyeColor1Value + negativeByteDiff;
         }
+        else {
+            if (hairPatternEyeColor1Value == 62){
+                hairColorType = "RGB";
+            }
+            else if (hairPatternEyeColor1Value == 126){
+                hairColorType = "RGB";
+                eyeColor1 = 2;
+            }
+            else if (hairPatternEyeColor1Value == -66){
+                hairColorType = "RGB";
+                eyeColor1 = 3;
+            }
+        }
 
-        String hairPatternEyeColor1Label = hairPatternColor + "/" + eyeColor1;
+        String hairPatternEyeColor1Label = hairColorType + "/" + hairPatternColor + "/" + eyeColor1;
 
         return hairPatternEyeColor1Label;
     }
 
-    public static int getHairPatternEyeColor1Value(String hairPatternEyeColor1Label) {
+    public static int getHairColorTypeHairPatternEyeColor1Value(String hairPatternEyeColor1Label) {
         int hairPatternEyeColor1Value = 0;
         int byteCount = 63;
         int negativeByteDiff = -129;
 
         String[] hairPatternEyeColor1Labels = hairPatternEyeColor1Label.split("/");
-        int hairPatternColor = Integer.parseInt(hairPatternEyeColor1Labels[0]);
-        int eyeColor1 = Integer.parseInt(hairPatternEyeColor1Labels[1]);
+        String hairColorType = hairPatternEyeColor1Labels[0];
+        int hairPatternColor = Integer.parseInt(hairPatternEyeColor1Labels[1]);
+        int eyeColor1 = Integer.parseInt(hairPatternEyeColor1Labels[2]);
 
-        if (eyeColor1 == 1){
-            hairPatternEyeColor1Value = hairPatternColor - 1;
+        if (hairColorType.equals("Pattern")){
+            if (eyeColor1 == 1){
+                hairPatternEyeColor1Value = hairPatternColor - 1;
+            }
+            else if (eyeColor1 == 2){
+                hairPatternEyeColor1Value = hairPatternColor + byteCount;
+            }
+            else if (eyeColor1 == 3){
+                hairPatternEyeColor1Value = negativeByteDiff + hairPatternColor;
+            }
         }
-        else if (eyeColor1 == 2){
-            hairPatternEyeColor1Value = hairPatternColor + byteCount;
-        }
-        else if (eyeColor1 == 3){
-            hairPatternEyeColor1Value = negativeByteDiff + hairPatternColor;
+        else if (hairColorType.equals("RGB")) {
+            if (eyeColor1 == 1){
+                hairPatternEyeColor1Value = 62;
+            }
+            else if (eyeColor1 == 2){
+                hairPatternEyeColor1Value = 126;
+            }
+            else if (eyeColor1 == 3){
+                hairPatternEyeColor1Value = -66;
+            }
         }
 
         return hairPatternEyeColor1Value;
     }
 
-    public int getHairPatternEyeColor1ValueNoStatic(String hairPatternEyeColor1Label) {
-        return CSVAttributes.getHairPatternEyeColor1Value(hairPatternEyeColor1Label);
+    public int getHairColorTypeHairPatternEyeColor1ValueNoStatic(String hairPatternEyeColor1Label) {
+        return CSVAttributes.getHairColorTypeHairPatternEyeColor1Value(hairPatternEyeColor1Label);
     }
 
     public static String getFacialHairColorLabel(int facialHairColorValue) {
