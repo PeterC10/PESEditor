@@ -4433,4 +4433,54 @@ class CSVAttributes {
         return CSVAttributes.getFacialHairCapValue(facialHairCapLabel);
     }
     
+    public static String getHairPatternEyeColor1Label(int hairPatternEyeColor1Value) {
+        int byteCount = 63;
+        int negativeByteDiff = 129;
+
+        int hairPatternColor = 1;
+        int eyeColor1 = 1;
+
+        if (hairPatternEyeColor1Value >= 0 && hairPatternEyeColor1Value <= 61){
+            hairPatternColor = hairPatternEyeColor1Value + 1;
+        }
+        else if (hairPatternEyeColor1Value >= 64 && hairPatternEyeColor1Value <= 125){
+            eyeColor1 = 2;
+            hairPatternColor = hairPatternEyeColor1Value - byteCount;
+        }
+        else if (hairPatternEyeColor1Value <= -67 && hairPatternEyeColor1Value >= -128){
+            eyeColor1 = 3;
+            hairPatternColor = hairPatternEyeColor1Value + negativeByteDiff;
+        }
+
+        String hairPatternEyeColor1Label = hairPatternColor + "/" + eyeColor1;
+
+        return hairPatternEyeColor1Label;
+    }
+
+    public static int getHairPatternEyeColor1Value(String hairPatternEyeColor1Label) {
+        int hairPatternEyeColor1Value = 0;
+        int byteCount = 63;
+        int negativeByteDiff = -129;
+
+        String[] hairPatternEyeColor1Labels = hairPatternEyeColor1Label.split("/");
+        int hairPatternColor = Integer.parseInt(hairPatternEyeColor1Labels[0]);
+        int eyeColor1 = Integer.parseInt(hairPatternEyeColor1Labels[1]);
+
+        if (eyeColor1 == 1){
+            hairPatternEyeColor1Value = hairPatternColor - 1;
+        }
+        else if (eyeColor1 == 2){
+            hairPatternEyeColor1Value = hairPatternColor + byteCount;
+        }
+        else if (eyeColor1 == 3){
+            hairPatternEyeColor1Value = negativeByteDiff + hairPatternColor;
+        }
+
+        return hairPatternEyeColor1Value;
+    }
+
+    public int getHairPatternEyeColor1ValueNoStatic(String hairPatternEyeColor1Label) {
+        return CSVAttributes.getHairPatternEyeColor1Value(hairPatternEyeColor1Label);
+    }
+    
 }

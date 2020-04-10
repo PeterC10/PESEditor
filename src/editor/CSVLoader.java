@@ -288,13 +288,16 @@ public class CSVLoader {
 	private static String attHairVolume = "HAIR VOLUME";
 	private static String attHairDarkness = "HAIR DARKNESS";
 	private static String attBandanaType = "BANDANA TYPE";
-
 	private static String attFacialHair = "FACIAL HAIR";
+
+	private static String attHairColorPattern = "HAIR COLOR PATTERN";
+
 	private static String attCap = "CAP";
 	private static String attCapType = "CAP TYPE";
 	private static String attGlassesType = "GLASSES TYPE";
 	private static String attNecklaceType = "NECKLACE TYPE";
 
+	private static String attEyeColor1 = "EYE COLOR 1";
 	private static String attEyeColor2 = "EYE COLOR 2";
 
 	private static String[] supportedHeaders = {
@@ -406,10 +409,12 @@ public class CSVLoader {
 		attHairDarkness,
 		attBandanaType,
 		attFacialHair,
+		attHairColorPattern,
 		attCap,
 		attCapType,
 		attGlassesType,
 		attNecklaceType,
+		attEyeColor1,
 		attEyeColor2,
 	};
 
@@ -1302,6 +1307,8 @@ public class CSVLoader {
 		String hairVolumeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairVolume);
 		String hairDarknessLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairDarkness);
 		String bandanaTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBandanaType);
+		String hairColorPatternLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairColorPattern);
+		String eyeColor1Label = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyeColor1);
 		String eyeColor2Label = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyeColor2);
 
 		if (hairTypeLabel != CSVLoader.attValueNotFound && hairShapeLabel != CSVLoader.attValueNotFound
@@ -1321,6 +1328,12 @@ public class CSVLoader {
 
 			playerData[92] = (byte)hairCode;
 			playerData[93] = (byte)baseHairCodeMultiplied;
+		}
+
+		if (hairColorPatternLabel != CSVLoader.attValueNotFound && eyeColor1Label != CSVLoader.attValueNotFound){
+			String hairPatternEyeColor1Label = hairColorPatternLabel + "/" + eyeColor1Label;
+			int hairPatternEyeColor1Val = csvAttributes.getHairPatternEyeColor1ValueNoStatic(hairPatternEyeColor1Label);
+			playerData[94] = (byte)hairPatternEyeColor1Val;
 		}
 
 		String facialHairLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHair);

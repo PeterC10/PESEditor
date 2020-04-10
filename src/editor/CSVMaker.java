@@ -132,8 +132,8 @@ public class CSVMaker {
 				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
 				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM", "CLUB NUMBER",
 				"HAIR TYPE", "HAIR SHAPE", "HAIR FRONT", "HAIR VOLUME", "HAIR DARKNESS",
-				"BANDANA TYPE", "FACIAL HAIR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
-				"EYE COLOR 2" };
+				"BANDANA TYPE", "FACIAL HAIR", "HAIR COLOR PATTERN", "CAP", "CAP TYPE",
+				"GLASSES TYPE", "NECKLACE TYPE", "EYE COLOR 1", "EYE COLOR 2" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -440,6 +440,12 @@ public class CSVMaker {
 
 		String eyeColor2Label  = eyeColor2TypesByValue.getOrDefault(eyeColor2Val, "???");
 
+		int hairPatternEyeColor1Val = playerData[94];
+		String hairPatternEyeColor1Label = CSVAttributes.getHairPatternEyeColor1Label(hairPatternEyeColor1Val);
+		String[] hairPatternEyeColor1Labels = hairPatternEyeColor1Label.split("/");
+		String hairPatternLabel = hairPatternEyeColor1Labels[0];
+		String eyeColor1Label = hairPatternEyeColor1Labels[1];
+
 		int facialHairCapVal = playerData[95];
 
 		int capTypeVal = playerData[110];
@@ -584,6 +590,8 @@ public class CSVMaker {
 
 		out.write(facialHair);
 		out.write(separator);
+		out.write(hairPatternLabel);
+		out.write(separator);
 		out.write(cap);
 		out.write(separator);
 		
@@ -600,6 +608,9 @@ public class CSVMaker {
 		out.write(glassessVal);
 		out.write(separator);
 		out.write(necklaceVal);
+
+		out.write(separator);
+		out.write(eyeColor1Label);
 
 		out.write(separator);
 		out.write(eyeColor2Label);
