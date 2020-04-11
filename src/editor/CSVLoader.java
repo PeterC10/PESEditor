@@ -302,6 +302,8 @@ public class CSVLoader {
 	private static String attEyeColor1 = "EYE COLOR 1";
 	private static String attEyeColor2 = "EYE COLOR 2";
 
+	private static String attSleveLength = "SLEEVE LENGTH";
+
 	private static String[] supportedHeaders = {
 		attId,
 		attName,
@@ -420,6 +422,7 @@ public class CSVLoader {
 		attNecklaceType,
 		attEyeColor1,
 		attEyeColor2,
+		attSleveLength,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -1350,11 +1353,13 @@ public class CSVLoader {
 			playerData[95] = (byte)facialHairCapVal;
 		}
 
+		String sleeveLengthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attSleveLength);
 		String facialHairColorLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHairColor);
 
-		if (facialHairColorLabel != CSVLoader.attValueNotFound) {
-			int facialHairColorVal = csvAttributes.getFacialHairColorValueNoStatic(facialHairColorLabel);
-			playerData[96] = (byte)facialHairColorVal;
+		if (sleeveLengthLabel != CSVLoader.attValueNotFound && facialHairColorLabel != CSVLoader.attValueNotFound) {
+			String sleeveLengthFacialHairColorLabel = sleeveLengthLabel + "/" + facialHairColorLabel;
+			int sleeveLengthFacialHairColorValue = csvAttributes.getSleeveLengthFacialHairColorValueNoStatic(sleeveLengthFacialHairColorLabel);
+			playerData[96] = (byte)sleeveLengthFacialHairColorValue;
 		}
 
 		String capTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCapType);

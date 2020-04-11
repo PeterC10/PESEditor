@@ -4512,28 +4512,80 @@ class CSVAttributes {
         return CSVAttributes.getHairColorTypeHairPatternEyeColor1Value(hairPatternEyeColor1Label);
     }
 
-    public static String getFacialHairColorLabel(int facialHairColorValue) {
+    public static String getSleeveLengthFacialHairColorLabel(int sleeveLengthFacialHairColorValue) {
+        String sleeveLengthLabel = "Auto";
         String facialHairColorLabel = "Same";
-        if (facialHairColorValue >= 0 && facialHairColorValue <= 61){
-            facialHairColorLabel = Integer.toString(facialHairColorValue + 1);
+        int facialHairColor = 0;
+
+        int byteCount = 63;
+        int negativeByteDiff = 129;
+        
+        if (sleeveLengthFacialHairColorValue >= 0 && sleeveLengthFacialHairColorValue <= 61){
+            facialHairColor = sleeveLengthFacialHairColorValue + 1;
         }
-        return facialHairColorLabel;
-    }
-
-    public static int getFacialHairColorValue(String facialHairColorLabel) {
-        int facialHairColorValue = 62;
-
-        if (!facialHairColorLabel.equals("Same")){
-            int facialHairColor = Integer.parseInt(facialHairColorLabel);
-            if (facialHairColor >= 1 && facialHairColor <= 62){
-                facialHairColorValue = facialHairColor - 1;
+        else if (sleeveLengthFacialHairColorValue >= 64 && sleeveLengthFacialHairColorValue <= 126){
+            if (sleeveLengthFacialHairColorValue == 126){
+                sleeveLengthLabel = "Short";
+            }
+            else{
+                facialHairColor = sleeveLengthFacialHairColorValue - byteCount;
             }
         }
-        return facialHairColorValue;
+        else if (sleeveLengthFacialHairColorValue >= -128 && sleeveLengthFacialHairColorValue <= -66){
+            if (sleeveLengthFacialHairColorValue == -66){
+                sleeveLengthLabel = "Long";
+            }
+            else{
+                facialHairColor =  sleeveLengthFacialHairColorValue + negativeByteDiff;
+            }
+        }
+
+        if (facialHairColor != 0){
+            facialHairColorLabel = Integer.toString(facialHairColor);
+        }
+
+        String sleeveLengthFacialHairColorLabel = sleeveLengthLabel + "/" + facialHairColorLabel;
+
+        return sleeveLengthFacialHairColorLabel;
     }
 
-    public int getFacialHairColorValueNoStatic(String facialHairColorLabel) {
-        return CSVAttributes.getFacialHairColorValue(facialHairColorLabel);
+    public static int getSleeveLengthFacialHairColorValue(String sleeveLengthFacialHairColorLabel) {
+        int sleeveLengthFacialHairColorValue = 62;
+
+        String[] sleeveLengthFacialHairColorLabels = sleeveLengthFacialHairColorLabel.split("/");
+        String sleeveLengthLabel = sleeveLengthFacialHairColorLabels[0];
+        String facialHairColorLabel = sleeveLengthFacialHairColorLabels[1];
+
+        int byteCount = 63;
+        int negativeByteDiff = -129;
+
+        if (facialHairColorLabel.equals("Same")){
+            if (sleeveLengthLabel.equals("Short")){
+                sleeveLengthFacialHairColorValue = 126;
+            }
+            else if (sleeveLengthLabel.equals("Long")){
+                sleeveLengthFacialHairColorValue = -66;
+            }
+        }
+        else {
+            int facialHairColorNo = Integer.parseInt(facialHairColorLabel);
+            if (sleeveLengthLabel.equals("Auto")){
+                sleeveLengthFacialHairColorValue = facialHairColorNo - 1;
+            }
+            else if (sleeveLengthLabel.equals("Short")){
+                sleeveLengthFacialHairColorValue = facialHairColorNo + byteCount;
+            }
+            else if (sleeveLengthLabel.equals("Long")){
+                sleeveLengthFacialHairColorValue = facialHairColorNo + negativeByteDiff;
+            }
+        }
+
+
+        return sleeveLengthFacialHairColorValue;
+    }
+
+    public int getSleeveLengthFacialHairColorValueNoStatic(String sleeveLengthFacialHairColorLabel) {
+        return CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
     }
     
 }
