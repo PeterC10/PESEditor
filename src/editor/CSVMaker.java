@@ -631,7 +631,6 @@ public class CSVMaker {
 
 		out.write(separator);
 		out.write(sleeveLengthLabel);
-		out.write(separator);
 
 		out.write(13);
 		out.flush();
