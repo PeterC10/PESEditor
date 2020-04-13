@@ -840,15 +840,8 @@ public class CSVLoader {
 		String favSide = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFavouredSide);
 
 		if (foot != CSVLoader.attValueNotFound && favSide != CSVLoader.attValueNotFound){
-			String footFavSideLabel = foot + "/" + favSide;
-			int footVal = footOptsByLabel.get(footFavSideLabel);
-			int favSideVal = favSideOptsByLabel.get(footFavSideLabel);
-
-			String footValStr = Integer.toString(footVal);
-			String favSideValStr = Integer.toString(favSideVal);
-
-			Stats.setValue(of, playerId, Stats.foot, footValStr);
-			Stats.setValue(of, playerId, Stats.favSide, favSideValStr);
+			Stats.setValue(of, playerId, Stats.foot, foot);
+			Stats.setValue(of, playerId, Stats.favSide, favSide);
 		}
 
 		String weakFootAccuracy = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWeakFootAccuracy);
