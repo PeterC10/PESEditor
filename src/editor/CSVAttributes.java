@@ -1174,16 +1174,16 @@ class CSVAttributes {
     private final Map<String, Integer> faceTypesByLabel = new HashMap<String, Integer>() {
         {
             put("Build", 0);
-            put("Preset1", 1);
-            put("Preset2", 2);
+            put("Special", 1);
+            put("Preset", 2);
         }
     };
 
     private final Map<Integer, String> faceTypesByValue = new HashMap<Integer, String>() {
         {
             put(0, "Build");
-            put(1, "Preset1");
-            put(2, "Preset2");
+            put(1, "Special");
+            put(2, "Preset");
         }
     };
 
@@ -4586,6 +4586,29 @@ class CSVAttributes {
 
     public int getSleeveLengthFacialHairColorValueNoStatic(String sleeveLengthFacialHairColorLabel) {
         return CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
+    }
+
+    public static String getRGBRLabel(int rgbRValue) {
+        String rgbRLabel = "0";
+
+        // if ((rgbRValue & 1) == 0) {
+        //     even...
+        // }
+        // else {
+        //     odd...
+        // }
+
+        // if (rgbRValue > ){
+
+        // }
+        // else if (rgbRValue == 1){
+
+        // }
+        // else if (rgbRValue == 2){
+            
+        // }
+
+        return rgbRLabel;
     }
     
 }
