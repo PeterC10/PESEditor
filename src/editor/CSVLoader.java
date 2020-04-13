@@ -438,6 +438,7 @@ public class CSVLoader {
 	private final Map<String, Integer> glassesNecklaceOptsByLabel = csvAttributes.getGlassesNecklaceOptsByLabel();
 	private final Map<String, Integer> eyeColor2TypesByLabel = csvAttributes.getEyeColor2TypesByLabel();
 	private final Map<String, Integer> faceTypesByLabel = csvAttributes.getFaceTypesByLabel();
+	private final Map<String, Integer> specialFacesByActualNumber = csvAttributes.getSpecialFacesByActualNumber();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -1218,8 +1219,7 @@ public class CSVLoader {
 
 		String pkStyle = this.getAttributeValue(tokens, attributePositions, CSVLoader.attPkStyle);
 		if (pkStyle != CSVLoader.attValueNotFound){
-			int pkStyleVal = Integer.parseInt(pkStyle);
-			Stats.setValue(of, playerId, Stats.pkStyle, pkStyleVal);
+			Stats.setValue(of, playerId, Stats.pkStyle, pkStyle);
 		}
 
 		String dkStyle = this.getAttributeValue(tokens, attributePositions, CSVLoader.attDkStyle);
@@ -1232,23 +1232,36 @@ public class CSVLoader {
 		Stats.setValue(of, playerId, Stats.nationality, nationality);
 
 		String skinColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attSkinColor);
-		if (skinColor != CSVLoader.attValueNotFound){
-			int skinColorVal = Integer.parseInt(skinColor) - 1;
-			Stats.setValue(of, playerId, Stats.skin, skinColorVal);
-		}
-
 		String faceType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFaceType);
-		if (faceType != CSVLoader.attValueNotFound){
-			int faceTypeVal = faceTypesByLabel.get(faceType);
-			String faceTypeValStr = Integer.toString(faceTypeVal);
-			Stats.setValue(of, playerId, Stats.faceType, faceTypeValStr);
-		}
-
 		String presetFaceNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attPresetFaceNumber);
-		if (presetFaceNumber != CSVLoader.attValueNotFound){
+		if (!skinColor.equals(CSVLoader.attValueNotFound) && !faceType.equals(CSVLoader.attValueNotFound) && !presetFaceNumber.equals(CSVLoader.attValueNotFound)){
+			int currentSkinColorVal = Stats.getValue(of, playerId, Stats.skin);
+			int currentFaceTypeNo = Stats.getValue(of, playerId, Stats.faceType);
+			int currentPresetFaceVal = Stats.getValue(of, playerId, Stats.face);
+
+			int skinColorVal = Integer.parseInt(skinColor) - 1;
+			int faceTypeVal = faceTypesByLabel.get(faceType);
 			int presetFaceNumberVal = Integer.parseInt(presetFaceNumber) - 1;
-			String presetFaceNumberValStr = Integer.toString(presetFaceNumberVal);
-			Stats.setValue(of, playerId, Stats.face, presetFaceNumberValStr);
+
+			if (currentFaceTypeNo != faceTypeVal){
+				String faceTypeValStr = Integer.toString(faceTypeVal);
+				Stats.setValue(of, playerId, Stats.faceType, faceTypeValStr);
+			}
+
+			if (currentPresetFaceVal != presetFaceNumberVal || currentFaceTypeNo != faceTypeVal){
+				if (faceType.equals("Special")){
+					String specialFaceKey = skinColor + "/" + presetFaceNumber;
+					presetFaceNumberVal = (specialFacesByActualNumber.get(specialFaceKey)) - 1;
+				}
+
+				String presetFaceNumberValStr = Integer.toString(presetFaceNumberVal);
+				Stats.setValue(of, playerId, Stats.face, presetFaceNumberValStr);
+			}
+
+			if (currentSkinColorVal != skinColorVal){
+				String skinColorValStr = Integer.toString(skinColorVal);
+				Stats.setValue(of, playerId, Stats.skin, skinColorValStr);
+			}
 		}
 
 		int ia = Player.startAdr + (playerId * 124);

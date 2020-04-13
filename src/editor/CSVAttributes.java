@@ -4836,6 +4836,14 @@ class CSVAttributes {
         return wristbandVals;
     }
 
+    public Map<String, Integer> getSpecialFacesByActualNumber() {
+        return specialFacesByActualNumber;
+    }
+
+    public Map<String, Integer> getSpecialFacesByIndexNumber() {
+        return specialFacesByIndexNumber;
+    }
+
     public Map<Integer, String> getEyeColor2TypesByValue() {
         return eyeColor2TypesByValue;
     }

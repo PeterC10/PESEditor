@@ -25,6 +25,7 @@ public class CSVMaker {
 	private final Map<Integer, String> glassesNecklaceOptsByValue = csvAttributes.getGlassesNecklaceOptsByValue();
 	private final Map<Integer, String> eyeColor2TypesByValue = csvAttributes.getEyeColor2TypesByValue();
 	private final Map<Integer, String> faceTypesByValue = csvAttributes.getFaceTypesByValue();
+	private final Map<String, Integer> specialFacesByIndexNumber = csvAttributes.getSpecialFacesByIndexNumber();
 	private final int bytesFactor = csvAttributes.getBytesFactor();
 	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
@@ -349,19 +350,27 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 
-		out.write(Integer.toString((Stats.getValue(of, player, Stats.skin) + 1)));
+		int skinColor = (Stats.getValue(of, player, Stats.skin) + 1);
+
+		out.write(Integer.toString(skinColor));
 		out.flush();
 		out.write(separator);
 		out.flush();
 
 		int faceTypeVal = Stats.getValue(of, player, Stats.faceType);
 		String faceTypeLabel = faceTypesByValue.get(faceTypeVal);
+		int presetFaceNo = (Stats.getValue(of, player, Stats.face) + 1);
+
+		if (faceTypeLabel.equals("Special")){
+			String specialFaceKey = skinColor + "/" + presetFaceNo;
+			presetFaceNo = specialFacesByIndexNumber.get(specialFaceKey);
+		}
 
 		out.write(faceTypeLabel);
 		out.flush();
 		out.write(separator);
 		out.flush();
-		out.write(Integer.toString((Stats.getValue(of, player, Stats.face) + 1)));
+		out.write(Integer.toString(presetFaceNo));
 		out.flush();
 		out.write(separator);
 		out.flush();
