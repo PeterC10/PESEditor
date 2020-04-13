@@ -437,6 +437,7 @@ public class CSVLoader {
 	private final Map<String, Integer> capTypeOptsByLabel = csvAttributes.getCapTypeOptsByLabel();
 	private final Map<String, Integer> glassesNecklaceOptsByLabel = csvAttributes.getGlassesNecklaceOptsByLabel();
 	private final Map<String, Integer> eyeColor2TypesByLabel = csvAttributes.getEyeColor2TypesByLabel();
+	private final Map<String, Integer> faceTypesByLabel = csvAttributes.getFaceTypesByLabel();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -1238,14 +1239,16 @@ public class CSVLoader {
 
 		String faceType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFaceType);
 		if (faceType != CSVLoader.attValueNotFound){
-			int faceTypeVal = Integer.parseInt(faceType);
-			Stats.setValue(of, playerId, Stats.faceType, faceTypeVal);
+			int faceTypeVal = faceTypesByLabel.get(faceType);
+			String faceTypeValStr = Integer.toString(faceTypeVal);
+			Stats.setValue(of, playerId, Stats.faceType, faceTypeValStr);
 		}
 
 		String presetFaceNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attPresetFaceNumber);
 		if (presetFaceNumber != CSVLoader.attValueNotFound){
 			int presetFaceNumberVal = Integer.parseInt(presetFaceNumber) - 1;
-			Stats.setValue(of, playerId, Stats.face, presetFaceNumberVal);
+			String presetFaceNumberValStr = Integer.toString(presetFaceNumberVal);
+			Stats.setValue(of, playerId, Stats.face, presetFaceNumberValStr);
 		}
 
 		int ia = Player.startAdr + (playerId * 124);

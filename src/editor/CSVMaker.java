@@ -24,6 +24,7 @@ public class CSVMaker {
 	private final String capTypeOptsDefaultValue = csvAttributes.getCapTypeOptsDefaultValue();
 	private final Map<Integer, String> glassesNecklaceOptsByValue = csvAttributes.getGlassesNecklaceOptsByValue();
 	private final Map<Integer, String> eyeColor2TypesByValue = csvAttributes.getEyeColor2TypesByValue();
+	private final Map<Integer, String> faceTypesByValue = csvAttributes.getFaceTypesByValue();
 	private final int bytesFactor = csvAttributes.getBytesFactor();
 	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
@@ -353,7 +354,10 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 
-		out.write(Integer.toString(Stats.getValue(of, player, Stats.faceType)));
+		int faceTypeVal = Stats.getValue(of, player, Stats.faceType);
+		String faceTypeLabel = faceTypesByValue.get(faceTypeVal);
+
+		out.write(faceTypeLabel);
 		out.flush();
 		out.write(separator);
 		out.flush();
