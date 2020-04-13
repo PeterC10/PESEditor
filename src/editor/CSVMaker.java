@@ -459,6 +459,9 @@ public class CSVMaker {
 		int capTypeVal = playerData[110];
 
 		int glassesNecklaceVal = playerData[97];
+		if (glassesNecklaceVal < 0){
+			glassesNecklaceVal = -glassesNecklaceVal;
+		}
 		glassesNecklaceVal = glassesNecklaceVal % 8;
 
 		// 109 also potentially linked to bandana colour!!
