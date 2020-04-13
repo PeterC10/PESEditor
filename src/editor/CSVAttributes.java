@@ -4587,28 +4587,5 @@ class CSVAttributes {
     public int getSleeveLengthFacialHairColorValueNoStatic(String sleeveLengthFacialHairColorLabel) {
         return CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
     }
-
-    public static String getRGBRLabel(int rgbRValue) {
-        String rgbRLabel = "0";
-
-        // if ((rgbRValue & 1) == 0) {
-        //     even...
-        // }
-        // else {
-        //     odd...
-        // }
-
-        // if (rgbRValue > ){
-
-        // }
-        // else if (rgbRValue == 1){
-
-        // }
-        // else if (rgbRValue == 2){
-            
-        // }
-
-        return rgbRLabel;
-    }
     
 }
