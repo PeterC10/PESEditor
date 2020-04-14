@@ -26,6 +26,9 @@ public class CSVMaker {
 	private final Map<Integer, String> eyeColor2TypesByValue = csvAttributes.getEyeColor2TypesByValue();
 	private final Map<Integer, String> faceTypesByValue = csvAttributes.getFaceTypesByValue();
 	private final Map<String, Integer> specialFacesByIndexNumber = csvAttributes.getSpecialFacesByIndexNumber();
+	private final Map<Integer, String> growthTypesByValue = csvAttributes.getGrowthTypesByValue();
+	private final String defaultGrowthTypeLabel = csvAttributes.getDefaultGrowthTypeLabel();
+
 	private final int bytesFactor = csvAttributes.getBytesFactor();
 	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
 
@@ -127,7 +130,7 @@ public class CSVMaker {
 				"PENALTY STOPPER", "1-ON-1 STOPPER", "LONG THROW",
 				"INJURY TOLERANCE", "DRIBBLE STYLE", "FK STYLE",
 				"PK STYLE", "DK STYLE", "AGE", "NATIONALITY",
-				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", 
+				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", "GROWTH TYPE",
 				"HEAD HEIGHT", "HEAD WIDTH", "NECK LENGTH", "NECK WIDTH",
 				"SHOULDER HEIGHT", "SHOULDER WIDTH", "CHEST MEASUREMENT",
 				"WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE", "LEG CIRCUMFERENCE",
@@ -208,6 +211,48 @@ public class CSVMaker {
 		}
 		out.write(intPlayNo);
 		out.flush();
+	}
+
+	private String getClassicNumber(int player) {
+		String intPlayNo = "0";
+		int nat = Stats.getValue(of, player, Stats.nationality);
+		int num;
+		int b1;
+		int b2;
+		int cNat = 0;
+		if (nat == 6 || nat == 8 || nat == 9 || nat == 13 || nat == 15
+				|| nat == 44 || nat == 45) {
+			if (nat == 6) {
+				cNat = 57;
+			}
+			if (nat == 8) {
+				cNat = 58;
+			}
+			if (nat == 9) {
+				cNat = 59;
+			}
+			if (nat == 13) {
+				cNat = 60;
+			}
+			if (nat == 15) {
+				cNat = 61;
+			}
+			if (nat == 44) {
+				cNat = 62;
+			}
+			if (nat == 45) {
+				cNat = 63;
+			}
+			for (int ip = 0; ip < 23; ip++) {
+				b1 = of.toInt(of.data[Squads.slot23 + (46 * cNat) + (ip * 2)]);
+				b2 = of.toInt(of.data[Squads.slot23 + 1 + (46 * cNat) + (ip * 2)]);
+				if (((b2 << 8) | b1) == player) {
+					num = of.toInt(of.data[Squads.num23 + (23 * cNat) + ip]) + 1;
+					intPlayNo = String.valueOf(num);
+				}
+			}
+		}
+		return intPlayNo;
 	}
 
 	private void writeTeam(int player, BufferedWriter out) throws IOException {
@@ -382,6 +427,16 @@ public class CSVMaker {
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
 
+		int growthTypeVal = playerData[86];
+		String growthType = defaultGrowthTypeLabel;
+
+		String classicNumber = getClassicNumber(player);
+
+		// Export growth type for classic players and ML defaults as Standard
+		if ((player < 4414 || player > 4436) && (classicNumber.length() == 0 || classicNumber.equals("0"))){
+			growthType = growthTypesByValue.getOrDefault(growthTypeVal, defaultGrowthTypeLabel);
+		}
+
 		int headHeightVal = playerData[90];
 		String headHeightAttribute = headHeightOptsByValue.get(headHeightVal);
 
@@ -483,6 +538,11 @@ public class CSVMaker {
 
 		String shoulderWidthAttribute = physicalOptsByValue.get(shoulderWidthVal);
 
+		out.write(growthType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		
 		out.write(headHeightAttribute);
 		out.flush();
 		out.write(separator);
@@ -590,16 +650,27 @@ public class CSVMaker {
 		String bandanaType = hairTypeLabels[5];
 
 		out.write(hairType);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(hairShape);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(hairFront);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(hairVolume);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(hairDarkness);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(bandanaType);
+		out.flush();
 		out.write(separator);
 
 		String facialHairCapLabel = CSVAttributes.getFacialHairCapLabel(facialHairCapVal);
@@ -615,20 +686,32 @@ public class CSVMaker {
 		String facialHairColorLabel = sleeveLengthFacialHairColorLabels[1];
 
 		out.write(facialHair);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(hairColorTypeLabel);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(hairPatternLabel);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(facialHairColorLabel);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(cap);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		
 		String capType = capTypeOptsByValue.getOrDefault(capTypeVal, capTypeOptsDefaultValue);
 
 		out.write(capType);
+		out.flush();
 		out.write(separator);
+		out.flush();
 
 		String glassesNecklace = glassesNecklaceOptsByValue.get(glassesNecklaceVal);
 		String[] glassesNecklaceVals = glassesNecklace.split("/");
@@ -636,17 +719,26 @@ public class CSVMaker {
 		String necklaceVal = glassesNecklaceVals[1];
 
 		out.write(glassessVal);
+		out.flush();
 		out.write(separator);
+		out.flush();
 		out.write(necklaceVal);
+		out.flush();
 
 		out.write(separator);
+		out.flush();
 		out.write(eyeColor1Label);
+		out.flush();
 
 		out.write(separator);
+		out.flush();
 		out.write(eyeColor2Label);
+		out.flush();
 
 		out.write(separator);
+		out.flush();
 		out.write(sleeveLengthLabel);
+		out.flush();
 
 		out.write(13);
 		out.flush();

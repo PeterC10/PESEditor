@@ -4829,11 +4829,274 @@ class CSVAttributes {
         }
     };
 
+    private final Map<String, Integer> growthTypesByLabel = new HashMap<String, Integer>() {
+        {
+            put("Early", -128);
+            put("Standard/Lasting", -127);
+            put("Standard", -124);
+            put("Late", -123);
+            put("Late/Lasting", -122);
+            put("Early/Lasting", -120);
+        }
+    };
+
+    private final Map<Integer, String> growthTypesByValue = new HashMap<Integer, String>() {
+        {
+            put(-128, "Early");
+            put(-127, "Standard/Lasting");
+            put(-126, "Early");
+            put(-125, "Standard/Lasting");
+            put(-124, "Standard");
+            put(-123, "Late");
+            put(-122, "Late/Lasting");
+            put(-121, "Standard/Lasting");
+            put(-120, "Early/Lasting");
+            put(-119, "Late");
+            put(-118, "Standard/Lasting");
+            put(-117, "Standard");
+            put(-116, "Late");
+            put(-115, "Early");
+            put(-114, "Early/Lasting");
+            put(-113, "Standard/Lasting");
+            put(-112, "Standard");
+            put(-111, "Standard");
+            put(-110, "Early");
+            put(-109, "Standard");
+            put(-108, "Early/Lasting");
+            put(-107, "Early");
+            put(-106, "Standard");
+            put(-105, "Standard/Lasting");
+            put(-104, "Standard");
+            put(-103, "Standard");
+            put(-102, "Early");
+            put(-101, "Standard");
+            put(-100, "Late");
+            put(-99, "Late");
+            put(-97, "Standard");
+            put(-96, "Standard/Lasting");
+            put(-95, "Early/Lasting");
+            put(-94, "Standard");
+            put(-93, "Late");
+            put(-92, "Early");
+            put(-91, "Standard");
+            put(-90, "Early");
+            put(-89, "Late/Lasting");
+            put(-88, "Early");
+            put(-87, "Standard");
+            put(-86, "Early");
+            put(-85, "Late");
+            put(-84, "Early/Lasting");
+            put(-83, "Early/Lasting");
+            put(-82, "Early");
+            put(-81, "Early");
+            put(-80, "Early");
+            put(-79, "Standard");
+            put(-78, "Early");
+            put(-77, "Standard");
+            put(-76, "Standard");
+            put(-75, "Standard");
+            put(-74, "Standard/Lasting");
+            put(-73, "Standard");
+            put(-72, "Late");
+            put(-71, "Late");
+            put(-70, "Standard/Lasting");
+            put(-69, "Standard");
+            put(-68, "Early");
+            put(-67, "Early/Lasting");
+            put(-66, "Early");
+            put(-65, "Standard/Lasting");
+            put(-64, "Standard");
+            put(-63, "Early/Lasting");
+            put(-62, "Standard");
+            put(-61, "Standard/Lasting");
+            put(-60, "Standard/Lasting");
+            put(-59, "Late/Lasting");
+            put(-58, "Standard");
+            put(-57, "Late");
+            put(-56, "Standard");
+            put(-55, "Standard");
+            put(-54, "Early/Lasting");
+            put(-53, "Standard");
+            put(-52, "Early/Lasting");
+            put(-51, "Late/Lasting");
+            put(-50, "Late");
+            put(-49, "Late");
+            put(-48, "Standard");
+            put(-47, "Late");
+            put(-46, "Early");
+            put(-45, "Standard/Lasting");
+            put(-44, "Early");
+            put(-41, "Late");
+            put(-40, "Standard/Lasting");
+            put(-39, "Late");
+            put(-38, "Late");
+            put(-35, "Standard");
+            put(-33, "Standard/Lasting");
+            put(-31, "Late");
+            put(-28, "Late/Lasting");
+            put(-24, "Late");
+            put(-23, "Late");
+            put(-22, "Standard");
+            put(-19, "Standard/Lasting");
+            put(-14, "Early/Lasting");
+            put(-13, "Standard");
+            put(-12, "Early");
+            put(-11, "Standard");
+            put(-9, "Early/Lasting");
+            put(-8, "Early");
+            put(-4, "Late");
+            put(1, "Standard");
+            put(2, "Late");
+            put(3, "Standard");
+            put(4, "Standard");
+            put(5, "Standard/Lasting");
+            put(6, "Standard");
+            put(7, "Standard/Lasting");
+            put(8, "Late");
+            put(9, "Early");
+            put(10, "Late/Lasting");
+            put(11, "Standard/Lasting");
+            put(12, "Standard");
+            put(13, "Standard/Lasting");
+            put(14, "Standard/Lasting");
+            put(15, "Standard/Lasting");
+            put(16, "Standard");
+            put(17, "Late");
+            put(18, "Standard");
+            put(19, "Standard");
+            put(20, "Standard");
+            put(21, "Late");
+            put(22, "Late");
+            put(23, "Standard/Lasting");
+            put(24, "Late/Lasting");
+            put(25, "Early/Lasting");
+            put(26, "Standard");
+            put(28, "Standard");
+            put(29, "Standard");
+            put(30, "Standard");
+            put(31, "Standard");
+            put(32, "Standard/Lasting");
+            put(33, "Late");
+            put(34, "Standard/Lasting");
+            put(35, "Late");
+            put(36, "Standard/Lasting");
+            put(37, "Late");
+            put(38, "Standard/Lasting");
+            put(39, "Late");
+            put(40, "Standard");
+            put(41, "Late/Lasting");
+            put(42, "Standard");
+            put(43, "Late");
+            put(44, "Late");
+            put(46, "Late");
+            put(47, "Standard/Lasting");
+            put(48, "Standard/Lasting");
+            put(49, "Early");
+            put(51, "Early/Lasting");
+            put(52, "Standard");
+            put(53, "Standard");
+            put(54, "Standard");
+            put(55, "Standard");
+            put(56, "Standard");
+            put(57, "Standard");
+            put(58, "Standard");
+            put(59, "Standard");
+            put(60, "Standard");
+            put(61, "Standard");
+            put(62, "Standard");
+            put(63, "Standard");
+            put(64, "Late");
+            put(65, "Standard");
+            put(66, "Late");
+            put(67, "Early/Lasting");
+            put(68, "Standard");
+            put(69, "Standard");
+            put(70, "Early/Lasting");
+            put(71, "Late");
+            put(72, "Standard");
+            put(73, "Standard");
+            put(74, "Standard");
+            put(75, "Standard");
+            put(76, "Standard");
+            put(77, "Standard");
+            put(78, "Standard");
+            put(79, "Standard");
+            put(80, "Standard");
+            put(81, "Standard/Lasting");
+            put(82, "Early/Lasting");
+            put(83, "Standard");
+            put(84, "Standard");
+            put(85, "Standard");
+            put(86, "Late");
+            put(87, "Standard");
+            put(88, "Early/Lasting");
+            put(89, "Early/Lasting");
+            put(90, "Late/Lasting");
+            put(91, "Standard/Lasting");
+            put(92, "Standard/Lasting");
+            put(93, "Late");
+            put(94, "Standard");
+            put(95, "Standard");
+            put(96, "Standard/Lasting");
+            put(97, "Standard");
+            put(98, "Late");
+            put(99, "Standard/Lasting");
+            put(100, "Standard");
+            put(101, "Standard");
+            put(102, "Late");
+            put(103, "Late");
+            put(104, "Standard");
+            put(105, "Early");
+            put(106, "Standard");
+            put(107, "Early/Lasting");
+            put(108, "Standard/Lasting");
+            put(109, "Late");
+            put(110, "Standard/Lasting");
+            put(111, "Late");
+            put(112, "Standard");
+            put(113, "Standard/Lasting");
+            put(114, "Standard");
+            put(115, "Standard");
+            put(116, "Standard");
+            put(117, "Late");
+            put(118, "Early");
+            put(119, "Standard");
+            put(120, "Standard");
+            put(121, "Early/Lasting");
+            put(122, "Standard");
+            put(123, "Early");
+            put(124, "Early");
+            put(125, "Standard");
+            put(126, "Early");
+            put(127, "Early/Lasting");
+        }
+    };
+
+    private final String defaultGrowthTypeLabel = "Standard";
+
+    private final int defaultGrowthTypeVal = 0;
+
     /**
      * @return the wristbandVals
      */
     public int[] getWristbandVals() {
         return wristbandVals;
+    }
+
+    public int getDefaultGrowthTypeVal() {
+        return defaultGrowthTypeVal;
+    }
+
+    public String getDefaultGrowthTypeLabel() {
+        return defaultGrowthTypeLabel;
+    }
+
+    public Map<Integer, String> getGrowthTypesByValue() {
+        return growthTypesByValue;
+    }
+
+    public Map<String, Integer> getGrowthTypesByLabel() {
+        return growthTypesByLabel;
     }
 
     public Map<String, Integer> getSpecialFacesByActualNumber() {
@@ -5194,6 +5457,29 @@ class CSVAttributes {
 
     public int getSleeveLengthFacialHairColorValueNoStatic(String sleeveLengthFacialHairColorLabel) {
         return CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
+    }
+    
+    public static String getRGBRLabel(int rgbRValue) {
+        String rgbRLabel = "0";
+
+        // if ((rgbRValue & 1) == 0) {
+        //     even...
+        // }
+        // else {
+        //     odd...
+        // }
+
+        // if (rgbRValue > ){
+
+        // }
+        // else if (rgbRValue == 1){
+
+        // }
+        // else if (rgbRValue == 2){
+            
+        // }
+
+        return rgbRLabel;
     }
     
 }

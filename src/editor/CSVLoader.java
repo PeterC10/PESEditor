@@ -267,6 +267,8 @@ public class CSVLoader {
 	private static String attFaceType = "FACE TYPE";
 	
 	private static String attPresetFaceNumber = "PRESET FACE NUMBER";
+	private static String attGrowthType = "GROWTH TYPE";
+
 	private static String attHeadHeight = "HEAD HEIGHT";
 	private static String attHeadWidth = "HEAD WIDTH";
 	private static String attNeckLength = "NECK LENGTH";
@@ -392,6 +394,7 @@ public class CSVLoader {
 		attSkinColor,
 		attFaceType,
 		attPresetFaceNumber,
+		attGrowthType,
 		attHeadHeight,
 		attHeadWidth,
 		attNeckLength,
@@ -439,6 +442,9 @@ public class CSVLoader {
 	private final Map<String, Integer> eyeColor2TypesByLabel = csvAttributes.getEyeColor2TypesByLabel();
 	private final Map<String, Integer> faceTypesByLabel = csvAttributes.getFaceTypesByLabel();
 	private final Map<String, Integer> specialFacesByActualNumber = csvAttributes.getSpecialFacesByActualNumber();
+	private final Map<String, Integer> growthTypesByLabel = csvAttributes.getGrowthTypesByLabel();
+
+	private final int defaultGrowthTypeVal = csvAttributes.getDefaultGrowthTypeVal();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -1321,6 +1327,15 @@ public class CSVLoader {
 			playerData[97] = (byte)glassesNecklaceTypeVal;
 		}
 
+		String classicNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClassicNumber);
+
+		String growthType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGrowthType);
+		// Don't update growth type for classic players of ML defaults
+		if (!growthType.equals(CSVLoader.attValueNotFound) && (playerId < 4414 || playerId > 4436) && (classicNumber.length() == 0) || classicNumber.equals("0")){
+			int growthTypeVal = growthTypesByLabel.getOrDefault(growthType, defaultGrowthTypeVal);
+			playerData[86] = (byte)growthTypeVal;
+		}
+
 		System.arraycopy(playerData, 0, of.data, ia, 124);
 
 		String internationalNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attInternationalNumber);
@@ -1328,7 +1343,6 @@ public class CSVLoader {
 			readInterStatus(playerId, internationalNumber);
 		}
 
-		String classicNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClassicNumber);
 		if (classicNumber != CSVLoader.attValueNotFound){
 			readClassicStatus(playerId, classicNumber);
 		}
