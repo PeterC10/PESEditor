@@ -443,7 +443,9 @@ public class CSVLoader {
 	private final Map<String, Integer> faceTypesByLabel = csvAttributes.getFaceTypesByLabel();
 	private final Map<String, Integer> specialFacesByActualNumber = csvAttributes.getSpecialFacesByActualNumber();
 	private final Map<String, Integer> growthTypesByLabel = csvAttributes.getGrowthTypesByLabel();
+	private final Map<Integer, String> growthTypesByValue = csvAttributes.getGrowthTypesByValue();
 
+	private final String defaultGrowthTypeLabel = csvAttributes.getDefaultGrowthTypeLabel();
 	private final int defaultGrowthTypeVal = csvAttributes.getDefaultGrowthTypeVal();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
@@ -1330,10 +1332,15 @@ public class CSVLoader {
 		String classicNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClassicNumber);
 
 		String growthType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGrowthType);
-		// Don't update growth type for classic players of ML defaults
+		// Don't update growth type for classic players of ML defaults or players which already have the same growth type
 		if (!growthType.equals(CSVLoader.attValueNotFound) && (playerId < 4414 || playerId > 4436) && (classicNumber.length() == 0) || classicNumber.equals("0")){
-			int growthTypeVal = growthTypesByLabel.getOrDefault(growthType, defaultGrowthTypeVal);
-			playerData[86] = (byte)growthTypeVal;
+			int currentGrowthTypeVal = playerData[86];
+			String currentGrowthTypeLabel = growthTypesByValue.getOrDefault(currentGrowthTypeVal, defaultGrowthTypeLabel);
+
+			if (!growthType.equals(currentGrowthTypeLabel)){
+				int growthTypeVal = growthTypesByLabel.getOrDefault(growthType, defaultGrowthTypeVal);
+				playerData[86] = (byte)growthTypeVal;
+			}
 		}
 
 		System.arraycopy(playerData, 0, of.data, ia, 124);
