@@ -6161,4 +6161,104 @@ class CSVAttributes {
         return head1Values;
     }
 
+    public static String getCheekTypeLabel(int cheekTypeValue) {
+        String cheekTypeLabel = "???";
+
+        if ((cheekTypeValue >= -128 && cheekTypeValue <= -125) || (cheekTypeValue >= -96 && cheekTypeValue <= -93)
+                || (cheekTypeValue >= -64 && cheekTypeValue <= -61) || (cheekTypeValue >= -32 && cheekTypeValue <= -29)
+                || (cheekTypeValue >= 0 && cheekTypeValue <= 3) || (cheekTypeValue >= 32 && cheekTypeValue <= 35)
+                || (cheekTypeValue >= 64 && cheekTypeValue <= 67) || (cheekTypeValue >= 96 && cheekTypeValue <= 99)) {
+            cheekTypeLabel = "1";
+        }
+
+        if ((cheekTypeValue >= -124 && cheekTypeValue <= -121) || (cheekTypeValue >= -92 && cheekTypeValue <= -89)
+                || (cheekTypeValue >= -60 && cheekTypeValue <= -57) || (cheekTypeValue >= -28 && cheekTypeValue <= -25)
+                || (cheekTypeValue >= 4 && cheekTypeValue <= 7) || (cheekTypeValue >= 36 && cheekTypeValue <= 39)
+                || (cheekTypeValue >= 68 && cheekTypeValue <= 71) || (cheekTypeValue >= 100 && cheekTypeValue <= 103)) {
+            cheekTypeLabel = "2";
+        }
+
+        if ((cheekTypeValue >= -120 && cheekTypeValue <= -117) || (cheekTypeValue >= -88 && cheekTypeValue <= -85)
+                || (cheekTypeValue >= -56 && cheekTypeValue <= -53) || (cheekTypeValue >= -24 && cheekTypeValue <= -21)
+                || (cheekTypeValue >= 8 && cheekTypeValue <= 11) || (cheekTypeValue >= 40 && cheekTypeValue <= 43)
+                || (cheekTypeValue >= 72 && cheekTypeValue <= 75) || (cheekTypeValue >= 104 && cheekTypeValue <= 107)) {
+            cheekTypeLabel = "3";
+        }
+
+        if ((cheekTypeValue >= -116 && cheekTypeValue <= -113) || (cheekTypeValue >= -84 && cheekTypeValue <= -81)
+                || (cheekTypeValue >= -52 && cheekTypeValue <= -49) || (cheekTypeValue >= -20 && cheekTypeValue <= -17)
+                || (cheekTypeValue >= 12 && cheekTypeValue <= 15) || (cheekTypeValue >= 44 && cheekTypeValue <= 47)
+                || (cheekTypeValue >= 76 && cheekTypeValue <= 79) || (cheekTypeValue >= 108 && cheekTypeValue <= 111)) {
+            cheekTypeLabel = "4";
+        }
+
+        if ((cheekTypeValue >= -112 && cheekTypeValue <= -109) || (cheekTypeValue >= -80 && cheekTypeValue <= -77)
+                || (cheekTypeValue >= -48 && cheekTypeValue <= -45) || (cheekTypeValue >= -16 && cheekTypeValue <= -13)
+                || (cheekTypeValue >= 16 && cheekTypeValue <= 19) || (cheekTypeValue >= 48 && cheekTypeValue <= 51)
+                || (cheekTypeValue >= 80 && cheekTypeValue <= 83) || (cheekTypeValue >= 112 && cheekTypeValue <= 115)) {
+            cheekTypeLabel = "5";
+        }
+
+        if ((cheekTypeValue >= -108 && cheekTypeValue <= -105) || (cheekTypeValue >= -76 && cheekTypeValue <= -73)
+                || (cheekTypeValue >= -44 && cheekTypeValue <= -41) || (cheekTypeValue >= -12 && cheekTypeValue <= -9)
+                || (cheekTypeValue >= 20 && cheekTypeValue <= 23) || (cheekTypeValue >= 52 && cheekTypeValue <= 55)
+                || (cheekTypeValue >= 84 && cheekTypeValue <= 87) || (cheekTypeValue >= 116 && cheekTypeValue <= 119)) {
+            cheekTypeLabel = "6";
+        }
+
+        if ((cheekTypeValue >= -104 && cheekTypeValue <= -101) || (cheekTypeValue >= -72 && cheekTypeValue <= -69)
+                || (cheekTypeValue >= -40 && cheekTypeValue <= -37) || (cheekTypeValue >= -8 && cheekTypeValue <= -5)
+                || (cheekTypeValue >= 24 && cheekTypeValue <= 27) || (cheekTypeValue >= 56 && cheekTypeValue <= 59)
+                || (cheekTypeValue >= 88 && cheekTypeValue <= 91) || (cheekTypeValue >= 120 && cheekTypeValue <= 123)) {
+            cheekTypeLabel = "7";
+        }
+
+        if ((cheekTypeValue >= -100 && cheekTypeValue <= -97) || (cheekTypeValue >= -68 && cheekTypeValue <= -65)
+                || (cheekTypeValue >= -36 && cheekTypeValue <= -33) || (cheekTypeValue >= -4 && cheekTypeValue <= -1)
+                || (cheekTypeValue >= 28 && cheekTypeValue <= 31) || (cheekTypeValue >= 60 && cheekTypeValue <= 63)
+                || (cheekTypeValue >= 92 && cheekTypeValue <= 95) || (cheekTypeValue >= 124 && cheekTypeValue <= 127)) {
+            cheekTypeLabel = "8";
+        }
+
+        return cheekTypeLabel;
+    }
+
+    public static String getCheekShapeLabel(int cheekShapeValue) {
+        String cheekShapeLabel = "???";
+
+        if (cheekShapeValue >= -32 && cheekShapeValue <= -1) {
+            cheekShapeLabel = "-4";
+        }
+
+        else if (cheekShapeValue >= -64 && cheekShapeValue <= -33) {
+            cheekShapeLabel = "-3";
+        }
+
+        else if (cheekShapeValue >= -96 && cheekShapeValue <= -65) {
+            cheekShapeLabel = "-2";
+        }
+
+        else if (cheekShapeValue >= -128 && cheekShapeValue <= -97) {
+            cheekShapeLabel = "-1";
+        }
+
+        else if (cheekShapeValue >= 96 && cheekShapeValue <= 127) {
+            cheekShapeLabel = "0";
+        }
+
+        else if (cheekShapeValue >= 64 && cheekShapeValue <= 95) {
+            cheekShapeLabel = "1";
+        }
+
+        else if (cheekShapeValue >= 32 && cheekShapeValue <= 63) {
+            cheekShapeLabel = "2";
+        }
+
+        else if (cheekShapeValue >= 0 && cheekShapeValue <= 31) {
+            cheekShapeLabel = "3";
+        }
+
+        return cheekShapeLabel;
+    }
+
 }

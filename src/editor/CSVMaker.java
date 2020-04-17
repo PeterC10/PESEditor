@@ -140,7 +140,8 @@ public class CSVMaker {
 				"BANDANA TYPE", "FACIAL HAIR", "HAIR COLOR TYPE", "HAIR COLOR PATTERN",
 				"FACIAL HAIR COLOR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
 				"EYE COLOR 1", "EYE COLOR 2", "SLEEVE LENGTH",
-				"HEAD POSITION", "NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH", "MOUTH SIZE",
+				"HEAD POSITION", "NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH",
+				"CHEEK TYPE", "CHEEK SHAPE", "MOUTH SIZE",
 				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH" };
 		out.write("ID");
 		out.flush();
@@ -750,6 +751,8 @@ public class CSVMaker {
 		String jawType = CSVAttributes.getJawTypeLabel(playerData[122]);
 		String chinHeight = CSVAttributes.getChinHeightLabel(playerData[122], playerData[123]);
 		String chinWidth = CSVAttributes.getChinWidthLabel(playerData[123]);
+		String cheekType = CSVAttributes.getCheekTypeLabel(playerData[119]);
+		String cheekShape = CSVAttributes.getCheekShapeLabel(playerData[119]);
 
 		out.write(separator);
 		out.flush();
@@ -769,6 +772,16 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 		out.write(noseWidth);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(cheekType);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(cheekShape);
 		out.flush();
 
 		out.write(separator);
