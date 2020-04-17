@@ -5458,6 +5458,8 @@ class CSVAttributes {
     public int getSleeveLengthFacialHairColorValueNoStatic(String sleeveLengthFacialHairColorLabel) {
         return CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
     }
+
+    //TODO: Clean up/simplify nose, jaw, head position and chin methods code
     
     public static String getNoseTypeLabel(int noseTypeValue) {
         String noseTypeLabel = "???";
@@ -5718,7 +5720,7 @@ class CSVAttributes {
     }
 
     public static String getMouthSizeLabel(int mouthSizeValue) {
-        String getMouthSizeLabel = "???";
+        String mouthSizeLabel = "???";
 
         if (mouthSizeValue == -121 || mouthSizeValue == -113 || mouthSizeValue == -105 || mouthSizeValue == -97
                 || mouthSizeValue == -89 || mouthSizeValue == -81 || mouthSizeValue == -73 || mouthSizeValue == -65
@@ -5728,7 +5730,7 @@ class CSVAttributes {
                 || mouthSizeValue == 39 || mouthSizeValue == 47 || mouthSizeValue == 55 || mouthSizeValue == 63
                 || mouthSizeValue == 71 || mouthSizeValue == 79 || mouthSizeValue == 87 || mouthSizeValue == 95
                 || mouthSizeValue == 103 || mouthSizeValue == 111 || mouthSizeValue == 119 || mouthSizeValue == 127) {
-            getMouthSizeLabel = "-4";
+            mouthSizeLabel = "-4";
         }
 
         else if (mouthSizeValue == -122 || mouthSizeValue == -114 || mouthSizeValue == -106 || mouthSizeValue == -98
@@ -5739,7 +5741,7 @@ class CSVAttributes {
                 || mouthSizeValue == 38 || mouthSizeValue == 46 || mouthSizeValue == 54 || mouthSizeValue == 62
                 || mouthSizeValue == 70 || mouthSizeValue == 78 || mouthSizeValue == 86 || mouthSizeValue == 94
                 || mouthSizeValue == 102 || mouthSizeValue == 110 || mouthSizeValue == 118 || mouthSizeValue == 126) {
-            getMouthSizeLabel = "-3";
+            mouthSizeLabel = "-3";
         }
 
         else if (mouthSizeValue == -123 || mouthSizeValue == -115 || mouthSizeValue == -107 || mouthSizeValue == -99
@@ -5750,7 +5752,7 @@ class CSVAttributes {
                 || mouthSizeValue == 37 || mouthSizeValue == 45 || mouthSizeValue == 53 || mouthSizeValue == 61
                 || mouthSizeValue == 69 || mouthSizeValue == 77 || mouthSizeValue == 85 || mouthSizeValue == 93
                 || mouthSizeValue == 101 || mouthSizeValue == 109 || mouthSizeValue == 117 || mouthSizeValue == 125) {
-            getMouthSizeLabel = "-2";
+            mouthSizeLabel = "-2";
         }
 
         else if (mouthSizeValue == -124 || mouthSizeValue == -116 || mouthSizeValue == -108 || mouthSizeValue == -100
@@ -5761,7 +5763,7 @@ class CSVAttributes {
                 || mouthSizeValue == 36 || mouthSizeValue == 44 || mouthSizeValue == 52 || mouthSizeValue == 60
                 || mouthSizeValue == 68 || mouthSizeValue == 76 || mouthSizeValue == 84 || mouthSizeValue == 92
                 || mouthSizeValue == 100 || mouthSizeValue == 108 || mouthSizeValue == 116 || mouthSizeValue == 124) {
-            getMouthSizeLabel = "-1";
+            mouthSizeLabel = "-1";
         }
 
         else if (mouthSizeValue == -125 || mouthSizeValue == -117 || mouthSizeValue == -109 || mouthSizeValue == -101
@@ -5772,7 +5774,7 @@ class CSVAttributes {
                 || mouthSizeValue == 35 || mouthSizeValue == 43 || mouthSizeValue == 51 || mouthSizeValue == 59
                 || mouthSizeValue == 67 || mouthSizeValue == 75 || mouthSizeValue == 83 || mouthSizeValue == 91
                 || mouthSizeValue == 99 || mouthSizeValue == 107 || mouthSizeValue == 115 || mouthSizeValue == 123) {
-            getMouthSizeLabel = "0";
+            mouthSizeLabel = "0";
         }
 
         else if (mouthSizeValue == -126 || mouthSizeValue == -118 || mouthSizeValue == -110 || mouthSizeValue == -102
@@ -5783,7 +5785,7 @@ class CSVAttributes {
                 || mouthSizeValue == 34 || mouthSizeValue == 42 || mouthSizeValue == 50 || mouthSizeValue == 58
                 || mouthSizeValue == 66 || mouthSizeValue == 74 || mouthSizeValue == 82 || mouthSizeValue == 90
                 || mouthSizeValue == 98 || mouthSizeValue == 106 || mouthSizeValue == 114 || mouthSizeValue == 122) {
-            getMouthSizeLabel = "1";
+            mouthSizeLabel = "1";
         }
 
         else if (mouthSizeValue == -127 || mouthSizeValue == -119 || mouthSizeValue == -111 || mouthSizeValue == -103
@@ -5794,7 +5796,7 @@ class CSVAttributes {
                 || mouthSizeValue == 33 || mouthSizeValue == 41 || mouthSizeValue == 49 || mouthSizeValue == 57
                 || mouthSizeValue == 65 || mouthSizeValue == 73 || mouthSizeValue == 81 || mouthSizeValue == 89
                 || mouthSizeValue == 97 || mouthSizeValue == 105 || mouthSizeValue == 113 || mouthSizeValue == 121) {
-            getMouthSizeLabel = "2";
+            mouthSizeLabel = "2";
         }
 
         else if (mouthSizeValue == -128 || mouthSizeValue == -120 || mouthSizeValue == -112 || mouthSizeValue == -104
@@ -5805,10 +5807,175 @@ class CSVAttributes {
                 || mouthSizeValue == 32 || mouthSizeValue == 40 || mouthSizeValue == 48 || mouthSizeValue == 56
                 || mouthSizeValue == 64 || mouthSizeValue == 72 || mouthSizeValue == 80 || mouthSizeValue == 88
                 || mouthSizeValue == 96 || mouthSizeValue == 104 || mouthSizeValue == 112 || mouthSizeValue == 120) {
-            getMouthSizeLabel = "3";
+            mouthSizeLabel = "3";
         }
 
-        return getMouthSizeLabel;
+        return mouthSizeLabel;
     }
-    
+
+    public static String getChinHeightLabel(int chinHeightValueBase, int chinHeightValue) {
+        String chinHeightLabel = "???";
+        Boolean chinHeightValueBaseNegative = chinHeightValueBase < 0;
+
+        if (chinHeightValue == -125 || chinHeightValue == -121 || chinHeightValue == -117 || chinHeightValue == -113
+                || chinHeightValue == -109 || chinHeightValue == -105 || chinHeightValue == -101 || chinHeightValue == -97
+                || chinHeightValue == -93 || chinHeightValue == -89 || chinHeightValue == -85 || chinHeightValue == -81
+                || chinHeightValue == -77 || chinHeightValue == -73 || chinHeightValue == -69 || chinHeightValue == -65
+                || chinHeightValue == -61 || chinHeightValue == -57 || chinHeightValue == -53 || chinHeightValue == -49
+                || chinHeightValue == -45 || chinHeightValue == -41 || chinHeightValue == -37 || chinHeightValue == -33
+                || chinHeightValue == -29 || chinHeightValue == -25 || chinHeightValue == -21 || chinHeightValue == -17
+                || chinHeightValue == -13 || chinHeightValue == -9 || chinHeightValue == -5 || chinHeightValue == -1
+                || chinHeightValue == 3 || chinHeightValue == 7 || chinHeightValue == 11 || chinHeightValue == 15
+                || chinHeightValue == 19 || chinHeightValue == 23 || chinHeightValue == 27 || chinHeightValue == 31
+                || chinHeightValue == 35 || chinHeightValue == 39 || chinHeightValue == 43 || chinHeightValue == 47
+                || chinHeightValue == 51 || chinHeightValue == 55 || chinHeightValue == 59 || chinHeightValue == 63
+                || chinHeightValue == 67 || chinHeightValue == 71 || chinHeightValue == 75 || chinHeightValue == 79
+                || chinHeightValue == 83 || chinHeightValue == 87 || chinHeightValue == 91 || chinHeightValue == 95
+                || chinHeightValue == 99 || chinHeightValue == 103 || chinHeightValue == 107 || chinHeightValue == 111
+                || chinHeightValue == 115 || chinHeightValue == 119 || chinHeightValue == 123 || chinHeightValue == 127) {
+            if (chinHeightValueBaseNegative) {
+                chinHeightLabel = "-4";
+            }
+            else {
+                chinHeightLabel = "-3";
+            }
+        }
+
+        else if (chinHeightValue == -126 || chinHeightValue == -122 || chinHeightValue == -118 || chinHeightValue == -114
+                || chinHeightValue == -110 || chinHeightValue == -106 || chinHeightValue == -102 || chinHeightValue == -98
+                || chinHeightValue == -94 || chinHeightValue == -90 || chinHeightValue == -86 || chinHeightValue == -82
+                || chinHeightValue == -78 || chinHeightValue == -74 || chinHeightValue == -70 || chinHeightValue == -66
+                || chinHeightValue == -62 || chinHeightValue == -58 || chinHeightValue == -54 || chinHeightValue == -50
+                || chinHeightValue == -46 || chinHeightValue == -42 || chinHeightValue == -38 || chinHeightValue == -34
+                || chinHeightValue == -30 || chinHeightValue == -26 || chinHeightValue == -22 || chinHeightValue == -18
+                || chinHeightValue == -14 || chinHeightValue == -10 || chinHeightValue == -6 || chinHeightValue == -2
+                || chinHeightValue == 2 || chinHeightValue == 6 || chinHeightValue == 10 || chinHeightValue == 14
+                || chinHeightValue == 18 || chinHeightValue == 22 || chinHeightValue == 26 || chinHeightValue == 30
+                || chinHeightValue == 34 || chinHeightValue == 38 || chinHeightValue == 42 || chinHeightValue == 46
+                || chinHeightValue == 50 || chinHeightValue == 54 || chinHeightValue == 58 || chinHeightValue == 62
+                || chinHeightValue == 66 || chinHeightValue == 70 || chinHeightValue == 74 || chinHeightValue == 78
+                || chinHeightValue == 82 || chinHeightValue == 86 || chinHeightValue == 90 || chinHeightValue == 94
+                || chinHeightValue == 98 || chinHeightValue == 102 || chinHeightValue == 106 || chinHeightValue == 110
+                || chinHeightValue == 114 || chinHeightValue == 118 || chinHeightValue == 122 || chinHeightValue == 126) {
+            if (chinHeightValueBaseNegative) {
+                chinHeightLabel = "-2";
+            }
+            else {
+                chinHeightLabel = "-1";
+            }
+        }
+
+        else if (chinHeightValue == -127 || chinHeightValue == -123 || chinHeightValue == -119 || chinHeightValue == -115
+                || chinHeightValue == -111 || chinHeightValue == -107 || chinHeightValue == -103 || chinHeightValue == -99
+                || chinHeightValue == -95 || chinHeightValue == -91 || chinHeightValue == -87 || chinHeightValue == -83
+                || chinHeightValue == -79 || chinHeightValue == -75 || chinHeightValue == -71 || chinHeightValue == -67
+                || chinHeightValue == -63 || chinHeightValue == -59 || chinHeightValue == -55 || chinHeightValue == -51
+                || chinHeightValue == -47 || chinHeightValue == -43 || chinHeightValue == -39 || chinHeightValue == -35
+                || chinHeightValue == -31 || chinHeightValue == -27 || chinHeightValue == -23 || chinHeightValue == -19
+                || chinHeightValue == -15 || chinHeightValue == -11 || chinHeightValue == -7 || chinHeightValue == -3
+                || chinHeightValue == 1 || chinHeightValue == 5 || chinHeightValue == 9 || chinHeightValue == 13
+                || chinHeightValue == 17 || chinHeightValue == 21 || chinHeightValue == 25 || chinHeightValue == 29
+                || chinHeightValue == 33 || chinHeightValue == 37 || chinHeightValue == 41 || chinHeightValue == 45
+                || chinHeightValue == 49 || chinHeightValue == 53 || chinHeightValue == 57 || chinHeightValue == 61
+                || chinHeightValue == 65 || chinHeightValue == 69 || chinHeightValue == 73 || chinHeightValue == 77
+                || chinHeightValue == 81 || chinHeightValue == 85 || chinHeightValue == 89 || chinHeightValue == 93
+                || chinHeightValue == 97 || chinHeightValue == 101 || chinHeightValue == 105 || chinHeightValue == 109
+                || chinHeightValue == 113 || chinHeightValue == 117 || chinHeightValue == 121 || chinHeightValue == 125) {
+            if (chinHeightValueBaseNegative) {
+                chinHeightLabel = "0";
+            }
+            else {
+                chinHeightLabel = "1";
+            }
+        }
+
+        else if (chinHeightValue == -128 || chinHeightValue == -124 || chinHeightValue == -120 || chinHeightValue == -116
+                || chinHeightValue == -112 || chinHeightValue == -108 || chinHeightValue == -104 || chinHeightValue == -100
+                || chinHeightValue == -96 || chinHeightValue == -92 || chinHeightValue == -88 || chinHeightValue == -84
+                || chinHeightValue == -80 || chinHeightValue == -76 || chinHeightValue == -72 || chinHeightValue == -68
+                || chinHeightValue == -64 || chinHeightValue == -60 || chinHeightValue == -56 || chinHeightValue == -52
+                || chinHeightValue == -48 || chinHeightValue == -44 || chinHeightValue == -40 || chinHeightValue == -36
+                || chinHeightValue == -32 || chinHeightValue == -28 || chinHeightValue == -24 || chinHeightValue == -20
+                || chinHeightValue == -16 || chinHeightValue == -12 || chinHeightValue == -8 || chinHeightValue == -4
+                || chinHeightValue == 0 || chinHeightValue == 4 || chinHeightValue == 8 || chinHeightValue == 12
+                || chinHeightValue == 16 || chinHeightValue == 20 || chinHeightValue == 24 || chinHeightValue == 28
+                || chinHeightValue == 32 || chinHeightValue == 36 || chinHeightValue == 40 || chinHeightValue == 44
+                || chinHeightValue == 48 || chinHeightValue == 52 || chinHeightValue == 56 || chinHeightValue == 60
+                || chinHeightValue == 64 || chinHeightValue == 68 || chinHeightValue == 72 || chinHeightValue == 76
+                || chinHeightValue == 80 || chinHeightValue == 84 || chinHeightValue == 88 || chinHeightValue == 92
+                || chinHeightValue == 96 || chinHeightValue == 100 || chinHeightValue == 104 || chinHeightValue == 108
+                || chinHeightValue == 112 || chinHeightValue == 116 || chinHeightValue == 120 || chinHeightValue == 124) {
+            if (chinHeightValueBaseNegative) {
+                chinHeightLabel = "2";
+            }
+            else {
+                chinHeightLabel = "3";
+            }
+        }
+        
+        return chinHeightLabel;
+    }
+
+    public static String getChinWidthLabel(int chinWidthValue) {
+        String chinWidthLabel = "???";
+
+        if ((chinWidthValue >= -100 && chinWidthValue <= -97) || (chinWidthValue >= -68 && chinWidthValue <= -65)
+                || (chinWidthValue >= -36 && chinWidthValue <= -33) || (chinWidthValue >= -4 && chinWidthValue <= -1)
+                || (chinWidthValue >= 28 && chinWidthValue <= 31) || (chinWidthValue >= 60 && chinWidthValue <= 63)
+                || (chinWidthValue >= 92 && chinWidthValue <= 95) || (chinWidthValue >= 124 && chinWidthValue <= 127)) {
+            chinWidthLabel = "-4";
+        }
+
+        else if ((chinWidthValue >= -104 && chinWidthValue <= -101) || (chinWidthValue >= -72 && chinWidthValue <= -69)
+                || (chinWidthValue >= -40 && chinWidthValue <= -37) || (chinWidthValue >= -8 && chinWidthValue <= -5)
+                || (chinWidthValue >= 24 && chinWidthValue <= 27) || (chinWidthValue >= 56 && chinWidthValue <= 59)
+                || (chinWidthValue >= 88 && chinWidthValue <= 91) || (chinWidthValue >= 120 && chinWidthValue <= 123)) {
+            chinWidthLabel = "-3";
+        }
+
+        else if ((chinWidthValue >= -108 && chinWidthValue <= -105) || (chinWidthValue >= -76 && chinWidthValue <= -73)
+                || (chinWidthValue >= -44 && chinWidthValue <= -41) || (chinWidthValue >= -12 && chinWidthValue <= -9)
+                || (chinWidthValue >= 20 && chinWidthValue <= 23) || (chinWidthValue >= 52 && chinWidthValue <= 55)
+                || (chinWidthValue >= 84 && chinWidthValue <= 87) || (chinWidthValue >= 116 && chinWidthValue <= 119)) {
+            chinWidthLabel = "-2";
+        }
+
+        else if ((chinWidthValue >= -112 && chinWidthValue <= -109) || (chinWidthValue >= -80 && chinWidthValue <= -77)
+                || (chinWidthValue >= -48 && chinWidthValue <= -45) || (chinWidthValue >= -16 && chinWidthValue <= -13)
+                || (chinWidthValue >= 16 && chinWidthValue <= 19) || (chinWidthValue >= 48 && chinWidthValue <= 51)
+                || (chinWidthValue >= 80 && chinWidthValue <= 83) || (chinWidthValue >= 112 && chinWidthValue <= 115)) {
+            chinWidthLabel = "-1";
+        }
+
+        else if ((chinWidthValue >= -116 && chinWidthValue <= -113) || (chinWidthValue >= -84 && chinWidthValue <= -81)
+                || (chinWidthValue >= -52 && chinWidthValue <= -49) || (chinWidthValue >= -20 && chinWidthValue <= -17)
+                || (chinWidthValue >= 12 && chinWidthValue <= 15) || (chinWidthValue >= 44 && chinWidthValue <= 47)
+                || (chinWidthValue >= 76 && chinWidthValue <= 79) || (chinWidthValue >= 108 && chinWidthValue <= 111)) {
+            chinWidthLabel = "0";
+        }
+
+        else if ((chinWidthValue >= -120 && chinWidthValue <= -117) || (chinWidthValue >= -88 && chinWidthValue <= -85)
+                || (chinWidthValue >= -56 && chinWidthValue <= -53) || (chinWidthValue >= -24 && chinWidthValue <= -21)
+                || (chinWidthValue >= 8 && chinWidthValue <= 11) || (chinWidthValue >= 40 && chinWidthValue <= 43)
+                || (chinWidthValue >= 72 && chinWidthValue <= 75) || (chinWidthValue >= 104 && chinWidthValue <= 107)) {
+            chinWidthLabel = "1";
+        }
+
+        else if ((chinWidthValue >= -124 && chinWidthValue <= -121) || (chinWidthValue >= -92 && chinWidthValue <= -89)
+                || (chinWidthValue >= -60 && chinWidthValue <= -57) || (chinWidthValue >= -28 && chinWidthValue <= -25)
+                || (chinWidthValue >= 4 && chinWidthValue <= 7) || (chinWidthValue >= 36 && chinWidthValue <= 39)
+                || (chinWidthValue >= 68 && chinWidthValue <= 71) || (chinWidthValue >= 100 && chinWidthValue <= 103)) {
+            chinWidthLabel = "2";
+        }
+
+        else if ((chinWidthValue >= -128 && chinWidthValue <= -125) || (chinWidthValue >= -96 && chinWidthValue <= -93)
+                || (chinWidthValue >= -64 && chinWidthValue <= -61) || (chinWidthValue >= -32 && chinWidthValue <= -29)
+                || (chinWidthValue >= 0 && chinWidthValue <= 3) || (chinWidthValue >= 32 && chinWidthValue <= 35)
+                || (chinWidthValue >= 64 && chinWidthValue <= 67) || (chinWidthValue >= 96 && chinWidthValue <= 99)) {
+            chinWidthLabel = "3";
+        }
+        
+        return chinWidthLabel;
+    }
+
 }
