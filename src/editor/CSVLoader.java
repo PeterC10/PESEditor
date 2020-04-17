@@ -306,6 +306,15 @@ public class CSVLoader {
 
 	private static String attSleveLength = "SLEEVE LENGTH";
 
+	private static String attHeadPosition = "HEAD POSITION";
+	private static String attNoseType = "NOSE TYPE";
+	private static String attNoseHeight = "NOSE HEIGHT";
+	private static String attNoseWidth = "NOSE WIDTH";
+	private static String attMouthSize = "MOUTH SIZE";
+	private static String attJawType = "JAW TYPE";
+	private static String attChinHeight = "CHIN HEIGHT";
+	private static String attChinWidth = "CHIN WIDTH";
+
 	private static String[] supportedHeaders = {
 		attId,
 		attName,
@@ -426,6 +435,14 @@ public class CSVLoader {
 		attEyeColor1,
 		attEyeColor2,
 		attSleveLength,
+		attHeadPosition,
+		attNoseType,
+		attNoseHeight,
+		attNoseWidth,
+		attMouthSize,
+		attJawType,
+		attChinHeight,
+		attChinWidth,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -1327,6 +1344,25 @@ public class CSVLoader {
 			String glassesNecklaceTypeKey = glassesTypeLabel + "/" + necklaceTypeLabel;
 			int glassesNecklaceTypeVal = glassesNecklaceOptsByLabel.get(glassesNecklaceTypeKey);
 			playerData[97] = (byte)glassesNecklaceTypeVal;
+		}
+
+		String headPositionLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHeadPosition);
+		String noseTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNoseType);
+		String noseHeightLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNoseHeight);
+		String noseWidthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNoseWidth);
+		String mouthSizeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attMouthSize);
+		String jawTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attJawType);
+		String chinHeightLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attChinHeight);
+		String chinWidthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attChinWidth);
+
+		if (!noseTypeLabel.equals(CSVLoader.attValueNotFound) && !noseWidthLabel.equals(CSVLoader.attValueNotFound) && !mouthSizeLabel.equals(CSVLoader.attValueNotFound)) {
+			int[] head1Values = CSVAttributes.getHead1Values(headPositionLabel, noseTypeLabel, noseHeightLabel, noseWidthLabel, mouthSizeLabel, jawTypeLabel, chinHeightLabel, chinWidthLabel);
+			int val121 = head1Values[0];
+			int val122 = head1Values[1];
+			int val123 = head1Values[2];
+			playerData[121] = (byte)val121;
+			playerData[122] = (byte)val122;
+			playerData[123] = (byte)val123;
 		}
 
 		String classicNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClassicNumber);

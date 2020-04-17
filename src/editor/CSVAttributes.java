@@ -5978,4 +5978,187 @@ class CSVAttributes {
         return chinWidthLabel;
     }
 
+    private static final Map<Integer, Integer> val121NoseWidthBase = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 64);
+            put(1, -128);
+            put(0, -64);
+            put(-1, 0);
+            put(-2, 64);
+            put(-3, -128);
+            put(-4, -64);
+        }
+    };
+
+    private static final Map<Integer, Integer> val121NoseTypeOffset = new HashMap<Integer, Integer>() {
+        {
+            put(1, 0);
+            put(2, 8);
+            put(3, 16);
+            put(4, 24);
+            put(5, 32);
+            put(6, 40);
+            put(7, 48);
+            put(8, 56);
+        }
+    };
+
+    private static final Map<Integer, Integer> val121MouthSizeOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 1);
+            put(1, 2);
+            put(0, 3);
+            put(-1, 4);
+            put(-2, 5);
+            put(-3, 6);
+            put(-4, 7);
+        }
+    };
+
+    private static final Map<Integer, List<Integer>> val122JawTypeBases = new HashMap<Integer, List<Integer>>() {
+        {
+            put(1, new ArrayList<Integer>() {
+                {
+                    add(-128);
+                    add(0);
+                }
+            });
+            put(2, new ArrayList<Integer>() {
+                {
+                    add(-112);
+                    add(16);
+                }
+            });
+            put(3, new ArrayList<Integer>() {
+                {
+                    add(-96);
+                    add(32);
+                }
+            });
+            put(4, new ArrayList<Integer>() {
+                {
+                    add(-80);
+                    add(48);
+                }
+            });
+            put(5, new ArrayList<Integer>() {
+                {
+                    add(-64);
+                    add(64);
+                }
+            });
+            put(6, new ArrayList<Integer>() {
+                {
+                    add(-48);
+                    add(80);
+                }
+            });
+            put(7, new ArrayList<Integer>() {
+                {
+                    add(-32);
+                    add(96);
+                }
+            });
+            put(8, new ArrayList<Integer>() {
+                {
+                    add(-16);
+                    add(112);
+                }
+            });
+        }
+    };
+
+    private static final Map<Integer, Integer> val122NoseHeightOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 2);
+            put(1, 4);
+            put(0, 6);
+            put(-1, 8);
+            put(-2, 10);
+            put(-3, 12);
+            put(-4, 14);
+        }
+    };
+
+    private static final Map<Integer, Integer> val123HeadPositionBase = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 32);
+            put(1, 64);
+            put(0, 96);
+            put(-1, -128);
+            put(-2, -96);
+            put(-3, -64);
+            put(-4, -32);
+        }
+    };
+
+    private static final Map<Integer, Integer> val123ChinWidthOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 4);
+            put(1, 8);
+            put(0, 12);
+            put(-1, 16);
+            put(-2, 20);
+            put(-3, 24);
+            put(-4, 28);
+        }
+    };
+
+    private static final Map<Integer, Integer> val123ChinHeightOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 0);
+            put(1, 1);
+            put(0, 1);
+            put(-1, 2);
+            put(-2, 2);
+            put(-3, 3);
+            put(-4, 3);
+        }
+    };
+
+    //121, 122, 123 values for Head Position, Nose Type, Nose Height, Nose Width, Mouth Size, Jaw Type, Chin Height, Chin Width
+    public static int[] getHead1Values(String headPositionLabel, String noseTypeLabel, String noseHeightLabel,
+            String noseWidthLabel, String mouthSizeLabel, String jawTypeLabel, String chinHeightLabel,
+            String chinWidthLabel) {
+
+        int headPosition = Integer.parseInt(headPositionLabel);
+        int noseType = Integer.parseInt(noseTypeLabel);
+        int noseHeight = Integer.parseInt(noseHeightLabel);
+        int noseWidth = Integer.parseInt(noseWidthLabel);
+        int mouthSize = Integer.parseInt(mouthSizeLabel);
+        int jawType = Integer.parseInt(jawTypeLabel);
+        int chinHeight = Integer.parseInt(chinHeightLabel);
+        int chinWidth = Integer.parseInt(chinWidthLabel);
+
+        int val121 = val121NoseWidthBase.get(noseWidth);
+        val121 += val121NoseTypeOffset.get(noseType);
+        val121 += val121MouthSizeOffset.get(mouthSize);
+
+        List<Integer> jawTypeBases = val122JawTypeBases.get(jawType);
+
+        Boolean chinHeightEven = (chinHeight & 1) == 0;
+        int chinHeightOffset = chinHeightEven ? 0:1;
+        int jawTypeBase = jawTypeBases.get(chinHeightOffset);
+
+        Boolean noseWidthPositive = noseWidth >= 0;
+        int noseWidthPositiveOffset = noseWidthPositive ? 0:1;
+
+        int noseHeightOffset = val122NoseHeightOffset.get(noseHeight) + noseWidthPositiveOffset;
+        int val122 = jawTypeBase + noseHeightOffset;
+
+        int val123 = val123HeadPositionBase.get(headPosition);
+        val123 += val123ChinWidthOffset.get(chinWidth);
+        val123 += val123ChinHeightOffset.get(chinHeight);
+
+        int[] head1Values = {val121, val122, val123};
+        
+        return head1Values;
+    }
+
 }
