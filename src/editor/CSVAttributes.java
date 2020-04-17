@@ -5459,27 +5459,356 @@ class CSVAttributes {
         return CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
     }
     
-    public static String getRGBRLabel(int rgbRValue) {
-        String rgbRLabel = "0";
+    public static String getNoseTypeLabel(int noseTypeValue) {
+        String noseTypeLabel = "???";
 
-        // if ((rgbRValue & 1) == 0) {
-        //     even...
-        // }
-        // else {
-        //     odd...
-        // }
+        if ((noseTypeValue >= -128 && noseTypeValue <= -121) || (noseTypeValue >= -64 && noseTypeValue <= -57)
+                || (noseTypeValue >= 0 && noseTypeValue <= 7) || (noseTypeValue >= 64 && noseTypeValue <= 71)) {
+            noseTypeLabel = "1";
+        }
 
-        // if (rgbRValue > ){
+        else if ((noseTypeValue >= -120 && noseTypeValue <= -113) || (noseTypeValue >= -56 && noseTypeValue <= -49)
+                || (noseTypeValue >= 8 && noseTypeValue <= 15) || (noseTypeValue >= 72 && noseTypeValue <= 79)) {
+            noseTypeLabel = "2";
+        }
 
-        // }
-        // else if (rgbRValue == 1){
+        else if ((noseTypeValue >= -112 && noseTypeValue <= -105) || (noseTypeValue >= -48 && noseTypeValue <= -41)
+                || (noseTypeValue >= 16 && noseTypeValue <= 23) || (noseTypeValue >= 80 && noseTypeValue <= 87)) {
+            noseTypeLabel = "3";
+        }
 
-        // }
-        // else if (rgbRValue == 2){
-            
-        // }
+        else if ((noseTypeValue >= -104 && noseTypeValue <= -97) || (noseTypeValue >= -40 && noseTypeValue <= -33)
+                || (noseTypeValue >= 24 && noseTypeValue <= 31) || (noseTypeValue >= 88 && noseTypeValue <= 95)) {
+            noseTypeLabel = "4";
+        }
 
-        return rgbRLabel;
+        else if ((noseTypeValue >= -96 && noseTypeValue <= -89) || (noseTypeValue >= -32 && noseTypeValue <= -25)
+                || (noseTypeValue >= 32 && noseTypeValue <= 39) || (noseTypeValue >= 96 && noseTypeValue <= 103)) {
+            noseTypeLabel = "5";
+        }
+
+        else if ((noseTypeValue >= -88 && noseTypeValue <= -81) || (noseTypeValue >= -24 && noseTypeValue <= -17)
+                || (noseTypeValue >= 40 && noseTypeValue <= 47) || (noseTypeValue >= 104 && noseTypeValue <= 111)) {
+            noseTypeLabel = "6";
+        }
+
+        else if ((noseTypeValue >= -80 && noseTypeValue <= -73) || (noseTypeValue >= -16 && noseTypeValue <= -9)
+                || (noseTypeValue >= 48 && noseTypeValue <= 55) || (noseTypeValue >= 112 && noseTypeValue <= 119)) {
+            noseTypeLabel = "7";
+        }
+
+        else if ((noseTypeValue >= -72 && noseTypeValue <= -65) || (noseTypeValue >= -8 && noseTypeValue <= -1)
+                || (noseTypeValue >= 56 && noseTypeValue <= 63) || (noseTypeValue >= 120 && noseTypeValue <= 127)) {
+            noseTypeLabel = "8";
+        }
+
+        return noseTypeLabel;
+    }
+
+    public static String getJawTypeLabel(int jawTypeValue) {
+        String jawTypeLabel = "???";
+
+        if ((jawTypeValue >= -128 && jawTypeValue <= -113) || (jawTypeValue >= 0 && jawTypeValue <= 15)) {
+            jawTypeLabel = "1";
+        }
+
+        else if ((jawTypeValue >= -112 && jawTypeValue <= -97) || (jawTypeValue >= 16 && jawTypeValue <= 31)) {
+            jawTypeLabel = "2";
+        }
+
+        else if ((jawTypeValue >= -96 && jawTypeValue <= -81) || (jawTypeValue >= 32 && jawTypeValue <= 47)) {
+            jawTypeLabel = "3";
+        }
+
+        else if ((jawTypeValue >= -80 && jawTypeValue <= -65) || (jawTypeValue >= 48 && jawTypeValue <= 63)) {
+            jawTypeLabel = "4";
+        }
+
+        else if ((jawTypeValue >= -64 && jawTypeValue <= -49) || (jawTypeValue >= 64 && jawTypeValue <= 79)) {
+            jawTypeLabel = "5";
+        }
+
+        else if ((jawTypeValue >= -48 && jawTypeValue <= -33) || (jawTypeValue >= 80 && jawTypeValue <= 95)) {
+            jawTypeLabel = "6";
+        }
+
+        else if ((jawTypeValue >= -32 && jawTypeValue <= -17) || (jawTypeValue >= 96 && jawTypeValue <= 111)) {
+            jawTypeLabel = "7";
+        }
+
+        else if ((jawTypeValue >= -16 && jawTypeValue <= -1) || (jawTypeValue >= 112 && jawTypeValue <= 127)) {
+            jawTypeLabel = "8";
+        }
+
+        return jawTypeLabel;
+    }
+
+    public static String getHeadPositionLabel(int headPositionValue) {
+        String headPositionLabel = "???";
+
+        if (headPositionValue >= -32 && headPositionValue <= -1) {
+            headPositionLabel = "-4";
+        }
+
+        else if (headPositionValue >= -64 && headPositionValue <= -33) {
+            headPositionLabel = "-3";
+        }
+
+        else if (headPositionValue >= -96 && headPositionValue <= -65) {
+            headPositionLabel = "-2";
+        }
+
+        else if (headPositionValue >= -128 && headPositionValue <= -97) {
+            headPositionLabel = "-1";
+        }
+
+        else if (headPositionValue >= 96 && headPositionValue <= 127) {
+            headPositionLabel = "0";
+        }
+
+        else if (headPositionValue >= 64 && headPositionValue <= 95) {
+            headPositionLabel = "1";
+        }
+
+        else if (headPositionValue >= 32 && headPositionValue <= 63) {
+            headPositionLabel = "2";
+        }
+
+        else if (headPositionValue >= 0 && headPositionValue <= 31) {
+            headPositionLabel = "3";
+        }
+
+        return headPositionLabel;
+    }
+
+    public static String getNoseHeightLabel(int noseHeightValue) {
+        String noseHeightLabel = "???";
+
+        if (noseHeightValue == -114 || noseHeightValue == -113 || noseHeightValue == -98 || noseHeightValue == -97
+                || noseHeightValue == -82 || noseHeightValue == -81 || noseHeightValue == -66 || noseHeightValue == -65
+                || noseHeightValue == -50 || noseHeightValue == -49 || noseHeightValue == -34 || noseHeightValue == -33
+                || noseHeightValue == -18 || noseHeightValue == -17 || noseHeightValue == -2 || noseHeightValue == -1
+                || noseHeightValue == 14 || noseHeightValue == 15 || noseHeightValue == 30 || noseHeightValue == 31
+                || noseHeightValue == 46 || noseHeightValue == 47 || noseHeightValue == 62 || noseHeightValue == 63
+                || noseHeightValue == 78 || noseHeightValue == 79 || noseHeightValue == 94 || noseHeightValue == 95
+                || noseHeightValue == 110 || noseHeightValue == 111 || noseHeightValue == 126 || noseHeightValue == 127) {
+            noseHeightLabel = "-4";
+        }
+
+        else if (noseHeightValue == -116 || noseHeightValue == -115 || noseHeightValue == -100 || noseHeightValue == -99
+                || noseHeightValue == -84 || noseHeightValue == -83 || noseHeightValue == -68 || noseHeightValue == -67
+                || noseHeightValue == -52 || noseHeightValue == -51 || noseHeightValue == -36 || noseHeightValue == -35
+                || noseHeightValue == -20 || noseHeightValue == -19 || noseHeightValue == -4 || noseHeightValue == -3
+                || noseHeightValue == 12 || noseHeightValue == 13 || noseHeightValue == 28 || noseHeightValue == 29
+                || noseHeightValue == 44 || noseHeightValue == 45 || noseHeightValue == 60 || noseHeightValue == 61
+                || noseHeightValue == 76 || noseHeightValue == 77 || noseHeightValue == 92 || noseHeightValue == 93
+                || noseHeightValue == 108 || noseHeightValue == 109 || noseHeightValue == 124 || noseHeightValue == 125) {
+            noseHeightLabel = "-3";
+        }
+
+        else if (noseHeightValue == -118 || noseHeightValue == -117 || noseHeightValue == -102 || noseHeightValue == -101
+                || noseHeightValue == -86 || noseHeightValue == -85 || noseHeightValue == -70 || noseHeightValue == -69
+                || noseHeightValue == -54 || noseHeightValue == -53 || noseHeightValue == -38 || noseHeightValue == -37
+                || noseHeightValue == -22 || noseHeightValue == -21 || noseHeightValue == -6 || noseHeightValue == -5
+                || noseHeightValue == 10 || noseHeightValue == 11 || noseHeightValue == 26 || noseHeightValue == 27
+                || noseHeightValue == 42 || noseHeightValue == 43 || noseHeightValue == 58 || noseHeightValue == 59
+                || noseHeightValue == 74 || noseHeightValue == 75 || noseHeightValue == 90 || noseHeightValue == 91
+                || noseHeightValue == 106 || noseHeightValue == 107 || noseHeightValue == 122 || noseHeightValue == 123) {
+            noseHeightLabel = "-2";
+        }
+
+        else if (noseHeightValue == -120 || noseHeightValue == -119 || noseHeightValue == -104 || noseHeightValue == -103
+                || noseHeightValue == -88 || noseHeightValue == -87 || noseHeightValue == -72 || noseHeightValue == -71
+                || noseHeightValue == -56 || noseHeightValue == -55 || noseHeightValue == -40 || noseHeightValue == -39
+                || noseHeightValue == -24 || noseHeightValue == -23 || noseHeightValue == -8 || noseHeightValue == -7
+                || noseHeightValue == 8 || noseHeightValue == 9 || noseHeightValue == 24 || noseHeightValue == 25
+                || noseHeightValue == 40 || noseHeightValue == 41 || noseHeightValue == 56 || noseHeightValue == 57
+                || noseHeightValue == 72 || noseHeightValue == 73 || noseHeightValue == 88 || noseHeightValue == 89
+                || noseHeightValue == 104 || noseHeightValue == 105 || noseHeightValue == 120 || noseHeightValue == 121) {
+            noseHeightLabel = "-1";
+        }
+
+        else if (noseHeightValue == -122 || noseHeightValue == -121 || noseHeightValue == -106 || noseHeightValue == -105
+                || noseHeightValue == -90 || noseHeightValue == -89 || noseHeightValue == -74 || noseHeightValue == -73
+                || noseHeightValue == -58 || noseHeightValue == -57 || noseHeightValue == -42 || noseHeightValue == -41
+                || noseHeightValue == -26 || noseHeightValue == -25 || noseHeightValue == -10 || noseHeightValue == -9
+                || noseHeightValue == 6 || noseHeightValue == 7 || noseHeightValue == 22 || noseHeightValue == 23
+                || noseHeightValue == 38 || noseHeightValue == 39 || noseHeightValue == 54 || noseHeightValue == 55
+                || noseHeightValue == 70 || noseHeightValue == 71 || noseHeightValue == 86 || noseHeightValue == 87
+                || noseHeightValue == 102 || noseHeightValue == 103 || noseHeightValue == 118 || noseHeightValue == 119) {
+            noseHeightLabel = "0";
+        }
+
+        else if (noseHeightValue == -124 || noseHeightValue == -123 || noseHeightValue == -108 || noseHeightValue == -107
+                || noseHeightValue == -92 || noseHeightValue == -91 || noseHeightValue == -76 || noseHeightValue == -75
+                || noseHeightValue == -60 || noseHeightValue == -59 || noseHeightValue == -44 || noseHeightValue == -43
+                || noseHeightValue == -28 || noseHeightValue == -27 || noseHeightValue == -12 || noseHeightValue == -11
+                || noseHeightValue == 4 || noseHeightValue == 5 || noseHeightValue == 20 || noseHeightValue == 21
+                || noseHeightValue == 36 || noseHeightValue == 37 || noseHeightValue == 52 || noseHeightValue == 53
+                || noseHeightValue == 68 || noseHeightValue == 69 || noseHeightValue == 84 || noseHeightValue == 85
+                || noseHeightValue == 100 || noseHeightValue == 101 || noseHeightValue == 116 || noseHeightValue == 117) {
+            noseHeightLabel = "1";
+        }
+
+        else if (noseHeightValue == -126 || noseHeightValue == -125 || noseHeightValue == -110 || noseHeightValue == -109
+                || noseHeightValue == -94 || noseHeightValue == -93 || noseHeightValue == -78 || noseHeightValue == -77
+                || noseHeightValue == -62 || noseHeightValue == -61 || noseHeightValue == -46 || noseHeightValue == -45
+                || noseHeightValue == -30 || noseHeightValue == -29 || noseHeightValue == -14 || noseHeightValue == -13
+                || noseHeightValue == 2 || noseHeightValue == 3 || noseHeightValue == 18 || noseHeightValue == 19
+                || noseHeightValue == 34 || noseHeightValue == 35 || noseHeightValue == 50 || noseHeightValue == 51
+                || noseHeightValue == 66 || noseHeightValue == 67 || noseHeightValue == 82 || noseHeightValue == 83
+                || noseHeightValue == 98 || noseHeightValue == 99 || noseHeightValue == 114 || noseHeightValue == 115) {
+            noseHeightLabel = "2";
+        }
+
+        else if (noseHeightValue == -128 || noseHeightValue == -127 || noseHeightValue == -112 || noseHeightValue == -111
+                || noseHeightValue == -96 || noseHeightValue == -95 || noseHeightValue == -80 || noseHeightValue == -79
+                || noseHeightValue == -64 || noseHeightValue == -63 || noseHeightValue == -48 || noseHeightValue == -47
+                || noseHeightValue == -32 || noseHeightValue == -31 || noseHeightValue == -16 || noseHeightValue == -15
+                || noseHeightValue == 0 || noseHeightValue == 1 || noseHeightValue == 16 || noseHeightValue == 17
+                || noseHeightValue == 32 || noseHeightValue == 33 || noseHeightValue == 48 || noseHeightValue == 49
+                || noseHeightValue == 64 || noseHeightValue == 65 || noseHeightValue == 80 || noseHeightValue == 81
+                || noseHeightValue == 96 || noseHeightValue == 97 || noseHeightValue == 112 || noseHeightValue == 113) {
+            noseHeightLabel = "3";
+        }
+
+        return noseHeightLabel;
+    }
+
+    public static String getNoseWidthLabel(int noseWidthValue, int noseWidthValueOther) {
+        String noseWidthLabel = "???";
+        Boolean otherValueEven = (noseWidthValueOther & 1) == 0;
+
+        if (otherValueEven) {
+            if (noseWidthValue >= -64 && noseWidthValue <= -1) {
+                noseWidthLabel = "0";
+            }
+    
+            else if (noseWidthValue >= -128 && noseWidthValue <= -65) {
+                noseWidthLabel = "1";
+            }
+    
+            else if (noseWidthValue >= 64 && noseWidthValue <= 127) {
+                noseWidthLabel = "2";
+            }
+    
+            else if (noseWidthValue >= 0 && noseWidthValue <= 63) {
+                noseWidthLabel = "3";
+            }
+        }
+        else {
+            if (noseWidthValue >= -64 && noseWidthValue <= -1) {
+                noseWidthLabel = "-4";
+            }
+    
+            else if (noseWidthValue >= -128 && noseWidthValue <= -65) {
+                noseWidthLabel = "-3";
+            }
+    
+            else if (noseWidthValue >= 64 && noseWidthValue <= 127) {
+                noseWidthLabel = "-2";
+            }
+    
+            else if (noseWidthValue >= 0 && noseWidthValue <= 63) {
+                noseWidthLabel = "-1";
+            }
+        }
+
+        return noseWidthLabel;
+    }
+
+    public static String getMouthSizeLabel(int mouthSizeValue) {
+        String getMouthSizeLabel = "???";
+
+        if (mouthSizeValue == -121 || mouthSizeValue == -113 || mouthSizeValue == -105 || mouthSizeValue == -97
+                || mouthSizeValue == -89 || mouthSizeValue == -81 || mouthSizeValue == -73 || mouthSizeValue == -65
+                || mouthSizeValue == -57 || mouthSizeValue == -49 || mouthSizeValue == -41 || mouthSizeValue == -33
+                || mouthSizeValue == -25 || mouthSizeValue == -17 || mouthSizeValue == -9 || mouthSizeValue == -1
+                || mouthSizeValue == 7 || mouthSizeValue == 15 || mouthSizeValue == 23 || mouthSizeValue == 31
+                || mouthSizeValue == 39 || mouthSizeValue == 47 || mouthSizeValue == 55 || mouthSizeValue == 63
+                || mouthSizeValue == 71 || mouthSizeValue == 79 || mouthSizeValue == 87 || mouthSizeValue == 95
+                || mouthSizeValue == 103 || mouthSizeValue == 111 || mouthSizeValue == 119 || mouthSizeValue == 127) {
+            getMouthSizeLabel = "-4";
+        }
+
+        else if (mouthSizeValue == -122 || mouthSizeValue == -114 || mouthSizeValue == -106 || mouthSizeValue == -98
+                || mouthSizeValue == -90 || mouthSizeValue == -82 || mouthSizeValue == -74 || mouthSizeValue == -66
+                || mouthSizeValue == -58 || mouthSizeValue == -50 || mouthSizeValue == -42 || mouthSizeValue == -34
+                || mouthSizeValue == -26 || mouthSizeValue == -18 || mouthSizeValue == -10 || mouthSizeValue == -2
+                || mouthSizeValue == 6 || mouthSizeValue == 14 || mouthSizeValue == 22 || mouthSizeValue == 30
+                || mouthSizeValue == 38 || mouthSizeValue == 46 || mouthSizeValue == 54 || mouthSizeValue == 62
+                || mouthSizeValue == 70 || mouthSizeValue == 78 || mouthSizeValue == 86 || mouthSizeValue == 94
+                || mouthSizeValue == 102 || mouthSizeValue == 110 || mouthSizeValue == 118 || mouthSizeValue == 126) {
+            getMouthSizeLabel = "-3";
+        }
+
+        else if (mouthSizeValue == -123 || mouthSizeValue == -115 || mouthSizeValue == -107 || mouthSizeValue == -99
+                || mouthSizeValue == -91 || mouthSizeValue == -83 || mouthSizeValue == -75 || mouthSizeValue == -67
+                || mouthSizeValue == -59 || mouthSizeValue == -51 || mouthSizeValue == -43 || mouthSizeValue == -35
+                || mouthSizeValue == -27 || mouthSizeValue == -19 || mouthSizeValue == -11 || mouthSizeValue == -3
+                || mouthSizeValue == 5 || mouthSizeValue == 13 || mouthSizeValue == 21 || mouthSizeValue == 29
+                || mouthSizeValue == 37 || mouthSizeValue == 45 || mouthSizeValue == 53 || mouthSizeValue == 61
+                || mouthSizeValue == 69 || mouthSizeValue == 77 || mouthSizeValue == 85 || mouthSizeValue == 93
+                || mouthSizeValue == 101 || mouthSizeValue == 109 || mouthSizeValue == 117 || mouthSizeValue == 125) {
+            getMouthSizeLabel = "-2";
+        }
+
+        else if (mouthSizeValue == -124 || mouthSizeValue == -116 || mouthSizeValue == -108 || mouthSizeValue == -100
+                || mouthSizeValue == -92 || mouthSizeValue == -84 || mouthSizeValue == -76 || mouthSizeValue == -68
+                || mouthSizeValue == -60 || mouthSizeValue == -52 || mouthSizeValue == -44 || mouthSizeValue == -36
+                || mouthSizeValue == -28 || mouthSizeValue == -20 || mouthSizeValue == -12 || mouthSizeValue == -4
+                || mouthSizeValue == 4 || mouthSizeValue == 12 || mouthSizeValue == 20 || mouthSizeValue == 28
+                || mouthSizeValue == 36 || mouthSizeValue == 44 || mouthSizeValue == 52 || mouthSizeValue == 60
+                || mouthSizeValue == 68 || mouthSizeValue == 76 || mouthSizeValue == 84 || mouthSizeValue == 92
+                || mouthSizeValue == 100 || mouthSizeValue == 108 || mouthSizeValue == 116 || mouthSizeValue == 124) {
+            getMouthSizeLabel = "-1";
+        }
+
+        else if (mouthSizeValue == -125 || mouthSizeValue == -117 || mouthSizeValue == -109 || mouthSizeValue == -101
+                || mouthSizeValue == -93 || mouthSizeValue == -85 || mouthSizeValue == -77 || mouthSizeValue == -69
+                || mouthSizeValue == -61 || mouthSizeValue == -53 || mouthSizeValue == -45 || mouthSizeValue == -37
+                || mouthSizeValue == -29 || mouthSizeValue == -21 || mouthSizeValue == -13 || mouthSizeValue == -5
+                || mouthSizeValue == 3 || mouthSizeValue == 11 || mouthSizeValue == 19 || mouthSizeValue == 27
+                || mouthSizeValue == 35 || mouthSizeValue == 43 || mouthSizeValue == 51 || mouthSizeValue == 59
+                || mouthSizeValue == 67 || mouthSizeValue == 75 || mouthSizeValue == 83 || mouthSizeValue == 91
+                || mouthSizeValue == 99 || mouthSizeValue == 107 || mouthSizeValue == 115 || mouthSizeValue == 123) {
+            getMouthSizeLabel = "0";
+        }
+
+        else if (mouthSizeValue == -126 || mouthSizeValue == -118 || mouthSizeValue == -110 || mouthSizeValue == -102
+                || mouthSizeValue == -94 || mouthSizeValue == -86 || mouthSizeValue == -78 || mouthSizeValue == -70
+                || mouthSizeValue == -62 || mouthSizeValue == -54 || mouthSizeValue == -46 || mouthSizeValue == -38
+                || mouthSizeValue == -30 || mouthSizeValue == -22 || mouthSizeValue == -14 || mouthSizeValue == -6
+                || mouthSizeValue == 2 || mouthSizeValue == 10 || mouthSizeValue == 18 || mouthSizeValue == 26
+                || mouthSizeValue == 34 || mouthSizeValue == 42 || mouthSizeValue == 50 || mouthSizeValue == 58
+                || mouthSizeValue == 66 || mouthSizeValue == 74 || mouthSizeValue == 82 || mouthSizeValue == 90
+                || mouthSizeValue == 98 || mouthSizeValue == 106 || mouthSizeValue == 114 || mouthSizeValue == 122) {
+            getMouthSizeLabel = "1";
+        }
+
+        else if (mouthSizeValue == -127 || mouthSizeValue == -119 || mouthSizeValue == -111 || mouthSizeValue == -103
+                || mouthSizeValue == -95 || mouthSizeValue == -87 || mouthSizeValue == -79 || mouthSizeValue == -71
+                || mouthSizeValue == -63 || mouthSizeValue == -55 || mouthSizeValue == -47 || mouthSizeValue == -39
+                || mouthSizeValue == -31 || mouthSizeValue == -23 || mouthSizeValue == -15 || mouthSizeValue == -7
+                || mouthSizeValue == 1 || mouthSizeValue == 9 || mouthSizeValue == 17 || mouthSizeValue == 25
+                || mouthSizeValue == 33 || mouthSizeValue == 41 || mouthSizeValue == 49 || mouthSizeValue == 57
+                || mouthSizeValue == 65 || mouthSizeValue == 73 || mouthSizeValue == 81 || mouthSizeValue == 89
+                || mouthSizeValue == 97 || mouthSizeValue == 105 || mouthSizeValue == 113 || mouthSizeValue == 121) {
+            getMouthSizeLabel = "2";
+        }
+
+        else if (mouthSizeValue == -128 || mouthSizeValue == -120 || mouthSizeValue == -112 || mouthSizeValue == -104
+                || mouthSizeValue == -96 || mouthSizeValue == -88 || mouthSizeValue == -80 || mouthSizeValue == -72
+                || mouthSizeValue == -64 || mouthSizeValue == -56 || mouthSizeValue == -48 || mouthSizeValue == -40
+                || mouthSizeValue == -32 || mouthSizeValue == -24 || mouthSizeValue == -16 || mouthSizeValue == -8
+                || mouthSizeValue == 0 || mouthSizeValue == 8 || mouthSizeValue == 16 || mouthSizeValue == 24
+                || mouthSizeValue == 32 || mouthSizeValue == 40 || mouthSizeValue == 48 || mouthSizeValue == 56
+                || mouthSizeValue == 64 || mouthSizeValue == 72 || mouthSizeValue == 80 || mouthSizeValue == 88
+                || mouthSizeValue == 96 || mouthSizeValue == 104 || mouthSizeValue == 112 || mouthSizeValue == 120) {
+            getMouthSizeLabel = "3";
+        }
+
+        return getMouthSizeLabel;
     }
     
 }
