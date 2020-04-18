@@ -140,8 +140,8 @@ public class CSVMaker {
 				"BANDANA TYPE", "FACIAL HAIR", "HAIR COLOR TYPE", "HAIR COLOR PATTERN",
 				"FACIAL HAIR COLOR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
 				"EYE COLOR 1", "EYE COLOR 2", "SLEEVE LENGTH",
-				"HEAD POSITION", "BROWS ANGLE", "BROWS HEIGHT", "EYEBROW SPACING",
-				"EYES ANGLE", "EYES LENGTH", "EYES WIDTH",
+				"HEAD POSITION", "BROWS TYPE", "BROWS ANGLE", "BROWS HEIGHT", "EYEBROW SPACING",
+				"EYES POSITION", "EYES ANGLE", "EYES LENGTH", "EYES WIDTH",
 				"NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH", "CHEEK TYPE", "CHEEK SHAPE", 
 				"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
 				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH" };
@@ -758,15 +758,22 @@ public class CSVMaker {
 		String browsHeight = CSVAttributes.getBrowsHeightLabel(playerData[118]);
 		String eyebrowSpacing = CSVAttributes.getEyebrowSpacingLabel(playerData[118]);
 		String browsAngle = CSVAttributes.getBrowsAngleLabel(playerData[118], playerData[119]);
-		String eyesAngleLabel = CSVAttributes.getEyesAngleLabel(playerData[117]);
-		String eyesLengthLabel = CSVAttributes.getEyesLengthLabel(playerData[117]);
-		String eysWidthLabel = CSVAttributes.getEyesWidthLabel(playerData[117], playerData[118]);
+		String eyesAngle = CSVAttributes.getEyesAngleLabel(playerData[117]);
+		String eyesLength = CSVAttributes.getEyesLengthLabel(playerData[117]);
+		String eysWidth = CSVAttributes.getEyesWidthLabel(playerData[117], playerData[118]);
 		String mouthType = CSVAttributes.getMouthTypeLabel(playerData[120]);
 		String mouthPosition = CSVAttributes.getMouthPositionLabel(playerData[120]);
+		String browsType = CSVAttributes.getBrowsTypeLabel(playerData[116]);
+		String eyesPosition = CSVAttributes.getEyesPositionLabel(playerData[116]);
 
 		out.write(separator);
 		out.flush();
 		out.write(headPosition);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(browsType);
 		out.flush();
 
 		out.write(separator);
@@ -786,17 +793,22 @@ public class CSVMaker {
 
 		out.write(separator);
 		out.flush();
-		out.write(eyesAngleLabel);
+		out.write(eyesPosition);
 		out.flush();
 
 		out.write(separator);
 		out.flush();
-		out.write(eyesLengthLabel);
+		out.write(eyesAngle);
 		out.flush();
 
 		out.write(separator);
 		out.flush();
-		out.write(eysWidthLabel);
+		out.write(eyesLength);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(eysWidth);
 		out.flush();
 
 		out.write(separator);
