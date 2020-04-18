@@ -6261,4 +6261,136 @@ class CSVAttributes {
         return cheekShapeLabel;
     }
 
+    public static String getBrowsHeightLabel(int browsHeightValue) {
+        String browsHeightLabel = "???";
+
+        if (browsHeightValue == -114 || browsHeightValue == -113 || browsHeightValue == -98 || browsHeightValue == -97
+                || browsHeightValue == -82 || browsHeightValue == -81 || browsHeightValue == -66 || browsHeightValue == -65
+                || browsHeightValue == -50 || browsHeightValue == -49 || browsHeightValue == -34 || browsHeightValue == -33
+                || browsHeightValue == -18 || browsHeightValue == -17 || browsHeightValue == -2 || browsHeightValue == -1
+                || browsHeightValue == 14 || browsHeightValue == 15 || browsHeightValue == 30 || browsHeightValue == 31
+                || browsHeightValue == 46 || browsHeightValue == 47 || browsHeightValue == 62 || browsHeightValue == 63
+                || browsHeightValue == 78 || browsHeightValue == 79 || browsHeightValue == 94 || browsHeightValue == 95
+                || browsHeightValue == 110 || browsHeightValue == 111 || browsHeightValue == 126 || browsHeightValue == 127) {
+            browsHeightLabel = "-4";
+        }
+
+        else if (browsHeightValue == -116 || browsHeightValue == -115 || browsHeightValue == -100 || browsHeightValue == -99
+                || browsHeightValue == -84 || browsHeightValue == -83 || browsHeightValue == -68 || browsHeightValue == -67
+                || browsHeightValue == -52 || browsHeightValue == -51 || browsHeightValue == -36 || browsHeightValue == -35
+                || browsHeightValue == -20 || browsHeightValue == -19 || browsHeightValue == -4 || browsHeightValue == -3
+                || browsHeightValue == 12 || browsHeightValue == 13 || browsHeightValue == 28 || browsHeightValue == 29
+                || browsHeightValue == 44 || browsHeightValue == 45 || browsHeightValue == 60 || browsHeightValue == 61
+                || browsHeightValue == 76 || browsHeightValue == 77 || browsHeightValue == 92 || browsHeightValue == 93
+                || browsHeightValue == 108 || browsHeightValue == 109 || browsHeightValue == 124 || browsHeightValue == 125) {
+            browsHeightLabel = "-3";
+        }
+
+        else if (browsHeightValue == -118 || browsHeightValue == -117 || browsHeightValue == -102 || browsHeightValue == -101
+                || browsHeightValue == -86 || browsHeightValue == -85 || browsHeightValue == -70 || browsHeightValue == -69
+                || browsHeightValue == -54 || browsHeightValue == -53 || browsHeightValue == -38 || browsHeightValue == -37
+                || browsHeightValue == -22 || browsHeightValue == -21 || browsHeightValue == -6 || browsHeightValue == -5
+                || browsHeightValue == 10 || browsHeightValue == 11 || browsHeightValue == 26 || browsHeightValue == 27
+                || browsHeightValue == 42 || browsHeightValue == 43 || browsHeightValue == 58 || browsHeightValue == 59
+                || browsHeightValue == 74 || browsHeightValue == 75 || browsHeightValue == 90 || browsHeightValue == 91
+                || browsHeightValue == 106 || browsHeightValue == 107 || browsHeightValue == 122 || browsHeightValue == 123) {
+            browsHeightLabel = "-2";
+        }
+
+        else if (browsHeightValue == -120 || browsHeightValue == -119 || browsHeightValue == -104 || browsHeightValue == -103
+                || browsHeightValue == -88 || browsHeightValue == -87 || browsHeightValue == -72 || browsHeightValue == -71
+                || browsHeightValue == -56 || browsHeightValue == -55 || browsHeightValue == -40 || browsHeightValue == -39
+                || browsHeightValue == -24 || browsHeightValue == -23 || browsHeightValue == -8 || browsHeightValue == -7
+                || browsHeightValue == 8 || browsHeightValue == 9 || browsHeightValue == 24 || browsHeightValue == 25
+                || browsHeightValue == 40 || browsHeightValue == 41 || browsHeightValue == 56 || browsHeightValue == 57
+                || browsHeightValue == 72 || browsHeightValue == 73 || browsHeightValue == 88 || browsHeightValue == 89
+                || browsHeightValue == 104 || browsHeightValue == 105 || browsHeightValue == 120 || browsHeightValue == 121) {
+            browsHeightLabel = "-1";
+        }
+
+        else if (browsHeightValue == -122 || browsHeightValue == -121 || browsHeightValue == -106 || browsHeightValue == -105
+                || browsHeightValue == -90 || browsHeightValue == -89 || browsHeightValue == -74 || browsHeightValue == -73
+                || browsHeightValue == -58 || browsHeightValue == -57 || browsHeightValue == -42 || browsHeightValue == -41
+                || browsHeightValue == -26 || browsHeightValue == -25 || browsHeightValue == -10 || browsHeightValue == -9
+                || browsHeightValue == 6 || browsHeightValue == 7 || browsHeightValue == 22 || browsHeightValue == 23
+                || browsHeightValue == 38 || browsHeightValue == 39 || browsHeightValue == 54 || browsHeightValue == 55
+                || browsHeightValue == 70 || browsHeightValue == 71 || browsHeightValue == 86 || browsHeightValue == 87
+                || browsHeightValue == 102 || browsHeightValue == 103 || browsHeightValue == 118 || browsHeightValue == 119) {
+            browsHeightLabel = "0";
+        }
+
+        else if (browsHeightValue == -124 || browsHeightValue == -123 || browsHeightValue == -108 || browsHeightValue == -107
+                || browsHeightValue == -92 || browsHeightValue == -91 || browsHeightValue == -76 || browsHeightValue == -75
+                || browsHeightValue == -60 || browsHeightValue == -59 || browsHeightValue == -44 || browsHeightValue == -43
+                || browsHeightValue == -28 || browsHeightValue == -27 || browsHeightValue == -12 || browsHeightValue == -11
+                || browsHeightValue == 4 || browsHeightValue == 5 || browsHeightValue == 20 || browsHeightValue == 21
+                || browsHeightValue == 36 || browsHeightValue == 37 || browsHeightValue == 52 || browsHeightValue == 53
+                || browsHeightValue == 68 || browsHeightValue == 69 || browsHeightValue == 84 || browsHeightValue == 85
+                || browsHeightValue == 100 || browsHeightValue == 101 || browsHeightValue == 116 || browsHeightValue == 117) {
+            browsHeightLabel = "1";
+        }
+
+        else if (browsHeightValue == -126 || browsHeightValue == -125 || browsHeightValue == -110 || browsHeightValue == -109
+                || browsHeightValue == -94 || browsHeightValue == -93 || browsHeightValue == -78 || browsHeightValue == -77
+                || browsHeightValue == -62 || browsHeightValue == -61 || browsHeightValue == -46 || browsHeightValue == -45
+                || browsHeightValue == -30 || browsHeightValue == -29 || browsHeightValue == -14 || browsHeightValue == -13
+                || browsHeightValue == 2 || browsHeightValue == 3 || browsHeightValue == 18 || browsHeightValue == 19
+                || browsHeightValue == 34 || browsHeightValue == 35 || browsHeightValue == 50 || browsHeightValue == 51
+                || browsHeightValue == 66 || browsHeightValue == 67 || browsHeightValue == 82 || browsHeightValue == 83
+                || browsHeightValue == 98 || browsHeightValue == 99 || browsHeightValue == 114 || browsHeightValue == 115) {
+            browsHeightLabel = "2";
+        }
+
+        else if (browsHeightValue == -128 || browsHeightValue == -127 || browsHeightValue == -112 || browsHeightValue == -111
+                || browsHeightValue == -96 || browsHeightValue == -95 || browsHeightValue == -80 || browsHeightValue == -79
+                || browsHeightValue == -64 || browsHeightValue == -63 || browsHeightValue == -48 || browsHeightValue == -47
+                || browsHeightValue == -32 || browsHeightValue == -31 || browsHeightValue == -16 || browsHeightValue == -15
+                || browsHeightValue == 0 || browsHeightValue == 1 || browsHeightValue == 16 || browsHeightValue == 17
+                || browsHeightValue == 32 || browsHeightValue == 33 || browsHeightValue == 48 || browsHeightValue == 49
+                || browsHeightValue == 64 || browsHeightValue == 65 || browsHeightValue == 80 || browsHeightValue == 81
+                || browsHeightValue == 96 || browsHeightValue == 97 || browsHeightValue == 112 || browsHeightValue == 113) {
+            browsHeightLabel = "3";
+        }
+
+        return browsHeightLabel;
+    }
+
+    public static String getEyebrowSpacingLabel(int eyebrowSpacingValue) {
+        String eyebrowSpacingLabel = "???";
+
+        if ((eyebrowSpacingValue >= -128 && eyebrowSpacingValue <= -113) || (eyebrowSpacingValue >= 0 && eyebrowSpacingValue <= 15)) {
+            eyebrowSpacingLabel = "3";
+        }
+
+        else if ((eyebrowSpacingValue >= -112 && eyebrowSpacingValue <= -97) || (eyebrowSpacingValue >= 16 && eyebrowSpacingValue <= 31)) {
+            eyebrowSpacingLabel = "2";
+        }
+
+        else if ((eyebrowSpacingValue >= -96 && eyebrowSpacingValue <= -81) || (eyebrowSpacingValue >= 32 && eyebrowSpacingValue <= 47)) {
+            eyebrowSpacingLabel = "1";
+        }
+
+        else if ((eyebrowSpacingValue >= -80 && eyebrowSpacingValue <= -65) || (eyebrowSpacingValue >= 48 && eyebrowSpacingValue <= 63)) {
+            eyebrowSpacingLabel = "0";
+        }
+
+        else if ((eyebrowSpacingValue >= -64 && eyebrowSpacingValue <= -49) || (eyebrowSpacingValue >= 64 && eyebrowSpacingValue <= 79)) {
+            eyebrowSpacingLabel = "-1";
+        }
+
+        else if ((eyebrowSpacingValue >= -48 && eyebrowSpacingValue <= -33) || (eyebrowSpacingValue >= 80 && eyebrowSpacingValue <= 95)) {
+            eyebrowSpacingLabel = "-2";
+        }
+
+        else if ((eyebrowSpacingValue >= -32 && eyebrowSpacingValue <= -17) || (eyebrowSpacingValue >= 96 && eyebrowSpacingValue <= 111)) {
+            eyebrowSpacingLabel = "-3";
+        }
+
+        else if ((eyebrowSpacingValue >= -16 && eyebrowSpacingValue <= -1) || (eyebrowSpacingValue >= 112 && eyebrowSpacingValue <= 127)) {
+            eyebrowSpacingLabel = "-4";
+        }
+
+        return eyebrowSpacingLabel;
+    }
+
 }
