@@ -140,7 +140,7 @@ public class CSVMaker {
 				"BANDANA TYPE", "FACIAL HAIR", "HAIR COLOR TYPE", "HAIR COLOR PATTERN",
 				"FACIAL HAIR COLOR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
 				"EYE COLOR 1", "EYE COLOR 2", "SLEEVE LENGTH",
-				"HEAD POSITION", "BROWS HEIGHT", "EYEBROW SPACING",
+				"HEAD POSITION", "BROWS ANGLE", "BROWS HEIGHT", "EYEBROW SPACING",
 				"NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH",
 				"CHEEK TYPE", "CHEEK SHAPE", "MOUTH SIZE",
 				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH" };
@@ -756,10 +756,16 @@ public class CSVMaker {
 		String cheekShape = CSVAttributes.getCheekShapeLabel(playerData[119]);
 		String browsHeight = CSVAttributes.getBrowsHeightLabel(playerData[118]);
 		String eyebrowSpacing = CSVAttributes.getEyebrowSpacingLabel(playerData[118]);
+		String browsAngle = CSVAttributes.getBrowsAngleLabel(playerData[118], playerData[119]);
 
 		out.write(separator);
 		out.flush();
 		out.write(headPosition);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(browsAngle);
 		out.flush();
 
 		out.write(separator);

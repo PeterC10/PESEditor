@@ -6393,4 +6393,107 @@ class CSVAttributes {
         return eyebrowSpacingLabel;
     }
 
+    public static String getBrowsAngleLabel(int browsAngleValueBase, int browsAngleValue) {
+        String browsAngleLabel = "???";
+        Boolean browsAngleValueBaseNegative = browsAngleValueBase < 0;
+
+        if (browsAngleValue == -125 || browsAngleValue == -121 || browsAngleValue == -117 || browsAngleValue == -113
+                || browsAngleValue == -109 || browsAngleValue == -105 || browsAngleValue == -101 || browsAngleValue == -97
+                || browsAngleValue == -93 || browsAngleValue == -89 || browsAngleValue == -85 || browsAngleValue == -81
+                || browsAngleValue == -77 || browsAngleValue == -73 || browsAngleValue == -69 || browsAngleValue == -65
+                || browsAngleValue == -61 || browsAngleValue == -57 || browsAngleValue == -53 || browsAngleValue == -49
+                || browsAngleValue == -45 || browsAngleValue == -41 || browsAngleValue == -37 || browsAngleValue == -33
+                || browsAngleValue == -29 || browsAngleValue == -25 || browsAngleValue == -21 || browsAngleValue == -17
+                || browsAngleValue == -13 || browsAngleValue == -9 || browsAngleValue == -5 || browsAngleValue == -1
+                || browsAngleValue == 3 || browsAngleValue == 7 || browsAngleValue == 11 || browsAngleValue == 15
+                || browsAngleValue == 19 || browsAngleValue == 23 || browsAngleValue == 27 || browsAngleValue == 31
+                || browsAngleValue == 35 || browsAngleValue == 39 || browsAngleValue == 43 || browsAngleValue == 47
+                || browsAngleValue == 51 || browsAngleValue == 55 || browsAngleValue == 59 || browsAngleValue == 63
+                || browsAngleValue == 67 || browsAngleValue == 71 || browsAngleValue == 75 || browsAngleValue == 79
+                || browsAngleValue == 83 || browsAngleValue == 87 || browsAngleValue == 91 || browsAngleValue == 95
+                || browsAngleValue == 99 || browsAngleValue == 103 || browsAngleValue == 107 || browsAngleValue == 111
+                || browsAngleValue == 115 || browsAngleValue == 119 || browsAngleValue == 123 || browsAngleValue == 127) {
+            if (browsAngleValueBaseNegative) {
+                browsAngleLabel = "-4";
+            }
+            else {
+                browsAngleLabel = "-3";
+            }
+        }
+
+        else if (browsAngleValue == -126 || browsAngleValue == -122 || browsAngleValue == -118 || browsAngleValue == -114
+                || browsAngleValue == -110 || browsAngleValue == -106 || browsAngleValue == -102 || browsAngleValue == -98
+                || browsAngleValue == -94 || browsAngleValue == -90 || browsAngleValue == -86 || browsAngleValue == -82
+                || browsAngleValue == -78 || browsAngleValue == -74 || browsAngleValue == -70 || browsAngleValue == -66
+                || browsAngleValue == -62 || browsAngleValue == -58 || browsAngleValue == -54 || browsAngleValue == -50
+                || browsAngleValue == -46 || browsAngleValue == -42 || browsAngleValue == -38 || browsAngleValue == -34
+                || browsAngleValue == -30 || browsAngleValue == -26 || browsAngleValue == -22 || browsAngleValue == -18
+                || browsAngleValue == -14 || browsAngleValue == -10 || browsAngleValue == -6 || browsAngleValue == -2
+                || browsAngleValue == 2 || browsAngleValue == 6 || browsAngleValue == 10 || browsAngleValue == 14
+                || browsAngleValue == 18 || browsAngleValue == 22 || browsAngleValue == 26 || browsAngleValue == 30
+                || browsAngleValue == 34 || browsAngleValue == 38 || browsAngleValue == 42 || browsAngleValue == 46
+                || browsAngleValue == 50 || browsAngleValue == 54 || browsAngleValue == 58 || browsAngleValue == 62
+                || browsAngleValue == 66 || browsAngleValue == 70 || browsAngleValue == 74 || browsAngleValue == 78
+                || browsAngleValue == 82 || browsAngleValue == 86 || browsAngleValue == 90 || browsAngleValue == 94
+                || browsAngleValue == 98 || browsAngleValue == 102 || browsAngleValue == 106 || browsAngleValue == 110
+                || browsAngleValue == 114 || browsAngleValue == 118 || browsAngleValue == 122 || browsAngleValue == 126) {
+            if (browsAngleValueBaseNegative) {
+                browsAngleLabel = "-2";
+            }
+            else {
+                browsAngleLabel = "-1";
+            }
+        }
+
+        else if (browsAngleValue == -127 || browsAngleValue == -123 || browsAngleValue == -119 || browsAngleValue == -115
+                || browsAngleValue == -111 || browsAngleValue == -107 || browsAngleValue == -103 || browsAngleValue == -99
+                || browsAngleValue == -95 || browsAngleValue == -91 || browsAngleValue == -87 || browsAngleValue == -83
+                || browsAngleValue == -79 || browsAngleValue == -75 || browsAngleValue == -71 || browsAngleValue == -67
+                || browsAngleValue == -63 || browsAngleValue == -59 || browsAngleValue == -55 || browsAngleValue == -51
+                || browsAngleValue == -47 || browsAngleValue == -43 || browsAngleValue == -39 || browsAngleValue == -35
+                || browsAngleValue == -31 || browsAngleValue == -27 || browsAngleValue == -23 || browsAngleValue == -19
+                || browsAngleValue == -15 || browsAngleValue == -11 || browsAngleValue == -7 || browsAngleValue == -3
+                || browsAngleValue == 1 || browsAngleValue == 5 || browsAngleValue == 9 || browsAngleValue == 13
+                || browsAngleValue == 17 || browsAngleValue == 21 || browsAngleValue == 25 || browsAngleValue == 29
+                || browsAngleValue == 33 || browsAngleValue == 37 || browsAngleValue == 41 || browsAngleValue == 45
+                || browsAngleValue == 49 || browsAngleValue == 53 || browsAngleValue == 57 || browsAngleValue == 61
+                || browsAngleValue == 65 || browsAngleValue == 69 || browsAngleValue == 73 || browsAngleValue == 77
+                || browsAngleValue == 81 || browsAngleValue == 85 || browsAngleValue == 89 || browsAngleValue == 93
+                || browsAngleValue == 97 || browsAngleValue == 101 || browsAngleValue == 105 || browsAngleValue == 109
+                || browsAngleValue == 113 || browsAngleValue == 117 || browsAngleValue == 121 || browsAngleValue == 125) {
+            if (browsAngleValueBaseNegative) {
+                browsAngleLabel = "0";
+            }
+            else {
+                browsAngleLabel = "1";
+            }
+        }
+
+        else if (browsAngleValue == -128 || browsAngleValue == -124 || browsAngleValue == -120 || browsAngleValue == -116
+                || browsAngleValue == -112 || browsAngleValue == -108 || browsAngleValue == -104 || browsAngleValue == -100
+                || browsAngleValue == -96 || browsAngleValue == -92 || browsAngleValue == -88 || browsAngleValue == -84
+                || browsAngleValue == -80 || browsAngleValue == -76 || browsAngleValue == -72 || browsAngleValue == -68
+                || browsAngleValue == -64 || browsAngleValue == -60 || browsAngleValue == -56 || browsAngleValue == -52
+                || browsAngleValue == -48 || browsAngleValue == -44 || browsAngleValue == -40 || browsAngleValue == -36
+                || browsAngleValue == -32 || browsAngleValue == -28 || browsAngleValue == -24 || browsAngleValue == -20
+                || browsAngleValue == -16 || browsAngleValue == -12 || browsAngleValue == -8 || browsAngleValue == -4
+                || browsAngleValue == 0 || browsAngleValue == 4 || browsAngleValue == 8 || browsAngleValue == 12
+                || browsAngleValue == 16 || browsAngleValue == 20 || browsAngleValue == 24 || browsAngleValue == 28
+                || browsAngleValue == 32 || browsAngleValue == 36 || browsAngleValue == 40 || browsAngleValue == 44
+                || browsAngleValue == 48 || browsAngleValue == 52 || browsAngleValue == 56 || browsAngleValue == 60
+                || browsAngleValue == 64 || browsAngleValue == 68 || browsAngleValue == 72 || browsAngleValue == 76
+                || browsAngleValue == 80 || browsAngleValue == 84 || browsAngleValue == 88 || browsAngleValue == 92
+                || browsAngleValue == 96 || browsAngleValue == 100 || browsAngleValue == 104 || browsAngleValue == 108
+                || browsAngleValue == 112 || browsAngleValue == 116 || browsAngleValue == 120 || browsAngleValue == 124) {
+            if (browsAngleValueBaseNegative) {
+                browsAngleLabel = "2";
+            }
+            else {
+                browsAngleLabel = "3";
+            }
+        }
+        
+        return browsAngleLabel;
+    }
+
 }
