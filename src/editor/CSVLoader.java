@@ -307,6 +307,11 @@ public class CSVLoader {
 	private static String attSleveLength = "SLEEVE LENGTH";
 
 	private static String attHeadPosition = "HEAD POSITION";
+
+	private static String attEyesAngle = "EYES ANGLE";
+	private static String attEyesLength = "EYES LENGTH";
+	private static String attEyesWidth = "EYES WIDTH";
+
 	private static String attNoseType = "NOSE TYPE";
 	private static String attNoseHeight = "NOSE HEIGHT";
 	private static String attNoseWidth = "NOSE WIDTH";
@@ -314,6 +319,13 @@ public class CSVLoader {
 	private static String attMouthType = "MOUTH TYPE";
 	private static String attMouthSize = "MOUTH SIZE";
 	private static String attMouthPosition = "MOUTH POSITION";
+
+	private static String attBrowsAngle = "BROWS ANGLE";
+	private static String attBrowsHeight = "BROWS HEIGHT";
+	private static String attEyebrowSpacing = "EYEBROW SPACING";
+
+	private static String attCheekType = "CHEEK TYPE";
+	private static String attCheekShape = "CHEEK SHAPE";
 
 	private static String attJawType = "JAW TYPE";
 	private static String attChinHeight = "CHIN HEIGHT";
@@ -440,12 +452,20 @@ public class CSVLoader {
 		attEyeColor2,
 		attSleveLength,
 		attHeadPosition,
+		attEyesAngle,
+		attEyesLength,
+		attEyesWidth,
 		attNoseType,
 		attNoseHeight,
 		attNoseWidth,
 		attMouthType,
 		attMouthSize,
 		attMouthPosition,
+		attBrowsAngle,
+		attBrowsHeight,
+		attEyebrowSpacing,
+		attCheekType,
+		attCheekShape,
 		attJawType,
 		attChinHeight,
 		attChinWidth,
@@ -1352,6 +1372,28 @@ public class CSVLoader {
 			playerData[97] = (byte)glassesNecklaceTypeVal;
 		}
 
+		String cheekTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCheekType);
+		String eyesLengthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyesLength);
+		String browsHeightLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBrowsHeight);
+		String eyesWidthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyesWidth);
+		String eyesAngleLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyesAngle);
+		String eyebrowSpacingLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyebrowSpacing);
+		String browsAngleLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBrowsAngle);
+		String cheekShapeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCheekShape);
+
+		if (!cheekTypeLabel.equals(CSVLoader.attValueNotFound) && !eyesLengthLabel.equals(CSVLoader.attValueNotFound)
+				&& !browsHeightLabel.equals(CSVLoader.attValueNotFound) && !eyesWidthLabel.equals(CSVLoader.attValueNotFound)
+				&& !eyesAngleLabel.equals(CSVLoader.attValueNotFound) && !eyebrowSpacingLabel.equals(CSVLoader.attValueNotFound)
+				&& !browsAngleLabel.equals(CSVLoader.attValueNotFound) && !cheekShapeLabel.equals(CSVLoader.attValueNotFound)) {
+			int[] head2Values = CSVAttributes.getHead2Values(cheekTypeLabel, eyesLengthLabel, browsHeightLabel, eyesWidthLabel, eyesAngleLabel, eyebrowSpacingLabel, browsAngleLabel, cheekShapeLabel);
+			int val117 = head2Values[0];
+			int val118 = head2Values[1];
+			int val119 = head2Values[2];
+			playerData[117] = (byte)val117;
+			playerData[118] = (byte)val118;
+			playerData[119] = (byte)val119;
+		}
+
 		String mouthTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attMouthType);
 		String mouthPositionLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attMouthPosition);
 
@@ -1369,7 +1411,10 @@ public class CSVLoader {
 		String chinHeightLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attChinHeight);
 		String chinWidthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attChinWidth);
 
-		if (!noseTypeLabel.equals(CSVLoader.attValueNotFound) && !noseWidthLabel.equals(CSVLoader.attValueNotFound) && !mouthSizeLabel.equals(CSVLoader.attValueNotFound)) {
+		if (!headPositionLabel.equals(CSVLoader.attValueNotFound) && !noseTypeLabel.equals(CSVLoader.attValueNotFound)
+				&& !noseHeightLabel.equals(CSVLoader.attValueNotFound) && !noseWidthLabel.equals(CSVLoader.attValueNotFound)
+				&& !mouthSizeLabel.equals(CSVLoader.attValueNotFound) && !jawTypeLabel.equals(CSVLoader.attValueNotFound)
+				&& !chinHeightLabel.equals(CSVLoader.attValueNotFound) && !chinWidthLabel.equals(CSVLoader.attValueNotFound)) {
 			int[] head1Values = CSVAttributes.getHead1Values(headPositionLabel, noseTypeLabel, noseHeightLabel, noseWidthLabel, mouthSizeLabel, jawTypeLabel, chinHeightLabel, chinWidthLabel);
 			int val121 = head1Values[0];
 			int val122 = head1Values[1];

@@ -6496,6 +6496,372 @@ class CSVAttributes {
         return browsAngleLabel;
     }
 
+    public static String getEyesAngleLabel(int eyesAngleValue) {
+        String eyesAngleLabel = "???";
+
+        if (eyesAngleValue == -121 || eyesAngleValue == -113 || eyesAngleValue == -105 || eyesAngleValue == -97
+                || eyesAngleValue == -89 || eyesAngleValue == -81 || eyesAngleValue == -73 || eyesAngleValue == -65
+                || eyesAngleValue == -57 || eyesAngleValue == -49 || eyesAngleValue == -41 || eyesAngleValue == -33
+                || eyesAngleValue == -25 || eyesAngleValue == -17 || eyesAngleValue == -9 || eyesAngleValue == -1
+                || eyesAngleValue == 7 || eyesAngleValue == 15 || eyesAngleValue == 23 || eyesAngleValue == 31
+                || eyesAngleValue == 39 || eyesAngleValue == 47 || eyesAngleValue == 55 || eyesAngleValue == 63
+                || eyesAngleValue == 71 || eyesAngleValue == 79 || eyesAngleValue == 87 || eyesAngleValue == 95
+                || eyesAngleValue == 103 || eyesAngleValue == 111 || eyesAngleValue == 119 || eyesAngleValue == 127) {
+            eyesAngleLabel = "-4";
+        }
+
+        else if (eyesAngleValue == -122 || eyesAngleValue == -114 || eyesAngleValue == -106 || eyesAngleValue == -98
+                || eyesAngleValue == -90 || eyesAngleValue == -82 || eyesAngleValue == -74 || eyesAngleValue == -66
+                || eyesAngleValue == -58 || eyesAngleValue == -50 || eyesAngleValue == -42 || eyesAngleValue == -34
+                || eyesAngleValue == -26 || eyesAngleValue == -18 || eyesAngleValue == -10 || eyesAngleValue == -2
+                || eyesAngleValue == 6 || eyesAngleValue == 14 || eyesAngleValue == 22 || eyesAngleValue == 30
+                || eyesAngleValue == 38 || eyesAngleValue == 46 || eyesAngleValue == 54 || eyesAngleValue == 62
+                || eyesAngleValue == 70 || eyesAngleValue == 78 || eyesAngleValue == 86 || eyesAngleValue == 94
+                || eyesAngleValue == 102 || eyesAngleValue == 110 || eyesAngleValue == 118 || eyesAngleValue == 126) {
+            eyesAngleLabel = "-3";
+        }
+
+        else if (eyesAngleValue == -123 || eyesAngleValue == -115 || eyesAngleValue == -107 || eyesAngleValue == -99
+                || eyesAngleValue == -91 || eyesAngleValue == -83 || eyesAngleValue == -75 || eyesAngleValue == -67
+                || eyesAngleValue == -59 || eyesAngleValue == -51 || eyesAngleValue == -43 || eyesAngleValue == -35
+                || eyesAngleValue == -27 || eyesAngleValue == -19 || eyesAngleValue == -11 || eyesAngleValue == -3
+                || eyesAngleValue == 5 || eyesAngleValue == 13 || eyesAngleValue == 21 || eyesAngleValue == 29
+                || eyesAngleValue == 37 || eyesAngleValue == 45 || eyesAngleValue == 53 || eyesAngleValue == 61
+                || eyesAngleValue == 69 || eyesAngleValue == 77 || eyesAngleValue == 85 || eyesAngleValue == 93
+                || eyesAngleValue == 101 || eyesAngleValue == 109 || eyesAngleValue == 117 || eyesAngleValue == 125) {
+            eyesAngleLabel = "-2";
+        }
+
+        else if (eyesAngleValue == -124 || eyesAngleValue == -116 || eyesAngleValue == -108 || eyesAngleValue == -100
+                || eyesAngleValue == -92 || eyesAngleValue == -84 || eyesAngleValue == -76 || eyesAngleValue == -68
+                || eyesAngleValue == -60 || eyesAngleValue == -52 || eyesAngleValue == -44 || eyesAngleValue == -36
+                || eyesAngleValue == -28 || eyesAngleValue == -20 || eyesAngleValue == -12 || eyesAngleValue == -4
+                || eyesAngleValue == 4 || eyesAngleValue == 12 || eyesAngleValue == 20 || eyesAngleValue == 28
+                || eyesAngleValue == 36 || eyesAngleValue == 44 || eyesAngleValue == 52 || eyesAngleValue == 60
+                || eyesAngleValue == 68 || eyesAngleValue == 76 || eyesAngleValue == 84 || eyesAngleValue == 92
+                || eyesAngleValue == 100 || eyesAngleValue == 108 || eyesAngleValue == 116 || eyesAngleValue == 124) {
+            eyesAngleLabel = "-1";
+        }
+
+        else if (eyesAngleValue == -125 || eyesAngleValue == -117 || eyesAngleValue == -109 || eyesAngleValue == -101
+                || eyesAngleValue == -93 || eyesAngleValue == -85 || eyesAngleValue == -77 || eyesAngleValue == -69
+                || eyesAngleValue == -61 || eyesAngleValue == -53 || eyesAngleValue == -45 || eyesAngleValue == -37
+                || eyesAngleValue == -29 || eyesAngleValue == -21 || eyesAngleValue == -13 || eyesAngleValue == -5
+                || eyesAngleValue == 3 || eyesAngleValue == 11 || eyesAngleValue == 19 || eyesAngleValue == 27
+                || eyesAngleValue == 35 || eyesAngleValue == 43 || eyesAngleValue == 51 || eyesAngleValue == 59
+                || eyesAngleValue == 67 || eyesAngleValue == 75 || eyesAngleValue == 83 || eyesAngleValue == 91
+                || eyesAngleValue == 99 || eyesAngleValue == 107 || eyesAngleValue == 115 || eyesAngleValue == 123) {
+            eyesAngleLabel = "0";
+        }
+
+        else if (eyesAngleValue == -126 || eyesAngleValue == -118 || eyesAngleValue == -110 || eyesAngleValue == -102
+                || eyesAngleValue == -94 || eyesAngleValue == -86 || eyesAngleValue == -78 || eyesAngleValue == -70
+                || eyesAngleValue == -62 || eyesAngleValue == -54 || eyesAngleValue == -46 || eyesAngleValue == -38
+                || eyesAngleValue == -30 || eyesAngleValue == -22 || eyesAngleValue == -14 || eyesAngleValue == -6
+                || eyesAngleValue == 2 || eyesAngleValue == 10 || eyesAngleValue == 18 || eyesAngleValue == 26
+                || eyesAngleValue == 34 || eyesAngleValue == 42 || eyesAngleValue == 50 || eyesAngleValue == 58
+                || eyesAngleValue == 66 || eyesAngleValue == 74 || eyesAngleValue == 82 || eyesAngleValue == 90
+                || eyesAngleValue == 98 || eyesAngleValue == 106 || eyesAngleValue == 114 || eyesAngleValue == 122) {
+            eyesAngleLabel = "1";
+        }
+
+        else if (eyesAngleValue == -127 || eyesAngleValue == -119 || eyesAngleValue == -111 || eyesAngleValue == -103
+                || eyesAngleValue == -95 || eyesAngleValue == -87 || eyesAngleValue == -79 || eyesAngleValue == -71
+                || eyesAngleValue == -63 || eyesAngleValue == -55 || eyesAngleValue == -47 || eyesAngleValue == -39
+                || eyesAngleValue == -31 || eyesAngleValue == -23 || eyesAngleValue == -15 || eyesAngleValue == -7
+                || eyesAngleValue == 1 || eyesAngleValue == 9 || eyesAngleValue == 17 || eyesAngleValue == 25
+                || eyesAngleValue == 33 || eyesAngleValue == 41 || eyesAngleValue == 49 || eyesAngleValue == 57
+                || eyesAngleValue == 65 || eyesAngleValue == 73 || eyesAngleValue == 81 || eyesAngleValue == 89
+                || eyesAngleValue == 97 || eyesAngleValue == 105 || eyesAngleValue == 113 || eyesAngleValue == 121) {
+            eyesAngleLabel = "2";
+        }
+
+        else if (eyesAngleValue == -128 || eyesAngleValue == -120 || eyesAngleValue == -112 || eyesAngleValue == -104
+                || eyesAngleValue == -96 || eyesAngleValue == -88 || eyesAngleValue == -80 || eyesAngleValue == -72
+                || eyesAngleValue == -64 || eyesAngleValue == -56 || eyesAngleValue == -48 || eyesAngleValue == -40
+                || eyesAngleValue == -32 || eyesAngleValue == -24 || eyesAngleValue == -16 || eyesAngleValue == -8
+                || eyesAngleValue == 0 || eyesAngleValue == 8 || eyesAngleValue == 16 || eyesAngleValue == 24
+                || eyesAngleValue == 32 || eyesAngleValue == 40 || eyesAngleValue == 48 || eyesAngleValue == 56
+                || eyesAngleValue == 64 || eyesAngleValue == 72 || eyesAngleValue == 80 || eyesAngleValue == 88
+                || eyesAngleValue == 96 || eyesAngleValue == 104 || eyesAngleValue == 112 || eyesAngleValue == 120) {
+            eyesAngleLabel = "3";
+        }
+
+        return eyesAngleLabel;
+    }
+
+    public static String getEyesLengthLabel(int eyesLengthValue) {
+        String eyesLengthLabel = "???";
+
+        if ((eyesLengthValue >= -128 && eyesLengthValue <= -121) || (eyesLengthValue >= -64 && eyesLengthValue <= -57)
+                || (eyesLengthValue >= 0 && eyesLengthValue <= 7) || (eyesLengthValue >= 64 && eyesLengthValue <= 71)) {
+            eyesLengthLabel = "3";
+        }
+
+        else if ((eyesLengthValue >= -120 && eyesLengthValue <= -113) || (eyesLengthValue >= -56 && eyesLengthValue <= -49)
+                || (eyesLengthValue >= 8 && eyesLengthValue <= 15) || (eyesLengthValue >= 72 && eyesLengthValue <= 79)) {
+            eyesLengthLabel = "2";
+        }
+
+        else if ((eyesLengthValue >= -112 && eyesLengthValue <= -105) || (eyesLengthValue >= -48 && eyesLengthValue <= -41)
+                || (eyesLengthValue >= 16 && eyesLengthValue <= 23) || (eyesLengthValue >= 80 && eyesLengthValue <= 87)) {
+            eyesLengthLabel = "1";
+        }
+
+        else if ((eyesLengthValue >= -104 && eyesLengthValue <= -97) || (eyesLengthValue >= -40 && eyesLengthValue <= -33)
+                || (eyesLengthValue >= 24 && eyesLengthValue <= 31) || (eyesLengthValue >= 88 && eyesLengthValue <= 95)) {
+            eyesLengthLabel = "0";
+        }
+
+        else if ((eyesLengthValue >= -96 && eyesLengthValue <= -89) || (eyesLengthValue >= -32 && eyesLengthValue <= -25)
+                || (eyesLengthValue >= 32 && eyesLengthValue <= 39) || (eyesLengthValue >= 96 && eyesLengthValue <= 103)) {
+            eyesLengthLabel = "-1";
+        }
+
+        else if ((eyesLengthValue >= -88 && eyesLengthValue <= -81) || (eyesLengthValue >= -24 && eyesLengthValue <= -17)
+                || (eyesLengthValue >= 40 && eyesLengthValue <= 47) || (eyesLengthValue >= 104 && eyesLengthValue <= 111)) {
+            eyesLengthLabel = "-2";
+        }
+
+        else if ((eyesLengthValue >= -80 && eyesLengthValue <= -73) || (eyesLengthValue >= -16 && eyesLengthValue <= -9)
+                || (eyesLengthValue >= 48 && eyesLengthValue <= 55) || (eyesLengthValue >= 112 && eyesLengthValue <= 119)) {
+            eyesLengthLabel = "-3";
+        }
+
+        else if ((eyesLengthValue >= -72 && eyesLengthValue <= -65) || (eyesLengthValue >= -8 && eyesLengthValue <= -1)
+                || (eyesLengthValue >= 56 && eyesLengthValue <= 63) || (eyesLengthValue >= 120 && eyesLengthValue <= 127)) {
+            eyesLengthLabel = "8";
+        }
+
+        return eyesLengthLabel;
+    }
+
+    public static String getEyesWidthLabel(int eyesWidthValue, int eyesWidthValueOther) {
+        String eyesWidthLabel = "???";
+        Boolean otherValueEven = (eyesWidthValueOther & 1) == 0;
+
+        if (otherValueEven) {
+            if (eyesWidthValue >= -64 && eyesWidthValue <= -1) {
+                eyesWidthLabel = "0";
+            }
+    
+            else if (eyesWidthValue >= -128 && eyesWidthValue <= -65) {
+                eyesWidthLabel = "1";
+            }
+    
+            else if (eyesWidthValue >= 64 && eyesWidthValue <= 127) {
+                eyesWidthLabel = "2";
+            }
+    
+            else if (eyesWidthValue >= 0 && eyesWidthValue <= 63) {
+                eyesWidthLabel = "3";
+            }
+        }
+        else {
+            if (eyesWidthValue >= -64 && eyesWidthValue <= -1) {
+                eyesWidthLabel = "-4";
+            }
+    
+            else if (eyesWidthValue >= -128 && eyesWidthValue <= -65) {
+                eyesWidthLabel = "-3";
+            }
+    
+            else if (eyesWidthValue >= 64 && eyesWidthValue <= 127) {
+                eyesWidthLabel = "-2";
+            }
+    
+            else if (eyesWidthValue >= 0 && eyesWidthValue <= 63) {
+                eyesWidthLabel = "-1";
+            }
+        }
+
+        return eyesWidthLabel;
+    }
+
+    private static final Map<Integer, Integer> val117EyesWidthBase = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 64);
+            put(1, -128);
+            put(0, -64);
+            put(-1, 0);
+            put(-2, 64);
+            put(-3, -128);
+            put(-4, -64);
+        }
+    };
+
+    private static final Map<Integer, Integer> val117EyesLengthOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 8);
+            put(1, 16);
+            put(0, 24);
+            put(-1, 32);
+            put(-2, 40);
+            put(-3, 48);
+            put(-4, 56);
+        }
+    };
+
+    private static final Map<Integer, Integer> val117EyesAngleOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 1);
+            put(1, 2);
+            put(0, 3);
+            put(-1, 4);
+            put(-2, 5);
+            put(-3, 6);
+            put(-4, 7);
+        }
+    };
+
+    private static final Map<Integer, Integer> val119CheekTypeOffset = new HashMap<Integer, Integer>() {
+        {
+            put(1, 0);
+            put(2, 4);
+            put(3, 8);
+            put(4, 12);
+            put(5, 16);
+            put(6, 20);
+            put(7, 24);
+            put(8, 28);
+        }
+    };
+
+    private static final Map<Integer, Integer> val119BrowsAngleOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 0);
+            put(1, 1);
+            put(0, 1);
+            put(-1, 2);
+            put(-2, 2);
+            put(-3, 3);
+            put(-4, 3);
+        }
+    };
+
+    private static final Map<Integer, Integer> val119CheekShapeBase = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 32);
+            put(1, 64);
+            put(0, 96);
+            put(-1, -128);
+            put(-2, -96);
+            put(-3, -64);
+            put(-4, -32);
+        }
+    };
+
+    private static final Map<Integer, List<Integer>> val118EyebrowSpacingBases = new HashMap<Integer, List<Integer>>() {
+        {
+            put(3, new ArrayList<Integer>() {
+                {
+                    add(-128);
+                    add(0);
+                }
+            });
+            put(2, new ArrayList<Integer>() {
+                {
+                    add(-112);
+                    add(16);
+                }
+            });
+            put(1, new ArrayList<Integer>() {
+                {
+                    add(-96);
+                    add(32);
+                }
+            });
+            put(0, new ArrayList<Integer>() {
+                {
+                    add(-80);
+                    add(48);
+                }
+            });
+            put(-1, new ArrayList<Integer>() {
+                {
+                    add(-64);
+                    add(64);
+                }
+            });
+            put(-2, new ArrayList<Integer>() {
+                {
+                    add(-48);
+                    add(80);
+                }
+            });
+            put(-3, new ArrayList<Integer>() {
+                {
+                    add(-32);
+                    add(96);
+                }
+            });
+            put(-4, new ArrayList<Integer>() {
+                {
+                    add(-16);
+                    add(112);
+                }
+            });
+        }
+    };
+
+    private static final Map<Integer, Integer> val118BrowsHeightOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 2);
+            put(1, 4);
+            put(0, 6);
+            put(-1, 8);
+            put(-2, 10);
+            put(-3, 12);
+            put(-4, 14);
+        }
+    };
+
+    // 117, 118, 119 values for Cheek Type, Eyes Length, Brows Height, Eyes Width,
+    // Eyes Angle, Eyebrow Spacing, Brows Angle, Cheek Shape
+    public static int[] getHead2Values(String cheekTypeLabel, String eyesLengthLabel, String browsHeightLabel,
+            String eyesWidthLabel, String eyesAngleLabel, String eyebrowSpacingLabel, String browsAngleLabel,
+            String cheekShapeLabel) {
+
+        int cheekType = Integer.parseInt(cheekTypeLabel);
+        int eyesLength = Integer.parseInt(eyesLengthLabel);
+        int browsHeight = Integer.parseInt(browsHeightLabel);
+        int eyesWidth = Integer.parseInt(eyesWidthLabel);
+        int eyesAngle = Integer.parseInt(eyesAngleLabel);
+        int eyebrowSpacing = Integer.parseInt(eyebrowSpacingLabel);
+        int browsAngle = Integer.parseInt(browsAngleLabel);
+        int cheekShape = Integer.parseInt(cheekShapeLabel);
+        
+        int val117 = val117EyesWidthBase.get(eyesWidth);
+        val117 += val117EyesLengthOffset.get(eyesLength);
+        val117 += val117EyesAngleOffset.get(eyesAngle);
+
+        List<Integer> eyebrowSpacingBases = val118EyebrowSpacingBases.get(eyebrowSpacing);
+
+        Boolean chinHeightEven = (browsAngle & 1) == 0;
+        int chinHeightOffset = chinHeightEven ? 0:1;
+        int eyebrowSpacingBase = eyebrowSpacingBases.get(chinHeightOffset);
+
+        Boolean eyesWidthPositive = eyesWidth >= 0;
+        int eyesWidthPositiveOffset = eyesWidthPositive ? 0:1;
+
+        int browsHeightOffset = val118BrowsHeightOffset.get(browsHeight) + eyesWidthPositiveOffset;
+        int val118 = eyebrowSpacingBase + browsHeightOffset;
+
+        int val119 = val119CheekShapeBase.get(cheekShape);
+        val119 += val119CheekTypeOffset.get(cheekType);
+        val119 += val119BrowsAngleOffset.get(browsAngle);
+
+        int[] head2Values = {val117, val118, val119};
+        
+        return head2Values;
+    }
+
     public static String getMouthTypeLabel(int mouthTypeValue) {
         String mouthTypeLabel = "???";
 

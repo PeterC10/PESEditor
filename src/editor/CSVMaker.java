@@ -141,6 +141,7 @@ public class CSVMaker {
 				"FACIAL HAIR COLOR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
 				"EYE COLOR 1", "EYE COLOR 2", "SLEEVE LENGTH",
 				"HEAD POSITION", "BROWS ANGLE", "BROWS HEIGHT", "EYEBROW SPACING",
+				"EYES ANGLE", "EYES LENGTH", "EYES WIDTH",
 				"NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH", "CHEEK TYPE", "CHEEK SHAPE", 
 				"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
 				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH" };
@@ -757,6 +758,9 @@ public class CSVMaker {
 		String browsHeight = CSVAttributes.getBrowsHeightLabel(playerData[118]);
 		String eyebrowSpacing = CSVAttributes.getEyebrowSpacingLabel(playerData[118]);
 		String browsAngle = CSVAttributes.getBrowsAngleLabel(playerData[118], playerData[119]);
+		String eyesAngleLabel = CSVAttributes.getEyesAngleLabel(playerData[117]);
+		String eyesLengthLabel = CSVAttributes.getEyesLengthLabel(playerData[117]);
+		String eysWidthLabel = CSVAttributes.getEyesWidthLabel(playerData[117], playerData[118]);
 		String mouthType = CSVAttributes.getMouthTypeLabel(playerData[120]);
 		String mouthPosition = CSVAttributes.getMouthPositionLabel(playerData[120]);
 
@@ -778,6 +782,21 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 		out.write(eyebrowSpacing);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(eyesAngleLabel);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(eyesLengthLabel);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(eysWidthLabel);
 		out.flush();
 
 		out.write(separator);
