@@ -5113,6 +5113,13 @@ class CSVAttributes {
         }
     };
 
+    private static final Map<String, Integer> neckWarmerBaseHairCodeOffsetByLabel = new HashMap<String, Integer>() {
+        {
+            put("N", 0);
+            put("Y", -128);
+        }
+    };
+
     /**
      * @return the wristbandVals
      */
@@ -7447,6 +7454,24 @@ class CSVAttributes {
 
     public Map<String, Integer> getEyeTypesByLabel() {
         return eyeTypesByLabel;
+    }
+
+    public static String getNeckWarmerLabel(int neckWarmerValue) {
+        String neckWarmerLabel = "???";
+
+        if (neckWarmerValue >= 0 && neckWarmerValue <= 127) {
+            neckWarmerLabel = "N";
+        }
+
+        else if (neckWarmerValue >= -128 && neckWarmerValue <= -1) {
+            neckWarmerLabel = "Y";
+        }
+
+        return neckWarmerLabel;
+    }
+
+    public static Map<String, Integer> getNeckWarmerBaseHairCodeOffsetByLabel() {
+        return neckWarmerBaseHairCodeOffsetByLabel;
     }
 
 }

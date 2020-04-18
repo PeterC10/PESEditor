@@ -334,6 +334,8 @@ public class CSVLoader {
 	private static String attChinHeight = "CHIN HEIGHT";
 	private static String attChinWidth = "CHIN WIDTH";
 
+	private static String attNeckWarmer = "NECK WARMER";
+
 	private static String[] supportedHeaders = {
 		attId,
 		attName,
@@ -475,6 +477,7 @@ public class CSVLoader {
 		attJawType,
 		attChinHeight,
 		attChinWidth,
+		attNeckWarmer,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -494,6 +497,7 @@ public class CSVLoader {
 	private final Map<String, Integer> growthTypesByLabel = csvAttributes.getGrowthTypesByLabel();
 	private final Map<Integer, String> growthTypesByValue = csvAttributes.getGrowthTypesByValue();
 	private final Map<String, Integer> eyeTypesByLabel = csvAttributes.getEyeTypesByLabel();
+	private final Map<String, Integer> neckWarmerBaseHairCodeOffsetByLabel = CSVAttributes.getNeckWarmerBaseHairCodeOffsetByLabel();
 
 	private final String defaultGrowthTypeLabel = csvAttributes.getDefaultGrowthTypeLabel();
 	private final int defaultGrowthTypeVal = csvAttributes.getDefaultGrowthTypeVal();
@@ -1319,11 +1323,14 @@ public class CSVLoader {
 		String hairColorPatternLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairColorPattern);
 		String eyeColor1Label = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyeColor1);
 		String eyeColor2Label = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyeColor2);
+		String neckWarmerLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNeckWarmer);
 
-		if (hairTypeLabel != CSVLoader.attValueNotFound && hairShapeLabel != CSVLoader.attValueNotFound
-				&& hairFrontLabel != CSVLoader.attValueNotFound && hairVolumeLabel != CSVLoader.attValueNotFound
-				&& hairDarknessLabel != CSVLoader.attValueNotFound && bandanaTypeLabel != CSVLoader.attValueNotFound
-				&& eyeColor2Label != CSVLoader.attValueNotFound) {
+		if (!hairTypeLabel.equals(CSVLoader.attValueNotFound) && !hairShapeLabel.equals(CSVLoader.attValueNotFound)
+				&& !hairFrontLabel.equals(CSVLoader.attValueNotFound) && !hairVolumeLabel.equals(CSVLoader.attValueNotFound)
+				&& !hairDarknessLabel.equals(CSVLoader.attValueNotFound) && !bandanaTypeLabel.equals(CSVLoader.attValueNotFound)
+				&& !hairColorTypeLabel.equals(CSVLoader.attValueNotFound) && !hairColorPatternLabel.equals(CSVLoader.attValueNotFound)
+				&& !eyeColor1Label.equals(CSVLoader.attValueNotFound) && !eyeColor2Label.equals(CSVLoader.attValueNotFound)
+				&& !neckWarmerLabel.equals(CSVLoader.attValueNotFound)) {
 
 			String fullHairLabel = hairTypeLabel + "/" + hairShapeLabel + "/" + hairFrontLabel + "/" + hairVolumeLabel
 					+ "/" + hairDarknessLabel + "/" + bandanaTypeLabel;
@@ -1334,9 +1341,11 @@ public class CSVLoader {
 			int baseHairCode = Integer.parseInt(fullHairCodeArray[1]);
 			int multiplyFactor = eyeColor2TypesByLabel.get(eyeColor2Label);
 			int baseHairCodeMultiplied = baseHairCode + (8 * multiplyFactor);
+			int neckWarmerOffset = neckWarmerBaseHairCodeOffsetByLabel.get(neckWarmerLabel);
+			baseHairCodeMultiplied += neckWarmerOffset;
 
-			playerData[92] = (byte)hairCode;
-			playerData[93] = (byte)baseHairCodeMultiplied;
+			playerData[92] = (byte) hairCode;
+			playerData[93] = (byte) baseHairCodeMultiplied;
 		}
 
 		if (hairColorTypeLabel != CSVLoader.attValueNotFound && hairColorPatternLabel != CSVLoader.attValueNotFound && eyeColor1Label != CSVLoader.attValueNotFound){

@@ -144,7 +144,8 @@ public class CSVMaker {
 				"EYES TYPE", "EYES POSITION", "EYES ANGLE", "EYES LENGTH", "EYES WIDTH",
 				"NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH", "CHEEK TYPE", "CHEEK SHAPE", 
 				"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
-				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH" };
+				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH",
+				"NECK WARMER" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -870,6 +871,13 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 		out.write(chinWidth);
+		out.flush();
+
+		String neckWarmerLabel = CSVAttributes.getNeckWarmerLabel(playerData[93]);
+
+		out.write(separator);
+		out.flush();
+		out.write(neckWarmerLabel);
 		out.flush();
 
 		out.write(13);
