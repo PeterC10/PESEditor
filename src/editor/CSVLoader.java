@@ -310,7 +310,11 @@ public class CSVLoader {
 	private static String attNoseType = "NOSE TYPE";
 	private static String attNoseHeight = "NOSE HEIGHT";
 	private static String attNoseWidth = "NOSE WIDTH";
+
+	private static String attMouthType = "MOUTH TYPE";
 	private static String attMouthSize = "MOUTH SIZE";
+	private static String attMouthPosition = "MOUTH POSITION";
+
 	private static String attJawType = "JAW TYPE";
 	private static String attChinHeight = "CHIN HEIGHT";
 	private static String attChinWidth = "CHIN WIDTH";
@@ -439,7 +443,9 @@ public class CSVLoader {
 		attNoseType,
 		attNoseHeight,
 		attNoseWidth,
+		attMouthType,
 		attMouthSize,
+		attMouthPosition,
 		attJawType,
 		attChinHeight,
 		attChinWidth,
@@ -1344,6 +1350,14 @@ public class CSVLoader {
 			String glassesNecklaceTypeKey = glassesTypeLabel + "/" + necklaceTypeLabel;
 			int glassesNecklaceTypeVal = glassesNecklaceOptsByLabel.get(glassesNecklaceTypeKey);
 			playerData[97] = (byte)glassesNecklaceTypeVal;
+		}
+
+		String mouthTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attMouthType);
+		String mouthPositionLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attMouthPosition);
+
+		if (!mouthTypeLabel.equals(CSVLoader.attValueNotFound) && !mouthPositionLabel.equals(CSVLoader.attValueNotFound)) {
+			int mouthTypePositionValue = csvAttributes.getMouthTypePositionValueNoStatic(mouthTypeLabel, mouthPositionLabel);
+			playerData[120] = (byte)mouthTypePositionValue;
 		}
 
 		String headPositionLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHeadPosition);

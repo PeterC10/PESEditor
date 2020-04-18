@@ -6496,4 +6496,180 @@ class CSVAttributes {
         return browsAngleLabel;
     }
 
+    public static String getMouthTypeLabel(int mouthTypeValue) {
+        String mouthTypeLabel = "???";
+
+        if (mouthTypeValue == -128 || mouthTypeValue == -96 || mouthTypeValue == -64 || mouthTypeValue == -32
+                || mouthTypeValue == 0 || mouthTypeValue == 32 || mouthTypeValue == 64 || mouthTypeValue == 96) {
+            mouthTypeLabel = "1";
+        }
+
+        if (mouthTypeValue == -127 || mouthTypeValue == -95 || mouthTypeValue == -63 || mouthTypeValue == -31
+                || mouthTypeValue == 1 || mouthTypeValue == 33 || mouthTypeValue == 65 || mouthTypeValue == 97) {
+            mouthTypeLabel = "2";
+        }
+
+        if (mouthTypeValue == -126 || mouthTypeValue == -94 || mouthTypeValue == -62 || mouthTypeValue == -30
+                || mouthTypeValue == 2 || mouthTypeValue == 34 || mouthTypeValue == 66 || mouthTypeValue == 98) {
+            mouthTypeLabel = "3";
+        }
+
+        if (mouthTypeValue == -125 || mouthTypeValue == -93 || mouthTypeValue == -61 || mouthTypeValue == -29
+                || mouthTypeValue == 3 || mouthTypeValue == 35 || mouthTypeValue == 67 || mouthTypeValue == 99) {
+            mouthTypeLabel = "4";
+        }
+
+        if (mouthTypeValue == -124 || mouthTypeValue == -92 || mouthTypeValue == -60 || mouthTypeValue == -28
+                || mouthTypeValue == 4 || mouthTypeValue == 36 || mouthTypeValue == 68 || mouthTypeValue == 100) {
+            mouthTypeLabel = "5";
+        }
+
+        if (mouthTypeValue == -123 || mouthTypeValue == -91 || mouthTypeValue == -59 || mouthTypeValue == -27
+                || mouthTypeValue == 5 || mouthTypeValue == 37 || mouthTypeValue == 69 || mouthTypeValue == 101) {
+            mouthTypeLabel = "6";
+        }
+
+        if (mouthTypeValue == -122 || mouthTypeValue == -90 || mouthTypeValue == -58 || mouthTypeValue == -26
+                || mouthTypeValue == 6 || mouthTypeValue == 38 || mouthTypeValue == 70 || mouthTypeValue == 102) {
+            mouthTypeLabel = "7";
+        }
+
+        if (mouthTypeValue == -121 || mouthTypeValue == -89 || mouthTypeValue == -57 || mouthTypeValue == -25
+                || mouthTypeValue == 7 || mouthTypeValue == 39 || mouthTypeValue == 71 || mouthTypeValue == 103) {
+            mouthTypeLabel = "8";
+        }
+
+        if (mouthTypeValue == -120 || mouthTypeValue == -88 || mouthTypeValue == -56 || mouthTypeValue == -24
+                || mouthTypeValue == 8 || mouthTypeValue == 40 || mouthTypeValue == 72 || mouthTypeValue == 104) {
+            mouthTypeLabel = "9";
+        }
+
+        if (mouthTypeValue == -119 || mouthTypeValue == -87 || mouthTypeValue == -55 || mouthTypeValue == -23
+                || mouthTypeValue == 9 || mouthTypeValue == 41 || mouthTypeValue == 73 || mouthTypeValue == 105) {
+            mouthTypeLabel = "10";
+        }
+
+        if (mouthTypeValue == -118 || mouthTypeValue == -86 || mouthTypeValue == -54 || mouthTypeValue == -22
+                || mouthTypeValue == 10 || mouthTypeValue == 42 || mouthTypeValue == 74 || mouthTypeValue == 106) {
+            mouthTypeLabel = "11";
+        }
+
+        if (mouthTypeValue == -117 || mouthTypeValue == -85 || mouthTypeValue == -53 || mouthTypeValue == -21
+                || mouthTypeValue == 11 || mouthTypeValue == 43 || mouthTypeValue == 75 || mouthTypeValue == 107) {
+            mouthTypeLabel = "12";
+        }
+
+        if (mouthTypeValue == -116 || mouthTypeValue == -84 || mouthTypeValue == -52 || mouthTypeValue == -20
+                || mouthTypeValue == 12 || mouthTypeValue == 44 || mouthTypeValue == 76 || mouthTypeValue == 108) {
+            mouthTypeLabel = "13";
+        }
+
+        if (mouthTypeValue == -115 || mouthTypeValue == -83 || mouthTypeValue == -51 || mouthTypeValue == -19
+                || mouthTypeValue == 13 || mouthTypeValue == 45 || mouthTypeValue == 77 || mouthTypeValue == 109) {
+            mouthTypeLabel = "14";
+        }
+
+        if (mouthTypeValue == -114 || mouthTypeValue == -82 || mouthTypeValue == -50 || mouthTypeValue == -18
+                || mouthTypeValue == 14 || mouthTypeValue == 46 || mouthTypeValue == 78 || mouthTypeValue == 110) {
+            mouthTypeLabel = "15";
+        }
+
+        if (mouthTypeValue == -113 || mouthTypeValue == -81 || mouthTypeValue == -49 || mouthTypeValue == -17
+                || mouthTypeValue == 15 || mouthTypeValue == 47 || mouthTypeValue == 79 || mouthTypeValue == 111) {
+            mouthTypeLabel = "16";
+        }
+
+        if (mouthTypeValue == -112 || mouthTypeValue == -80 || mouthTypeValue == -48 || mouthTypeValue == -16
+                || mouthTypeValue == 16 || mouthTypeValue == 48 || mouthTypeValue == 80 || mouthTypeValue == 112) {
+            mouthTypeLabel = "17";
+        }
+
+        if (mouthTypeValue == -111 || mouthTypeValue == -79 || mouthTypeValue == -47 || mouthTypeValue == -15
+                || mouthTypeValue == 17 || mouthTypeValue == 49 || mouthTypeValue == 81 || mouthTypeValue == 113) {
+            mouthTypeLabel = "18";
+        }
+
+        if (mouthTypeValue == -110 || mouthTypeValue == -78 || mouthTypeValue == -46 || mouthTypeValue == -14
+                || mouthTypeValue == 18 || mouthTypeValue == 50 || mouthTypeValue == 82 || mouthTypeValue == 114) {
+            mouthTypeLabel = "19";
+        }
+
+        if (mouthTypeValue == -109 || mouthTypeValue == -77 || mouthTypeValue == -45 || mouthTypeValue == -13
+                || mouthTypeValue == 19 || mouthTypeValue == 51 || mouthTypeValue == 83 || mouthTypeValue == 115) {
+            mouthTypeLabel = "20";
+        }
+
+        return mouthTypeLabel;
+    }
+
+    public static String getMouthPositionLabel(int mouthPositionValue) {
+        String mouthPositionLabel = "???";
+
+        if (mouthPositionValue >= -32 && mouthPositionValue <= -13) {
+            mouthPositionLabel = "-4";
+        }
+
+        else if (mouthPositionValue >= -64 && mouthPositionValue <= -45) {
+            mouthPositionLabel = "-3";
+        }
+
+        else if (mouthPositionValue >= -96 && mouthPositionValue <= -77) {
+            mouthPositionLabel = "-2";
+        }
+
+        else if (mouthPositionValue >= -128 && mouthPositionValue <= -109) {
+            mouthPositionLabel = "-1";
+        }
+
+        else if (mouthPositionValue >= 96 && mouthPositionValue <= 115) {
+            mouthPositionLabel = "0";
+        }
+
+        else if (mouthPositionValue >= 64 && mouthPositionValue <= 83) {
+            mouthPositionLabel = "1";
+        }
+
+        else if (mouthPositionValue >= 32 && mouthPositionValue <= 51) {
+            mouthPositionLabel = "2";
+        }
+
+        else if (mouthPositionValue >= 0 && mouthPositionValue <= 19) {
+            mouthPositionLabel = "3";
+        }
+
+        return mouthPositionLabel;
+    }
+
+    private static final Map<Integer, Integer> mouthPositionOffset = new HashMap<Integer, Integer>() {
+        {
+            put(3, 0);
+            put(2, 1);
+            put(1, 2);
+            put(0, 3);
+            put(-1, 0);
+            put(-2, 1);
+            put(-3, 2);
+            put(-4, 3);
+        }
+    };
+
+    public static int getMouthTypePositionValue(String mouthTypeLabel, String mouthPositionLabel) {
+        int mouthTypePositionValue = 0;
+        int mouthType = Integer.parseInt(mouthTypeLabel);
+        int mouthPosition = Integer.parseInt(mouthPositionLabel);
+        int mouthPositionOffsetVal = mouthPositionOffset.get(mouthPosition);
+        Boolean mouthPositionPositive = mouthPosition >= 0;
+        int mouthTypePositionBaseValue = mouthPositionPositive ? 0 : -128;
+
+        mouthTypePositionValue = mouthTypePositionBaseValue;
+        mouthTypePositionValue += mouthPositionOffsetVal * 32;
+        mouthTypePositionValue += mouthType - 1;
+
+        return mouthTypePositionValue;
+    }
+
+    public int getMouthTypePositionValueNoStatic(String mouthTypeLabel, String mouthPositionLabel) {
+        return CSVAttributes.getMouthTypePositionValue(mouthTypeLabel, mouthPositionLabel);
+    }
+
 }
