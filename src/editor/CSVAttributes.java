@@ -5076,6 +5076,43 @@ class CSVAttributes {
 
     private final int defaultGrowthTypeVal = 0;
 
+    private final Map<String, Integer> eyeTypesByLabel = new HashMap<String, Integer>() {
+        {
+            put("1", 0);
+            put("2", 8);
+            put("3", 16);
+            put("4", 24);
+            put("5", 32);
+            put("6", 40);
+            put("7", 48);
+            put("8", 56);
+            put("9", 64);
+            put("10", 72);
+            put("11", 80);
+            put("12", 88);
+            put("13", 96);
+            put("14", 104);
+            put("15", 112);
+            put("16", 120);
+            put("17", -128);
+            put("18", -120);
+            put("19", -112);
+            put("20", -104);
+            put("21", -96);
+            put("22", -88);
+            put("23", -80);
+            put("24", -72);
+            put("25", -64);
+            put("26", -56);
+            put("27", -48);
+            put("28", -40);
+            put("29", -32);
+            put("30", -24);
+            put("31", -16);
+            put("32", -8);
+        }
+    };
+
     /**
      * @return the wristbandVals
      */
@@ -7272,6 +7309,144 @@ class CSVAttributes {
 
     public int getBrowsTypeEyesPositionValueNoStatic(String browsTypeLabel, String eyesPositionLabel) {
         return CSVAttributes.getBrowsTypeEyesPositionValue(browsTypeLabel, eyesPositionLabel);
+    }
+
+    public static String getEyesTypeLabel(int eyesTypeValue) {
+        String eyesTypeLabel = "???";
+
+        if (eyesTypeValue >= 0 && eyesTypeValue <= 7) {
+            eyesTypeLabel = "1";
+        }
+
+        else if (eyesTypeValue >= 8 && eyesTypeValue <= 15) {
+            eyesTypeLabel = "2";
+        }
+
+        else if (eyesTypeValue >= 16 && eyesTypeValue <= 23) {
+            eyesTypeLabel = "3";
+        }
+
+        else if (eyesTypeValue >= 24 && eyesTypeValue <= 31) {
+            eyesTypeLabel = "4";
+        }
+
+        else if (eyesTypeValue >= 32 && eyesTypeValue <= 39) {
+            eyesTypeLabel = "5";
+        }
+
+        else if (eyesTypeValue >= 40 && eyesTypeValue <= 47) {
+            eyesTypeLabel = "6";
+        }
+
+        else if (eyesTypeValue >= 48 && eyesTypeValue <= 55) {
+            eyesTypeLabel = "7";
+        }
+
+        else if (eyesTypeValue >= 56 && eyesTypeValue <= 63) {
+            eyesTypeLabel = "8";
+        }
+
+        else if (eyesTypeValue >= 64 && eyesTypeValue <= 71) {
+            eyesTypeLabel = "9";
+        }
+
+        else if (eyesTypeValue >= 72 && eyesTypeValue <= 79) {
+            eyesTypeLabel = "10";
+        }
+
+        else if (eyesTypeValue >= 80 && eyesTypeValue <= 87) {
+            eyesTypeLabel = "11";
+        }
+
+        else if (eyesTypeValue >= 88 && eyesTypeValue <= 95) {
+            eyesTypeLabel = "12";
+        }
+
+        else if (eyesTypeValue >= 96 && eyesTypeValue <= 103) {
+            eyesTypeLabel = "13";
+        }
+
+        else if (eyesTypeValue >= 104 && eyesTypeValue <= 111) {
+            eyesTypeLabel = "14";
+        }
+
+        else if (eyesTypeValue >= 112 && eyesTypeValue <= 119) {
+            eyesTypeLabel = "15";
+        }
+
+        else if (eyesTypeValue >= 120 && eyesTypeValue <= 127) {
+            eyesTypeLabel = "16";
+        }
+
+        else if (eyesTypeValue >= -128 && eyesTypeValue <= -121) {
+            eyesTypeLabel = "17";
+        }
+
+        else if (eyesTypeValue >= -120 && eyesTypeValue <= -113) {
+            eyesTypeLabel = "18";
+        }
+
+        else if (eyesTypeValue >= -112 && eyesTypeValue <= -105) {
+            eyesTypeLabel = "19";
+        }
+
+        else if (eyesTypeValue >= -104 && eyesTypeValue <= -97) {
+            eyesTypeLabel = "20";
+        }
+
+        else if (eyesTypeValue >= -96 && eyesTypeValue <= -89) {
+            eyesTypeLabel = "21";
+        }
+
+        else if (eyesTypeValue >= -88 && eyesTypeValue <= -81) {
+            eyesTypeLabel = "22";
+        }
+
+        else if (eyesTypeValue >= -80 && eyesTypeValue <= -73) {
+            eyesTypeLabel = "23";
+        }
+
+        else if (eyesTypeValue >= -72 && eyesTypeValue <= -65) {
+            eyesTypeLabel = "24";
+        }
+
+        else if (eyesTypeValue >= -64 && eyesTypeValue <= -57) {
+            eyesTypeLabel = "25";
+        }
+
+        else if (eyesTypeValue >= -56 && eyesTypeValue <= -49) {
+            eyesTypeLabel = "26";
+        }
+
+        else if (eyesTypeValue >= -48 && eyesTypeValue <= -41) {
+            eyesTypeLabel = "27";
+        }
+
+        else if (eyesTypeValue >= -40 && eyesTypeValue <= -33) {
+            eyesTypeLabel = "28";
+        }
+
+        else if (eyesTypeValue >= -32 && eyesTypeValue <= -25) {
+            eyesTypeLabel = "29";
+        }
+
+        else if (eyesTypeValue >= -24 && eyesTypeValue <= -17) {
+            eyesTypeLabel = "30";
+        }
+
+        else if (eyesTypeValue >= -16 && eyesTypeValue <= -9) {
+            eyesTypeLabel = "31";
+        }
+
+        else if (eyesTypeValue >= -8 && eyesTypeValue <= -1) {
+            eyesTypeLabel = "32";
+        }
+
+        return eyesTypeLabel;
+    }
+
+    public Map<String, Integer> getEyeTypesByLabel() {
+        return eyeTypesByLabel;
     }
 
 }

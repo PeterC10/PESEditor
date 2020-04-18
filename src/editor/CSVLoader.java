@@ -308,6 +308,7 @@ public class CSVLoader {
 
 	private static String attHeadPosition = "HEAD POSITION";
 
+	private static String attEyesType = "EYES TYPE";
 	private static String attEyesPosition = "EYES POSITION";
 	private static String attEyesAngle = "EYES ANGLE";
 	private static String attEyesLength = "EYES LENGTH";
@@ -454,6 +455,7 @@ public class CSVLoader {
 		attEyeColor2,
 		attSleveLength,
 		attHeadPosition,
+		attEyesType,
 		attEyesPosition,
 		attEyesAngle,
 		attEyesLength,
@@ -491,6 +493,7 @@ public class CSVLoader {
 	private final Map<String, Integer> specialFacesByActualNumber = csvAttributes.getSpecialFacesByActualNumber();
 	private final Map<String, Integer> growthTypesByLabel = csvAttributes.getGrowthTypesByLabel();
 	private final Map<Integer, String> growthTypesByValue = csvAttributes.getGrowthTypesByValue();
+	private final Map<String, Integer> eyeTypesByLabel = csvAttributes.getEyeTypesByLabel();
 
 	private final String defaultGrowthTypeLabel = csvAttributes.getDefaultGrowthTypeLabel();
 	private final int defaultGrowthTypeVal = csvAttributes.getDefaultGrowthTypeVal();
@@ -1374,6 +1377,12 @@ public class CSVLoader {
 			String glassesNecklaceTypeKey = glassesTypeLabel + "/" + necklaceTypeLabel;
 			int glassesNecklaceTypeVal = glassesNecklaceOptsByLabel.get(glassesNecklaceTypeKey);
 			playerData[97] = (byte)glassesNecklaceTypeVal;
+		}
+
+		String eyesTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyesType);
+		if (!eyesTypeLabel.equals(CSVLoader.attValueNotFound)) {
+			int eyesTypeValue = eyeTypesByLabel.get(eyesTypeLabel);
+			playerData[115] = (byte)eyesTypeValue;
 		}
 
 		String browsTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBrowsType);
