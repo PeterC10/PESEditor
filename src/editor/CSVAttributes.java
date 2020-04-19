@@ -5120,6 +5120,28 @@ class CSVAttributes {
         }
     };
 
+    private static final Map<Integer, String> undershortsColorByValue = new HashMap<Integer, String>() {
+        {
+            put(0, "White");
+            put(1, "Black");
+            put(2, "Red");
+            put(3, "Blue");
+            put(4, "Yellow");
+            put(5, "Green");
+            put(6, "Purple");
+            put(7, "Same");
+        }
+    };
+
+    private static final Map<Integer, String> braceletTypeByValue = new HashMap<Integer, String>() {
+        {
+            put(0, "None");
+            put(1, "Left");
+            put(2, "Right");
+            put(3, "Both");
+        }
+    };
+
     /**
      * @return the wristbandVals
      */
@@ -7472,6 +7494,118 @@ class CSVAttributes {
 
     public static Map<String, Integer> getNeckWarmerBaseHairCodeOffsetByLabel() {
         return neckWarmerBaseHairCodeOffsetByLabel;
+    }
+
+    public static String getUnderShortsLabel(int underShortsValue) {
+        String underShortsLabel = "???";
+
+        if (underShortsValue >= 0 && underShortsValue <= 127) {
+            underShortsLabel = "N";
+        }
+
+        else if (underShortsValue >= -128 && underShortsValue <= -1) {
+            underShortsLabel = "Y";
+        }
+
+        return underShortsLabel;
+    }
+
+    public static String getUnderShortsColorLabel(int underShortsColorValue) {
+        String underShortsColorLabel = "???";
+        int underShortsColorBaseValue = 0;
+        int offsetValue = 0;
+
+        if (underShortsColorValue >= -128 && underShortsColorValue <= -1) {
+            offsetValue = 8;
+        }
+
+        underShortsColorBaseValue = (underShortsColorValue % 8) + offsetValue;
+
+        if (underShortsColorBaseValue == 8){
+            underShortsColorBaseValue = 0;
+        }
+
+        underShortsColorLabel = undershortsColorByValue.get(underShortsColorBaseValue);
+
+        return underShortsColorLabel;
+    }
+
+    public static String getBraceletTypeLabel(int braceletTypeValue) {
+        String braceletTypeLabel = "???";
+        int braceletTypeBaseValue = 0;
+        int offsetValue = 0;
+
+        if (braceletTypeValue >= -128 && braceletTypeValue <= -1) {
+            offsetValue = 128;
+        }
+
+        braceletTypeBaseValue = (braceletTypeValue + offsetValue) % 4;
+
+        braceletTypeLabel = braceletTypeByValue.get(braceletTypeBaseValue);
+
+        return braceletTypeLabel;
+    }
+
+    public static String getBraceletColorLabel(int braceletColorValue) {
+        String braceletColorLabel = "???";
+        int offsetValue = 0;
+
+        if (braceletColorValue >= -128 && braceletColorValue <= -1) {
+            offsetValue = 128;
+        }
+
+        int braceletColorValueWithOffset = braceletColorValue + offsetValue;
+
+        if ((braceletColorValueWithOffset >= 0 && braceletColorValueWithOffset <= 3)
+                || (braceletColorValueWithOffset >= 32 && braceletColorValueWithOffset <= 35)
+                || (braceletColorValueWithOffset >= 64 && braceletColorValueWithOffset <= 67)
+                || (braceletColorValueWithOffset >= 96 && braceletColorValueWithOffset <= 99)) {
+            braceletColorLabel = "White";
+        }
+        else if ((braceletColorValueWithOffset >= 4 && braceletColorValueWithOffset <= 7)
+                || (braceletColorValueWithOffset >= 36 && braceletColorValueWithOffset <= 39)
+                || (braceletColorValueWithOffset >= 68 && braceletColorValueWithOffset <= 71)
+                || (braceletColorValueWithOffset >= 100 && braceletColorValueWithOffset <= 103)) {
+            braceletColorLabel = "Black";
+        }
+        else if ((braceletColorValueWithOffset >= 8 && braceletColorValueWithOffset <= 11)
+                || (braceletColorValueWithOffset >= 40 && braceletColorValueWithOffset <= 43)
+                || (braceletColorValueWithOffset >= 72 && braceletColorValueWithOffset <= 75)
+                || (braceletColorValueWithOffset >= 104 && braceletColorValueWithOffset <= 107)) {
+            braceletColorLabel = "Red";
+        }
+        else if ((braceletColorValueWithOffset >= 12 && braceletColorValueWithOffset <= 15)
+                || (braceletColorValueWithOffset >= 44 && braceletColorValueWithOffset <= 47)
+                || (braceletColorValueWithOffset >= 76 && braceletColorValueWithOffset <= 79)
+                || (braceletColorValueWithOffset >= 108 && braceletColorValueWithOffset <= 111)) {
+            braceletColorLabel = "Blue";
+        }
+        else if ((braceletColorValueWithOffset >= 16 && braceletColorValueWithOffset <= 19)
+                || (braceletColorValueWithOffset >= 48 && braceletColorValueWithOffset <= 51)
+                || (braceletColorValueWithOffset >= 80 && braceletColorValueWithOffset <= 83)
+                || (braceletColorValueWithOffset >= 112 && braceletColorValueWithOffset <= 115)) {
+            braceletColorLabel = "Yellow";
+        }
+        else if ((braceletColorValueWithOffset >= 20 && braceletColorValueWithOffset <= 23)
+                || (braceletColorValueWithOffset >= 52 && braceletColorValueWithOffset <= 55)
+                || (braceletColorValueWithOffset >= 84 && braceletColorValueWithOffset <= 87)
+                || (braceletColorValueWithOffset >= 116 && braceletColorValueWithOffset <= 119)) {
+            braceletColorLabel = "Green";
+        }
+        else if ((braceletColorValueWithOffset >= 24 && braceletColorValueWithOffset <= 27)
+                || (braceletColorValueWithOffset >= 56 && braceletColorValueWithOffset <= 59)
+                || (braceletColorValueWithOffset >= 88 && braceletColorValueWithOffset <= 91)
+                || (braceletColorValueWithOffset >= 120 && braceletColorValueWithOffset <= 123)) {
+            braceletColorLabel = "Purple";
+        }
+        else if ((braceletColorValueWithOffset >= 28 && braceletColorValueWithOffset <= 31)
+                || (braceletColorValueWithOffset >= 60 && braceletColorValueWithOffset <= 63)
+                || (braceletColorValueWithOffset >= 92 && braceletColorValueWithOffset <= 95)
+                || (braceletColorValueWithOffset >= 124 && braceletColorValueWithOffset <= 127)) {
+            braceletColorLabel = "Cyan";
+        }
+
+        return braceletColorLabel;
     }
 
 }

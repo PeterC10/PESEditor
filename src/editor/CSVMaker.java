@@ -145,7 +145,7 @@ public class CSVMaker {
 				"NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH", "CHEEK TYPE", "CHEEK SHAPE", 
 				"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
 				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH",
-				"NECK WARMER" };
+				"NECK WARMER", "BRACELET TYPE", "BRACELET COLOR", "UNDER SHORTS", "UNDER SHORTS COLOR" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -873,11 +873,40 @@ public class CSVMaker {
 		out.write(chinWidth);
 		out.flush();
 
-		String neckWarmerLabel = CSVAttributes.getNeckWarmerLabel(playerData[93]);
+		String neckWarmer = CSVAttributes.getNeckWarmerLabel(playerData[93]);
+		String barceletType = CSVAttributes.getBraceletTypeLabel(playerData[99]);
+		String barceletColor = CSVAttributes.getBraceletColorLabel(playerData[99]);
+		String underShorts = CSVAttributes.getUnderShortsLabel(playerData[99]);
+		String underShortsColor = CSVAttributes.getUnderShortsColorLabel(playerData[100]);
 
 		out.write(separator);
 		out.flush();
-		out.write(neckWarmerLabel);
+		out.write(neckWarmer);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(barceletType);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(barceletColor);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(underShorts);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(underShortsColor);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(Integer.toString(playerData[100]));
 		out.flush();
 
 		out.write(13);
