@@ -7642,4 +7642,30 @@ class CSVAttributes {
         return socksTypeLabel;
     }
 
+    public static String getGlovesLabel(int glovesLabelValue) {
+        String glovesLabel = "???";
+
+        if (glovesLabelValue >= -128 && glovesLabelValue <= -1) {
+            glovesLabel = "Y";
+        }
+        else if (glovesLabelValue >= 0 && glovesLabelValue <= 127) {
+            glovesLabel = "N";
+        }
+
+        return glovesLabel;
+    }
+
+    public static String getAnkleTapeLabel(int ankleTapeValue) {
+        String ankleTapeLabel = "???";
+
+        if ((ankleTapeValue >= -64 && ankleTapeValue <= -1) || (ankleTapeValue >= 64 && ankleTapeValue <= 127)) {
+            ankleTapeLabel = "Y";
+        }
+        else if ((ankleTapeValue >= -128 && ankleTapeValue <= -65) || (ankleTapeValue >= 0 && ankleTapeValue <= 63)) {
+            ankleTapeLabel = "N";
+        }
+
+        return ankleTapeLabel;
+    }
+
 }
