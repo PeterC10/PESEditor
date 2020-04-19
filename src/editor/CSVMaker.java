@@ -146,7 +146,7 @@ public class CSVMaker {
 				"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
 				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH",
 				"NECK WARMER", "BRACELET TYPE", "BRACELET COLOR", "GLOVES", "FINGER BAND TYPE",
-				"UNDER SHORTS", "UNDER SHORTS COLOR", "SOCKS TYPE", "ANKLE TAPE" };
+				"SHIRT TYPE", "UNDER SHORTS", "UNDER SHORTS COLOR", "SOCKS TYPE", "ANKLE TAPE" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -879,6 +879,7 @@ public class CSVMaker {
 		String barceletColor = CSVAttributes.getBraceletColorLabel(playerData[99]);
 		String gloves = CSVAttributes.getGlovesLabel(playerData[104]);
 		String fingerBandType = CSVAttributes.getFingerBandTypeLabel(playerData[103]);
+		String shirtType = CSVAttributes.getShirtTypeLabel(playerData[89]);
 		String underShorts = CSVAttributes.getUnderShortsLabel(playerData[99]);
 		String underShortsColor = CSVAttributes.getUnderShortsColorLabel(playerData[100]);
 		String socksType = CSVAttributes.getSocksTypeLabel(playerData[100]);
@@ -908,7 +909,12 @@ public class CSVMaker {
 		out.flush();
 		out.write(fingerBandType);
 		out.flush();
-		
+
+		out.write(separator);
+		out.flush();
+		out.write(shirtType);
+		out.flush();
+
 		out.write(separator);
 		out.flush();
 		out.write(underShorts);

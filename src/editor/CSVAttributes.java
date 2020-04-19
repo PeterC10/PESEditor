@@ -7684,4 +7684,17 @@ class CSVAttributes {
         return fingerBandTypeLabel;
     }
 
+    public static String getShirtTypeLabel(int shirtTypeValue) {
+        String shirtTypeLabel = "???";
+
+        if (shirtTypeValue >= -128 && shirtTypeValue <= -1) {
+            shirtTypeLabel = "Untucked";
+        }
+        else if (shirtTypeValue >= 0 && shirtTypeValue <= 127) {
+            shirtTypeLabel = "Standard";
+        }
+
+        return shirtTypeLabel;
+    }
+
 }
