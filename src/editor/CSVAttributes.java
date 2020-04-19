@@ -7608,4 +7608,38 @@ class CSVAttributes {
         return braceletColorLabel;
     }
 
+    public static String getSocksTypeLabel(int socksTypeValue) {
+        String socksTypeLabel = "???";
+        int offsetValue = 0;
+
+        if (socksTypeValue >= -128 && socksTypeValue <= -1) {
+            offsetValue = 128;
+        }
+
+        int socksTypeValueWithOffset = socksTypeValue + offsetValue;
+
+        if ((socksTypeValueWithOffset >= 0 && socksTypeValueWithOffset <= 7)
+                || (socksTypeValueWithOffset >= 32 && socksTypeValueWithOffset <= 39)
+                || (socksTypeValueWithOffset >= 64 && socksTypeValueWithOffset <= 71)
+                || (socksTypeValueWithOffset >= 96 && socksTypeValueWithOffset <= 103)) {
+            socksTypeLabel = "Long";
+        }
+
+        if ((socksTypeValueWithOffset >= 8 && socksTypeValueWithOffset <= 15)
+                || (socksTypeValueWithOffset >= 40 && socksTypeValueWithOffset <= 47)
+                || (socksTypeValueWithOffset >= 72 && socksTypeValueWithOffset <= 79)
+                || (socksTypeValueWithOffset >= 104 && socksTypeValueWithOffset <= 111)) {
+            socksTypeLabel = "Standard";
+        }
+
+        if ((socksTypeValueWithOffset >= 16 && socksTypeValueWithOffset <= 23)
+                || (socksTypeValueWithOffset >= 48 && socksTypeValueWithOffset <= 55)
+                || (socksTypeValueWithOffset >= 80 && socksTypeValueWithOffset <= 87)
+                || (socksTypeValueWithOffset >= 112 && socksTypeValueWithOffset <= 119)) {
+            socksTypeLabel = "Short";
+        }
+
+        return socksTypeLabel;
+    }
+
 }
