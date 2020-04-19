@@ -7668,4 +7668,20 @@ class CSVAttributes {
         return ankleTapeLabel;
     }
 
+    public static String getFingerBandTypeLabel(int fingerBandTypeValue) {
+        String fingerBandTypeLabel = "???";
+
+        if (fingerBandTypeValue >= 0 && fingerBandTypeValue <= 63){
+            fingerBandTypeLabel = "N";
+        }
+        else if (fingerBandTypeValue >= 64 && fingerBandTypeValue <= 127){
+            fingerBandTypeLabel = "1";
+        }
+        else if (fingerBandTypeValue >= -128 && fingerBandTypeValue <= -65){
+            fingerBandTypeLabel = "2";
+        }
+
+        return fingerBandTypeLabel;
+    }
+
 }
