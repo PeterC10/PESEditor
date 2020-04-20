@@ -4,11 +4,11 @@ import java.util.*;
 
 class CSVAttributes {
 
-    private final int bytesFactor = 16;
-    private final int singlePhysicalOptsSettingMinValue = 0;
-    private final int singlePhysicalOptsSettingMaxValue = 14;
+    private static final int bytesFactor = 16;
+    private static final int singlePhysicalOptsSettingMinValue = 0;
+    private static final int singlePhysicalOptsSettingMaxValue = 14;
 
-    private final Map<String, Integer> footFavSideOptsByLabelFootVal = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> footFavSideOptsByLabelFootVal = new HashMap<String, Integer>() {
         {
             put("R/R", 0);
             put("R/L", 0);
@@ -19,7 +19,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> footFavSideOptsByLabelFavSideVal = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> footFavSideOptsByLabelFavSideVal = new HashMap<String, Integer>() {
         {
             put("R/R", 0);
             put("R/L", 1);
@@ -30,7 +30,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> physicalOptsByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> physicalOptsByLabel = new HashMap<String, Integer>() {
         {
             put("-7", 0);
             put("-6", 1);
@@ -50,7 +50,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> physicalOptsByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> physicalOptsByValue = new HashMap<Integer, String>() {
         {
             put(0, "-7");
             put(1, "-6");
@@ -72,7 +72,7 @@ class CSVAttributes {
 
     // FIXME: Head height value appears to be linked to another attribute but no idea what that is yet...
 
-    private final Map<String, Integer> headHeightOptsByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> headHeightOptsByLabel = new HashMap<String, Integer>() {
         {
             put("-7", 0);
             put("-7", 1);
@@ -316,7 +316,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> headHeightOptsByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> headHeightOptsByValue = new HashMap<Integer, String>() {
         {
             put(0, "-7");
             put(1, "-7");
@@ -560,7 +560,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> physicalLinkedOptsByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> physicalLinkedOptsByLabel = new HashMap<String, Integer>() {
         {
             put("-7/-7", 0);
             put("-6/-7", 1);
@@ -804,7 +804,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> physicalLinkedOptsByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> physicalLinkedOptsByValue = new HashMap<Integer, String>() {
         {
             put(0, "-7/-7");
             put(1, "-6/-7");
@@ -1048,7 +1048,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> capTypeOptsByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> capTypeOptsByLabel = new HashMap<String, Integer>() {
         {
             put("1", 0);
             put("2", 8);
@@ -1061,7 +1061,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> capTypeOptsByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> capTypeOptsByValue = new HashMap<Integer, String>() {
         {
             put(0, "1");
             put(8, "2");
@@ -1074,9 +1074,9 @@ class CSVAttributes {
         }
     };
 
-    private final String capTypeOptsDefaultValue = "1";
+    private static final String capTypeOptsDefaultValue = "1";
 
-    private final Map<String, Integer> glassesNecklaceOptsByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> glassesNecklaceOptsByLabel = new HashMap<String, Integer>() {
         {
             put("N/N", 0);
             put("1/N", 1);
@@ -1090,7 +1090,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> glassesNecklaceOptsByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> glassesNecklaceOptsByValue = new HashMap<Integer, String>() {
         {
             put(0, "N/N");
             put(1, "1/N");
@@ -1104,14 +1104,14 @@ class CSVAttributes {
         }
     };
 
-    private final int[] wristbandVals = { 0, 8, 16, 24, 40, 48, 56, 72, 80, 88, 104, 112, 120, -120, -112, -104, -88,
+    private static final int[] wristbandVals = { 0, 8, 16, 24, 40, 48, 56, 72, 80, 88, 104, 112, 120, -120, -112, -104, -88,
             -80, -72, -56, -48, -40, -24, -16, -8 };
 
-    private final String[] wristbandLabels = { "N-None", "L-White", "R-White", "B-White", "L-Black", "R-Black",
+    private static final String[] wristbandLabels = { "N-None", "L-White", "R-White", "B-White", "L-Black", "R-Black",
             "B-Black", "L-Red", "R-Red", "B-Red", "L-Blue", "R-Blue", "B-Blue", "L-Yellow", "R-Yellow", "B-Yellow",
             "L-Green", "R-Green", "B-Green", "L-Purple", "R-Purple", "B-Purple", "L-Cyan", "R-Cyan", "B-Cyan" };
 
-    private final Map<String, Integer> wristbandOptsByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> wristbandOptsByLabel = new HashMap<String, Integer>() {
         {
             put("N-None", 0);
             put("L-White", 8);
@@ -1141,7 +1141,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> wristbandOptsByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> wristbandOptsByValue = new HashMap<Integer, String>() {
         {
             put(0, "N-None");
             put(8, "L-White");
@@ -1171,7 +1171,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> faceTypesByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> faceTypesByLabel = new HashMap<String, Integer>() {
         {
             put("Build", 0);
             put("Special", 1);
@@ -1179,7 +1179,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> faceTypesByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> faceTypesByValue = new HashMap<Integer, String>() {
         {
             put(0, "Build");
             put(1, "Special");
@@ -1187,7 +1187,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> eyeColor2TypesByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> eyeColor2TypesByLabel = new HashMap<String, Integer>() {
         {
             put("Black 1", 0);
             put("Black 2", 1);
@@ -1204,7 +1204,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> eyeColor2TypesByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> eyeColor2TypesByValue = new HashMap<Integer, String>() {
         {
             put(0, "Black 1");
             put(1, "Black 2");
@@ -1221,7 +1221,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, String> hairTypesByLabel = new HashMap<String, String>() {
+    private static final Map<String, String> hairTypesByLabel = new HashMap<String, String>() {
         {
             put("Bald/1/NA/NA/NA/NA", "0/0");
             put("Bald/2/NA/NA/NA/NA", "1/0");
@@ -2725,7 +2725,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, String> hairTypesByKey = new HashMap<String, String>() {
+    private static final Map<String, String> hairTypesByKey = new HashMap<String, String>() {
         {
             put("0/0", "Bald/1/NA/NA/NA/NA");
             put("1/0", "Bald/2/NA/NA/NA/NA");
@@ -4229,7 +4229,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> specialFacesByIndexNumber = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> specialFacesByIndexNumber = new HashMap<String, Integer>() {
         {
             put("1/3", 3);
             put("1/4", 4);
@@ -4529,7 +4529,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> specialFacesByActualNumber = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> specialFacesByActualNumber = new HashMap<String, Integer>() {
         {
             put("1/3", 3);
             put("1/4", 4);
@@ -4829,7 +4829,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<String, Integer> growthTypesByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> growthTypesByLabel = new HashMap<String, Integer>() {
         {
             put("Early", -128);
             put("Standard/Lasting", -127);
@@ -4840,7 +4840,7 @@ class CSVAttributes {
         }
     };
 
-    private final Map<Integer, String> growthTypesByValue = new HashMap<Integer, String>() {
+    private static final Map<Integer, String> growthTypesByValue = new HashMap<Integer, String>() {
         {
             put(-128, "Early");
             put(-127, "Standard/Lasting");
@@ -5072,11 +5072,11 @@ class CSVAttributes {
         }
     };
 
-    private final String defaultGrowthTypeLabel = "Standard";
+    private static final String defaultGrowthTypeLabel = "Standard";
 
-    private final int defaultGrowthTypeVal = 0;
+    private static final int defaultGrowthTypeVal = 0;
 
-    private final Map<String, Integer> eyeTypesByLabel = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> eyeTypesByLabel = new HashMap<String, Integer>() {
         {
             put("1", 0);
             put("2", 8);
@@ -8323,6 +8323,31 @@ class CSVAttributes {
         }
 
         return bandanaColorLabel;
+    }
+
+    private static final Map<String, Integer> bandanaColorMultipliers = new HashMap<String, Integer>() {
+        {
+            put("White", 0);
+            put("Black", 1);
+            put("Red", 2);
+            put("Blue", 3);
+            put("Purple", 4);
+            put("Cyan", 5);
+            put("Yellow", 6);
+            put("Green", 7);
+        }
+    };
+
+    public static int getShoulderWidthBandanaColorValue(String shoulderWidthLabel, String bandanaColorLabel) {
+        int shoulderWidthBandanaColorValue;
+        int byteOffset = 16;
+
+        int shoulderWidthBandanaColorBaseValue = physicalOptsByLabel.get(shoulderWidthLabel);
+        int bandanaColorMultiplier = bandanaColorMultipliers.get(bandanaColorLabel);
+
+        shoulderWidthBandanaColorValue = shoulderWidthBandanaColorBaseValue + (byteOffset * bandanaColorMultiplier);
+
+        return shoulderWidthBandanaColorValue;
     }
 
 }

@@ -290,6 +290,7 @@ public class CSVLoader {
 	private static String attHairVolume = "HAIR VOLUME";
 	private static String attHairDarkness = "HAIR DARKNESS";
 	private static String attBandanaType = "BANDANA TYPE";
+	private static String attBandanaColor = "BANDANA COLOR";
 	private static String attFacialHair = "FACIAL HAIR";
 
 	private static String attHairColorType = "HAIR COLOR TYPE";
@@ -1270,6 +1271,7 @@ public class CSVLoader {
 		String legCircumferenceLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attLegCircumference);
 		String calfCircumferenceLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCalfCircumference);
 		String legLengthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attLegLength);
+		String bandanaColorLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBandanaColor);
 
 		String headWidthNeckWidthLabel = headWidthLabel + "/" + neckWidthLabel;
 		String neckLengthChestMeasurementLabel = neckLengthLabel + "/" + chestMeasurementLabel;
@@ -1295,8 +1297,8 @@ public class CSVLoader {
 		int legLengthShoulderHeightVal = physicalLinkedOptsByLabel.get(legLengthShoulderHeightLabel);
 		playerData[108] = (byte)legLengthShoulderHeightVal;
 
-		int shoulderWidthVal = physicalOptsByLabel.get(shoulderWidthLabel);
-		playerData[109] = (byte)shoulderWidthVal;
+		int shoulderWidthBandanaColorVal = CSVAttributes.getShoulderWidthBandanaColorValue(shoulderWidthLabel, bandanaColorLabel);
+		playerData[109] = (byte)shoulderWidthBandanaColorVal;
 
 		String wristBandType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWristband);
 		String wristBandColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWristbandColor);
