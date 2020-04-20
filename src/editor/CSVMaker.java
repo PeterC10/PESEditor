@@ -137,7 +137,7 @@ public class CSVMaker {
 				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
 				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM", "CLUB NUMBER",
 				"HAIR TYPE", "HAIR SHAPE", "HAIR FRONT", "HAIR VOLUME", "HAIR DARKNESS",
-				"BANDANA TYPE", "FACIAL HAIR", "HAIR COLOR TYPE", "HAIR COLOR PATTERN",
+				"BANDANA TYPE", "BANDANA COLOR", "FACIAL HAIR", "HAIR COLOR TYPE", "HAIR COLOR PATTERN",
 				"FACIAL HAIR COLOR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
 				"EYE COLOR 1", "EYE COLOR 2", "SLEEVE LENGTH",
 				"HEAD POSITION", "BROWS TYPE", "BROWS ANGLE", "BROWS HEIGHT", "EYEBROW SPACING",
@@ -536,12 +536,16 @@ public class CSVMaker {
 		}
 		glassesNecklaceVal = glassesNecklaceVal % 8;
 
-		// 109 also potentially linked to bandana colour!!
 		int shoulderWidthVal = playerData[109];
 
-		if(shoulderWidthVal > singlePhysicalOptsSettingMaxValue){
+		if(shoulderWidthVal > singlePhysicalOptsSettingMaxValue || shoulderWidthVal < 0){
 			int factor = (int)Math.floor(shoulderWidthVal / bytesFactor);
 			shoulderWidthVal = shoulderWidthVal - (factor * bytesFactor);
+
+			if(shoulderWidthVal < 0){
+				shoulderWidthVal = shoulderWidthVal + bytesFactor;
+			}
+
 		}
 
 		String shoulderWidthAttribute = physicalOptsByValue.get(shoulderWidthVal);
@@ -656,6 +660,7 @@ public class CSVMaker {
 		String hairVolume = hairTypeLabels[3];
 		String hairDarkness = hairTypeLabels[4];
 		String bandanaType = hairTypeLabels[5];
+		String bandanaColor = CSVAttributes.getBandanaColorLabel(playerData[109]);
 
 		out.write(hairType);
 		out.flush();
@@ -678,6 +683,10 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 		out.write(bandanaType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		out.write(bandanaColor);
 		out.flush();
 		out.write(separator);
 
@@ -954,6 +963,7 @@ public class CSVMaker {
 		out.flush();
 		out.write(rgbB);
 		out.flush();
+		
 		out.write(13);
 		out.flush();
 		out.write(10);

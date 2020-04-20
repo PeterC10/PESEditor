@@ -8294,4 +8294,35 @@ class CSVAttributes {
         return rgbBLabel;
     }
 
+    public static String getBandanaColorLabel(int bandanaColorValue) {
+        String bandanaColorLabel = "???";
+
+        if ((bandanaColorValue >= 0 && bandanaColorValue <= 14) || (bandanaColorValue >= -128 && bandanaColorValue <= -114)) {
+            bandanaColorLabel = "White";
+        }
+        else if ((bandanaColorValue >= 16 && bandanaColorValue <= 30) || (bandanaColorValue >= -112 && bandanaColorValue <= -98)) {
+            bandanaColorLabel = "Black";
+        }
+        else if ((bandanaColorValue >= 32 && bandanaColorValue <= 46) || (bandanaColorValue >= -96 && bandanaColorValue <= -82)) {
+            bandanaColorLabel = "Red";
+        }
+        else if ((bandanaColorValue >= 48 && bandanaColorValue <= 62) || (bandanaColorValue >= -80 && bandanaColorValue <= -66)) {
+            bandanaColorLabel = "Blue";
+        }
+        else if ((bandanaColorValue >= 64 && bandanaColorValue <= 78) || (bandanaColorValue >= -64 && bandanaColorValue <= -50)) {
+            bandanaColorLabel = "Purple";
+        }
+        else if ((bandanaColorValue >= 80 && bandanaColorValue <= 94) || (bandanaColorValue >= -48 && bandanaColorValue <= -34)) {
+            bandanaColorLabel = "Cyan";
+        }
+        else if ((bandanaColorValue >= 96 && bandanaColorValue <= 110) || (bandanaColorValue >= -32 && bandanaColorValue <= -18)) {
+            bandanaColorLabel = "Yellow";
+        }
+        else if ((bandanaColorValue >= 112 && bandanaColorValue <= 126) || (bandanaColorValue >= -16 && bandanaColorValue <= -2)) {
+            bandanaColorLabel = "Green";
+        }
+
+        return bandanaColorLabel;
+    }
+
 }
