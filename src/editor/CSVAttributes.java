@@ -8659,4 +8659,20 @@ class CSVAttributes {
         return shoulderWidthBandanaColorValue;
     }
 
+    public static int getFavouredSideValue(String strongFootLabel, String favouredSideLabel){
+        int favouredSideValue = 0;
+
+        if (favouredSideLabel.equals("B")) {
+            favouredSideValue = 2;
+        }
+        else if ((strongFootLabel.equals("R") || strongFootLabel.equals("L"))
+                && (favouredSideLabel.equals("R") || favouredSideLabel.equals("L"))) {
+            if (!strongFootLabel.equals(favouredSideLabel)){
+                favouredSideValue = 1;
+            }
+        }
+
+        return favouredSideValue;
+    }
+
 }
