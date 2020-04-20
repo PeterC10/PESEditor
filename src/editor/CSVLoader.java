@@ -507,7 +507,6 @@ public class CSVLoader {
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
-	private final Map<String, Integer> physicalOptsByLabel = csvAttributes.getPhysicalOptsByLabel();
 	private final Map<String, Integer> physicalLinkedOptsByLabel = csvAttributes.getPhysicalLinkedOptsByLabel();
 	private final Map<String, Integer> headHeightOptsByLabel = csvAttributes.getHeadHeightOptsByLabel();
 	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
