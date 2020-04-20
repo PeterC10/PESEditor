@@ -340,6 +340,7 @@ public class CSVLoader {
 	private static String attBraceletColor = "BRACELET COLOR";
 	private static String attGloves = "GLOVES";
 	private static String attFingerBandType = "FINGER BAND TYPE";
+	private static String attShirtType = "SHIRT TYPE";
 	private static String attUnderShorts = "UNDER SHORTS";
 	private static String attUnderShortsColor = "UNDER SHORTS COLOR";
 	private static String attSocksType = "SOCKS TYPE";
@@ -495,6 +496,7 @@ public class CSVLoader {
 		attBraceletColor,
 		attGloves,
 		attFingerBandType,
+		attShirtType,
 		attUnderShorts,
 		attUnderShortsColor,
 		attSocksType,
@@ -1285,6 +1287,17 @@ public class CSVLoader {
 		}
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
+
+		String shirtType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attShirtType);
+
+		if (!shirtType.equals(CSVLoader.attValueNotFound)) {
+			String currentShirtType = CSVAttributes.getShirtTypeLabel(playerData[89]);
+
+			if (!shirtType.equals(currentShirtType)) {
+				int shirtTypeWeightVal = CSVAttributes.getShirtTypeWeightValue(shirtType, weight);
+				playerData[89] = (byte)shirtTypeWeightVal;
+			}
+		}
 
 		String headHeightLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHeadHeight);
 		String headWidthLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHeadWidth);

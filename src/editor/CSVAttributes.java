@@ -7771,6 +7771,21 @@ class CSVAttributes {
         return shirtTypeLabel;
     }
 
+    public static int getShirtTypeWeightValue(String shirtTypeLabel, String weightLabel) {
+        int shirtTypeValue;
+        int untuckedShirtOffset = -128;
+
+        int weightValue = Integer.parseInt(weightLabel);
+
+        shirtTypeValue = weightValue;
+
+        if (shirtTypeLabel.equals("Untucked")) {
+            shirtTypeValue += untuckedShirtOffset;
+        }
+
+        return shirtTypeValue;
+    }
+
     public static String getRgbRLabel(int rgbRValue) {
         String rgbRLabel = "???";
 
