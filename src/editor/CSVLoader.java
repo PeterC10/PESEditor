@@ -336,6 +336,13 @@ public class CSVLoader {
 	private static String attChinWidth = "CHIN WIDTH";
 
 	private static String attNeckWarmer = "NECK WARMER";
+	private static String attGloves = "GLOVES";
+	private static String attFingerBandType = "FINGER BAND TYPE";
+	private static String attAnkleTape = "ANKLE TAPE";
+
+	private static String attRgbR = "HAIR COLOR RGB-R";
+	private static String attRgbG = "HAIR COLOR RGB-G";
+	private static String attRgbB = "HAIR COLOR RGB-B";
 
 	private static String[] supportedHeaders = {
 		attId,
@@ -479,6 +486,12 @@ public class CSVLoader {
 		attChinHeight,
 		attChinWidth,
 		attNeckWarmer,
+		attGloves,
+		attFingerBandType,
+		attAnkleTape,
+		attRgbR,
+		attRgbG,
+		attRgbB,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -1352,6 +1365,30 @@ public class CSVLoader {
 			String hairColorTypeHairPatternEyeColor1Label = hairColorTypeLabel + "/" + hairColorPatternLabel + "/" + eyeColor1Label;
 			int hairColorTypeHairPatternEyeColor1Val = csvAttributes.getHairColorTypeHairPatternEyeColor1ValueNoStatic(hairColorTypeHairPatternEyeColor1Label);
 			playerData[94] = (byte)hairColorTypeHairPatternEyeColor1Val;
+		}
+
+		String rgbR = this.getAttributeValue(tokens, attributePositions, CSVLoader.attRgbR);
+
+		if (!rgbR.equals(CSVLoader.attValueNotFound) && !faceType.equals(CSVLoader.attValueNotFound)) {
+			int rgbRFaceTypeVal = csvAttributes.getRgbRFaceTypeValueNoStatic(rgbR, faceType);
+			playerData[102] = (byte)rgbRFaceTypeVal;
+		}
+
+		String rgbG = this.getAttributeValue(tokens, attributePositions, CSVLoader.attRgbG);
+		String fingerBandType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFingerBandType);
+
+		if (!rgbG.equals(CSVLoader.attValueNotFound) && !fingerBandType.equals(CSVLoader.attValueNotFound)) {
+			int rgbGFingerBandTypeVal = csvAttributes.getRgbGFingerBandTypeValueNoStatic(rgbG, fingerBandType);
+			playerData[103] = (byte)rgbGFingerBandTypeVal;
+		}
+
+		String rgbB = this.getAttributeValue(tokens, attributePositions, CSVLoader.attRgbB);
+		String gloves = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGloves);
+		String ankleTape = this.getAttributeValue(tokens, attributePositions, CSVLoader.attAnkleTape);
+
+		if (!rgbB.equals(CSVLoader.attValueNotFound) && !gloves.equals(CSVLoader.attValueNotFound) && !ankleTape.equals(CSVLoader.attValueNotFound)) {
+			int rgbBGlovesAnkleTapeVal = csvAttributes.getRgbBGlovesAnkleTapeValueNoStatic(rgbB, gloves, ankleTape);
+			playerData[104] = (byte)rgbBGlovesAnkleTapeVal;
 		}
 
 		String facialHairLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHair);

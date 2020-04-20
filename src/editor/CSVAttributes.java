@@ -7896,6 +7896,89 @@ class CSVAttributes {
         return rgbRLabel;
     }
 
+    private static final Map<String, Integer> rgbRBaseValues = new HashMap<String, Integer>() {
+        {
+            put("31", -128);
+            put("30", -124);
+            put("29", -120);
+            put("28", -116);
+            put("27", -112);
+            put("26", -108);
+            put("25", -104);
+            put("24", -100);
+            put("23", -96);
+            put("22", -92);
+            put("21", -88);
+            put("20", -84);
+            put("19", -80);
+            put("18", -76);
+            put("17", -72);
+            put("16", -68);
+            put("15", -64);
+            put("14", -60);
+            put("13", -56);
+            put("12", -52);
+            put("11", -48);
+            put("10", -44);
+            put("9", -40);
+            put("8", -36);
+            put("7", -32);
+            put("6", -28);
+            put("5", -24);
+            put("4", -20);
+            put("3", -16);
+            put("2", -12);
+            put("1", -8);
+            put("0", -4);
+            put("63", 0);
+            put("62", 4);
+            put("61", 8);
+            put("60", 12);
+            put("59", 16);
+            put("58", 20);
+            put("57", 24);
+            put("56", 28);
+            put("55", 32);
+            put("54", 36);
+            put("53", 40);
+            put("52", 44);
+            put("51", 48);
+            put("50", 52);
+            put("49", 56);
+            put("48", 60);
+            put("47", 64);
+            put("46", 68);
+            put("45", 72);
+            put("44", 76);
+            put("43", 80);
+            put("42", 84);
+            put("41", 88);
+            put("40", 92);
+            put("39", 96);
+            put("38", 100);
+            put("37", 104);
+            put("36", 108);
+            put("35", 112);
+            put("34", 116);
+            put("33", 120);
+            put("32", 124);
+        }
+    };
+
+    public static int getRgbRFaceTypeValue(String rgbRLabel, String faceTypeLabel) {
+        int rgbRValue;
+        int rgbRBaseValue = rgbRBaseValues.get(rgbRLabel);
+        int faceTypeOffset = faceTypesByLabel.get(faceTypeLabel);
+
+        rgbRValue = rgbRBaseValue + faceTypeOffset;
+
+        return rgbRValue;
+    }
+
+    public int getRgbRFaceTypeValueNoStatic(String rgbRLabel, String faceTypeLabel) {
+        return getRgbRFaceTypeValue(rgbRLabel, faceTypeLabel);
+    }
+
     public static String getRgbGLabel(int rgbGValue) {
         String rgbGLabel = "???";
 
@@ -8095,6 +8178,97 @@ class CSVAttributes {
         return rgbGLabel;
     }
 
+    private static final Map<String, Integer> rgbGBaseValues = new HashMap<String, Integer>() {
+        {
+            put("0", 63);
+            put("1", 62);
+            put("2", 61);
+            put("3", 60);
+            put("4", 59);
+            put("5", 58);
+            put("6", 57);
+            put("7", 56);
+            put("8", 55);
+            put("9", 54);
+            put("10", 53);
+            put("11", 52);
+            put("12", 51);
+            put("13", 50);
+            put("14", 49);
+            put("15", 48);
+            put("16", 47);
+            put("17", 46);
+            put("18", 45);
+            put("19", 44);
+            put("20", 43);
+            put("21", 42);
+            put("22", 41);
+            put("23", 40);
+            put("24", 39);
+            put("25", 38);
+            put("26", 37);
+            put("27", 36);
+            put("28", 35);
+            put("29", 34);
+            put("30", 33);
+            put("31", 32);
+            put("32", 31);
+            put("33", 30);
+            put("34", 29);
+            put("35", 28);
+            put("36", 27);
+            put("37", 26);
+            put("38", 25);
+            put("39", 24);
+            put("40", 23);
+            put("41", 22);
+            put("42", 21);
+            put("43", 20);
+            put("44", 19);
+            put("45", 18);
+            put("46", 17);
+            put("47", 16);
+            put("48", 15);
+            put("49", 14);
+            put("50", 13);
+            put("51", 12);
+            put("52", 11);
+            put("53", 10);
+            put("54", 9);
+            put("55", 8);
+            put("56", 7);
+            put("57", 6);
+            put("58", 5);
+            put("59", 4);
+            put("60", 3);
+            put("61", 2);
+            put("62", 1);
+            put("63", 0);
+        }
+    };
+
+    private static final Map<String, Integer> rgbGFingerBandOffsetValues = new HashMap<String, Integer>() {
+        {
+            put("N", 0);
+            put("1", 64);
+            put("2", -128);
+        }
+    };
+
+    public static int getRgbGFingerBandTypeValue(String rgbGLabel, String fingerBandTypeLabel) {
+        int rgbGValue;
+        int rgbGBaseValue = rgbGBaseValues.get(rgbGLabel);
+        int fingerBandTypeOffset = rgbGFingerBandOffsetValues.get(fingerBandTypeLabel);
+
+        rgbGValue = rgbGBaseValue + fingerBandTypeOffset;
+
+        return rgbGValue;
+    }
+
+    public int getRgbGFingerBandTypeValueNoStatic(String rgbGLabel, String fingerBandTypeLabel) {
+        return getRgbGFingerBandTypeValue(rgbGLabel, fingerBandTypeLabel);
+    }
+
     public static String getRgbBLabel(int rgbBValue) {
         String rgbBLabel = "???";
 
@@ -8292,6 +8466,100 @@ class CSVAttributes {
         }
 
         return rgbBLabel;
+    }
+
+    private static final Map<String, Integer> rgbBBaseValues = new HashMap<String, Integer>() {
+        {
+            put("0", 63);
+            put("1", 62);
+            put("2", 61);
+            put("3", 60);
+            put("4", 59);
+            put("5", 58);
+            put("6", 57);
+            put("7", 56);
+            put("8", 55);
+            put("9", 54);
+            put("10", 53);
+            put("11", 52);
+            put("12", 51);
+            put("13", 50);
+            put("14", 49);
+            put("15", 48);
+            put("16", 47);
+            put("17", 46);
+            put("18", 45);
+            put("19", 44);
+            put("20", 43);
+            put("21", 42);
+            put("22", 41);
+            put("23", 40);
+            put("24", 39);
+            put("25", 38);
+            put("26", 37);
+            put("27", 36);
+            put("28", 35);
+            put("29", 34);
+            put("30", 33);
+            put("31", 32);
+            put("32", 31);
+            put("33", 30);
+            put("34", 29);
+            put("35", 28);
+            put("36", 27);
+            put("37", 26);
+            put("38", 25);
+            put("39", 24);
+            put("40", 23);
+            put("41", 22);
+            put("42", 21);
+            put("43", 20);
+            put("44", 19);
+            put("45", 18);
+            put("46", 17);
+            put("47", 16);
+            put("48", 15);
+            put("49", 14);
+            put("50", 13);
+            put("51", 12);
+            put("52", 11);
+            put("53", 10);
+            put("54", 9);
+            put("55", 8);
+            put("56", 7);
+            put("57", 6);
+            put("58", 5);
+            put("59", 4);
+            put("60", 3);
+            put("61", 2);
+            put("62", 1);
+            put("63", 0);
+        }
+    };
+
+    private static final Map<String, Integer> rgbBGlovesAnkleTapeOffsetValues = new HashMap<String, Integer>() {
+        {
+            put("N/N", 0);
+            put("N/Y", 64);
+            put("Y/N", -128);
+            put("Y/Y", -64);
+        }
+    };
+
+    public static int getRgbBGlovesAnkleTapeValue(String rgbBLabel, String glovesLabel, String ankleTapeLabel) {
+        int rgbBValue;
+        String glovesAnkleTapeLabel = glovesLabel + "/" + ankleTapeLabel;
+
+        int rgbBBaseValue = rgbBBaseValues.get(rgbBLabel);
+        int glovesAnkleTapeOffset = rgbBGlovesAnkleTapeOffsetValues.get(glovesAnkleTapeLabel);
+
+        rgbBValue = rgbBBaseValue + glovesAnkleTapeOffset;
+
+        return rgbBValue;
+    }
+
+    public int getRgbBGlovesAnkleTapeValueNoStatic(String rgbBLabel, String glovesLabel, String ankleTapeLabel) {
+        return getRgbBGlovesAnkleTapeValue(rgbBLabel, glovesLabel, ankleTapeLabel);
     }
 
     public static String getBandanaColorLabel(int bandanaColorValue) {
