@@ -4831,12 +4831,12 @@ class CSVAttributes {
 
     private static final Map<String, Integer> growthTypesByLabel = new HashMap<String, Integer>() {
         {
-            put("Early", -128);
-            put("Standard/Lasting", -127);
-            put("Standard", -124);
-            put("Late", -123);
-            put("Late/Lasting", -122);
-            put("Early/Lasting", -120);
+            put("Early", 9);
+            put("Early/Lasting", 51);
+            put("Standard", 55);
+            put("Standard/Lasting", 11);
+            put("Late", 8);
+            put("Late/Lasting", 10);
         }
     };
 
@@ -5074,7 +5074,7 @@ class CSVAttributes {
 
     private static final String defaultGrowthTypeLabel = "Standard";
 
-    private static final int defaultGrowthTypeVal = 0;
+    private static final int defaultGrowthTypeVal = 55;
 
     private static final Map<String, Integer> eyeTypesByLabel = new HashMap<String, Integer>() {
         {
