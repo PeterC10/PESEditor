@@ -341,6 +341,8 @@ public class CSVLoader {
 	private static String attGloves = "GLOVES";
 	private static String attFingerBandType = "FINGER BAND TYPE";
 	private static String attUnderShorts = "UNDER SHORTS";
+	private static String attUnderShortsColor = "UNDER SHORTS COLOR";
+	private static String attSocksType = "SOCKS TYPE";
 	private static String attAnkleTape = "ANKLE TAPE";
 
 	private static String attRgbR = "HAIR COLOR RGB-R";
@@ -494,6 +496,8 @@ public class CSVLoader {
 		attGloves,
 		attFingerBandType,
 		attUnderShorts,
+		attUnderShortsColor,
+		attSocksType,
 		attAnkleTape,
 		attRgbR,
 		attRgbG,
@@ -849,6 +853,8 @@ public class CSVLoader {
 			throw new IOException("Player ID not specified.");
 		}
 
+		Boolean resetFace = false;
+		String resetFaceValueStr = "";
 
 		String name = this.getAttributeValue(tokens, attributePositions, CSVLoader.attName);
 		readName(playerId, name);
@@ -1350,6 +1356,25 @@ public class CSVLoader {
 			}
 		}
 
+		String underShortsColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attUnderShortsColor);
+		String socksType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attSocksType);
+
+		if (!underShortsColor.equals(CSVLoader.attValueNotFound) && !socksType.equals(CSVLoader.attValueNotFound)) {
+			String currentUnderShortsColor = CSVAttributes.getUnderShortsColorLabel(playerData[100]);
+			String currentSocksType = CSVAttributes.getSocksTypeLabel(playerData[100]);
+
+			// Only update under shorts color or socks type is changed in CSV due to link to face, reset face if needed
+			if (!underShortsColor.equals(currentUnderShortsColor) || !socksType.equals(currentSocksType)) {
+				int underShortsColorSocksTypeVal = CSVAttributes.getUnderShortsColorSocksTypeValue(underShortsColor, socksType);
+
+				int correctFaceValue = Stats.getValue(of, playerId, Stats.face);
+				resetFace = true;
+				resetFaceValueStr = Integer.toString(correctFaceValue);
+
+				playerData[100] = (byte)underShortsColorSocksTypeVal;
+			}
+		}
+
 		String hairTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairType);
 		String hairShapeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairShape);
 		String hairFrontLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairFront);
@@ -1530,6 +1555,10 @@ public class CSVLoader {
 		}
 
 		System.arraycopy(playerData, 0, of.data, ia, 124);
+
+		if (resetFace) {
+			Stats.setValue(of, playerId, Stats.face, resetFaceValueStr);
+		}
 
 		String internationalNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attInternationalNumber);
 		if (internationalNumber != CSVLoader.attValueNotFound){

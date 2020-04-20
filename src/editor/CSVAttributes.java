@@ -7683,6 +7683,39 @@ class CSVAttributes {
         return socksTypeLabel;
     }
 
+    private static final Map<String, Integer> underShortsColorBaseValues = new HashMap<String, Integer>() {
+        {
+            put("White", 0);
+            put("Black", 1);
+            put("Red", 2);
+            put("Blue", 3);
+            put("Yellow", 4);
+            put("Green", 5);
+            put("Purple", 6);
+            put("Same", 7);
+        }
+    };
+
+    private static final Map<String, Integer> socksTypeOffsetValues = new HashMap<String, Integer>() {
+        {
+            put("Long", 0);
+            put("Standard", 1);
+            put("Short", 2);
+        }
+    };
+
+    public static int getUnderShortsColorSocksTypeValue(String underShortsColorLabel, String socksTypeLabel) {
+        int underShortsColorSocksTypeValue;
+        int byteOffset = 8;
+
+        int underShortsColorSocksTypeBaseValue = underShortsColorBaseValues.get(underShortsColorLabel);
+        int socksTypeOffset = socksTypeOffsetValues.get(socksTypeLabel) * byteOffset;
+
+        underShortsColorSocksTypeValue = underShortsColorSocksTypeBaseValue + socksTypeOffset;
+
+        return underShortsColorSocksTypeValue;
+    }
+
     public static String getGlovesLabel(int glovesLabelValue) {
         String glovesLabel = "???";
 
