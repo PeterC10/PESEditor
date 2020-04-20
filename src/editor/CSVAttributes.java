@@ -8723,4 +8723,31 @@ class CSVAttributes {
         return favouredSideValue;
     }
 
+    public static String getGoalCelebrationLabel(int goalCelebrationValue) {
+        String goalCelebrationLabel = "???";
+        int negativeValueOffset = 128;
+
+        if (goalCelebrationValue == 0 || goalCelebrationValue == -128) {
+            goalCelebrationLabel = "N";
+        }
+        else if (goalCelebrationValue >= 0 && goalCelebrationValue <= 127) {
+            goalCelebrationLabel = Integer.toString(goalCelebrationValue);
+        }
+        else if (goalCelebrationValue >= -128 && goalCelebrationValue <= -1) {
+            goalCelebrationLabel = Integer.toString(goalCelebrationValue + negativeValueOffset);
+        }
+
+        return goalCelebrationLabel;
+    }
+
+    public static int getGoalCelebrationValue(String goalCelebrationLabel) {
+        int goalCelebrationValue = 0;
+
+        if (!goalCelebrationLabel.equals("N")) {
+            goalCelebrationValue = Integer.parseInt(goalCelebrationLabel);
+        }
+        
+        return goalCelebrationValue;
+    }
+
 }

@@ -351,6 +351,9 @@ public class CSVLoader {
 	private static String attRgbG = "HAIR COLOR RGB-G";
 	private static String attRgbB = "HAIR COLOR RGB-B";
 
+	private static String attGoalCelebration1 = "GOAL CELEBRATION 1";
+	private static String attGoalCelebration2 = "GOAL CELEBRATION 2";
+
 	private static String[] supportedHeaders = {
 		attId,
 		attName,
@@ -506,6 +509,8 @@ public class CSVLoader {
 		attRgbR,
 		attRgbG,
 		attRgbB,
+		attGoalCelebration1,
+		attGoalCelebration2,
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
@@ -1288,6 +1293,27 @@ public class CSVLoader {
 		}
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
+
+		String goalCelebration1 = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGoalCelebration1);
+		String goalCelebration2 = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGoalCelebration2);
+
+		if (!goalCelebration1.equals(CSVLoader.attValueNotFound)) {
+			String currentGoalCelebration1 = CSVAttributes.getGoalCelebrationLabel(playerData[83]);
+
+			if (!goalCelebration1.equals(currentGoalCelebration1)) {
+				int goalCelebration1Val = CSVAttributes.getGoalCelebrationValue(goalCelebration1);
+				playerData[83] = (byte)goalCelebration1Val;
+			}
+		}
+
+		if (!goalCelebration2.equals(CSVLoader.attValueNotFound)) {
+			String currentGoalCelebration2 = CSVAttributes.getGoalCelebrationLabel(playerData[84]);
+
+			if (!goalCelebration2.equals(currentGoalCelebration2)) {
+				int goalCelebration2Val = CSVAttributes.getGoalCelebrationValue(goalCelebration2);
+				playerData[84] = (byte)goalCelebration2Val;
+			}
+		}
 
 		String shirtType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attShirtType);
 
