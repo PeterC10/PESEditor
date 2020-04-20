@@ -130,7 +130,7 @@ public class CSVMaker {
 				"PENALTY STOPPER", "1-ON-1 STOPPER", "LONG THROW",
 				"INJURY TOLERANCE", "DRIBBLE STYLE", "FK STYLE",
 				"PK STYLE", "DK STYLE", "AGE", "NATIONALITY",
-				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", "GROWTH TYPE",
+				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", "GROWTH TYPE", "SPECIFIC GROWTH TYPE",
 				"HEAD HEIGHT", "HEAD WIDTH", "NECK LENGTH", "NECK WIDTH",
 				"SHOULDER HEIGHT", "SHOULDER WIDTH", "CHEST MEASUREMENT",
 				"WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE", "LEG CIRCUMFERENCE",
@@ -550,7 +550,14 @@ public class CSVMaker {
 
 		String shoulderWidthAttribute = physicalOptsByValue.get(shoulderWidthVal);
 
+		String specificGrowthType = Integer.toString(playerData[86]);
+
 		out.write(growthType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(specificGrowthType);
 		out.flush();
 		out.write(separator);
 		out.flush();

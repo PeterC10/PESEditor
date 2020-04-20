@@ -268,6 +268,7 @@ public class CSVLoader {
 	
 	private static String attPresetFaceNumber = "PRESET FACE NUMBER";
 	private static String attGrowthType = "GROWTH TYPE";
+	private static String attSpecificGrowthType = "SPECIFIC GROWTH TYPE";
 
 	private static String attHeadHeight = "HEAD HEIGHT";
 	private static String attHeadWidth = "HEAD WIDTH";
@@ -439,6 +440,7 @@ public class CSVLoader {
 		attFaceType,
 		attPresetFaceNumber,
 		attGrowthType,
+		attSpecificGrowthType,
 		attHeadHeight,
 		attHeadWidth,
 		attNeckLength,
@@ -1555,14 +1557,28 @@ public class CSVLoader {
 		String classicNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClassicNumber);
 
 		String growthType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGrowthType);
-		// Don't update growth type for classic players of ML defaults or players which already have the same growth type
-		if (!growthType.equals(CSVLoader.attValueNotFound) && (playerId < 4414 || playerId > 4436) && (classicNumber.length() == 0) || classicNumber.equals("0")){
-			int currentGrowthTypeVal = playerData[86];
-			String currentGrowthTypeLabel = growthTypesByValue.getOrDefault(currentGrowthTypeVal, defaultGrowthTypeLabel);
+		String specificGrowthType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attSpecificGrowthType);
 
-			if (!growthType.equals(currentGrowthTypeLabel)){
-				int growthTypeVal = growthTypesByLabel.getOrDefault(growthType, defaultGrowthTypeVal);
-				playerData[86] = (byte)growthTypeVal;
+		// Don't update growth type for classic players or ML defaults or players which already have the same growth type
+		if ((playerId < 4414 || playerId > 4436) && (classicNumber.length() == 0) || classicNumber.equals("0")){
+			if (!specificGrowthType.equals(CSVLoader.attValueNotFound)) {
+				int specificGrowthTypeVal = Integer.parseInt(specificGrowthType);
+				int currentSpecificGrowthTypeVal = playerData[86];
+	
+				if (specificGrowthTypeVal != currentSpecificGrowthTypeVal) {
+					playerData[86] = (byte)specificGrowthTypeVal;
+				}
+			}
+			else {
+				if (!growthType.equals(CSVLoader.attValueNotFound)){
+					int currentGrowthTypeVal = playerData[86];
+					String currentGrowthTypeLabel = growthTypesByValue.getOrDefault(currentGrowthTypeVal, defaultGrowthTypeLabel);
+		
+					if (!growthType.equals(currentGrowthTypeLabel)){
+						int growthTypeVal = growthTypesByLabel.getOrDefault(growthType, defaultGrowthTypeVal);
+						playerData[86] = (byte)growthTypeVal;
+					}
+				}
 			}
 		}
 
