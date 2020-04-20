@@ -7608,6 +7608,47 @@ class CSVAttributes {
         return braceletColorLabel;
     }
 
+    private static final Map<String, Integer> braceletTypeBaseValues = new HashMap<String, Integer>() {
+        {
+            put("None", 0);
+            put("Left", 1);
+            put("Right", 2);
+        }
+    };
+
+    private static final Map<String, Integer> braceletColorOffsetValues = new HashMap<String, Integer>() {
+        {
+            put("White", 0);
+            put("Black", 1);
+            put("Red", 2);
+            put("Blue", 3);
+            put("Yellow", 4);
+            put("Green", 5);
+            put("Purple", 6);
+            put("Cyan", 7);
+        }
+    };
+
+    private static final Map<String, Integer> underShortsOffsetValues = new HashMap<String, Integer>() {
+        {
+            put("N", 0);
+            put("Y", -128);
+        }
+    };
+
+    public static int getUnderShortsBraceletTypeColorValue(String underShortsLabel, String braceletTypeLabel, String braceletColorLabel) {
+        int underShortsBraceletTypeColorValue;
+        int byteOffset = 4;
+
+        int underShortsBraceletTypeColorBaseValue = braceletTypeBaseValues.get(braceletTypeLabel);
+        int braceletColorOffset = braceletColorOffsetValues.get(braceletColorLabel) * byteOffset;
+        int underShortsOffset = underShortsOffsetValues.get(underShortsLabel);
+
+        underShortsBraceletTypeColorValue = (underShortsBraceletTypeColorBaseValue + braceletColorOffset) + underShortsOffset;
+
+        return underShortsBraceletTypeColorValue;
+    }
+
     public static String getSocksTypeLabel(int socksTypeValue) {
         String socksTypeLabel = "???";
         int offsetValue = 0;

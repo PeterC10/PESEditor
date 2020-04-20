@@ -336,8 +336,11 @@ public class CSVLoader {
 	private static String attChinWidth = "CHIN WIDTH";
 
 	private static String attNeckWarmer = "NECK WARMER";
+	private static String attBraceletType = "BRACELET TYPE";
+	private static String attBraceletColor = "BRACELET COLOR";
 	private static String attGloves = "GLOVES";
 	private static String attFingerBandType = "FINGER BAND TYPE";
+	private static String attUnderShorts = "UNDER SHORTS";
 	private static String attAnkleTape = "ANKLE TAPE";
 
 	private static String attRgbR = "HAIR COLOR RGB-R";
@@ -486,8 +489,11 @@ public class CSVLoader {
 		attChinHeight,
 		attChinWidth,
 		attNeckWarmer,
+		attBraceletType,
+		attBraceletColor,
 		attGloves,
 		attFingerBandType,
+		attUnderShorts,
 		attAnkleTape,
 		attRgbR,
 		attRgbG,
@@ -1325,6 +1331,22 @@ public class CSVLoader {
 		}
 
 		playerData[98] = (byte)wristbandVal;
+
+		String braceletType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBraceletType);
+		String braceletColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBraceletColor);
+		String underShorts = this.getAttributeValue(tokens, attributePositions, CSVLoader.attUnderShorts);
+
+		if (!braceletType.equals(CSVLoader.attValueNotFound) && !braceletColor.equals(CSVLoader.attValueNotFound) && !underShorts.equals(CSVLoader.attValueNotFound)) {
+			String currentBraceletType = CSVAttributes.getBraceletTypeLabel(playerData[99]);
+			String currentBraceletColor = CSVAttributes.getBraceletColorLabel(playerData[99]);
+			String currentUnderShorts = CSVAttributes.getUnderShortsLabel(playerData[99]);
+
+			// Only update bracelet type, color or under shorts is changed in CSV due to unidentified offsets
+			if (!braceletType.equals(currentBraceletType) || !braceletColor.equals(currentBraceletColor) || !underShorts.equals(currentUnderShorts)) {
+				int underShortsBraceletTypeColorVal = CSVAttributes.getUnderShortsBraceletTypeColorValue(underShorts, braceletType, braceletColor);
+				playerData[99] = (byte)underShortsBraceletTypeColorVal;
+			}
+		}
 
 		String hairTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairType);
 		String hairShapeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attHairShape);
