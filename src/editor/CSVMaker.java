@@ -146,7 +146,8 @@ public class CSVMaker {
 				"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
 				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH",
 				"NECK WARMER", "BRACELET TYPE", "BRACELET COLOR", "GLOVES", "FINGER BAND TYPE",
-				"SHIRT TYPE", "UNDER SHORTS", "UNDER SHORTS COLOR", "SOCKS TYPE", "ANKLE TAPE" };
+				"SHIRT TYPE", "UNDER SHORTS", "UNDER SHORTS COLOR", "SOCKS TYPE", "ANKLE TAPE",
+				"HAIR COLOR RGB-R", "HAIR COLOR RGB-G", "HAIR COLOR RGB-B" };
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -935,6 +936,24 @@ public class CSVMaker {
 		out.write(ankleTape);
 		out.flush();
 
+		String rgbR = CSVAttributes.getRgbRLabel(playerData[102]);
+		String rgbG = CSVAttributes.getRgbGLabel(playerData[103]);
+		String rgbB = CSVAttributes.getRgbBLabel(playerData[104]);
+
+		out.write(separator);
+		out.flush();
+		out.write(rgbR);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(rgbG);
+		out.flush();
+
+		out.write(separator);
+		out.flush();
+		out.write(rgbB);
+		out.flush();
 		out.write(13);
 		out.flush();
 		out.write(10);

@@ -7697,4 +7697,601 @@ class CSVAttributes {
         return shirtTypeLabel;
     }
 
+    public static String getRgbRLabel(int rgbRValue) {
+        String rgbRLabel = "???";
+
+        if (rgbRValue >= 0 && rgbRValue <= 2) {
+            rgbRLabel = "63";
+        }
+        else if (rgbRValue >= 4 && rgbRValue <= 6) {
+            rgbRLabel = "62";
+        }
+        else if (rgbRValue >= 8 && rgbRValue <= 10) {
+            rgbRLabel = "61";
+        }
+        else if (rgbRValue >= 12 && rgbRValue <= 14) {
+            rgbRLabel = "60";
+        }
+        else if (rgbRValue >= 16 && rgbRValue <= 18) {
+            rgbRLabel = "59";
+        }
+        else if (rgbRValue >= 20 && rgbRValue <= 22) {
+            rgbRLabel = "58";
+        }
+        else if (rgbRValue >= 24 && rgbRValue <= 26) {
+            rgbRLabel = "57";
+        }
+        else if (rgbRValue >= 28 && rgbRValue <= 30) {
+            rgbRLabel = "56";
+        }
+        else if (rgbRValue >= 32 && rgbRValue <= 34) {
+            rgbRLabel = "55";
+        }
+        else if (rgbRValue >= 36 && rgbRValue <= 38) {
+            rgbRLabel = "54";
+        }
+        else if (rgbRValue >= 40 && rgbRValue <= 42) {
+            rgbRLabel = "53";
+        }
+        else if (rgbRValue >= 44 && rgbRValue <= 46) {
+            rgbRLabel = "52";
+        }
+        else if (rgbRValue >= 48 && rgbRValue <= 50) {
+            rgbRLabel = "51";
+        }
+        else if (rgbRValue >= 52 && rgbRValue <= 54) {
+            rgbRLabel = "50";
+        }
+        else if (rgbRValue >= 56 && rgbRValue <= 58) {
+            rgbRLabel = "49";
+        }
+        else if (rgbRValue >= 60 && rgbRValue <= 62) {
+            rgbRLabel = "48";
+        }
+        else if (rgbRValue >= 64 && rgbRValue <= 66) {
+            rgbRLabel = "47";
+        }
+        else if (rgbRValue >= 68 && rgbRValue <= 70) {
+            rgbRLabel = "46";
+        }
+        else if (rgbRValue >= 72 && rgbRValue <= 74) {
+            rgbRLabel = "45";
+        }
+        else if (rgbRValue >= 76 && rgbRValue <= 78) {
+            rgbRLabel = "44";
+        }
+        else if (rgbRValue >= 80 && rgbRValue <= 82) {
+            rgbRLabel = "43";
+        }
+        else if (rgbRValue >= 84 && rgbRValue <= 86) {
+            rgbRLabel = "42";
+        }
+        else if (rgbRValue >= 88 && rgbRValue <= 90) {
+            rgbRLabel = "41";
+        }
+        else if (rgbRValue >= 92 && rgbRValue <= 94) {
+            rgbRLabel = "40";
+        }
+        else if (rgbRValue >= 96 && rgbRValue <= 98) {
+            rgbRLabel = "39";
+        }
+        else if (rgbRValue >= 100 && rgbRValue <= 102) {
+            rgbRLabel = "38";
+        }
+        else if (rgbRValue >= 104 && rgbRValue <= 106) {
+            rgbRLabel = "37";
+        }
+        else if (rgbRValue >= 108 && rgbRValue <= 110) {
+            rgbRLabel = "36";
+        }
+        else if (rgbRValue >= 112 && rgbRValue <= 114) {
+            rgbRLabel = "35";
+        }
+        else if (rgbRValue >= 116 && rgbRValue <= 118) {
+            rgbRLabel = "34";
+        }
+        else if (rgbRValue >= 120 && rgbRValue <= 122) {
+            rgbRLabel = "33";
+        }
+        else if (rgbRValue >= 124 && rgbRValue <= 126) {
+            rgbRLabel = "32";
+        }
+        else if (rgbRValue >= -128 && rgbRValue <= -126) {
+            rgbRLabel = "31";
+        }
+        else if (rgbRValue >= -124 && rgbRValue <= -122) {
+            rgbRLabel = "30";
+        }
+        else if (rgbRValue >= -120 && rgbRValue <= -118) {
+            rgbRLabel = "29";
+        }
+        else if (rgbRValue >= -116 && rgbRValue <= -114) {
+            rgbRLabel = "28";
+        }
+        else if (rgbRValue >= -112 && rgbRValue <= -110) {
+            rgbRLabel = "27";
+        }
+        else if (rgbRValue >= -108 && rgbRValue <= -106) {
+            rgbRLabel = "26";
+        }
+        else if (rgbRValue >= -104 && rgbRValue <= -102) {
+            rgbRLabel = "25";
+        }
+        else if (rgbRValue >= -100 && rgbRValue <= -98) {
+            rgbRLabel = "24";
+        }
+        else if (rgbRValue >= -96 && rgbRValue <= -94) {
+            rgbRLabel = "23";
+        }
+        else if (rgbRValue >= -92 && rgbRValue <= -90) {
+            rgbRLabel = "22";
+        }
+        else if (rgbRValue >= -88 && rgbRValue <= -86) {
+            rgbRLabel = "21";
+        }
+        else if (rgbRValue >= -84 && rgbRValue <= -82) {
+            rgbRLabel = "20";
+        }
+        else if (rgbRValue >= -80 && rgbRValue <= -78) {
+            rgbRLabel = "19";
+        }
+        else if (rgbRValue >= -76 && rgbRValue <= -74) {
+            rgbRLabel = "18";
+        }
+        else if (rgbRValue >= -72 && rgbRValue <= -70) {
+            rgbRLabel = "17";
+        }
+        else if (rgbRValue >= -68 && rgbRValue <= -66) {
+            rgbRLabel = "16";
+        }
+        else if (rgbRValue >= -64 && rgbRValue <= -62) {
+            rgbRLabel = "15";
+        }
+        else if (rgbRValue >= -60 && rgbRValue <= -58) {
+            rgbRLabel = "14";
+        }
+        else if (rgbRValue >= -56 && rgbRValue <= -54) {
+            rgbRLabel = "13";
+        }
+        else if (rgbRValue >= -52 && rgbRValue <= -50) {
+            rgbRLabel = "12";
+        }
+        else if (rgbRValue >= -48 && rgbRValue <= -46) {
+            rgbRLabel = "11";
+        }
+        else if (rgbRValue >= -44 && rgbRValue <= -42) {
+            rgbRLabel = "10";
+        }
+        else if (rgbRValue >= -40 && rgbRValue <= -38) {
+            rgbRLabel = "9";
+        }
+        else if (rgbRValue >= -36 && rgbRValue <= -34) {
+            rgbRLabel = "8";
+        }
+        else if (rgbRValue >= -32 && rgbRValue <= -30) {
+            rgbRLabel = "7";
+        }
+        else if (rgbRValue >= -28 && rgbRValue <= -26) {
+            rgbRLabel = "6";
+        }
+        else if (rgbRValue >= -24 && rgbRValue <= -22) {
+            rgbRLabel = "5";
+        }
+        else if (rgbRValue >= -20 && rgbRValue <= -18) {
+            rgbRLabel = "4";
+        }
+        else if (rgbRValue >= -16 && rgbRValue <= -14) {
+            rgbRLabel = "3";
+        }
+        else if (rgbRValue >= -12 && rgbRValue <= -10) {
+            rgbRLabel = "2";
+        }
+        else if (rgbRValue >= -8 && rgbRValue <= -6) {
+            rgbRLabel = "1";
+        }
+        else if (rgbRValue >= -4 && rgbRValue <= -2) {
+            rgbRLabel = "0";
+        }
+
+        return rgbRLabel;
+    }
+
+    public static String getRgbGLabel(int rgbGValue) {
+        String rgbGLabel = "???";
+
+        if (rgbGValue == 0 || rgbGValue == 64 || rgbGValue == -128) {
+            rgbGLabel = "63";
+        }
+        else if (rgbGValue == 1 || rgbGValue == 65 || rgbGValue == -127) {
+            rgbGLabel = "62";
+        }
+        else if (rgbGValue == 2 || rgbGValue == 66 || rgbGValue == -126) {
+            rgbGLabel = "61";
+        }
+        else if (rgbGValue == 3 || rgbGValue == 67 || rgbGValue == -125) {
+            rgbGLabel = "60";
+        }
+        else if (rgbGValue == 4 || rgbGValue == 68 || rgbGValue == -124) {
+            rgbGLabel = "59";
+        }
+        else if (rgbGValue == 5 || rgbGValue == 69 || rgbGValue == -123) {
+            rgbGLabel = "58";
+        }
+        else if (rgbGValue == 6 || rgbGValue == 70 || rgbGValue == -122) {
+            rgbGLabel = "57";
+        }
+        else if (rgbGValue == 7 || rgbGValue == 71 || rgbGValue == -121) {
+            rgbGLabel = "56";
+        }
+        else if (rgbGValue == 8 || rgbGValue == 72 || rgbGValue == -120) {
+            rgbGLabel = "55";
+        }
+        else if (rgbGValue == 9 || rgbGValue == 73 || rgbGValue == -119) {
+            rgbGLabel = "54";
+        }
+        else if (rgbGValue == 10 || rgbGValue == 74 || rgbGValue == -118) {
+            rgbGLabel = "53";
+        }
+        else if (rgbGValue == 11 || rgbGValue == 75 || rgbGValue == -117) {
+            rgbGLabel = "52";
+        }
+        else if (rgbGValue == 12 || rgbGValue == 76 || rgbGValue == -116) {
+            rgbGLabel = "51";
+        }
+        else if (rgbGValue == 13 || rgbGValue == 77 || rgbGValue == -115) {
+            rgbGLabel = "50";
+        }
+        else if (rgbGValue == 14 || rgbGValue == 78 || rgbGValue == -114) {
+            rgbGLabel = "49";
+        }
+        else if (rgbGValue == 15 || rgbGValue == 79 || rgbGValue == -113) {
+            rgbGLabel = "48";
+        }
+        else if (rgbGValue == 16 || rgbGValue == 80 || rgbGValue == -112) {
+            rgbGLabel = "47";
+        }
+        else if (rgbGValue == 17 || rgbGValue == 81 || rgbGValue == -111) {
+            rgbGLabel = "46";
+        }
+        else if (rgbGValue == 18 || rgbGValue == 82 || rgbGValue == -110) {
+            rgbGLabel = "45";
+        }
+        else if (rgbGValue == 19 || rgbGValue == 83 || rgbGValue == -109) {
+            rgbGLabel = "44";
+        }
+        else if (rgbGValue == 20 || rgbGValue == 84 || rgbGValue == -108) {
+            rgbGLabel = "43";
+        }
+        else if (rgbGValue == 21 || rgbGValue == 85 || rgbGValue == -107) {
+            rgbGLabel = "42";
+        }
+        else if (rgbGValue == 22 || rgbGValue == 86 || rgbGValue == -106) {
+            rgbGLabel = "41";
+        }
+        else if (rgbGValue == 23 || rgbGValue == 87 || rgbGValue == -105) {
+            rgbGLabel = "40";
+        }
+        else if (rgbGValue == 24 || rgbGValue == 88 || rgbGValue == -104) {
+            rgbGLabel = "39";
+        }
+        else if (rgbGValue == 25 || rgbGValue == 89 || rgbGValue == -103) {
+            rgbGLabel = "38";
+        }
+        else if (rgbGValue == 26 || rgbGValue == 90 || rgbGValue == -102) {
+            rgbGLabel = "37";
+        }
+        else if (rgbGValue == 27 || rgbGValue == 91 || rgbGValue == -101) {
+            rgbGLabel = "36";
+        }
+        else if (rgbGValue == 28 || rgbGValue == 92 || rgbGValue == -100) {
+            rgbGLabel = "35";
+        }
+        else if (rgbGValue == 29 || rgbGValue == 93 || rgbGValue == -99) {
+            rgbGLabel = "34";
+        }
+        else if (rgbGValue == 30 || rgbGValue == 94 || rgbGValue == -98) {
+            rgbGLabel = "33";
+        }
+        else if (rgbGValue == 31 || rgbGValue == 95 || rgbGValue == -97) {
+            rgbGLabel = "32";
+        }
+        else if (rgbGValue == 32 || rgbGValue == 96 || rgbGValue == -96) {
+            rgbGLabel = "31";
+        }
+        else if (rgbGValue == 33 || rgbGValue == 97 || rgbGValue == -95) {
+            rgbGLabel = "30";
+        }
+        else if (rgbGValue == 34 || rgbGValue == 98 || rgbGValue == -94) {
+            rgbGLabel = "29";
+        }
+        else if (rgbGValue == 35 || rgbGValue == 99 || rgbGValue == -93) {
+            rgbGLabel = "28";
+        }
+        else if (rgbGValue == 36 || rgbGValue == 100 || rgbGValue == -92) {
+            rgbGLabel = "27";
+        }
+        else if (rgbGValue == 37 || rgbGValue == 101 || rgbGValue == -91) {
+            rgbGLabel = "26";
+        }
+        else if (rgbGValue == 38 || rgbGValue == 102 || rgbGValue == -90) {
+            rgbGLabel = "25";
+        }
+        else if (rgbGValue == 39 || rgbGValue == 103 || rgbGValue == -89) {
+            rgbGLabel = "24";
+        }
+        else if (rgbGValue == 40 || rgbGValue == 104 || rgbGValue == -88) {
+            rgbGLabel = "23";
+        }
+        else if (rgbGValue == 41 || rgbGValue == 105 || rgbGValue == -87) {
+            rgbGLabel = "22";
+        }
+        else if (rgbGValue == 42 || rgbGValue == 106 || rgbGValue == -86) {
+            rgbGLabel = "21";
+        }
+        else if (rgbGValue == 43 || rgbGValue == 107 || rgbGValue == -85) {
+            rgbGLabel = "20";
+        }
+        else if (rgbGValue == 44 || rgbGValue == 108 || rgbGValue == -84) {
+            rgbGLabel = "19";
+        }
+        else if (rgbGValue == 45 || rgbGValue == 109 || rgbGValue == -83) {
+            rgbGLabel = "18";
+        }
+        else if (rgbGValue == 46 || rgbGValue == 110 || rgbGValue == -82) {
+            rgbGLabel = "17";
+        }
+        else if (rgbGValue == 47 || rgbGValue == 111 || rgbGValue == -81) {
+            rgbGLabel = "16";
+        }
+        else if (rgbGValue == 48 || rgbGValue == 112 || rgbGValue == -80) {
+            rgbGLabel = "15";
+        }
+        else if (rgbGValue == 49 || rgbGValue == 113 || rgbGValue == -79) {
+            rgbGLabel = "14";
+        }
+        else if (rgbGValue == 50 || rgbGValue == 114 || rgbGValue == -78) {
+            rgbGLabel = "13";
+        }
+        else if (rgbGValue == 51 || rgbGValue == 115 || rgbGValue == -77) {
+            rgbGLabel = "12";
+        }
+        else if (rgbGValue == 52 || rgbGValue == 116 || rgbGValue == -76) {
+            rgbGLabel = "11";
+        }
+        else if (rgbGValue == 53 || rgbGValue == 117 || rgbGValue == -75) {
+            rgbGLabel = "10";
+        }
+        else if (rgbGValue == 54 || rgbGValue == 118 || rgbGValue == -74) {
+            rgbGLabel = "9";
+        }
+        else if (rgbGValue == 55 || rgbGValue == 119 || rgbGValue == -73) {
+            rgbGLabel = "8";
+        }
+        else if (rgbGValue == 56 || rgbGValue == 120 || rgbGValue == -72) {
+            rgbGLabel = "7";
+        }
+        else if (rgbGValue == 57 || rgbGValue == 121 || rgbGValue == -71) {
+            rgbGLabel = "6";
+        }
+        else if (rgbGValue == 58 || rgbGValue == 122 || rgbGValue == -70) {
+            rgbGLabel = "5";
+        }
+        else if (rgbGValue == 59 || rgbGValue == 123 || rgbGValue == -69) {
+            rgbGLabel = "4";
+        }
+        else if (rgbGValue == 60 || rgbGValue == 124 || rgbGValue == -68) {
+            rgbGLabel = "3";
+        }
+        else if (rgbGValue == 61 || rgbGValue == 125 || rgbGValue == -67) {
+            rgbGLabel = "2";
+        }
+        else if (rgbGValue == 62 || rgbGValue == 126 || rgbGValue == -66) {
+            rgbGLabel = "1";
+        }
+        else if (rgbGValue == 63 || rgbGValue == 127 || rgbGValue == -65) {
+            rgbGLabel = "0";
+        }
+
+        return rgbGLabel;
+    }
+
+    public static String getRgbBLabel(int rgbBValue) {
+        String rgbBLabel = "???";
+
+        if (rgbBValue == 0 || rgbBValue == 64 || rgbBValue == -128 || rgbBValue == -64) {
+            rgbBLabel = "63";
+        }
+        else if (rgbBValue == 1 || rgbBValue == 65 || rgbBValue == -127 || rgbBValue == -63) {
+            rgbBLabel = "62";
+        }
+        else if (rgbBValue == 2 || rgbBValue == 66 || rgbBValue == -126 || rgbBValue == -62) {
+            rgbBLabel = "61";
+        }
+        else if (rgbBValue == 3 || rgbBValue == 67 || rgbBValue == -125 || rgbBValue == -61) {
+            rgbBLabel = "60";
+        }
+        else if (rgbBValue == 4 || rgbBValue == 68 || rgbBValue == -124 || rgbBValue == -60) {
+            rgbBLabel = "59";
+        }
+        else if (rgbBValue == 5 || rgbBValue == 69 || rgbBValue == -123 || rgbBValue == -59) {
+            rgbBLabel = "58";
+        }
+        else if (rgbBValue == 6 || rgbBValue == 70 || rgbBValue == -122 || rgbBValue == -58) {
+            rgbBLabel = "57";
+        }
+        else if (rgbBValue == 7 || rgbBValue == 71 || rgbBValue == -121 || rgbBValue == -57) {
+            rgbBLabel = "56";
+        }
+        else if (rgbBValue == 8 || rgbBValue == 72 || rgbBValue == -120 || rgbBValue == -56) {
+            rgbBLabel = "55";
+        }
+        else if (rgbBValue == 9 || rgbBValue == 73 || rgbBValue == -119 || rgbBValue == -55) {
+            rgbBLabel = "54";
+        }
+        else if (rgbBValue == 10 || rgbBValue == 74 || rgbBValue == -118 || rgbBValue == -54) {
+            rgbBLabel = "53";
+        }
+        else if (rgbBValue == 11 || rgbBValue == 75 || rgbBValue == -117 || rgbBValue == -53) {
+            rgbBLabel = "52";
+        }
+        else if (rgbBValue == 12 || rgbBValue == 76 || rgbBValue == -116 || rgbBValue == -52) {
+            rgbBLabel = "51";
+        }
+        else if (rgbBValue == 13 || rgbBValue == 77 || rgbBValue == -115 || rgbBValue == -51) {
+            rgbBLabel = "50";
+        }
+        else if (rgbBValue == 14 || rgbBValue == 78 || rgbBValue == -114 || rgbBValue == -50) {
+            rgbBLabel = "49";
+        }
+        else if (rgbBValue == 15 || rgbBValue == 79 || rgbBValue == -113 || rgbBValue == -49) {
+            rgbBLabel = "48";
+        }
+        else if (rgbBValue == 16 || rgbBValue == 80 || rgbBValue == -112 || rgbBValue == -48) {
+            rgbBLabel = "47";
+        }
+        else if (rgbBValue == 17 || rgbBValue == 81 || rgbBValue == -111 || rgbBValue == -47) {
+            rgbBLabel = "46";
+        }
+        else if (rgbBValue == 18 || rgbBValue == 82 || rgbBValue == -110 || rgbBValue == -46) {
+            rgbBLabel = "45";
+        }
+        else if (rgbBValue == 19 || rgbBValue == 83 || rgbBValue == -109 || rgbBValue == -45) {
+            rgbBLabel = "44";
+        }
+        else if (rgbBValue == 20 || rgbBValue == 84 || rgbBValue == -108 || rgbBValue == -44) {
+            rgbBLabel = "43";
+        }
+        else if (rgbBValue == 21 || rgbBValue == 85 || rgbBValue == -107 || rgbBValue == -43) {
+            rgbBLabel = "42";
+        }
+        else if (rgbBValue == 22 || rgbBValue == 86 || rgbBValue == -106 || rgbBValue == -42) {
+            rgbBLabel = "41";
+        }
+        else if (rgbBValue == 23 || rgbBValue == 87 || rgbBValue == -105 || rgbBValue == -41) {
+            rgbBLabel = "40";
+        }
+        else if (rgbBValue == 24 || rgbBValue == 88 || rgbBValue == -104 || rgbBValue == -40) {
+            rgbBLabel = "39";
+        }
+        else if (rgbBValue == 25 || rgbBValue == 89 || rgbBValue == -103 || rgbBValue == -39) {
+            rgbBLabel = "38";
+        }
+        else if (rgbBValue == 26 || rgbBValue == 90 || rgbBValue == -102 || rgbBValue == -38) {
+            rgbBLabel = "37";
+        }
+        else if (rgbBValue == 27 || rgbBValue == 91 || rgbBValue == -101 || rgbBValue == -37) {
+            rgbBLabel = "36";
+        }
+        else if (rgbBValue == 28 || rgbBValue == 92 || rgbBValue == -100 || rgbBValue == -36) {
+            rgbBLabel = "35";
+        }
+        else if (rgbBValue == 29 || rgbBValue == 93 || rgbBValue == -99 || rgbBValue == -35) {
+            rgbBLabel = "34";
+        }
+        else if (rgbBValue == 30 || rgbBValue == 94 || rgbBValue == -98 || rgbBValue == -34) {
+            rgbBLabel = "33";
+        }
+        else if (rgbBValue == 31 || rgbBValue == 95 || rgbBValue == -97 || rgbBValue == -33) {
+            rgbBLabel = "32";
+        }
+        else if (rgbBValue == 32 || rgbBValue == 96 || rgbBValue == -96 || rgbBValue == -32) {
+            rgbBLabel = "31";
+        }
+        else if (rgbBValue == 33 || rgbBValue == 97 || rgbBValue == -95 || rgbBValue == -31) {
+            rgbBLabel = "30";
+        }
+        else if (rgbBValue == 34 || rgbBValue == 98 || rgbBValue == -94 || rgbBValue == -30) {
+            rgbBLabel = "29";
+        }
+        else if (rgbBValue == 35 || rgbBValue == 99 || rgbBValue == -93 || rgbBValue == -29) {
+            rgbBLabel = "28";
+        }
+        else if (rgbBValue == 36 || rgbBValue == 100 || rgbBValue == -92 || rgbBValue == -28) {
+            rgbBLabel = "27";
+        }
+        else if (rgbBValue == 37 || rgbBValue == 101 || rgbBValue == -91 || rgbBValue == -27) {
+            rgbBLabel = "26";
+        }
+        else if (rgbBValue == 38 || rgbBValue == 102 || rgbBValue == -90 || rgbBValue == -26) {
+            rgbBLabel = "25";
+        }
+        else if (rgbBValue == 39 || rgbBValue == 103 || rgbBValue == -89 || rgbBValue == -25) {
+            rgbBLabel = "24";
+        }
+        else if (rgbBValue == 40 || rgbBValue == 104 || rgbBValue == -88 || rgbBValue == -24) {
+            rgbBLabel = "23";
+        }
+        else if (rgbBValue == 41 || rgbBValue == 105 || rgbBValue == -87 || rgbBValue == -23) {
+            rgbBLabel = "22";
+        }
+        else if (rgbBValue == 42 || rgbBValue == 106 || rgbBValue == -86 || rgbBValue == -22) {
+            rgbBLabel = "21";
+        }
+        else if (rgbBValue == 43 || rgbBValue == 107 || rgbBValue == -85 || rgbBValue == -21) {
+            rgbBLabel = "20";
+        }
+        else if (rgbBValue == 44 || rgbBValue == 108 || rgbBValue == -84 || rgbBValue == -20) {
+            rgbBLabel = "19";
+        }
+        else if (rgbBValue == 45 || rgbBValue == 109 || rgbBValue == -83 || rgbBValue == -19) {
+            rgbBLabel = "18";
+        }
+        else if (rgbBValue == 46 || rgbBValue == 110 || rgbBValue == -82 || rgbBValue == -18) {
+            rgbBLabel = "17";
+        }
+        else if (rgbBValue == 47 || rgbBValue == 111 || rgbBValue == -81 || rgbBValue == -17) {
+            rgbBLabel = "16";
+        }
+        else if (rgbBValue == 48 || rgbBValue == 112 || rgbBValue == -80 || rgbBValue == -16) {
+            rgbBLabel = "15";
+        }
+        else if (rgbBValue == 49 || rgbBValue == 113 || rgbBValue == -79 || rgbBValue == -15) {
+            rgbBLabel = "14";
+        }
+        else if (rgbBValue == 50 || rgbBValue == 114 || rgbBValue == -78 || rgbBValue == -14) {
+            rgbBLabel = "13";
+        }
+        else if (rgbBValue == 51 || rgbBValue == 115 || rgbBValue == -77 || rgbBValue == -13) {
+            rgbBLabel = "12";
+        }
+        else if (rgbBValue == 52 || rgbBValue == 116 || rgbBValue == -76 || rgbBValue == -12) {
+            rgbBLabel = "11";
+        }
+        else if (rgbBValue == 53 || rgbBValue == 117 || rgbBValue == -75 || rgbBValue == -11) {
+            rgbBLabel = "10";
+        }
+        else if (rgbBValue == 54 || rgbBValue == 118 || rgbBValue == -74 || rgbBValue == -10) {
+            rgbBLabel = "9";
+        }
+        else if (rgbBValue == 55 || rgbBValue == 119 || rgbBValue == -73 || rgbBValue == -9) {
+            rgbBLabel = "8";
+        }
+        else if (rgbBValue == 56 || rgbBValue == 120 || rgbBValue == -72 || rgbBValue == -8) {
+            rgbBLabel = "7";
+        }
+        else if (rgbBValue == 57 || rgbBValue == 121 || rgbBValue == -71 || rgbBValue == -7) {
+            rgbBLabel = "6";
+        }
+        else if (rgbBValue == 58 || rgbBValue == 122 || rgbBValue == -70 || rgbBValue == -6) {
+            rgbBLabel = "5";
+        }
+        else if (rgbBValue == 59 || rgbBValue == 123 || rgbBValue == -69 || rgbBValue == -5) {
+            rgbBLabel = "4";
+        }
+        else if (rgbBValue == 60 || rgbBValue == 124 || rgbBValue == -68 || rgbBValue == -4) {
+            rgbBLabel = "3";
+        }
+        else if (rgbBValue == 61 || rgbBValue == 125 || rgbBValue == -67 || rgbBValue == -3) {
+            rgbBLabel = "2";
+        }
+        else if (rgbBValue == 62 || rgbBValue == 126 || rgbBValue == -66 || rgbBValue == -2) {
+            rgbBLabel = "1";
+        }
+        else if (rgbBValue == 63 || rgbBValue == 127 || rgbBValue == -65 || rgbBValue == -1) {
+            rgbBLabel = "0";
+        }
+
+        return rgbBLabel;
+    }
+
 }
