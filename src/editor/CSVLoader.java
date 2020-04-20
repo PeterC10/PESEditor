@@ -481,8 +481,6 @@ public class CSVLoader {
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
-	private final Map<String, Integer> footOptsByLabel = csvAttributes.getFootFavSideOptsByLabelFootVal();
-	private final Map<String, Integer> favSideOptsByLabel = csvAttributes.getFootFavSideOptsByLabelFavSideVal();
 	private final Map<String, Integer> physicalOptsByLabel = csvAttributes.getPhysicalOptsByLabel();
 	private final Map<String, Integer> physicalLinkedOptsByLabel = csvAttributes.getPhysicalLinkedOptsByLabel();
 	private final Map<String, Integer> headHeightOptsByLabel = csvAttributes.getHeadHeightOptsByLabel();
