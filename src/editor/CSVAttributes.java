@@ -70,7 +70,8 @@ class CSVAttributes {
         }
     };
 
-    // FIXME: Head height value appears to be linked to another attribute but no idea what that is yet...
+    // FIXME: Head height value appears to be linked to another attribute but no
+    // idea what that is yet...
 
     private static final Map<String, Integer> headHeightOptsByLabel = new HashMap<String, Integer>() {
         {
@@ -1104,8 +1105,8 @@ class CSVAttributes {
         }
     };
 
-    private static final int[] wristbandVals = { 0, 8, 16, 24, 40, 48, 56, 72, 80, 88, 104, 112, 120, -120, -112, -104, -88,
-            -80, -72, -56, -48, -40, -24, -16, -8 };
+    private static final int[] wristbandVals = { 0, 8, 16, 24, 40, 48, 56, 72, 80, 88, 104, 112, 120, -120, -112, -104,
+            -88, -80, -72, -56, -48, -40, -24, -16, -8 };
 
     private static final String[] wristbandLabels = { "N-None", "L-White", "R-White", "B-White", "L-Black", "R-Black",
             "B-Black", "L-Red", "R-Red", "B-Red", "L-Blue", "R-Blue", "B-Blue", "L-Yellow", "R-Yellow", "B-Yellow",
@@ -5076,6 +5077,37 @@ class CSVAttributes {
 
     private static final int defaultGrowthTypeVal = 55;
 
+    private static final String[] growthTypeLabelsAll = { "Early", "Early/Lasting", "Standard", "Standard/Lasting",
+            "Late", "Late/Lasting", };
+
+    private static final int[] growthTypeValuesAll = { -128, -127, -126, -125, -124, -123, -122, -121, -120, -119, -118,
+            -117, -116, -115, -114, -113, -112, -111, -110, -109, -108, -107, -106, -105, -104, -103, -102, -101, -100,
+            -99, -97, -96, -95, -94, -93, -92, -91, -90, -89, -88, -87, -86, -85, -84, -83, -82, -81, -80, -79, -78,
+            -77, -76, -75, -74, -73, -72, -71, -70, -69, -68, -67, -66, -65, -64, -63, -62, -61, -60, -59, -58, -57,
+            -56, -55, -54, -53, -52, -51, -50, -49, -48, -47, -46, -45, -44, -41, -40, -39, -38, -35, -33, -31, -28,
+            -24, -23, -22, -19, -14, -13, -12, -11, -9, -8, -4, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+            44, 46, 47, 48, 49, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72,
+            73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
+            100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120,
+            121, 122, 123, 124, 125, 126, 127 };
+    private static final int[] growthTypeValuesEarly = { -128, -126, -115, -110, -107, -102, -92, -90, -88, -86, -82,
+            -81, -80, -78, -68, -66, -46, -44, -12, -8, 9, 49, 105, 118, 123, 124, 126 };
+    private static final int[] growthTypeValuesEarlyLasting = { -120, -114, -108, -95, -84, -83, -67, -63, -54, -52,
+            -14, -9, 25, 51, 67, 70, 82, 88, 89, 107, 121, 127 };
+    private static final int[] growthTypeValuesStandard = { -124, -117, -112, -111, -109, -106, -104, -103, -101, -97,
+            -94, -91, -87, -79, -77, -76, -75, -73, -69, -64, -62, -58, -56, -55, -53, -48, -35, -22, -13, -11, 0, 1, 3,
+            4, 6, 12, 16, 18, 19, 20, 26, 28, 29, 30, 31, 40, 42, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 65,
+            68, 69, 72, 73, 74, 75, 76, 77, 78, 79, 80, 83, 84, 85, 87, 94, 95, 97, 100, 101, 104, 106, 112, 114, 115,
+            116, 119, 120, 122, 125 };
+    private static final int[] growthTypeValuesStandardLasting = { -127, -125, -121, -118, -113, -105, -96, -74, -70,
+            -65, -61, -60, -45, -40, -33, -19, 5, 7, 11, 13, 14, 15, 23, 32, 34, 36, 38, 47, 48, 81, 91, 92, 96, 99,
+            108, 110, 113 };
+    private static final int[] growthTypeValuesLate = { -123, -119, -116, -100, -99, -93, -85, -72, -71, -57, -50, -49,
+            -47, -41, -39, -38, -31, -24, -23, -4, 2, 8, 17, 21, 22, 33, 35, 37, 39, 43, 44, 46, 64, 66, 71, 86, 93, 98,
+            102, 103, 109, 111, 117 };
+    private static final int[] growthTypeValuesLateLasting = { -122, -89, -59, -51, -28, 10, 24, 41, 90 };
+
     private static final Map<String, Integer> eyeTypesByLabel = new HashMap<String, Integer>() {
         {
             put("1", 0);
@@ -5147,6 +5179,38 @@ class CSVAttributes {
      */
     public int[] getWristbandVals() {
         return wristbandVals;
+    }
+
+    public static int[] getGrowthTypeValuesLateLasting() {
+        return growthTypeValuesLateLasting;
+    }
+
+    public static int[] getGrowthTypeValuesLate() {
+        return growthTypeValuesLate;
+    }
+
+    public static int[] getGrowthTypeValuesStandardLasting() {
+        return growthTypeValuesStandardLasting;
+    }
+
+    public static int[] getGrowthTypeValuesStandard() {
+        return growthTypeValuesStandard;
+    }
+
+    public static int[] getGrowthTypeValuesEarlyLasting() {
+        return growthTypeValuesEarlyLasting;
+    }
+
+    public static int[] getGrowthTypeValuesEarly() {
+        return growthTypeValuesEarly;
+    }
+
+    public static int[] getGrowthTypeValuesAll() {
+        return growthTypeValuesAll;
+    }
+
+    public static String[] getGrowthTypeLabelsAll() {
+        return growthTypeLabelsAll;
     }
 
     public int getDefaultGrowthTypeVal() {
@@ -8746,7 +8810,7 @@ class CSVAttributes {
         if (!goalCelebrationLabel.equals("N")) {
             goalCelebrationValue = Integer.parseInt(goalCelebrationLabel);
         }
-        
+
         return goalCelebrationValue;
     }
 

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.HashMap;
 import java.util.List;
 import java.util.LinkedList;
@@ -163,12 +164,15 @@ public class CSVLoader {
 	private String[] tokens;
 	private int tokenCount = 0;
 
+	Random randomNumber = new Random();
+
 	private static String[] team;
 
 	private OptionFile of;
 	private byte[] orgData;
 
 	private static String attValueNotFound = "ATTRIBUTE_VALUE_NOT_FOUND";
+	private static String attValueRandom = "Random";
 
 	private static String attId = "ID";
 	private static String attIdUTF8 = "\uFEFFID";
@@ -531,6 +535,15 @@ public class CSVLoader {
 
 	private final String defaultGrowthTypeLabel = csvAttributes.getDefaultGrowthTypeLabel();
 	private final int defaultGrowthTypeVal = csvAttributes.getDefaultGrowthTypeVal();
+
+	private static final String[] growthTypeLabelsAll = CSVAttributes.getGrowthTypeLabelsAll();
+	private static final int[] growthTypeValuesAll = CSVAttributes.getGrowthTypeValuesAll();
+	private static final int[] growthTypeValuesEarly = CSVAttributes.getGrowthTypeValuesEarly();
+	private static final int[] growthTypeValuesEarlyLasting = CSVAttributes.getGrowthTypeValuesEarlyLasting();
+	private static final int[] growthTypeValuesStandard = CSVAttributes.getGrowthTypeValuesStandard();
+	private static final int[] growthTypeValuesStandardLasting = CSVAttributes.getGrowthTypeValuesStandardLasting();
+	private static final int[] growthTypeValuesLate = CSVAttributes.getGrowthTypeValuesLate();
+	private static final int[] growthTypeValuesLateLasting = CSVAttributes.getGrowthTypeValuesLateLasting();
 
 	private Map<Integer,List<SquadPlayer>> newSquads;
 	private Map<Integer,List<SquadPlayer>> newNationalSquads;
@@ -1587,23 +1600,76 @@ public class CSVLoader {
 
 		// Don't update growth type for classic players or ML defaults or players which already have the same growth type
 		if ((playerId < 4414 || playerId > 4436) && (classicNumber.length() == 0) || classicNumber.equals("0")){
-			if (!specificGrowthType.equals(CSVLoader.attValueNotFound)) {
-				int specificGrowthTypeVal = Integer.parseInt(specificGrowthType);
+			if (!specificGrowthType.equals(CSVLoader.attValueNotFound) && !specificGrowthType.equals(CSVLoader.attValueRandom)) {
 				int currentSpecificGrowthTypeVal = playerData[86];
-	
+				int specificGrowthTypeVal = Integer.parseInt(specificGrowthType);
 				if (specificGrowthTypeVal != currentSpecificGrowthTypeVal) {
 					playerData[86] = (byte)specificGrowthTypeVal;
 				}
 			}
-			else {
-				if (!growthType.equals(CSVLoader.attValueNotFound)){
-					int currentGrowthTypeVal = playerData[86];
-					String currentGrowthTypeLabel = growthTypesByValue.getOrDefault(currentGrowthTypeVal, defaultGrowthTypeLabel);
-		
-					if (!growthType.equals(currentGrowthTypeLabel)){
-						int growthTypeVal = growthTypesByLabel.getOrDefault(growthType, defaultGrowthTypeVal);
-						playerData[86] = (byte)growthTypeVal;
+			else if (!growthType.equals(CSVLoader.attValueNotFound) && !growthType.equals(CSVLoader.attValueRandom)
+					&& !specificGrowthType.equals(CSVLoader.attValueRandom)) {
+				int currentGrowthTypeVal = playerData[86];
+				String currentGrowthTypeLabel = growthTypesByValue.getOrDefault(currentGrowthTypeVal, defaultGrowthTypeLabel);
+	
+				if (!growthType.equals(currentGrowthTypeLabel)){
+					int growthTypeVal = growthTypesByLabel.getOrDefault(growthType, defaultGrowthTypeVal);
+					playerData[86] = (byte)growthTypeVal;
+				}
+			}
+			else if ((!specificGrowthType.equals(CSVLoader.attValueNotFound) || !growthType.equals(CSVLoader.attValueNotFound))
+					&& (specificGrowthType.equals(CSVLoader.attValueRandom) || growthType.equals(CSVLoader.attValueRandom))) {
+				String growthTypeLabel = "";
+				int growthTypeValRandom = defaultGrowthTypeVal;
+				Boolean randomGrowthTypeSet = false;
+
+				if (growthType.equals(CSVLoader.attValueRandom)){
+					int randomGrowthTypeIndex = randomNumber.nextInt(growthTypeLabelsAll.length);
+					growthTypeLabel = growthTypeLabelsAll[randomGrowthTypeIndex];
+				}
+				else if (!growthType.equals(CSVLoader.attValueNotFound)){
+					growthTypeLabel = growthType;
+				}
+
+				if (!growthTypeLabel.isEmpty()){
+					if (growthTypeLabel.equals("Early")) {
+						int randomGrowthTypeValueEarly = randomNumber.nextInt(growthTypeValuesEarly.length);
+						growthTypeValRandom = growthTypeValuesEarly[randomGrowthTypeValueEarly];
+						randomGrowthTypeSet = true;
 					}
+					else if (growthTypeLabel.equals("Early/Lasting")) {
+						int randomGrowthTypeValueEarlyLasting = randomNumber.nextInt(growthTypeValuesEarlyLasting.length);
+						growthTypeValRandom = growthTypeValuesEarly[randomGrowthTypeValueEarlyLasting];
+						randomGrowthTypeSet = true;
+					}
+					else if (growthTypeLabel.equals("Standard")) {
+						int randomGrowthTypeValueStandard = randomNumber.nextInt(growthTypeValuesStandard.length);
+						growthTypeValRandom = growthTypeValuesStandard[randomGrowthTypeValueStandard];
+						randomGrowthTypeSet = true;
+					}
+					else if (growthTypeLabel.equals("Standard/Lasting")) {
+						int randomGrowthTypeValueStandardLasting = randomNumber.nextInt(growthTypeValuesStandardLasting.length);
+						growthTypeValRandom = growthTypeValuesStandardLasting[randomGrowthTypeValueStandardLasting];
+						randomGrowthTypeSet = true;
+					}
+					else if (growthTypeLabel.equals("Late")) {
+						int randomGrowthTypeValueLate = randomNumber.nextInt(growthTypeValuesLate.length);
+						growthTypeValRandom = growthTypeValuesLate[randomGrowthTypeValueLate];
+						randomGrowthTypeSet = true;
+					}
+					else if (growthTypeLabel.equals("Late/Lasting")) {
+						int randomGrowthTypeValueLateLasting = randomNumber.nextInt(growthTypeValuesLateLasting.length);
+						growthTypeValRandom = growthTypeValuesLateLasting[randomGrowthTypeValueLateLasting];
+						randomGrowthTypeSet = true;
+					}
+				}
+				else if (specificGrowthType.equals(CSVLoader.attValueRandom)) {
+					int randomGrowthTypeValue = randomNumber.nextInt(growthTypeValuesAll.length);
+					growthTypeValRandom = growthTypeValuesAll[randomGrowthTypeValue];
+				}
+
+				if (randomGrowthTypeSet) {
+					playerData[86] = (byte)growthTypeValRandom;
 				}
 			}
 		}
