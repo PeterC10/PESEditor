@@ -8865,4 +8865,28 @@ class CSVAttributes {
 
         return capTypeGlassesColorValue;
     }
+
+    private static final Map<String, Integer> necklaceColorOffsetValues = new HashMap<String, Integer>() {
+        {
+            put("White", 0);
+            put("Black", 1);
+            put("Red", 2);
+            put("Blue", 3);
+            put("Yellow", 4);
+            put("Green", 5);
+            put("Purple", 6);
+            put("Cyan", 7);
+        }
+    };
+
+    public static int getWristbandNecklaceColorValue(String wirstbandLabel, String necklaceColorLabel) {
+        int wristbandNecklaceColorValue = 0;
+
+        int wristbandBaseValue = wristbandOptsByLabel.get(wirstbandLabel);
+        int necklaceColorOffsetValue = necklaceColorOffsetValues.get(necklaceColorLabel);
+        
+        wristbandNecklaceColorValue = wristbandBaseValue + necklaceColorOffsetValue;
+
+        return wristbandNecklaceColorValue;
+    }
 }

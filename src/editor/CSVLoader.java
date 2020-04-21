@@ -307,6 +307,7 @@ public class CSVLoader {
 	private static String attGlassesType = "GLASSES TYPE";
 	private static String attGlassesColor = "GLASSES COLOR";
 	private static String attNecklaceType = "NECKLACE TYPE";
+	private static String attNecklaceColor = "NECKLACE COLOR";
 
 	private static String attEyeColor1 = "EYE COLOR 1";
 	private static String attEyeColor2 = "EYE COLOR 2";
@@ -478,6 +479,7 @@ public class CSVLoader {
 		attGlassesType,
 		attGlassesColor,
 		attNecklaceType,
+		attNecklaceColor,
 		attEyeColor1,
 		attEyeColor2,
 		attSleveLength,
@@ -1387,16 +1389,14 @@ public class CSVLoader {
 
 		String wristBandType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWristband);
 		String wristBandColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWristbandColor);
+		String necklaceColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attNecklaceColor);
 
-		String wristBandKey = wristBandType + "-" + wristBandColor;
-
-		int wristbandVal = 0;
-
-		if (Arrays.asList(wristbandLabels).contains(wristBandKey)){
-			wristbandVal = wristbandOptsByLabel.get(wristBandKey);
+		if (!wristBandType.equals(CSVLoader.attValueNotFound) && !wristBandColor.equals(CSVLoader.attValueNotFound)
+				&& !necklaceColor.equals(CSVLoader.attValueNotFound)) {
+			String wristBandKey = wristBandType + "-" + wristBandColor;
+			int wristbandVal = CSVAttributes.getWristbandNecklaceColorValue(wristBandKey, necklaceColor);
+			playerData[98] = (byte)wristbandVal;
 		}
-
-		playerData[98] = (byte)wristbandVal;
 
 		String braceletType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBraceletType);
 		String braceletColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attBraceletColor);
