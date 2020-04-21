@@ -296,7 +296,7 @@ public class CSVLoader {
 	private static String attHairDarkness = "HAIR DARKNESS";
 	private static String attBandanaType = "BANDANA TYPE";
 	private static String attBandanaColor = "BANDANA COLOR";
-	private static String attFacialHair = "FACIAL HAIR";
+	private static String attFacialHairType = "FACIAL HAIR TYPE";
 
 	private static String attHairColorType = "HAIR COLOR TYPE";
 	private static String attHairColorPattern = "HAIR COLOR PATTERN";
@@ -468,7 +468,7 @@ public class CSVLoader {
 		attHairVolume,
 		attHairDarkness,
 		attBandanaType,
-		attFacialHair,
+		attFacialHairType,
 		attHairColorType,
 		attHairColorPattern,
 		attFacialHairColor,
@@ -1497,7 +1497,7 @@ public class CSVLoader {
 			playerData[104] = (byte)rgbBGlovesAnkleTapeVal;
 		}
 
-		String facialHairLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHair);
+		String facialHairLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFacialHairType);
 		String capLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCap);
 
 		if (!facialHairLabel.equals(CSVLoader.attValueNotFound) && !capLabel.equals(CSVLoader.attValueNotFound)) {

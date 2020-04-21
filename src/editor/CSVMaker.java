@@ -112,43 +112,72 @@ public class CSVMaker {
 	}
 
 	private void writeHeadings(BufferedWriter out) throws IOException {
-		String[] head = {"NAME", "SHIRT NAME", "GK", "SW", "CB", "SB", 
-				"DM", "WB", "CM", "SM", "AM", "WF", "SS", "CF", "REGISTERED POSITION",
-				"HEIGHT", "WEIGHT", "STRONG FOOT", "FAVOURED SIDE", "WEAK FOOT ACCURACY",
-				"WEAK FOOT FREQUENCY", "ATTACK", "DEFENSE", "BALANCE", "STAMINA", "TOP SPEED",
-				"ACCELERATION", "RESPONSE", "AGILITY", "DRIBBLE ACCURACY",
-				"DRIBBLE SPEED", "SHORT PASS ACCURACY", "SHORT PASS SPEED",
-				"LONG PASS ACCURACY", "LONG PASS SPEED", "SHOT ACCURACY",
-				"SHOT POWER", "SHOT TECHNIQUE", "FREE KICK ACCURACY",
-				"SWERVE", "HEADING", "JUMP", "TECHNIQUE", "AGGRESSION",
-				"MENTALITY", "GOALKEEPING", "TEAMWORK", "CONSISTENCY",
-				"CONDITION", "DRIBBLING", "TACTICAL DRIBBLE",
-				"POSITIONING", "REACTION", "PLAYMAKING", "PASSING", "SCORING",
-				"1-1 SCORING", "POST PLAYER", "LINES", "MIDDLE SHOOTING",
-				"SIDE", "CENTRE", "PENALTIES", "1-TOUCH PASS", "OUTSIDE",
-				"MARKING", "SLIDING", "COVERING", "D-LINE CONTROL",
-				"PENALTY STOPPER", "1-ON-1 STOPPER", "LONG THROW",
-				"INJURY TOLERANCE", "DRIBBLE STYLE", "FK STYLE",
-				"PK STYLE", "DK STYLE", "AGE", "NATIONALITY",
-				"SKIN COLOR", "FACE TYPE", "PRESET FACE NUMBER", "GROWTH TYPE", "SPECIFIC GROWTH TYPE",
-				"HEAD HEIGHT", "HEAD WIDTH", "NECK LENGTH", "NECK WIDTH",
-				"SHOULDER HEIGHT", "SHOULDER WIDTH", "CHEST MEASUREMENT",
-				"WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE", "LEG CIRCUMFERENCE",
-				"CALF CIRCUMFERENCE", "LEG LENGTH", "WRISTBAND", "WRISTBAND COLOR",
-				"INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM", "CLUB NUMBER",
-				"HAIR TYPE", "HAIR SHAPE", "HAIR FRONT", "HAIR VOLUME", "HAIR DARKNESS",
-				"BANDANA TYPE", "BANDANA COLOR", "FACIAL HAIR", "HAIR COLOR TYPE", "HAIR COLOR PATTERN",
-				"FACIAL HAIR COLOR", "CAP", "CAP TYPE", "GLASSES TYPE", "NECKLACE TYPE",
-				"EYE COLOR 1", "EYE COLOR 2", "SLEEVE LENGTH",
-				"HEAD POSITION", "BROWS TYPE", "BROWS ANGLE", "BROWS HEIGHT", "EYEBROW SPACING",
-				"EYES TYPE", "EYES POSITION", "EYES ANGLE", "EYES LENGTH", "EYES WIDTH",
-				"NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH", "CHEEK TYPE", "CHEEK SHAPE", 
-				"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
-				"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH",
-				"NECK WARMER", "BRACELET TYPE", "BRACELET COLOR", "GLOVES", "FINGER BAND TYPE",
-				"SHIRT TYPE", "UNDER SHORTS", "UNDER SHORTS COLOR", "SOCKS TYPE", "ANKLE TAPE",
-				"HAIR COLOR RGB-R", "HAIR COLOR RGB-G", "HAIR COLOR RGB-B",
-				"GOAL CELEBRATION 1", "GOAL CELEBRATION 2" };
+		String[] head = {
+			//Player Name
+			"NAME", "SHIRT NAME",
+			//Basic Settings
+			"AGE", "INJURY TOLERANCE", "DRIBBLE STYLE", "FK STYLE", "PK STYLE", "DK STYLE",
+			"GOAL CELEBRATION 1", "GOAL CELEBRATION 2", "GROWTH TYPE",
+			//Basic Settings - Hidden
+			"SPECIFIC GROWTH TYPE", "CONSISTENCY",
+			//Position
+			"STRONG FOOT", "FAVOURED SIDE", "REGISTERED POSITION",
+			"GK", "SW", "CB", "SB", "DM", "WB", "CM", "SM", "AM", "WF", "SS", "CF",
+			//Club & Nationality
+			"NATIONALITY", "INTERNATIONAL NUMBER", "CLASSIC NUMBER", "CLUB TEAM", "CLUB NUMBER",
+			//Appearance - Head - Face
+			"FACE TYPE", "SKIN COLOR", "HEAD HEIGHT", "HEAD WIDTH", "HEAD POSITION", "PRESET FACE NUMBER",
+			//Appearance - Head - Face - Brows
+			"BROWS TYPE", "BROWS ANGLE", "BROWS HEIGHT", "EYEBROW SPACING",
+			//Appearance - Head - Face - Eyes
+			"EYES TYPE", "EYES POSITION", "EYES ANGLE", "EYES LENGTH", "EYES WIDTH",
+			"EYE COLOR 1", "EYE COLOR 2",
+			//Appearance - Head - Face - Nose
+			"NOSE TYPE", "NOSE HEIGHT", "NOSE WIDTH",
+			//Appearance - Head - Face - Cheeks
+			"CHEEK TYPE", "CHEEK SHAPE",
+			//Appearance - Head - Face - Mouth
+			"MOUTH TYPE", "MOUTH SIZE", "MOUTH POSITION",
+			//Appearance - Head - Face - Jaw
+			"JAW TYPE", "CHIN HEIGHT", "CHIN WIDTH",
+			//Appearance - Head - Hair - Hairstyle
+			"HAIR TYPE", "HAIR SHAPE", "HAIR FRONT", "HAIR VOLUME", "HAIR DARKNESS",
+			//Appearance - Head - Hair - Hairstyle - Color
+			"HAIR COLOR TYPE", "HAIR COLOR PATTERN", "HAIR COLOR RGB-R", "HAIR COLOR RGB-G", "HAIR COLOR RGB-B",
+			//Appearance - Head - Hair - Hairstyle - Bandana
+			"BANDANA TYPE", "BANDANA COLOR",
+			//Appearance - Head - Hair - Hairstyle - Cap
+			"CAP", "CAP TYPE",
+			//Appearance - Head - Hair - Facial Hair
+			"FACIAL HAIR TYPE", "FACIAL HAIR COLOR",
+			//Appearance - Head - Hair - Glasses
+			"GLASSES TYPE",
+			//Physique
+			"HEIGHT", "WEIGHT",
+			"NECK LENGTH", "NECK WIDTH", "SHOULDER HEIGHT", "SHOULDER WIDTH",
+			"CHEST MEASUREMENT", "WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE",
+			"LEG CIRCUMFERENCE", "CALF CIRCUMFERENCE", "LEG LENGTH",
+			//Accessories
+			"NECK WARMER", "NECKLACE TYPE", "WRISTBAND", "WRISTBAND COLOR",
+			"BRACELET TYPE", "BRACELET COLOR", "GLOVES", "FINGER BAND TYPE",
+			"SHIRT TYPE",  "SLEEVE LENGTH", "UNDER SHORTS", "UNDER SHORTS COLOR",
+			"SOCKS TYPE", "ANKLE TAPE",
+			//Ability - Standard
+			"ATTACK", "DEFENSE", "BALANCE", "STAMINA", "TOP SPEED",
+			"ACCELERATION", "RESPONSE", "AGILITY", "DRIBBLE ACCURACY",
+			"DRIBBLE SPEED", "SHORT PASS ACCURACY", "SHORT PASS SPEED",
+			"LONG PASS ACCURACY", "LONG PASS SPEED", "SHOT ACCURACY",
+			"SHOT POWER", "SHOT TECHNIQUE", "FREE KICK ACCURACY",
+			"SWERVE", "HEADING", "JUMP", "TECHNIQUE", "AGGRESSION",
+			"MENTALITY", "GOALKEEPING", "TEAMWORK", "CONDITION",
+			"WEAK FOOT ACCURACY", "WEAK FOOT FREQUENCY",
+			//Ability - Special
+			"DRIBBLING", "TACTICAL DRIBBLE", "POSITIONING", "REACTION",
+			"PLAYMAKING", "PASSING", "SCORING", "1-1 SCORING", "POST PLAYER",
+			"LINES", "MIDDLE SHOOTING", "SIDE", "CENTRE", "PENALTIES",
+			"1-TOUCH PASS", "OUTSIDE", "MARKING", "SLIDING", "COVERING",
+			"D-LINE CONTROL", "PENALTY STOPPER", "1-ON-1 STOPPER", "LONG THROW"
+		};
 		out.write("ID");
 		out.flush();
 		for (int h = 0; h < head.length; h++) {
@@ -302,136 +331,6 @@ public class CSVMaker {
 	private void writePlayer(int player, BufferedWriter out)
 			throws IOException {
 
-		out.write(Integer.toString(player));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		writeName(player, out);
-		out.write(separator);
-		out.flush();
-		writeShirtName(player, out);
-		out.write(separator);
-		out.flush();
-
-		for (int i = 0; i < Stats.roles.length; i++) {
-			if (i != 1) {
-				out.write(Stats.getString(of, player, Stats.roles[i]));
-				out.flush();
-				out.write(separator);
-				out.flush();
-			}
-		}
-
-		int registeredPositionVal = Integer.parseInt(Stats.getString(of, player, Stats.regPos));
-		String registeredPosition = registeredPositionByValue.get(registeredPositionVal);
-
-		out.write(registeredPosition);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		
-		out.write(Stats.getString(of, player, Stats.height));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.weight));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.foot));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(getSide(player));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.wfa));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.wff));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		
-		for (int i = 0; i < Stats.ability99.length; i++) {
-			out.write(Stats.getString(of, player, Stats.ability99[i]));
-			out.flush();
-			out.write(separator);
-			out.flush();
-		}
-		
-		out.write(Stats.getString(of, player, Stats.consistency));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.condition));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		
-		for (int i = 0; i < Stats.abilitySpecial.length; i++) {
-			out.write(Stats.getString(of, player, Stats.abilitySpecial[i]));
-			out.flush();
-			out.write(separator);
-			out.flush();
-		}
-		
-		out.write(Stats.getString(of, player, Stats.injury));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.dribSty));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.freekick));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.pkStyle));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.dkSty));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.age));
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Stats.getString(of, player, Stats.nationality));
-		out.flush();
-		out.write(separator);
-		out.flush();
-
-		int skinColor = (Stats.getValue(of, player, Stats.skin) + 1);
-
-		out.write(Integer.toString(skinColor));
-		out.flush();
-		out.write(separator);
-		out.flush();
-
-		int faceTypeVal = Stats.getValue(of, player, Stats.faceType);
-		String faceTypeLabel = faceTypesByValue.get(faceTypeVal);
-		int presetFaceNo = (Stats.getValue(of, player, Stats.face) + 1);
-
-		if (faceTypeLabel.equals("Special")){
-			String specialFaceKey = skinColor + "/" + presetFaceNo;
-			presetFaceNo = specialFacesByIndexNumber.get(specialFaceKey);
-		}
-
-		out.write(faceTypeLabel);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(Integer.toString(presetFaceNo));
-		out.flush();
-		out.write(separator);
-		out.flush();
-
 		int ia = Player.startAdr + (player * 124);
 		if (player >= Player.firstEdit) {
 			ia = Player.startAdrE + ((player - Player.firstEdit) * 124);
@@ -439,16 +338,7 @@ public class CSVMaker {
 
 		byte[] playerData = Arrays.copyOfRange(of.data, ia, ia + 124);
 
-		int growthTypeVal = playerData[86];
-		String growthType = defaultGrowthTypeLabel;
-
-		String classicNumber = getClassicNumber(player);
-
-		// Export growth type for classic players and ML defaults as Standard
-		if ((player < 4414 || player > 4436) && (classicNumber.length() == 0 || classicNumber.equals("0"))){
-			growthType = growthTypesByValue.getOrDefault(growthTypeVal, defaultGrowthTypeLabel);
-		}
-
+		//Prepare attribute values
 		int headHeightVal = playerData[90];
 		String headHeightAttribute = headHeightOptsByValue.get(headHeightVal);
 
@@ -506,8 +396,6 @@ public class CSVMaker {
 			}
 		}
 
-		
-
 		String hairTypeKey = hairTypeVal1 + "/" + hairTypeVal2Modulus;
 
 		int eyeColor2Val = 0;
@@ -554,24 +442,476 @@ public class CSVMaker {
 
 		String shoulderWidthAttribute = physicalOptsByValue.get(shoulderWidthVal);
 
+		String goalCelebration1 = CSVAttributes.getGoalCelebrationLabel(playerData[83]);
+		String goalCelebration2 = CSVAttributes.getGoalCelebrationLabel(playerData[84]);
+
+		int growthTypeVal = playerData[86];
+		String growthType = defaultGrowthTypeLabel;
+
+		String classicNumber = getClassicNumber(player);
+
+		// Export growth type for classic players and ML defaults as Standard
+		if ((player < 4414 || player > 4436) && (classicNumber.length() == 0 || classicNumber.equals("0"))){
+			growthType = growthTypesByValue.getOrDefault(growthTypeVal, defaultGrowthTypeLabel);
+		}
+
 		String specificGrowthType = Integer.toString(playerData[86]);
+
+		int registeredPositionVal = Integer.parseInt(Stats.getString(of, player, Stats.regPos));
+		String registeredPosition = registeredPositionByValue.get(registeredPositionVal);
+
+		int skinColor = (Stats.getValue(of, player, Stats.skin) + 1);
+		int faceTypeVal = Stats.getValue(of, player, Stats.faceType);
+		String faceTypeLabel = faceTypesByValue.get(faceTypeVal);
+		int presetFaceNo = (Stats.getValue(of, player, Stats.face) + 1);
+
+		if (faceTypeLabel.equals("Special")){
+			String specialFaceKey = skinColor + "/" + presetFaceNo;
+			presetFaceNo = specialFacesByIndexNumber.get(specialFaceKey);
+		}
+
+		int wristbandVal = playerData[98];
+		boolean wristbandValFound = false;
+
+		for (int val : wristbandVals) {
+            if (val == wristbandVal) {
+                wristbandValFound = true;
+                break;
+            }
+		}
+		
+		if(!wristbandValFound){
+			wristbandVal = 0;
+		}
+
+		String[] wristbandTypeColor = wristbandOptsByValue.get(wristbandVal).split("-");
+
+		String wristbandType = wristbandTypeColor[0];
+		String wristbandColor = wristbandTypeColor[1];
+
+		String[] hairTypeLabels = getHairTypeLabelByKey(hairTypeKey);
+
+		String hairType = hairTypeLabels[0];
+		String hairShape = hairTypeLabels[1];
+		String hairFront = hairTypeLabels[2];
+		String hairVolume = hairTypeLabels[3];
+		String hairDarkness = hairTypeLabels[4];
+		String bandanaType = hairTypeLabels[5];
+		String bandanaColor = CSVAttributes.getBandanaColorLabel(playerData[109]);
+
+		String facialHairCapLabel = CSVAttributes.getFacialHairCapLabel(facialHairCapVal);
+		String[] facialHairCapLabels = facialHairCapLabel.split("/");
+
+		String facialHair = facialHairCapLabels[0];
+		String cap = facialHairCapLabels[1];
+
+		String sleeveLengthFacialHairColorLabel = CSVAttributes.getSleeveLengthFacialHairColorLabel(sleeveLengthFacialHairColorVal);
+		String[] sleeveLengthFacialHairColorLabels = sleeveLengthFacialHairColorLabel.split("/");
+
+		String sleeveLengthLabel = sleeveLengthFacialHairColorLabels[0];
+		String facialHairColorLabel = sleeveLengthFacialHairColorLabels[1];
+
+		String capType = capTypeOptsByValue.getOrDefault(capTypeVal, capTypeOptsDefaultValue);
+
+		String glassesNecklace = glassesNecklaceOptsByValue.get(glassesNecklaceVal);
+		String[] glassesNecklaceVals = glassesNecklace.split("/");
+		String glassessVal = glassesNecklaceVals[0];
+		String necklaceVal = glassesNecklaceVals[1];
+
+		String headPosition = CSVAttributes.getHeadPositionLabel(playerData[123]);
+		String noseType = CSVAttributes.getNoseTypeLabel(playerData[121]);
+		String noseHeight = CSVAttributes.getNoseHeightLabel(playerData[122]);
+		String noseWidth = CSVAttributes.getNoseWidthLabel(playerData[121], playerData[122]);
+		String mouthSize = CSVAttributes.getMouthSizeLabel(playerData[121]);
+		String jawType = CSVAttributes.getJawTypeLabel(playerData[122]);
+		String chinHeight = CSVAttributes.getChinHeightLabel(playerData[122], playerData[123]);
+		String chinWidth = CSVAttributes.getChinWidthLabel(playerData[123]);
+		String cheekType = CSVAttributes.getCheekTypeLabel(playerData[119]);
+		String cheekShape = CSVAttributes.getCheekShapeLabel(playerData[119]);
+		String browsHeight = CSVAttributes.getBrowsHeightLabel(playerData[118]);
+		String eyebrowSpacing = CSVAttributes.getEyebrowSpacingLabel(playerData[118]);
+		String browsAngle = CSVAttributes.getBrowsAngleLabel(playerData[118], playerData[119]);
+		String eyesAngle = CSVAttributes.getEyesAngleLabel(playerData[117]);
+		String eyesLength = CSVAttributes.getEyesLengthLabel(playerData[117]);
+		String eysWidth = CSVAttributes.getEyesWidthLabel(playerData[117], playerData[118]);
+		String mouthType = CSVAttributes.getMouthTypeLabel(playerData[120]);
+		String mouthPosition = CSVAttributes.getMouthPositionLabel(playerData[120]);
+		String browsType = CSVAttributes.getBrowsTypeLabel(playerData[116]);
+		String eyesPosition = CSVAttributes.getEyesPositionLabel(playerData[116]);
+		String eyesType = CSVAttributes.getEyesTypeLabel(playerData[115]);
+
+		String neckWarmer = CSVAttributes.getNeckWarmerLabel(playerData[93]);
+		String barceletType = CSVAttributes.getBraceletTypeLabel(playerData[99]);
+		String barceletColor = CSVAttributes.getBraceletColorLabel(playerData[99]);
+		String gloves = CSVAttributes.getGlovesLabel(playerData[104]);
+		String fingerBandType = CSVAttributes.getFingerBandTypeLabel(playerData[103]);
+		String shirtType = CSVAttributes.getShirtTypeLabel(playerData[89]);
+		String underShorts = CSVAttributes.getUnderShortsLabel(playerData[99]);
+		String underShortsColor = CSVAttributes.getUnderShortsColorLabel(playerData[100]);
+		String socksType = CSVAttributes.getSocksTypeLabel(playerData[100]);
+		String ankleTape = CSVAttributes.getAnkleTapeLabel(playerData[104]);
+
+		String rgbR = CSVAttributes.getRgbRLabel(playerData[102]);
+		String rgbG = CSVAttributes.getRgbGLabel(playerData[103]);
+		String rgbB = CSVAttributes.getRgbBLabel(playerData[104]);
+
+		//Player ID
+		out.write(Integer.toString(player));
+		out.flush();
+		out.write(separator);
+		out.flush();
+		//Player Name
+		writeName(player, out);
+		out.write(separator);
+		out.flush();
+
+		writeShirtName(player, out);
+		out.write(separator);
+		out.flush();
+
+		//Basic Settings
+		out.write(Stats.getString(of, player, Stats.age));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(Stats.getString(of, player, Stats.injury));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(Stats.getString(of, player, Stats.dribSty));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(Stats.getString(of, player, Stats.freekick));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(Stats.getString(of, player, Stats.pkStyle));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(Stats.getString(of, player, Stats.dkSty));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(goalCelebration1);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		
+		out.write(goalCelebration2);
+		out.flush();
+		out.write(separator);
+		out.flush();
 
 		out.write(growthType);
 		out.flush();
 		out.write(separator);
 		out.flush();
 
+		//Basic Settings - Hidden
 		out.write(specificGrowthType);
 		out.flush();
 		out.write(separator);
 		out.flush();
 		
+		out.write(Stats.getString(of, player, Stats.consistency));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Position
+		out.write(Stats.getString(of, player, Stats.foot));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(getSide(player));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		
+
+		out.write(registeredPosition);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//All positions
+		for (int i = 0; i < Stats.roles.length; i++) {
+			if (i != 1) {
+				out.write(Stats.getString(of, player, Stats.roles[i]));
+				out.flush();
+				out.write(separator);
+				out.flush();
+			}
+		}
+
+		//Club & Nationality
+		out.write(Stats.getString(of, player, Stats.nationality));
+		out.flush();
+		out.write(separator);
+		out.flush();
+		writeInterStatus(player, out);
+		out.write(separator);
+		out.flush();
+		writeClassicStatus(player, out);
+		out.write(separator);
+		out.flush();
+		writeTeam(player, out);
+		out.write(separator);	
+		
+		//Appearance - Head - Face
+		out.write(faceTypeLabel);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(Integer.toString(skinColor));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
 		out.write(headHeightAttribute);
 		out.flush();
 		out.write(separator);
 		out.flush();
 		
 		out.write(headWidthAttribute);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(headPosition);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		
+		out.write(Integer.toString(presetFaceNo));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Face - Brows
+		out.write(browsType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(browsAngle);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(browsHeight);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(eyebrowSpacing);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Face - Eyes
+		out.write(eyesType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(eyesPosition);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(eyesAngle);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(eyesLength);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(eysWidth);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(eyeColor1Label);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(eyeColor2Label);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Face - Nose
+		out.write(noseType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(noseHeight);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(noseWidth);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Face - Cheeks
+		out.write(cheekType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(cheekShape);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Face - Mouth
+		out.write(mouthType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(mouthSize);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(mouthPosition);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Face - Jaw
+		out.write(jawType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(chinHeight);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		
+		out.write(chinWidth);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Hair - Hairstyle
+		out.write(hairType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(hairShape);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(hairFront);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(hairVolume);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(hairDarkness);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Hair - Hairstyle - Color
+		out.write(hairColorTypeLabel);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(hairPatternLabel);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		
+		out.write(rgbR);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(rgbG);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		
+		out.write(rgbB);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Hair - Hairstyle - Bandana
+		out.write(bandanaType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(bandanaColor);
+		out.flush();
+		out.write(separator);
+
+		//Appearance - Head - Hair - Hairstyle - Cap
+		out.write(cap);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(capType);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Hair - Facial Hair
+		out.write(facialHair);
+		out.flush();
+		out.write(separator);
+		out.flush();
+		
+		out.write(facialHairColorLabel);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Appearance - Head - Hair - Glasses
+		out.write(glassessVal);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		//Physique
+		out.write(Stats.getString(of, player, Stats.height));
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(Stats.getString(of, player, Stats.weight));
 		out.flush();
 		out.write(separator);
 		out.flush();
@@ -626,367 +966,110 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 
-		int wristbandVal = playerData[98];
-		boolean wristbandValFound = false;
+		//Accessories
+		out.write(neckWarmer);
+		out.flush();
+		out.write(separator);
+		out.flush();
 
-		for (int val : wristbandVals) {
-            if (val == wristbandVal) {
-                wristbandValFound = true;
-                break;
-            }
-		}
-		
-		if(!wristbandValFound){
-			wristbandVal = 0;
-		}
+		out.write(necklaceVal);
+		out.flush();
+		out.write(separator);
+		out.flush();
 
-		String[] wristbandTypeColor = wristbandOptsByValue.get(wristbandVal).split("-");
-
-		String wristbandType = wristbandTypeColor[0];
-		String wristbandColor = wristbandTypeColor[1];
-		
 		out.write(wristbandType);
 		out.flush();
 		out.write(separator);
 		out.flush();
+
 		out.write(wristbandColor);
 		out.flush();
 		out.write(separator);
 		out.flush();
 
-		writeInterStatus(player, out);
-		out.write(separator);
-		out.flush();
-		writeClassicStatus(player, out);
-		out.write(separator);
-		out.flush();
-		writeTeam(player, out);
-		out.write(separator);		
-
-		String[] hairTypeLabels = getHairTypeLabelByKey(hairTypeKey);
-
-		String hairType = hairTypeLabels[0];
-		String hairShape = hairTypeLabels[1];
-		String hairFront = hairTypeLabels[2];
-		String hairVolume = hairTypeLabels[3];
-		String hairDarkness = hairTypeLabels[4];
-		String bandanaType = hairTypeLabels[5];
-		String bandanaColor = CSVAttributes.getBandanaColorLabel(playerData[109]);
-
-		out.write(hairType);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(hairShape);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(hairFront);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(hairVolume);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(hairDarkness);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(bandanaType);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(bandanaColor);
-		out.flush();
-		out.write(separator);
-
-		String facialHairCapLabel = CSVAttributes.getFacialHairCapLabel(facialHairCapVal);
-		String[] facialHairCapLabels = facialHairCapLabel.split("/");
-
-		String facialHair = facialHairCapLabels[0];
-		String cap = facialHairCapLabels[1];
-
-		String sleeveLengthFacialHairColorLabel = CSVAttributes.getSleeveLengthFacialHairColorLabel(sleeveLengthFacialHairColorVal);
-		String[] sleeveLengthFacialHairColorLabels = sleeveLengthFacialHairColorLabel.split("/");
-
-		String sleeveLengthLabel = sleeveLengthFacialHairColorLabels[0];
-		String facialHairColorLabel = sleeveLengthFacialHairColorLabels[1];
-
-		out.write(facialHair);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(hairColorTypeLabel);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(hairPatternLabel);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(facialHairColorLabel);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(cap);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		
-		String capType = capTypeOptsByValue.getOrDefault(capTypeVal, capTypeOptsDefaultValue);
-
-		out.write(capType);
-		out.flush();
-		out.write(separator);
-		out.flush();
-
-		String glassesNecklace = glassesNecklaceOptsByValue.get(glassesNecklaceVal);
-		String[] glassesNecklaceVals = glassesNecklace.split("/");
-		String glassessVal = glassesNecklaceVals[0];
-		String necklaceVal = glassesNecklaceVals[1];
-
-		out.write(glassessVal);
-		out.flush();
-		out.write(separator);
-		out.flush();
-		out.write(necklaceVal);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eyeColor1Label);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eyeColor2Label);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(sleeveLengthLabel);
-		out.flush();
-
-		String headPosition = CSVAttributes.getHeadPositionLabel(playerData[123]);
-		String noseType = CSVAttributes.getNoseTypeLabel(playerData[121]);
-		String noseHeight = CSVAttributes.getNoseHeightLabel(playerData[122]);
-		String noseWidth = CSVAttributes.getNoseWidthLabel(playerData[121], playerData[122]);
-		String mouthSize = CSVAttributes.getMouthSizeLabel(playerData[121]);
-		String jawType = CSVAttributes.getJawTypeLabel(playerData[122]);
-		String chinHeight = CSVAttributes.getChinHeightLabel(playerData[122], playerData[123]);
-		String chinWidth = CSVAttributes.getChinWidthLabel(playerData[123]);
-		String cheekType = CSVAttributes.getCheekTypeLabel(playerData[119]);
-		String cheekShape = CSVAttributes.getCheekShapeLabel(playerData[119]);
-		String browsHeight = CSVAttributes.getBrowsHeightLabel(playerData[118]);
-		String eyebrowSpacing = CSVAttributes.getEyebrowSpacingLabel(playerData[118]);
-		String browsAngle = CSVAttributes.getBrowsAngleLabel(playerData[118], playerData[119]);
-		String eyesAngle = CSVAttributes.getEyesAngleLabel(playerData[117]);
-		String eyesLength = CSVAttributes.getEyesLengthLabel(playerData[117]);
-		String eysWidth = CSVAttributes.getEyesWidthLabel(playerData[117], playerData[118]);
-		String mouthType = CSVAttributes.getMouthTypeLabel(playerData[120]);
-		String mouthPosition = CSVAttributes.getMouthPositionLabel(playerData[120]);
-		String browsType = CSVAttributes.getBrowsTypeLabel(playerData[116]);
-		String eyesPosition = CSVAttributes.getEyesPositionLabel(playerData[116]);
-		String eyesType = CSVAttributes.getEyesTypeLabel(playerData[115]);
-
-		out.write(separator);
-		out.flush();
-		out.write(headPosition);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(browsType);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(browsAngle);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(browsHeight);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eyebrowSpacing);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eyesType);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eyesPosition);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eyesAngle);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eyesLength);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(eysWidth);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(noseType);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(noseHeight);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(noseWidth);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(cheekType);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(cheekShape);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(mouthType);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(mouthSize);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(mouthPosition);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(jawType);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(chinHeight);
-		out.flush();
-		
-		out.write(separator);
-		out.flush();
-		out.write(chinWidth);
-		out.flush();
-
-		String neckWarmer = CSVAttributes.getNeckWarmerLabel(playerData[93]);
-		String barceletType = CSVAttributes.getBraceletTypeLabel(playerData[99]);
-		String barceletColor = CSVAttributes.getBraceletColorLabel(playerData[99]);
-		String gloves = CSVAttributes.getGlovesLabel(playerData[104]);
-		String fingerBandType = CSVAttributes.getFingerBandTypeLabel(playerData[103]);
-		String shirtType = CSVAttributes.getShirtTypeLabel(playerData[89]);
-		String underShorts = CSVAttributes.getUnderShortsLabel(playerData[99]);
-		String underShortsColor = CSVAttributes.getUnderShortsColorLabel(playerData[100]);
-		String socksType = CSVAttributes.getSocksTypeLabel(playerData[100]);
-		String ankleTape = CSVAttributes.getAnkleTapeLabel(playerData[104]);
-
-		out.write(separator);
-		out.flush();
-		out.write(neckWarmer);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
 		out.write(barceletType);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
 		out.write(barceletColor);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
 		out.write(gloves);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
 		out.write(fingerBandType);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
 		out.write(shirtType);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
+		out.write(sleeveLengthLabel);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
 		out.write(underShorts);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
 		out.write(underShortsColor);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
 		out.write(socksType);
 		out.flush();
-
 		out.write(separator);
 		out.flush();
+
 		out.write(ankleTape);
 		out.flush();
-
-		String rgbR = CSVAttributes.getRgbRLabel(playerData[102]);
-		String rgbG = CSVAttributes.getRgbGLabel(playerData[103]);
-		String rgbB = CSVAttributes.getRgbBLabel(playerData[104]);
-
 		out.write(separator);
 		out.flush();
-		out.write(rgbR);
-		out.flush();
 
+		//Ability - Standard
+		//All standard 1-99 abilities
+		for (int i = 0; i < Stats.ability99.length; i++) {
+			out.write(Stats.getString(of, player, Stats.ability99[i]));
+			out.flush();
+			out.write(separator);
+			out.flush();
+		}
+
+		out.write(Stats.getString(of, player, Stats.condition));
+		out.flush();
 		out.write(separator);
 		out.flush();
-		out.write(rgbG);
-		out.flush();
 
+		out.write(Stats.getString(of, player, Stats.wfa));
+		out.flush();
 		out.write(separator);
 		out.flush();
-		out.write(rgbB);
+
+		out.write(Stats.getString(of, player, Stats.wff));
 		out.flush();
-
-		String goalCelebration1 = CSVAttributes.getGoalCelebrationLabel(playerData[83]);
-		String goalCelebration2 = CSVAttributes.getGoalCelebrationLabel(playerData[84]);
-
 		out.write(separator);
 		out.flush();
-		out.write(goalCelebration1);
-		out.flush();
-
-		out.write(separator);
-		out.flush();
-		out.write(goalCelebration2);
-		out.flush();
+		
+		for (int i = 0; i < Stats.abilitySpecial.length; i++) {
+			out.write(Stats.getString(of, player, Stats.abilitySpecial[i]));
+			out.flush();
+			//Don't print separator if last value
+			if (i != Stats.abilitySpecial.length - 1) {
+				out.write(separator);
+				out.flush();
+			}
+		}
 		
 		out.write(13);
 		out.flush();
