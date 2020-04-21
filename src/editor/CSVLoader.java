@@ -1366,26 +1366,40 @@ public class CSVLoader {
 		String legCircumferenceCalfCircumferenceLabel = legCircumferenceLabel + "/" + calfCircumferenceLabel;
 		String legLengthShoulderHeightLabel = legLengthLabel + "/" + shoulderHeightLabel;
 
-		int headHeightVal = headHeightOptsByLabel.get(headHeightLabel);
-		playerData[90] = (byte)headHeightVal;
+		if (!headHeightLabel.equals(CSVLoader.attValueNotFound)) {
+			int headHeightVal = headHeightOptsByLabel.get(headHeightLabel);
+			playerData[90] = (byte)headHeightVal;
+		}
 
-		int headWidthNeckWidthVal = physicalLinkedOptsByLabel.get(headWidthNeckWidthLabel);
-		playerData[91] = (byte)headWidthNeckWidthVal;
+		if (!headWidthLabel.equals(CSVLoader.attValueNotFound) && !neckWidthLabel.equals(CSVLoader.attValueNotFound)) {
+			int headWidthNeckWidthVal = physicalLinkedOptsByLabel.get(headWidthNeckWidthLabel);
+			playerData[91] = (byte)headWidthNeckWidthVal;
+		}
 
-		int neckLengthChestMeasurementVal = physicalLinkedOptsByLabel.get(neckLengthChestMeasurementLabel);
-		playerData[105] = (byte)neckLengthChestMeasurementVal;
+		if (!neckLengthLabel.equals(CSVLoader.attValueNotFound) && !chestMeasurementLabel.equals(CSVLoader.attValueNotFound)) {
+			int neckLengthChestMeasurementVal = physicalLinkedOptsByLabel.get(neckLengthChestMeasurementLabel);
+			playerData[105] = (byte)neckLengthChestMeasurementVal;
+		}
 
-		int armCircumferenceWaistCircumferenceVal = physicalLinkedOptsByLabel.get(armCircumferenceWaistCircumferenceLabel);
-		playerData[106] = (byte)armCircumferenceWaistCircumferenceVal;
+		if (!armCircumferenceLabel.equals(CSVLoader.attValueNotFound) && !waistCircumferenceLabel.equals(CSVLoader.attValueNotFound)) {
+			int armCircumferenceWaistCircumferenceVal = physicalLinkedOptsByLabel.get(armCircumferenceWaistCircumferenceLabel);
+			playerData[106] = (byte)armCircumferenceWaistCircumferenceVal;
+		}
 
-		int legCircumferenceCalfCircumferenceVal = physicalLinkedOptsByLabel.get(legCircumferenceCalfCircumferenceLabel);
-		playerData[107] = (byte)legCircumferenceCalfCircumferenceVal;
+		if (!legCircumferenceLabel.equals(CSVLoader.attValueNotFound) && !calfCircumferenceLabel.equals(CSVLoader.attValueNotFound)) {
+			int legCircumferenceCalfCircumferenceVal = physicalLinkedOptsByLabel.get(legCircumferenceCalfCircumferenceLabel);
+			playerData[107] = (byte)legCircumferenceCalfCircumferenceVal;
+		}
 
-		int legLengthShoulderHeightVal = physicalLinkedOptsByLabel.get(legLengthShoulderHeightLabel);
-		playerData[108] = (byte)legLengthShoulderHeightVal;
+		if (!legLengthLabel.equals(CSVLoader.attValueNotFound) && !shoulderHeightLabel.equals(CSVLoader.attValueNotFound)) {
+			int legLengthShoulderHeightVal = physicalLinkedOptsByLabel.get(legLengthShoulderHeightLabel);
+			playerData[108] = (byte)legLengthShoulderHeightVal;
+		}
 
-		int shoulderWidthBandanaColorVal = CSVAttributes.getShoulderWidthBandanaColorValue(shoulderWidthLabel, bandanaColorLabel);
-		playerData[109] = (byte)shoulderWidthBandanaColorVal;
+		if (!shoulderWidthLabel.equals(CSVLoader.attValueNotFound) && !bandanaColorLabel.equals(CSVLoader.attValueNotFound)) {
+			int shoulderWidthBandanaColorVal = CSVAttributes.getShoulderWidthBandanaColorValue(shoulderWidthLabel, bandanaColorLabel);
+			playerData[109] = (byte)shoulderWidthBandanaColorVal;
+		}
 
 		String wristBandType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWristband);
 		String wristBandColor = this.getAttributeValue(tokens, attributePositions, CSVLoader.attWristbandColor);
