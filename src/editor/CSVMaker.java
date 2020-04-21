@@ -13,24 +13,24 @@ public class CSVMaker {
 	private static char separator = ',';
 
 	private OptionFile of;
-	private final CSVAttributes csvAttributes = new CSVAttributes();
-	private final int[] wristbandVals = csvAttributes.getWristbandVals();
-	private final Map<Integer, String> wristbandOptsByValue = csvAttributes.getWristbandOptsByValue();
-	private final Map<Integer, String> physicalOptsByValue = csvAttributes.getPhysicalOptsByValue();
-	private final Map<Integer, String> physicalLinkedOptsByValue = csvAttributes.getPhysicalLinkedOptsByValue();
-	private final Map<Integer, String> headHeightOptsByValue = csvAttributes.getHeadHeightOptsByValue();
-	private final Map<String, String> hairTypesByKey = csvAttributes.getHairTypesByKey();
-	private final Map<Integer, String> capTypeOptsByValue = csvAttributes.getCapTypeOptsByValue();
-	private final String capTypeOptsDefaultValue = csvAttributes.getCapTypeOptsDefaultValue();
-	private final Map<Integer, String> glassesNecklaceOptsByValue = csvAttributes.getGlassesNecklaceOptsByValue();
-	private final Map<Integer, String> eyeColor2TypesByValue = csvAttributes.getEyeColor2TypesByValue();
-	private final Map<Integer, String> faceTypesByValue = csvAttributes.getFaceTypesByValue();
-	private final Map<String, Integer> specialFacesByIndexNumber = csvAttributes.getSpecialFacesByIndexNumber();
-	private final Map<Integer, String> growthTypesByValue = csvAttributes.getGrowthTypesByValue();
-	private final String defaultGrowthTypeLabel = csvAttributes.getDefaultGrowthTypeLabel();
+	private final int[] wristbandVals = CSVAttributes.getWristbandVals();
+	private final Map<Integer, String> registeredPositionByValue = CSVAttributes.getRegisteredPositionByValue();
+	private final Map<Integer, String> wristbandOptsByValue = CSVAttributes.getWristbandOptsByValue();
+	private final Map<Integer, String> physicalOptsByValue = CSVAttributes.getPhysicalOptsByValue();
+	private final Map<Integer, String> physicalLinkedOptsByValue = CSVAttributes.getPhysicalLinkedOptsByValue();
+	private final Map<Integer, String> headHeightOptsByValue = CSVAttributes.getHeadHeightOptsByValue();
+	private final Map<String, String> hairTypesByKey = CSVAttributes.getHairTypesByKey();
+	private final Map<Integer, String> capTypeOptsByValue = CSVAttributes.getCapTypeOptsByValue();
+	private final String capTypeOptsDefaultValue = CSVAttributes.getCapTypeOptsDefaultValue();
+	private final Map<Integer, String> glassesNecklaceOptsByValue = CSVAttributes.getGlassesNecklaceOptsByValue();
+	private final Map<Integer, String> eyeColor2TypesByValue = CSVAttributes.getEyeColor2TypesByValue();
+	private final Map<Integer, String> faceTypesByValue = CSVAttributes.getFaceTypesByValue();
+	private final Map<String, Integer> specialFacesByIndexNumber = CSVAttributes.getSpecialFacesByIndexNumber();
+	private final Map<Integer, String> growthTypesByValue = CSVAttributes.getGrowthTypesByValue();
+	private final String defaultGrowthTypeLabel = CSVAttributes.getDefaultGrowthTypeLabel();
 
-	private final int bytesFactor = csvAttributes.getBytesFactor();
-	private final int singlePhysicalOptsSettingMaxValue = csvAttributes.getSinglePhysicalOptsSettingMaxValue();
+	private final int bytesFactor = CSVAttributes.getBytesFactor();
+	private final int singlePhysicalOptsSettingMaxValue = CSVAttributes.getSinglePhysicalOptsSettingMaxValue();
 
 
 	public boolean makeFile(ProgressUI ui, OptionFile opf, File dest, boolean headings,
@@ -322,7 +322,10 @@ public class CSVMaker {
 			}
 		}
 
-		out.write(Stats.getString(of, player, Stats.regPos));
+		int registeredPositionVal = Integer.parseInt(Stats.getString(of, player, Stats.regPos));
+		String registeredPosition = registeredPositionByValue.get(registeredPositionVal);
+
+		out.write(registeredPosition);
 		out.flush();
 		out.write(separator);
 		out.flush();

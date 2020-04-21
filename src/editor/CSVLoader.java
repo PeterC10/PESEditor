@@ -517,7 +517,7 @@ public class CSVLoader {
 		attGoalCelebration2,
 	};
 
-	private final CSVAttributes csvAttributes = new CSVAttributes();
+	private final Map<String, Integer> registeredPositionByLabel = CSVAttributes.getRegisteredPositionByLabel();
 	private final Map<String, Integer> physicalLinkedOptsByLabel = CSVAttributes.getPhysicalLinkedOptsByLabel();
 	private final Map<String, Integer> headHeightOptsByLabel = CSVAttributes.getHeadHeightOptsByLabel();
 	private final String[] wristbandLabels = CSVAttributes.getWristbandLabels();
@@ -965,7 +965,9 @@ public class CSVLoader {
 
 		String registeredPosition = this.getAttributeValue(tokens, attributePositions, CSVLoader.attRegisteredPosition);
 		if (!registeredPosition.equals(CSVLoader.attValueNotFound)){
-			Stats.setValue(of, playerId, Stats.regPos, registeredPosition);
+			int registeredPositionVal = registeredPositionByLabel.get(registeredPosition);
+			String registeredPositionValStr = Integer.toString(registeredPositionVal);
+			Stats.setValue(of, playerId, Stats.regPos, registeredPositionValStr);
 		}
 
 		String attack = this.getAttributeValue(tokens, attributePositions, CSVLoader.attAttack);
