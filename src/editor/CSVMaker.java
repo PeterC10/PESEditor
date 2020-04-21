@@ -156,7 +156,7 @@ public class CSVMaker {
 			"CHEST MEASUREMENT", "WAIST CIRCUMFERENCE", "ARM CIRCUMFERENCE",
 			"LEG CIRCUMFERENCE", "CALF CIRCUMFERENCE", "LEG LENGTH",
 			//Accessories
-			"NECK WARMER", "NECKLACE TYPE", "WRISTBAND", "WRISTBAND COLOR",
+			"NECK WARMER", "NECKLACE TYPE", "NECKLACE COLOR", "WRISTBAND", "WRISTBAND COLOR",
 			"BRACELET TYPE", "BRACELET COLOR", "GLOVES", "FINGER BAND TYPE",
 			"SHIRT TYPE",  "SLEEVE LENGTH", "UNDER SHORTS", "UNDER SHORTS COLOR",
 			"SOCKS TYPE", "ANKLE TAPE",
@@ -515,6 +515,8 @@ public class CSVMaker {
 		String[] glassesNecklaceVals = glassesNecklace.split("/");
 		String glassessLabel = glassesNecklaceVals[0];
 		String necklaceLabel = glassesNecklaceVals[1];
+
+		String necklaceColor = CSVAttributes.getNecklaceColorLabel(playerData[98]);
 
 		String glassesColorLabel = CSVAttributes.getGlassesColorLabel(playerData[110]);
 
@@ -978,6 +980,11 @@ public class CSVMaker {
 		out.flush();
 
 		out.write(necklaceLabel);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(necklaceColor);
 		out.flush();
 		out.write(separator);
 		out.flush();

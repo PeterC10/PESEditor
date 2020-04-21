@@ -8879,6 +8879,39 @@ class CSVAttributes {
         }
     };
 
+    private static final Map<Integer, String> necklaceColorLabels = new HashMap<Integer, String>() {
+        {
+            put(0, "White");
+            put(1, "Black");
+            put(2, "Red");
+            put(3, "Blue");
+            put(4, "Yellow");
+            put(5, "Green");
+            put(6, "Purple");
+            put(7, "Cyan");
+        }
+    };
+
+    public static String getNecklaceColorLabel(int necklaceColorValue) {
+        String necklaceColorLabel = "???";
+        int valueRange = 8;
+        int necklaceColor = 0;
+
+        if (necklaceColorValue >= 0 && necklaceColorValue <= 120) {
+            necklaceColor = necklaceColorValue % valueRange;
+        }
+        else if (necklaceColorValue >= -128 && necklaceColorValue <= -1) {
+            necklaceColor = necklaceColorValue % valueRange;
+            if (necklaceColor != 0) {
+                necklaceColor += 8;
+            }
+        }
+
+        necklaceColorLabel = necklaceColorLabels.get(necklaceColor);
+
+        return necklaceColorLabel;
+    }
+
     public static int getWristbandNecklaceColorValue(String wirstbandLabel, String necklaceColorLabel) {
         int wristbandNecklaceColorValue = 0;
 
