@@ -5177,7 +5177,7 @@ class CSVAttributes {
     /**
      * @return the wristbandVals
      */
-    public int[] getWristbandVals() {
+    public static int[] getWristbandVals() {
         return wristbandVals;
     }
 
@@ -5213,169 +5213,169 @@ class CSVAttributes {
         return growthTypeLabelsAll;
     }
 
-    public int getDefaultGrowthTypeVal() {
+    public static int getDefaultGrowthTypeVal() {
         return defaultGrowthTypeVal;
     }
 
-    public String getDefaultGrowthTypeLabel() {
+    public static String getDefaultGrowthTypeLabel() {
         return defaultGrowthTypeLabel;
     }
 
-    public Map<Integer, String> getGrowthTypesByValue() {
+    public static Map<Integer, String> getGrowthTypesByValue() {
         return growthTypesByValue;
     }
 
-    public Map<String, Integer> getGrowthTypesByLabel() {
+    public static Map<String, Integer> getGrowthTypesByLabel() {
         return growthTypesByLabel;
     }
 
-    public Map<String, Integer> getSpecialFacesByActualNumber() {
+    public static Map<String, Integer> getSpecialFacesByActualNumber() {
         return specialFacesByActualNumber;
     }
 
-    public Map<String, Integer> getSpecialFacesByIndexNumber() {
+    public static Map<String, Integer> getSpecialFacesByIndexNumber() {
         return specialFacesByIndexNumber;
     }
 
-    public Map<Integer, String> getEyeColor2TypesByValue() {
+    public static Map<Integer, String> getEyeColor2TypesByValue() {
         return eyeColor2TypesByValue;
     }
 
-    public Map<String, Integer> getEyeColor2TypesByLabel() {
+    public static Map<String, Integer> getEyeColor2TypesByLabel() {
         return eyeColor2TypesByLabel;
     }
 
-    public String getCapTypeOptsDefaultValue() {
+    public static String getCapTypeOptsDefaultValue() {
         return capTypeOptsDefaultValue;
     }
 
-    public Map<Integer, String> getGlassesNecklaceOptsByValue() {
+    public static Map<Integer, String> getGlassesNecklaceOptsByValue() {
         return glassesNecklaceOptsByValue;
     }
 
-    public Map<String, Integer> getGlassesNecklaceOptsByLabel() {
+    public static Map<String, Integer> getGlassesNecklaceOptsByLabel() {
         return glassesNecklaceOptsByLabel;
     }
 
-    public Map<Integer, String> getCapTypeOptsByValue() {
+    public static Map<Integer, String> getCapTypeOptsByValue() {
         return capTypeOptsByValue;
     }
 
-    public Map<String, Integer> getCapTypeOptsByLabel() {
+    public static Map<String, Integer> getCapTypeOptsByLabel() {
         return capTypeOptsByLabel;
     }
 
-    public Map<String, String> getHairTypesByKey() {
+    public static Map<String, String> getHairTypesByKey() {
         return hairTypesByKey;
     }
 
-    public Map<String, String> getHairTypesByLabel() {
+    public static Map<String, String> getHairTypesByLabel() {
         return hairTypesByLabel;
     }
 
-    public Map<String, Integer> getHeadHeightOptsByLabel() {
+    public static Map<String, Integer> getHeadHeightOptsByLabel() {
         return headHeightOptsByLabel;
     }
 
-    public Map<Integer, String> getHeadHeightOptsByValue() {
+    public static Map<Integer, String> getHeadHeightOptsByValue() {
         return headHeightOptsByValue;
     }
 
     /**
      * @return the footFavSideOptsByLabelFavSideVal
      */
-    public Map<String, Integer> getFootFavSideOptsByLabelFavSideVal() {
+    public static Map<String, Integer> getFootFavSideOptsByLabelFavSideVal() {
         return footFavSideOptsByLabelFavSideVal;
     }
 
     /**
      * @return the footFavSideOptsByLabelFootVal
      */
-    public Map<String, Integer> getFootFavSideOptsByLabelFootVal() {
+    public static Map<String, Integer> getFootFavSideOptsByLabelFootVal() {
         return footFavSideOptsByLabelFootVal;
     }
 
     /**
      * @return the bytesFactor
      */
-    public int getBytesFactor() {
+    public static int getBytesFactor() {
         return bytesFactor;
     }
 
     /**
      * @return the singlePhysicalOptsSettingMaxValue
      */
-    public int getSinglePhysicalOptsSettingMaxValue() {
+    public static int getSinglePhysicalOptsSettingMaxValue() {
         return singlePhysicalOptsSettingMaxValue;
     }
 
     /**
      * @return the singlePhysicalOptsSettingMinValue
      */
-    public int getSinglePhysicalOptsSettingMinValue() {
+    public static int getSinglePhysicalOptsSettingMinValue() {
         return singlePhysicalOptsSettingMinValue;
     }
 
     /**
      * @return the physicalLinkedOptsByValue
      */
-    public Map<Integer, String> getPhysicalLinkedOptsByValue() {
+    public static Map<Integer, String> getPhysicalLinkedOptsByValue() {
         return physicalLinkedOptsByValue;
     }
 
     /**
      * @return the physicalLinkedOptsByLabel
      */
-    public Map<String, Integer> getPhysicalLinkedOptsByLabel() {
+    public static Map<String, Integer> getPhysicalLinkedOptsByLabel() {
         return physicalLinkedOptsByLabel;
     }
 
     /**
      * @return the physicalOptsByValue
      */
-    public Map<Integer, String> getPhysicalOptsByValue() {
+    public static Map<Integer, String> getPhysicalOptsByValue() {
         return physicalOptsByValue;
     }
 
     /**
      * @return the physicalOptsByLabel
      */
-    public Map<String, Integer> getPhysicalOptsByLabel() {
+    public static Map<String, Integer> getPhysicalOptsByLabel() {
         return physicalOptsByLabel;
     }
 
     /**
      * @return the wristbandLabels
      */
-    public String[] getWristbandLabels() {
+    public static String[] getWristbandLabels() {
         return wristbandLabels;
     }
 
     /**
      * @return the wristbandOptsByLabel
      */
-    public Map<String, Integer> getWristbandOptsByLabel() {
+    public static Map<String, Integer> getWristbandOptsByLabel() {
         return wristbandOptsByLabel;
     }
 
     /**
      * @return the wristbandOptsByValue
      */
-    public Map<Integer, String> getWristbandOptsByValue() {
+    public static Map<Integer, String> getWristbandOptsByValue() {
         return wristbandOptsByValue;
     }
 
         /**
      * @return the faceTypesByValue
      */
-    public Map<Integer, String> getFaceTypesByValue() {
+    public static Map<Integer, String> getFaceTypesByValue() {
         return faceTypesByValue;
     }
 
     /**
      * @return the faceTypesByLabel
      */
-    public Map<String, Integer> getFaceTypesByLabel() {
+    public static Map<String, Integer> getFaceTypesByLabel() {
         return faceTypesByLabel;
     }
 
@@ -5428,10 +5428,6 @@ class CSVAttributes {
             }
         }
         return facialHairCapValue;
-    }
-
-    public int getFacialHairCapValueNoStatic(String facialHairCapLabel) {
-        return CSVAttributes.getFacialHairCapValue(facialHairCapLabel);
     }
     
     public static String getHairColorTypeHairPatternEyeColor1Label(int hairPatternEyeColor1Value) {
@@ -5509,10 +5505,6 @@ class CSVAttributes {
         return hairPatternEyeColor1Value;
     }
 
-    public int getHairColorTypeHairPatternEyeColor1ValueNoStatic(String hairPatternEyeColor1Label) {
-        return CSVAttributes.getHairColorTypeHairPatternEyeColor1Value(hairPatternEyeColor1Label);
-    }
-
     public static String getSleeveLengthFacialHairColorLabel(int sleeveLengthFacialHairColorValue) {
         String sleeveLengthLabel = "Auto";
         String facialHairColorLabel = "Same";
@@ -5583,10 +5575,6 @@ class CSVAttributes {
 
 
         return sleeveLengthFacialHairColorValue;
-    }
-
-    public int getSleeveLengthFacialHairColorValueNoStatic(String sleeveLengthFacialHairColorLabel) {
-        return CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
     }
 
     //TODO: Clean up/simplify nose, jaw, head position and chin methods code
@@ -7164,10 +7152,6 @@ class CSVAttributes {
         return mouthTypePositionValue;
     }
 
-    public int getMouthTypePositionValueNoStatic(String mouthTypeLabel, String mouthPositionLabel) {
-        return CSVAttributes.getMouthTypePositionValue(mouthTypeLabel, mouthPositionLabel);
-    }
-
     public static String getBrowsTypeLabel(int browsTypeValue) {
         String browsTypeLabel = "???";
 
@@ -7400,10 +7384,6 @@ class CSVAttributes {
         return browsTypePositionValue;
     }
 
-    public int getBrowsTypeEyesPositionValueNoStatic(String browsTypeLabel, String eyesPositionLabel) {
-        return CSVAttributes.getBrowsTypeEyesPositionValue(browsTypeLabel, eyesPositionLabel);
-    }
-
     public static String getEyesTypeLabel(int eyesTypeValue) {
         String eyesTypeLabel = "???";
 
@@ -7538,7 +7518,7 @@ class CSVAttributes {
         return eyesTypeLabel;
     }
 
-    public Map<String, Integer> getEyeTypesByLabel() {
+    public static Map<String, Integer> getEyeTypesByLabel() {
         return eyeTypesByLabel;
     }
 
@@ -8128,10 +8108,6 @@ class CSVAttributes {
         return rgbRValue;
     }
 
-    public int getRgbRFaceTypeValueNoStatic(String rgbRLabel, String faceTypeLabel) {
-        return getRgbRFaceTypeValue(rgbRLabel, faceTypeLabel);
-    }
-
     public static String getRgbGLabel(int rgbGValue) {
         String rgbGLabel = "???";
 
@@ -8416,10 +8392,6 @@ class CSVAttributes {
         rgbGValue = rgbGBaseValue + fingerBandTypeOffset;
 
         return rgbGValue;
-    }
-
-    public int getRgbGFingerBandTypeValueNoStatic(String rgbGLabel, String fingerBandTypeLabel) {
-        return getRgbGFingerBandTypeValue(rgbGLabel, fingerBandTypeLabel);
     }
 
     public static String getRgbBLabel(int rgbBValue) {
@@ -8709,10 +8681,6 @@ class CSVAttributes {
         rgbBValue = rgbBBaseValue + glovesAnkleTapeOffset;
 
         return rgbBValue;
-    }
-
-    public int getRgbBGlovesAnkleTapeValueNoStatic(String rgbBLabel, String glovesLabel, String ankleTapeLabel) {
-        return getRgbBGlovesAnkleTapeValue(rgbBLabel, glovesLabel, ankleTapeLabel);
     }
 
     public static String getBandanaColorLabel(int bandanaColorValue) {

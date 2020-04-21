@@ -518,23 +518,23 @@ public class CSVLoader {
 	};
 
 	private final CSVAttributes csvAttributes = new CSVAttributes();
-	private final Map<String, Integer> physicalLinkedOptsByLabel = csvAttributes.getPhysicalLinkedOptsByLabel();
-	private final Map<String, Integer> headHeightOptsByLabel = csvAttributes.getHeadHeightOptsByLabel();
-	private final String[] wristbandLabels = csvAttributes.getWristbandLabels();
-	private final Map<String, Integer> wristbandOptsByLabel = csvAttributes.getWristbandOptsByLabel();
-	private final Map<String, String> hairTypesByLabel = csvAttributes.getHairTypesByLabel();
-	private final Map<String, Integer> capTypeOptsByLabel = csvAttributes.getCapTypeOptsByLabel();
-	private final Map<String, Integer> glassesNecklaceOptsByLabel = csvAttributes.getGlassesNecklaceOptsByLabel();
-	private final Map<String, Integer> eyeColor2TypesByLabel = csvAttributes.getEyeColor2TypesByLabel();
-	private final Map<String, Integer> faceTypesByLabel = csvAttributes.getFaceTypesByLabel();
-	private final Map<String, Integer> specialFacesByActualNumber = csvAttributes.getSpecialFacesByActualNumber();
-	private final Map<String, Integer> growthTypesByLabel = csvAttributes.getGrowthTypesByLabel();
-	private final Map<Integer, String> growthTypesByValue = csvAttributes.getGrowthTypesByValue();
-	private final Map<String, Integer> eyeTypesByLabel = csvAttributes.getEyeTypesByLabel();
+	private final Map<String, Integer> physicalLinkedOptsByLabel = CSVAttributes.getPhysicalLinkedOptsByLabel();
+	private final Map<String, Integer> headHeightOptsByLabel = CSVAttributes.getHeadHeightOptsByLabel();
+	private final String[] wristbandLabels = CSVAttributes.getWristbandLabels();
+	private final Map<String, Integer> wristbandOptsByLabel = CSVAttributes.getWristbandOptsByLabel();
+	private final Map<String, String> hairTypesByLabel = CSVAttributes.getHairTypesByLabel();
+	private final Map<String, Integer> capTypeOptsByLabel = CSVAttributes.getCapTypeOptsByLabel();
+	private final Map<String, Integer> glassesNecklaceOptsByLabel = CSVAttributes.getGlassesNecklaceOptsByLabel();
+	private final Map<String, Integer> eyeColor2TypesByLabel = CSVAttributes.getEyeColor2TypesByLabel();
+	private final Map<String, Integer> faceTypesByLabel = CSVAttributes.getFaceTypesByLabel();
+	private final Map<String, Integer> specialFacesByActualNumber = CSVAttributes.getSpecialFacesByActualNumber();
+	private final Map<String, Integer> growthTypesByLabel = CSVAttributes.getGrowthTypesByLabel();
+	private final Map<Integer, String> growthTypesByValue = CSVAttributes.getGrowthTypesByValue();
+	private final Map<String, Integer> eyeTypesByLabel = CSVAttributes.getEyeTypesByLabel();
 	private final Map<String, Integer> neckWarmerBaseHairCodeOffsetByLabel = CSVAttributes.getNeckWarmerBaseHairCodeOffsetByLabel();
 
-	private final String defaultGrowthTypeLabel = csvAttributes.getDefaultGrowthTypeLabel();
-	private final int defaultGrowthTypeVal = csvAttributes.getDefaultGrowthTypeVal();
+	private final String defaultGrowthTypeLabel = CSVAttributes.getDefaultGrowthTypeLabel();
+	private final int defaultGrowthTypeVal = CSVAttributes.getDefaultGrowthTypeVal();
 
 	private static final String[] growthTypeLabelsAll = CSVAttributes.getGrowthTypeLabelsAll();
 	private static final int[] growthTypeValuesAll = CSVAttributes.getGrowthTypeValuesAll();
@@ -1467,14 +1467,14 @@ public class CSVLoader {
 
 		if (!hairColorTypeLabel.equals(CSVLoader.attValueNotFound) && !hairColorPatternLabel.equals(CSVLoader.attValueNotFound) && !eyeColor1Label.equals(CSVLoader.attValueNotFound)){
 			String hairColorTypeHairPatternEyeColor1Label = hairColorTypeLabel + "/" + hairColorPatternLabel + "/" + eyeColor1Label;
-			int hairColorTypeHairPatternEyeColor1Val = csvAttributes.getHairColorTypeHairPatternEyeColor1ValueNoStatic(hairColorTypeHairPatternEyeColor1Label);
+			int hairColorTypeHairPatternEyeColor1Val = CSVAttributes.getHairColorTypeHairPatternEyeColor1Value(hairColorTypeHairPatternEyeColor1Label);
 			playerData[94] = (byte)hairColorTypeHairPatternEyeColor1Val;
 		}
 
 		String rgbR = this.getAttributeValue(tokens, attributePositions, CSVLoader.attRgbR);
 
 		if (!rgbR.equals(CSVLoader.attValueNotFound) && !faceType.equals(CSVLoader.attValueNotFound)) {
-			int rgbRFaceTypeVal = csvAttributes.getRgbRFaceTypeValueNoStatic(rgbR, faceType);
+			int rgbRFaceTypeVal = CSVAttributes.getRgbRFaceTypeValue(rgbR, faceType);
 			playerData[102] = (byte)rgbRFaceTypeVal;
 		}
 
@@ -1482,7 +1482,7 @@ public class CSVLoader {
 		String fingerBandType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attFingerBandType);
 
 		if (!rgbG.equals(CSVLoader.attValueNotFound) && !fingerBandType.equals(CSVLoader.attValueNotFound)) {
-			int rgbGFingerBandTypeVal = csvAttributes.getRgbGFingerBandTypeValueNoStatic(rgbG, fingerBandType);
+			int rgbGFingerBandTypeVal = CSVAttributes.getRgbGFingerBandTypeValue(rgbG, fingerBandType);
 			playerData[103] = (byte)rgbGFingerBandTypeVal;
 		}
 
@@ -1491,7 +1491,7 @@ public class CSVLoader {
 		String ankleTape = this.getAttributeValue(tokens, attributePositions, CSVLoader.attAnkleTape);
 
 		if (!rgbB.equals(CSVLoader.attValueNotFound) && !gloves.equals(CSVLoader.attValueNotFound) && !ankleTape.equals(CSVLoader.attValueNotFound)) {
-			int rgbBGlovesAnkleTapeVal = csvAttributes.getRgbBGlovesAnkleTapeValueNoStatic(rgbB, gloves, ankleTape);
+			int rgbBGlovesAnkleTapeVal = CSVAttributes.getRgbBGlovesAnkleTapeValue(rgbB, gloves, ankleTape);
 			playerData[104] = (byte)rgbBGlovesAnkleTapeVal;
 		}
 
@@ -1500,7 +1500,7 @@ public class CSVLoader {
 
 		if (!facialHairLabel.equals(CSVLoader.attValueNotFound) && !capLabel.equals(CSVLoader.attValueNotFound)) {
 			String facialHairCapLabel = facialHairLabel + "/" + capLabel;
-			int facialHairCapVal = csvAttributes.getFacialHairCapValueNoStatic(facialHairCapLabel);
+			int facialHairCapVal = CSVAttributes.getFacialHairCapValue(facialHairCapLabel);
 			playerData[95] = (byte)facialHairCapVal;
 		}
 
@@ -1509,7 +1509,7 @@ public class CSVLoader {
 
 		if (!sleeveLengthLabel.equals(CSVLoader.attValueNotFound) && !facialHairColorLabel.equals(CSVLoader.attValueNotFound)) {
 			String sleeveLengthFacialHairColorLabel = sleeveLengthLabel + "/" + facialHairColorLabel;
-			int sleeveLengthFacialHairColorValue = csvAttributes.getSleeveLengthFacialHairColorValueNoStatic(sleeveLengthFacialHairColorLabel);
+			int sleeveLengthFacialHairColorValue = CSVAttributes.getSleeveLengthFacialHairColorValue(sleeveLengthFacialHairColorLabel);
 			playerData[96] = (byte)sleeveLengthFacialHairColorValue;
 		}
 
@@ -1539,7 +1539,7 @@ public class CSVLoader {
 		String eyesPositionLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attEyesPosition);
 
 		if (!browsTypeLabel.equals(CSVLoader.attValueNotFound) && !eyesPositionLabel.equals(CSVLoader.attValueNotFound)) {
-			int browsTypeEyesPositionValue = csvAttributes.getBrowsTypeEyesPositionValueNoStatic(browsTypeLabel, eyesPositionLabel);
+			int browsTypeEyesPositionValue = CSVAttributes.getBrowsTypeEyesPositionValue(browsTypeLabel, eyesPositionLabel);
 			playerData[116] = (byte)browsTypeEyesPositionValue;
 		}
 
@@ -1569,7 +1569,7 @@ public class CSVLoader {
 		String mouthPositionLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attMouthPosition);
 
 		if (!mouthTypeLabel.equals(CSVLoader.attValueNotFound) && !mouthPositionLabel.equals(CSVLoader.attValueNotFound)) {
-			int mouthTypePositionValue = csvAttributes.getMouthTypePositionValueNoStatic(mouthTypeLabel, mouthPositionLabel);
+			int mouthTypePositionValue = CSVAttributes.getMouthTypePositionValue(mouthTypeLabel, mouthPositionLabel);
 			playerData[120] = (byte)mouthTypePositionValue;
 		}
 
