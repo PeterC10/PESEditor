@@ -20,8 +20,6 @@ public class CSVMaker {
 	private final Map<Integer, String> physicalLinkedOptsByValue = CSVAttributes.getPhysicalLinkedOptsByValue();
 	private final Map<Integer, String> headHeightOptsByValue = CSVAttributes.getHeadHeightOptsByValue();
 	private final Map<String, String> hairTypesByKey = CSVAttributes.getHairTypesByKey();
-	private final Map<Integer, String> capTypeOptsByValue = CSVAttributes.getCapTypeOptsByValue();
-	private final String capTypeOptsDefaultValue = CSVAttributes.getCapTypeOptsDefaultValue();
 	private final Map<Integer, String> glassesNecklaceOptsByValue = CSVAttributes.getGlassesNecklaceOptsByValue();
 	private final Map<Integer, String> eyeColor2TypesByValue = CSVAttributes.getEyeColor2TypesByValue();
 	private final Map<Integer, String> faceTypesByValue = CSVAttributes.getFaceTypesByValue();
@@ -151,7 +149,7 @@ public class CSVMaker {
 			//Appearance - Head - Hair - Facial Hair
 			"FACIAL HAIR TYPE", "FACIAL HAIR COLOR",
 			//Appearance - Head - Hair - Glasses
-			"GLASSES TYPE",
+			"GLASSES TYPE", "GLASSES COLOR",
 			//Physique
 			"HEIGHT", "WEIGHT",
 			"NECK LENGTH", "NECK WIDTH", "SHOULDER HEIGHT", "SHOULDER WIDTH",
@@ -511,12 +509,14 @@ public class CSVMaker {
 		String sleeveLengthLabel = sleeveLengthFacialHairColorLabels[0];
 		String facialHairColorLabel = sleeveLengthFacialHairColorLabels[1];
 
-		String capType = capTypeOptsByValue.getOrDefault(capTypeVal, capTypeOptsDefaultValue);
+		String capType = CSVAttributes.getCapTypeLabel(capTypeVal);
 
 		String glassesNecklace = glassesNecklaceOptsByValue.get(glassesNecklaceVal);
 		String[] glassesNecklaceVals = glassesNecklace.split("/");
-		String glassessVal = glassesNecklaceVals[0];
-		String necklaceVal = glassesNecklaceVals[1];
+		String glassessLabel = glassesNecklaceVals[0];
+		String necklaceLabel = glassesNecklaceVals[1];
+
+		String glassesColorLabel = CSVAttributes.getGlassesColorLabel(playerData[110]);
 
 		String headPosition = CSVAttributes.getHeadPositionLabel(playerData[123]);
 		String noseType = CSVAttributes.getNoseTypeLabel(playerData[121]);
@@ -900,7 +900,12 @@ public class CSVMaker {
 		out.flush();
 
 		//Appearance - Head - Hair - Glasses
-		out.write(glassessVal);
+		out.write(glassessLabel);
+		out.flush();
+		out.write(separator);
+		out.flush();
+
+		out.write(glassesColorLabel);
 		out.flush();
 		out.write(separator);
 		out.flush();
@@ -972,7 +977,7 @@ public class CSVMaker {
 		out.write(separator);
 		out.flush();
 
-		out.write(necklaceVal);
+		out.write(necklaceLabel);
 		out.flush();
 		out.write(separator);
 		out.flush();

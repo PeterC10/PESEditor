@@ -305,6 +305,7 @@ public class CSVLoader {
 	private static String attCap = "CAP";
 	private static String attCapType = "CAP TYPE";
 	private static String attGlassesType = "GLASSES TYPE";
+	private static String attGlassesColor = "GLASSES COLOR";
 	private static String attNecklaceType = "NECKLACE TYPE";
 
 	private static String attEyeColor1 = "EYE COLOR 1";
@@ -475,6 +476,7 @@ public class CSVLoader {
 		attCap,
 		attCapType,
 		attGlassesType,
+		attGlassesColor,
 		attNecklaceType,
 		attEyeColor1,
 		attEyeColor2,
@@ -523,7 +525,6 @@ public class CSVLoader {
 	private final String[] wristbandLabels = CSVAttributes.getWristbandLabels();
 	private final Map<String, Integer> wristbandOptsByLabel = CSVAttributes.getWristbandOptsByLabel();
 	private final Map<String, String> hairTypesByLabel = CSVAttributes.getHairTypesByLabel();
-	private final Map<String, Integer> capTypeOptsByLabel = CSVAttributes.getCapTypeOptsByLabel();
 	private final Map<String, Integer> glassesNecklaceOptsByLabel = CSVAttributes.getGlassesNecklaceOptsByLabel();
 	private final Map<String, Integer> eyeColor2TypesByLabel = CSVAttributes.getEyeColor2TypesByLabel();
 	private final Map<String, Integer> faceTypesByLabel = CSVAttributes.getFaceTypesByLabel();
@@ -1516,10 +1517,11 @@ public class CSVLoader {
 		}
 
 		String capTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCapType);
+		String glassesColorLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGlassesColor);
 
-		if (!capTypeLabel.equals(CSVLoader.attValueNotFound)) {
-			int capTypeVal = capTypeOptsByLabel.get(capTypeLabel);
-			playerData[110] = (byte)capTypeVal;
+		if (!capTypeLabel.equals(CSVLoader.attValueNotFound) && !glassesColorLabel.equals(CSVLoader.attValueNotFound)) {
+			int capTypeGlassesColorVal = CSVAttributes.getCapTypeGlassesColorValue(capTypeLabel, glassesColorLabel);
+			playerData[110] = (byte)capTypeGlassesColorVal;
 		}
 
 		String glassesTypeLabel = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGlassesType);

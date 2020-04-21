@@ -1083,34 +1083,6 @@ class CSVAttributes {
         }
     };
 
-    private static final Map<String, Integer> capTypeOptsByLabel = new HashMap<String, Integer>() {
-        {
-            put("1", 0);
-            put("2", 8);
-            put("3", 16);
-            put("4", 24);
-            put("5", 32);
-            put("6", 40);
-            put("7", 48);
-            put("8", 56);
-        }
-    };
-
-    private static final Map<Integer, String> capTypeOptsByValue = new HashMap<Integer, String>() {
-        {
-            put(0, "1");
-            put(8, "2");
-            put(16, "3");
-            put(24, "4");
-            put(32, "5");
-            put(40, "6");
-            put(48, "7");
-            put(56, "8");
-        }
-    };
-
-    private static final String capTypeOptsDefaultValue = "1";
-
     private static final Map<String, Integer> glassesNecklaceOptsByLabel = new HashMap<String, Integer>() {
         {
             put("N/N", 0);
@@ -5287,24 +5259,12 @@ class CSVAttributes {
         return eyeColor2TypesByLabel;
     }
 
-    public static String getCapTypeOptsDefaultValue() {
-        return capTypeOptsDefaultValue;
-    }
-
     public static Map<Integer, String> getGlassesNecklaceOptsByValue() {
         return glassesNecklaceOptsByValue;
     }
 
     public static Map<String, Integer> getGlassesNecklaceOptsByLabel() {
         return glassesNecklaceOptsByLabel;
-    }
-
-    public static Map<Integer, String> getCapTypeOptsByValue() {
-        return capTypeOptsByValue;
-    }
-
-    public static Map<String, Integer> getCapTypeOptsByLabel() {
-        return capTypeOptsByLabel;
     }
 
     public static Map<String, String> getHairTypesByKey() {
@@ -5438,7 +5398,7 @@ class CSVAttributes {
             facialHairCode = topByteValue + facialHairCapValue;
             facialHairCapLabel = facialHairCode + "/Y";
         }
-        else if (facialHairCapValue > 0 && facialHairCapValue <= highestPositiveValue){
+        else if (facialHairCapValue >= 0 && facialHairCapValue <= highestPositiveValue){
             facialHairCapLabel = facialHairCapValue + "/N";
         }
 
@@ -5460,7 +5420,7 @@ class CSVAttributes {
                 facialHairNo = Integer.parseInt(facialHairLabel);
             }
 
-            if (facialHairNo > 0 && facialHairNo <= 116){
+            if (facialHairNo >= 0 && facialHairNo <= 116){
                 if (capLabel.equals("Y")){
                     facialHairCapValue = facialHairNo + topByteValue;
                 }
@@ -8824,4 +8784,85 @@ class CSVAttributes {
         return goalCelebrationValue;
     }
 
+    public static String getCapTypeLabel(int capTypeValue) {
+        String capTypeLabel = "???";
+
+        if (capTypeValue >= 0 && capTypeValue <= 7) {
+            capTypeLabel = "1";
+        }
+        if (capTypeValue >= 8 && capTypeValue <= 15) {
+            capTypeLabel = "2";
+        }
+        if (capTypeValue >= 16 && capTypeValue <= 23) {
+            capTypeLabel = "3";
+        }
+        if (capTypeValue >= 24 && capTypeValue <= 31) {
+            capTypeLabel = "4";
+        }
+        if (capTypeValue >= 32 && capTypeValue <= 39) {
+            capTypeLabel = "5";
+        }
+        if (capTypeValue >= 40 && capTypeValue <= 47) {
+            capTypeLabel = "6";
+        }
+        if (capTypeValue >= 48 && capTypeValue <= 55) {
+            capTypeLabel = "7";
+        }
+        if (capTypeValue >= 56 && capTypeValue <= 63) {
+            capTypeLabel = "8";
+        }
+
+        return capTypeLabel;
+    }
+
+    public static String getGlassesColorLabel(int glassesColorValue) {
+        String glassesColorLabel = "???";
+        int valueRange = 8;
+        int glassesColor = 1;
+
+        if (glassesColorValue >= 0) {
+            glassesColor = (glassesColorValue % valueRange) + 1;
+            glassesColorLabel = Integer.toString(glassesColor);
+        }
+
+        return glassesColorLabel;
+    }
+
+    private static final Map<String, Integer> capTypeBaseValues = new HashMap<String, Integer>() {
+        {
+            put("1", 0);
+            put("2", 8);
+            put("3", 16);
+            put("4", 24);
+            put("5", 32);
+            put("6", 40);
+            put("7", 48);
+            put("8", 56);
+        }
+    };
+
+    private static final Map<String, Integer> glassesColorOffsetValues = new HashMap<String, Integer>() {
+        {
+            put("1", 0);
+            put("2", 1);
+            put("3", 2);
+            put("4", 3);
+            put("5", 4);
+            put("6", 5);
+            put("7", 6);
+            put("8", 7);
+        }
+    };
+
+    public static int getCapTypeGlassesColorValue(String capTypeLabel, String glassesColorLabel) {
+        int capTypeGlassesColorValue = 0;
+
+        int capTypeBaseValue = capTypeBaseValues.get(capTypeLabel);
+        int glassesColorOffsetValue = glassesColorOffsetValues.get(glassesColorLabel);
+        
+        capTypeGlassesColorValue = capTypeBaseValue + glassesColorOffsetValue;
+
+
+        return capTypeGlassesColorValue;
+    }
 }
