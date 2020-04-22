@@ -119,7 +119,7 @@ public class OptionFilter extends FileFilter {
 	}
 	
 	public String getDescription() {
-		return "PES6  Option File";
+		return "PES6 Option File";
 	}
 
 }
