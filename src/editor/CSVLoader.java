@@ -595,11 +595,14 @@ public class CSVLoader {
 			int attributeCount = 0;
 
 			for (String header : headersArray) {
-				if (attributeCount == 0 && (!header.equals(CSVLoader.attId) && !header.equals(CSVLoader.attIdUTF8))) {
-					throw new Exception("First heading must be ID.");
+				String formattedHeader = header.toUpperCase().replaceAll("[^A-Za-z0-9]","");
+
+				if (attributeCount == 0) {
+					if (!formattedHeader.equals(CSVLoader.attId) && !formattedHeader.equals(CSVLoader.attIdUTF8)) {
+						throw new Exception("First heading must be ID.");
+					}
 				}
 
-				String formattedHeader = header.toUpperCase();
 				attributePositions.put(formattedHeader, attributeCount);
 				attributeCount++;
 			}
