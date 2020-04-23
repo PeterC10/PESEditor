@@ -343,7 +343,7 @@ public class Editor extends JFrame {
 						.showMessageDialog(
 								getContentPane(),
 								"PES Editor (PeterC10 Dev)"
-										+ "\nVersion 6.0.7.0"
+										+ "\nVersion 6.0.7.1"
 										+ "\n\n\u00a9 Copyright 2006-7 Compulsion"
 										+ "\n\u00a9 Copyright 2011,2012 juce (CSV import feature)"
 										+ "\n\u00a9 Copyright 2018 PeterC10 (Various enhancements)"
