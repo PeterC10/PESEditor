@@ -524,8 +524,6 @@ public class CSVLoader {
 	private final Map<String, Integer> registeredPositionByLabel = CSVAttributes.getRegisteredPositionByLabel();
 	private final Map<String, Integer> physicalLinkedOptsByLabel = CSVAttributes.getPhysicalLinkedOptsByLabel();
 	private final Map<String, Integer> headHeightOptsByLabel = CSVAttributes.getHeadHeightOptsByLabel();
-	private final String[] wristbandLabels = CSVAttributes.getWristbandLabels();
-	private final Map<String, Integer> wristbandOptsByLabel = CSVAttributes.getWristbandOptsByLabel();
 	private final Map<String, String> hairTypesByLabel = CSVAttributes.getHairTypesByLabel();
 	private final Map<String, Integer> glassesNecklaceOptsByLabel = CSVAttributes.getGlassesNecklaceOptsByLabel();
 	private final Map<String, Integer> eyeColor2TypesByLabel = CSVAttributes.getEyeColor2TypesByLabel();
@@ -582,9 +580,7 @@ public class CSVLoader {
 		boolean done = false;
 
 		try {
-			FileReader fr = new FileReader(src);
-			BufferedReader in = new BufferedReader(fr);
-			//in = new RandomAccessFile(src, "r");
+			BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(src), "UTF-8"));
 			team = Clubs.getNames(of);
 			String headersRow = in.readLine();
 
@@ -595,9 +591,10 @@ public class CSVLoader {
 			int attributeCount = 0;
 
 			for (String header : headersArray) {
-				String formattedHeader = header.toUpperCase().replaceAll("[^A-Za-z0-9]","");
+				String formattedHeader = header.trim().toUpperCase();
 
 				if (attributeCount == 0) {
+					formattedHeader = formattedHeader.replaceAll("[^A-Za-z0-9]", "");
 					if (!formattedHeader.equals(CSVLoader.attId) && !formattedHeader.equals(CSVLoader.attIdUTF8)) {
 						throw new Exception("First heading must be ID.");
 					}
