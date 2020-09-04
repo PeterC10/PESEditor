@@ -178,6 +178,7 @@ public class CSVLoader {
 	private static String attIdUTF8 = "\uFEFFID";
 	private static String attName = "NAME";
 	private static String attShirtName = "SHIRT NAME";
+	private static String attCallName = "CALL NAME";
 	private static String attAge = "AGE";
 
 	private static String attNationality = "NATIONALITY";
@@ -364,6 +365,7 @@ public class CSVLoader {
 		attId,
 		attName,
 		attShirtName,
+		attCallName,
 		attAge,
 		attNationality,
 		attInternationalNumber,
@@ -885,6 +887,11 @@ public class CSVLoader {
 		
 		String shirtName = this.getAttributeValue(tokens, attributePositions, CSVLoader.attShirtName);
 		readShirtName(playerId, shirtName);
+
+		String callName = this.getAttributeValue(tokens, attributePositions, CSVLoader.attCallName);
+		if (!callName.equals(CSVLoader.attValueNotFound)){
+			Stats.setValue(of, playerId, Stats.callName, callName);
+		}
 
 		String gk = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGk);
 		if (!gk.equals(CSVLoader.attValueNotFound)){

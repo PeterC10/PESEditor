@@ -112,7 +112,7 @@ public class CSVMaker {
 	private void writeHeadings(BufferedWriter out) throws IOException {
 		String[] head = {
 			//Player Name
-			"NAME", "SHIRT NAME",
+			"NAME", "SHIRT NAME", "CALL NAME",
 			//Basic Settings
 			"AGE", "INJURY TOLERANCE", "DRIBBLE STYLE", "FK STYLE", "PK STYLE", "DK STYLE",
 			"GOAL CELEBRATION 1", "GOAL CELEBRATION 2", "GROWTH TYPE",
@@ -568,6 +568,11 @@ public class CSVMaker {
 		out.flush();
 
 		writeShirtName(player, out);
+		out.write(separator);
+		out.flush();
+
+		out.write(Stats.getString(of, player, Stats.callName));
+		out.flush();
 		out.write(separator);
 		out.flush();
 
