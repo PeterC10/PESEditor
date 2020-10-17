@@ -11,6 +11,7 @@ class CSVAttributes {
     private static final Map<Integer, String> registeredPositionByValue = new HashMap<Integer, String>() {
         {
             put(0, "GK");
+            put(1, "GK");
             put(2, "SW");
             put(3, "CB");
             put(4, "SB");
