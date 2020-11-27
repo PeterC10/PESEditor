@@ -165,6 +165,7 @@ public class CSVLoader {
 	private int tokenCount = 0;
 
 	Random randomNumber = new Random();
+	private int maxSquadNumber = 99;
 
 	private static String[] team;
 
@@ -1621,6 +1622,11 @@ public class CSVLoader {
 		}
 
 		String classicNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClassicNumber);
+		int classicNumberInt = Integer.parseInt(classicNumber);
+
+		if (classicNumberInt > this.maxSquadNumber){
+			classicNumber = "0";
+		}
 
 		String growthType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attGrowthType);
 		String specificGrowthType = this.getAttributeValue(tokens, attributePositions, CSVLoader.attSpecificGrowthType);
@@ -1709,6 +1715,10 @@ public class CSVLoader {
 
 		String internationalNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attInternationalNumber);
 		if (!internationalNumber.equals(CSVLoader.attValueNotFound)){
+			int internationalNumberInt = Integer.parseInt(internationalNumber);
+			if (internationalNumberInt > this.maxSquadNumber){
+				internationalNumber = "0";
+			}
 			readInterStatus(playerId, internationalNumber);
 		}
 
@@ -1719,6 +1729,10 @@ public class CSVLoader {
 		String clubTeam = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClubTeam);
 		String clubNumber = this.getAttributeValue(tokens, attributePositions, CSVLoader.attClubNumber);
 		if (!clubTeam.equals(CSVLoader.attValueNotFound) && !clubNumber.equals(CSVLoader.attValueNotFound)){
+			int clubNumberInt = Integer.parseInt(clubNumber);
+			if (clubNumberInt > this.maxSquadNumber){
+				clubNumber = "0";
+			}
 			readTeam(playerId, clubTeam, clubNumber);
 		}
 	}
