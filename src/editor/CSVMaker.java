@@ -424,7 +424,7 @@ public class CSVMaker {
 		if (glassesNecklaceVal < 0){
 			glassesNecklaceVal = -glassesNecklaceVal;
 		}
-		glassesNecklaceVal = glassesNecklaceVal % 8;
+		glassesNecklaceVal = glassesNecklaceVal % 12;
 
 		int shoulderWidthVal = playerData[109];
 
