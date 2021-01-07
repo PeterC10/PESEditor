@@ -456,7 +456,6 @@ public class CSVMaker {
 		String specificGrowthType = Integer.toString(playerData[86]);
 
 		int registeredPositionVal = Integer.parseInt(Stats.getString(of, player, Stats.regPos));
-		registeredPositionVal = registeredPositionVal % 12;
 		String registeredPosition = registeredPositionByValue.get(registeredPositionVal);
 
 		int skinColor = (Stats.getValue(of, player, Stats.skin) + 1);

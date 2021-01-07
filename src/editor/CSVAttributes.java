@@ -23,6 +23,7 @@ class CSVAttributes {
             put(10, "WF");
             put(11, "SS");
             put(12, "CF");
+            put(13, "GK");
         }
     };
 
