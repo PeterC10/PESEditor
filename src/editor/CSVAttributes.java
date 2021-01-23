@@ -5521,19 +5521,16 @@ class CSVAttributes {
             facialHairColor = sleeveLengthFacialHairColorValue + 1;
         }
         else if (sleeveLengthFacialHairColorValue >= 64 && sleeveLengthFacialHairColorValue <= 126){
-            if (sleeveLengthFacialHairColorValue == 126){
-                sleeveLengthLabel = "Short";
-            }
-            else{
+            sleeveLengthLabel = "Short";
+            if (sleeveLengthFacialHairColorValue != 126){
                 facialHairColor = sleeveLengthFacialHairColorValue - byteCount;
             }
         }
         else if (sleeveLengthFacialHairColorValue >= -128 && sleeveLengthFacialHairColorValue <= -66){
-            if (sleeveLengthFacialHairColorValue == -66){
-                sleeveLengthLabel = "Long";
-            }
-            else{
+            sleeveLengthLabel = "Long";
+            if (sleeveLengthFacialHairColorValue != -66){
                 facialHairColor =  sleeveLengthFacialHairColorValue + negativeByteDiff;
+                
             }
         }
 
