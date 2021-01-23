@@ -471,6 +471,21 @@ public class CSVMaker {
 		int wristbandVal = playerData[98];
 		boolean wristbandValFound = false;
 
+		int orig_val = wristbandVal;
+
+		int wristbandValOffset = 0;
+		if (wristbandVal < 0) {
+			if (
+					wristbandVal != -128 && wristbandVal != -120 && wristbandVal != -112 && wristbandVal != 104
+					&& wristbandVal != -88 && wristbandVal != -80 && wristbandVal != -72
+					&& wristbandVal != -56 && wristbandVal != -48 && wristbandVal != -40
+					&& wristbandVal != -24 && wristbandVal != -16 && wristbandVal != -8
+			) {
+				wristbandValOffset = 8;
+			}
+		}
+		wristbandVal = wristbandVal - (wristbandVal % 8) - wristbandValOffset;
+
 		for (int val : wristbandVals) {
             if (val == wristbandVal) {
                 wristbandValFound = true;
