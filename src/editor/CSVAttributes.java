@@ -1943,7 +1943,7 @@ class CSVAttributes {
             put("Curly 1/1/7/1/NA/NA", "-60/2");
             put("Curly 1/1/7/2/NA/NA", "-59/2");
             put("Curly 1/1/7/3/NA/NA", "-58/2");
-            put("Curly 1/2/1/1/NA/NA", "-57/2");
+            put("Curly 1/2/1/1/NA/N", "-57/2");
             put("Curly 1/2/1/1/NA/1", "-56/2");
             put("Curly 1/2/1/1/NA/2", "-55/2");
             put("Curly 1/2/1/2/NA/N", "-54/2");
@@ -1994,7 +1994,7 @@ class CSVAttributes {
             put("Curly 1/2/7/1/NA/NA", "-9/2");
             put("Curly 1/2/7/2/NA/NA", "-8/2");
             put("Curly 1/2/7/3/NA/NA", "-7/2");
-            put("Curly 1/3/1/1/NA/NA", "-6/2");
+            put("Curly 1/3/1/1/NA/N", "-6/2");
             put("Curly 1/3/1/1/NA/1", "-5/2");
             put("Curly 1/3/1/1/NA/2", "-4/2");
             put("Curly 1/3/1/2/NA/N", "-3/2");
@@ -2045,7 +2045,7 @@ class CSVAttributes {
             put("Curly 1/3/7/1/NA/NA", "42/3");
             put("Curly 1/3/7/2/NA/NA", "43/3");
             put("Curly 1/3/7/3/NA/NA", "44/3");
-            put("Curly 1/4/1/1/NA/NA", "45/3");
+            put("Curly 1/4/1/1/NA/N", "45/3");
             put("Curly 1/4/1/1/NA/1", "46/3");
             put("Curly 1/4/1/1/NA/2", "47/3");
             put("Curly 1/4/1/2/NA/N", "48/3");
@@ -3447,7 +3447,7 @@ class CSVAttributes {
             put("-60/2", "Curly 1/1/7/1/NA/NA");
             put("-59/2", "Curly 1/1/7/2/NA/NA");
             put("-58/2", "Curly 1/1/7/3/NA/NA");
-            put("-57/2", "Curly 1/2/1/1/NA/NA");
+            put("-57/2", "Curly 1/2/1/1/NA/N");
             put("-56/2", "Curly 1/2/1/1/NA/1");
             put("-55/2", "Curly 1/2/1/1/NA/2");
             put("-54/2", "Curly 1/2/1/2/NA/N");
@@ -3498,7 +3498,7 @@ class CSVAttributes {
             put("-9/2", "Curly 1/2/7/1/NA/NA");
             put("-8/2", "Curly 1/2/7/2/NA/NA");
             put("-7/2", "Curly 1/2/7/3/NA/NA");
-            put("-6/2", "Curly 1/3/1/1/NA/NA");
+            put("-6/2", "Curly 1/3/1/1/NA/N");
             put("-5/2", "Curly 1/3/1/1/NA/1");
             put("-4/2", "Curly 1/3/1/1/NA/2");
             put("-3/2", "Curly 1/3/1/2/NA/N");
@@ -3549,7 +3549,7 @@ class CSVAttributes {
             put("42/3", "Curly 1/3/7/1/NA/NA");
             put("43/3", "Curly 1/3/7/2/NA/NA");
             put("44/3", "Curly 1/3/7/3/NA/NA");
-            put("45/3", "Curly 1/4/1/1/NA/NA");
+            put("45/3", "Curly 1/4/1/1/NA/N");
             put("46/3", "Curly 1/4/1/1/NA/1");
             put("47/3", "Curly 1/4/1/1/NA/2");
             put("48/3", "Curly 1/4/1/2/NA/N");
