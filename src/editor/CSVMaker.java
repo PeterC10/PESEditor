@@ -368,33 +368,14 @@ public class CSVMaker {
 		int hairTypeVal1 = playerData[92];
 		int hairTypeVal2 = playerData[93];
 
-		int hairTypeVal2Modulus = -1;
-
-		if(hairTypeVal2 >= 0){
-			hairTypeVal2Modulus = hairTypeVal2 % 8;
-		}
-		else {
-			int hairTypeVal2Positive = -hairTypeVal2;
-
-			int negativeValModulus = hairTypeVal2Positive % 8;
-
-			switch(negativeValModulus){
-				case 0:
-					hairTypeVal2Modulus = 0;
-				case 3:
-					hairTypeVal2Modulus = 5;
-				case 4:
-					hairTypeVal2Modulus = 4;
-				case 5:
-					hairTypeVal2Modulus = 3;
-				case 6:
-					hairTypeVal2Modulus = 2;
-				case 7:
-					hairTypeVal2Modulus = 1;
-			}
+		if(hairTypeVal2 < 0){
+			hairTypeVal2 = (((hairTypeVal2 % 256) + 256) % 256);
 		}
 
-		String hairTypeKey = hairTypeVal1 + "/" + hairTypeVal2Modulus;
+		int hairTypeVal2Base = (hairTypeVal2 / 8) * 8;
+		int hairTypeVal2Lowest = hairTypeVal2 - hairTypeVal2Base;
+
+		String hairTypeKey = hairTypeVal1 + "/" + hairTypeVal2Lowest;
 
 		int eyeColor2Val = 0;
 
