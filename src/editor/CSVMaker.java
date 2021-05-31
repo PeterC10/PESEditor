@@ -377,14 +377,9 @@ public class CSVMaker {
 
 		String hairTypeKey = hairTypeVal1 + "/" + hairTypeVal2Lowest;
 
-		int eyeColor2Val = 0;
-
-		if (hairTypeVal2 >= 0) {
-			eyeColor2Val = hairTypeVal2 / 8;
-		}
-		else {
-			eyeColor2Val = (128 + hairTypeVal2) / 8;
-		}
+		int eyeColor2Val = (hairTypeVal2 / 128) * 128;
+		eyeColor2Val = hairTypeVal2 - eyeColor2Val;
+		eyeColor2Val = (eyeColor2Val / 8) * 8;
 
 		String eyeColor2Label  = eyeColor2TypesByValue.getOrDefault(eyeColor2Val, "???");
 

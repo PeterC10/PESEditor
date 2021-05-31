@@ -1199,34 +1199,34 @@ class CSVAttributes {
     private static final Map<String, Integer> eyeColor2TypesByLabel = new HashMap<String, Integer>() {
         {
             put("Black 1", 0);
-            put("Black 2", 1);
-            put("Dark Grey 1", 2);
-            put("Dark Grey 2", 3);
-            put("Brown 1", 4);
-            put("Brown 2", 5);
-            put("Light Blue 1", 6);
-            put("Light Blue 2", 7);
-            put("Blue 1", 8);
-            put("Blue 2", 9);
-            put("Green 1", 10);
-            put("Green 2", 11);
+            put("Black 2", 8);
+            put("Dark Grey 1", 16);
+            put("Dark Grey 2", 24);
+            put("Brown 1", 32);
+            put("Brown 2", 40);
+            put("Light Blue 1", 48);
+            put("Light Blue 2", 56);
+            put("Blue 1", 64);
+            put("Blue 2", 72);
+            put("Green 1", 80);
+            put("Green 2", 88);
         }
     };
 
     private static final Map<Integer, String> eyeColor2TypesByValue = new HashMap<Integer, String>() {
         {
             put(0, "Black 1");
-            put(1, "Black 2");
-            put(2, "Dark Grey 1");
-            put(3, "Dark Grey 2");
-            put(4, "Brown 1");
-            put(5, "Brown 2");
-            put(6, "Light Blue 1");
-            put(7, "Light Blue 2");
-            put(8, "Blue 1");
-            put(9, "Blue 2");
-            put(10, "Green 1");
-            put(11, "Green 2");
+            put(8, "Black 2");
+            put(16, "Dark Grey 1");
+            put(24, "Dark Grey 2");
+            put(32, "Brown 1");
+            put(40, "Brown 2");
+            put(48, "Light Blue 1");
+            put(56, "Light Blue 2");
+            put(64, "Blue 1");
+            put(72, "Blue 2");
+            put(80, "Green 1");
+            put(88, "Green 2");
         }
     };
 

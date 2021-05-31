@@ -1482,6 +1482,7 @@ public class CSVLoader {
 			int hairCode = Integer.parseInt(fullHairCodeArray[0]);
 			int baseHairCode = Integer.parseInt(fullHairCodeArray[1]);
 			int multiplyFactor = eyeColor2TypesByLabel.get(eyeColor2Label);
+			multiplyFactor = multiplyFactor / 8;
 			int baseHairCodeMultiplied = baseHairCode + (8 * multiplyFactor);
 			int neckWarmerOffset = neckWarmerBaseHairCodeOffsetByLabel.get(neckWarmerLabel);
 			baseHairCodeMultiplied += neckWarmerOffset;
