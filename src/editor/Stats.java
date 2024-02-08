@@ -363,13 +363,13 @@ public class Stats {
 		int v = 0;
 		try {
 			if (stat.type == 0) {
-				v = new Integer(s).intValue();
+				v = Integer.parseInt(s);
 			}
 			if (stat.type == 1) {
-				v = new Integer(s).intValue() - 148;
+				v = Integer.parseInt(s) - 148;
 			}
 			if (stat.type == 2) {
-				v = new Integer(s).intValue() - 15;
+				v = Integer.parseInt(s) - 15;
 			}
 			if (stat.type == 3) {
 				boolean matched = false;
@@ -398,7 +398,7 @@ public class Stats {
 				}
 			}
 			if (stat.type == 5) {
-				v = new Integer(s).intValue() - 1;
+				v = Integer.parseInt(s) - 1;
 			}
 			if (stat.type == 6) {
 				for (int i = 0; i < modInjury.length; i++) {

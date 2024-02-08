@@ -1,7 +1,7 @@
 package editor;
 
 import java.awt.Color;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class Clubs {
 	static final  int total = 140;
@@ -70,12 +70,8 @@ public class Clubs {
 					len = i;
 				}
 			}
-			try {
-				club = new String(of.data, a, len, "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				club = "<" + String.valueOf(c) + ">";
-			}
-		} else {
+            club = new String(of.data, a, len, StandardCharsets.UTF_8);
+        } else {
 			club = "<" + String.valueOf(c) + ">";
 		}
 		return club;
@@ -100,12 +96,8 @@ public class Clubs {
 		int a = startAdr + (c * size);
 		byte[] tb = new byte[49];
 		byte[] sb;
-		try {
-			sb = text.getBytes("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			sb = new byte[48];
-		}
-		if (sb.length <= 48) {
+        sb = text.getBytes(StandardCharsets.UTF_8);
+        if (sb.length <= 48) {
 			System.arraycopy(sb, 0, tb, 0, sb.length);
 		} else {
 			System.arraycopy(sb, 0, tb, 0, 48);

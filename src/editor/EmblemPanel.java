@@ -77,12 +77,12 @@ public class EmblemPanel extends JPanel implements MouseListener {
 			flagButton[l] = new JButton();
 			flagButton[l].setBackground(new Color(204, 204, 204));
 			flagButton[l].setMargin(new Insets(0, 0, 0, 0));
-			flagButton[l].setActionCommand((new Integer(l)).toString());
+			flagButton[l].setActionCommand(Integer.toString(l));
 			flagButton[l].addMouseListener(this);
 			flagButton[l].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent b) {
-					int slot = (new Integer(((JButton) b.getSource())
-							.getActionCommand())).intValue();
+					int slot = Integer.parseInt(((JButton) b.getSource())
+							.getActionCommand());
 					ImageIcon icon = null;
 					boolean is128 = false;
 					if (slot >= Emblems.count16(of)) {
@@ -382,7 +382,7 @@ public class EmblemPanel extends JPanel implements MouseListener {
 
 	public void mouseEntered(MouseEvent e) {
 		JButton but = (JButton) e.getSource();
-		int slot = new Integer(but.getActionCommand()).intValue();
+		int slot = Integer.parseInt(but.getActionCommand());
 		if (slot >= Emblems.count16(of)) {
 			slot = 99 - slot;
 			largeFlag.setIcon(new ImageIcon(Emblems.get128(of, slot, !trans,

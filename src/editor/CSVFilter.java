@@ -12,17 +12,10 @@ public class CSVFilter extends FileFilter {
 			return true;
 		}
 
-		String extension = PESUtils.getExtension(f);
-		if (extension != null) {
-			if (extension.equals(PESUtils.csv)) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+		var extension = PESUtils.getExtension(f);
+        return extension != null && extension.equals(PESUtils.csv);
 
-		return false;
-	}
+    }
 
 	// The description of this filter
 	public String getDescription() {

@@ -38,11 +38,10 @@ public class LogoChooserDialog extends JDialog {
 			flagButton[l] = new JButton(new ImageIcon(Logos.get(of, -1, false)));
 			// flagButton[l].setIcon();
 			flagButton[l].setMargin(new Insets(0, 0, 0, 0));
-			flagButton[l].setActionCommand((new Integer(l)).toString());
+			flagButton[l].setActionCommand(Integer.toString(l));
 			flagButton[l].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent b) {
-					slot = (byte) ((new Integer(((JButton) b.getSource())
-							.getActionCommand())).intValue());
+					slot = (byte) ((Integer.parseInt(((JButton) b.getSource()).getActionCommand())));
 					setVisible(false);
 				}
 			});

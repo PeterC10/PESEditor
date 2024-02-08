@@ -130,7 +130,7 @@ public class GeneralAbilityPanel extends JPanel {
 			boolean ok = false;
 			JTextField tf = (JTextField) input;
 			try {
-				int v = new Integer(tf.getText()).intValue();
+				int v = Integer.parseInt(tf.getText());
 				if (v >= 148 && v <= 211) {
 					ok = true;
 				}
@@ -146,7 +146,7 @@ public class GeneralAbilityPanel extends JPanel {
 			boolean ok = false;
 			JTextField tf = (JTextField) input;
 			try {
-				int v = new Integer(tf.getText()).intValue();
+				int v = Integer.parseInt(tf.getText());
 				if (v >= 1 && v < 128) {
 					ok = true;
 				}
@@ -162,7 +162,7 @@ public class GeneralAbilityPanel extends JPanel {
 			boolean ok = false;
 			JTextField tf = (JTextField) input;
 			try {
-				int v = new Integer(tf.getText()).intValue();
+				int v = Integer.parseInt(tf.getText());
 				if (v >= 15 && v <= 46) {
 					ok = true;
 				}

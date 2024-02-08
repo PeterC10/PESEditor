@@ -46,11 +46,10 @@ public class EmblemImportDialog extends JDialog {
 					false, true)));
 			// flagButton[l].setIcon();
 			flagButton[l].setMargin(new Insets(0, 0, 0, 0));
-			flagButton[l].setActionCommand((new Integer(l)).toString());
+			flagButton[l].setActionCommand(Integer.toString(l));
 			flagButton[l].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent b) {
-					slot = (new Integer(((JButton) b.getSource())
-							.getActionCommand())).intValue();
+					slot = Integer.parseInt(((JButton) b.getSource()).getActionCommand());
 					if (slot >= Emblems.count16(of)) {
 						slot = 99 - slot;
 					} else {

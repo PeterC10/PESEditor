@@ -376,7 +376,7 @@ public class TransferPanel extends JPanel implements MouseListener,
 			if (source == 2 && !selectorL.numList.isSelectionEmpty()) {
 				int i = selectorL.numList.getSelectedIndex();
 				try {
-					int v = new Integer(getText()).intValue();
+					int v = Integer.parseInt(getText());
 					if (v != 0 && v <= 99) {
 						setShirt(source, i, v);
 					}
@@ -393,7 +393,7 @@ public class TransferPanel extends JPanel implements MouseListener,
 			if (source == 3 && !selectorR.numList.isSelectionEmpty()) {
 				int i = selectorR.numList.getSelectedIndex();
 				try {
-					int v = new Integer(getText()).intValue();
+					int v = Integer.parseInt(getText());
 					if (v != 0 && v <= 99) {
 						setShirt(source, i, v);
 					}

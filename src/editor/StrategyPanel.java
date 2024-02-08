@@ -38,7 +38,7 @@ public class StrategyPanel extends JPanel {
 		ActionListener act = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (ok) {
-					int b = new Integer(e.getActionCommand()).intValue();
+					int b = Integer.parseInt(e.getActionCommand());
 					byte strat = (byte) butBox[b].getSelectedIndex();
 					// System.out.println(b + ", " + strat);
 					Formations.setStrat(of, squad, b, strat);

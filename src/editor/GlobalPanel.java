@@ -342,7 +342,7 @@ public class GlobalPanel extends JPanel {
 			}
 		}
 		try {
-			v = new Integer(numField.getText()).intValue();
+			v = Integer.parseInt(numField.getText());
 			if (v < min || v > max) {
 				v = 0;
 			}

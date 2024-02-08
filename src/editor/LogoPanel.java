@@ -57,11 +57,11 @@ public class LogoPanel extends JPanel {
 			flagButton[l] = new JButton();
 			flagButton[l].setBackground(new Color(204, 204, 204));
 			flagButton[l].setMargin(new Insets(0, 0, 0, 0));
-			flagButton[l].setActionCommand((new Integer(l)).toString());
+			flagButton[l].setActionCommand(Integer.toString(l));
 			flagButton[l].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent b) {
-					int slot = (new Integer(((JButton) b.getSource())
-							.getActionCommand())).intValue();
+					int slot = (Integer.parseInt(((JButton) b.getSource())
+							.getActionCommand()));
 					ImageIcon icon = null;
 					icon = new ImageIcon(Logos.get(of, slot, !trans));
 					Object[] options;

@@ -110,7 +110,7 @@ public class PlayerDialog extends JDialog {// implements ListSelectionListener,
 		int v;
 		for (int i = 0; i < abiPanel.ability99.length; i++) {
 			try {
-				v = new Integer(abiPanel.field[i].getText()).intValue();
+				v = Integer.parseInt(abiPanel.field[i].getText());
 				if (v < 1 || v > 99) {
 					ok = false;
 				}
@@ -119,7 +119,7 @@ public class PlayerDialog extends JDialog {// implements ListSelectionListener,
 			}
 		}
 		try {
-			v = new Integer(genPanel.heightField.getText()).intValue();
+			v = Integer.parseInt(genPanel.heightField.getText());
 			if (v < 148 || v > 211) {
 				ok = false;
 			}
@@ -127,7 +127,7 @@ public class PlayerDialog extends JDialog {// implements ListSelectionListener,
 			ok = false;
 		}
 		try {
-			v = new Integer(genPanel.weightField.getText()).intValue();
+			v = Integer.parseInt(genPanel.weightField.getText());
 			if (v < 1 || v > 127) {
 				ok = false;
 			}
@@ -135,7 +135,7 @@ public class PlayerDialog extends JDialog {// implements ListSelectionListener,
 			ok = false;
 		}
 		try {
-			v = new Integer(genPanel.ageField.getText()).intValue();
+			v = Integer.parseInt(genPanel.ageField.getText());
 			if (v < 15 || v > 46) {
 				ok = false;
 			}

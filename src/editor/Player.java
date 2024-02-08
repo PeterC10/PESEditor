@@ -2,6 +2,7 @@ package editor;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class Player implements Comparable, Serializable {
 	public String name;
@@ -85,8 +86,9 @@ public class Player implements Comparable, Serializable {
 		Player n = (Player) o;
 		int cmp = name.compareTo(n.name);
 		if (cmp == 0) {
-			cmp = new Integer(Stats.getValue(of, index, Stats.age)).compareTo(new Integer(
-					Stats.getValue(of, n.index, Stats.age)));
+			var firstAge = Stats.getValue(of, index, Stats.age);
+			var secondAge = Stats.getValue(of, n.index, Stats.age);
+			cmp = Integer.compare(firstAge, secondAge);
 		}
 		return cmp;
 
@@ -97,12 +99,8 @@ public class Player implements Comparable, Serializable {
 		if (index != 0 && len <= 15) {
 			byte[] newNameBytes = new byte[32];
 			byte[] t;
-			try {
-				t = newName.getBytes("UTF-16LE");
-			} catch (UnsupportedEncodingException e) {
-				t = new byte[30];
-			}
-			if (t.length <= 30) {
+            t = newName.getBytes(StandardCharsets.UTF_16LE);
+            if (t.length <= 30) {
 				System.arraycopy(t, 0, newNameBytes, 0, t.length);
 			} else {
 				System.arraycopy(t, 0, newNameBytes, 0, 30);

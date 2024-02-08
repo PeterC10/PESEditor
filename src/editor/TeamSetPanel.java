@@ -103,7 +103,7 @@ public class TeamSetPanel extends JPanel {
 		ActionListener act = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (ok) {
-					int b = new Integer(e.getActionCommand()).intValue();
+					int b = Integer.parseInt(e.getActionCommand());
 					Formations.setTeam(of, squad, alt, b, box[b].getSelectedIndex());
 				}
 			}

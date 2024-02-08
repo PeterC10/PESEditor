@@ -101,7 +101,7 @@ public class PositionPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int box = 0;
 		try {
-			box = new Integer(e.getActionCommand()).intValue();
+			box = Integer.parseInt(e.getActionCommand());
 		} catch (NumberFormatException nfe) {
 		}
 		if (regPos == box) {

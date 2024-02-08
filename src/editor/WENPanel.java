@@ -35,7 +35,7 @@ public class WENPanel extends JPanel implements ActionListener {
 	public void refresh() {
 		int wen = (of.toInt(of.data[50]) << 16) + (of.toInt(of.data[49]) << 8)
 				+ of.toInt(of.data[48]);
-		current.setText("Current:  " + String.valueOf(wen));
+		current.setText("Current:  " + wen);
 		field.setText("");
 	}
 
@@ -58,7 +58,7 @@ public class WENPanel extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent evt) {
 		try {
-			setWEN(new Integer(field.getText()).intValue());
+			setWEN(Integer.parseInt(field.getText()));
 		} catch (NumberFormatException nfe) {
 		}
 	}

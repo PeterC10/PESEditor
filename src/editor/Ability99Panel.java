@@ -82,11 +82,10 @@ public class Ability99Panel extends JPanel implements ActionListener,
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		f = new Integer(e.getActionCommand()).intValue();
 
+		f = Integer.parseInt((e.getActionCommand()));
 		try {
-			int v = new Integer(((JTextField) e.getSource()).getText())
-					.intValue();
+			int v = Integer.parseInt(((JTextField) e.getSource()).getText());
 			// System.out.println(f);
 			if (v > 0 && v < 100) {
 				if (f < ability99.length - 1) {
@@ -111,7 +110,7 @@ public class Ability99Panel extends JPanel implements ActionListener,
 			boolean ok = false;
 			JTextField tf = (JTextField) input;
 			try {
-				int v = new Integer(tf.getText()).intValue();
+				int v = Integer.parseInt(tf.getText());
 				if (v > 0 && v < 100) {
 					ok = true;
 				}
@@ -127,8 +126,7 @@ public class Ability99Panel extends JPanel implements ActionListener,
 		String text = tf.getText();
 		if (text != "") {
 			try {
-				int v = new Integer(((JTextField) ce.getSource()).getText())
-						.intValue();
+				int v = Integer.parseInt(((JTextField) ce.getSource()).getText());
 				if (v >= 75 && v < 80) {
 					tf.setBackground(new Color(183,255, 0));
 				} else if (v >= 80 && v < 90) {
@@ -153,7 +151,7 @@ public class Ability99Panel extends JPanel implements ActionListener,
 
 	public void keyPressed(KeyEvent e) {
 		JTextField tf = (JTextField) e.getSource();
-		int v = new Integer(tf.getText()).intValue();
+		int v = Integer.parseInt(tf.getText());
 		int key = e.getKeyCode();
 		if (key == 38 && v < 99) {
 			v++;

@@ -35,7 +35,7 @@ public class SquadList extends JList {
 			}
 		}
 		if (team == 219) {
-			Vector model = new Vector();
+            var model = new Vector();
 			for (int p = 1; p < Player.total; p++) {
 				model.addElement(new Player(of, p, 0));
 			}

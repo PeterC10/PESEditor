@@ -45,7 +45,7 @@ public class BackChooserDialog extends JDialog implements ActionListener {
 				}
 			}
 			flagButton[l].setMargin(new Insets(0, 0, 0, 0));
-			flagButton[l].setActionCommand((new Integer(l)).toString());
+			flagButton[l].setActionCommand(Integer.toString(l));
 			flagButton[l].addActionListener(this);
 			flagPanel.add(flagButton[l]);
 		}
@@ -94,8 +94,7 @@ public class BackChooserDialog extends JDialog implements ActionListener {
 		if (image != null) {
 			g2.drawImage(image, 11, 0, null);
 		}
-		ImageIcon icon = new ImageIcon(bi2);
-		return icon;
+        return new ImageIcon(bi2);
 	}
 
 }
