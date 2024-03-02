@@ -215,3 +215,4 @@ out/
 PFE_settings.dat
 *.csv
 dev
+/qodana.yaml
